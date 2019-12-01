@@ -13,7 +13,7 @@
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js/*
 
-!/node_modules/neo.mjs/node_modules/siesta-lite/resources/css/siesta-all.css
+!/node_modules/neo.mjs/node_modules/siesta-lite/resources/css/*
 !/node_modules/neo.mjs/node_modules/siesta-lite/siesta-all.js
 
 # IDEs and editors
