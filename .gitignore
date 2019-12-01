@@ -5,7 +5,7 @@
 !/node_modules/neo.mjs
 !/node_modules/neo.mjs/*
 
-!/node_modules/neo.mjs/
+
 
 # IDEs and editors
 /.idea
