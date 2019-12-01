@@ -1,5 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+/package-lock.json
+
 # dependencies
 /node_modules/*
 !/node_modules/neo.mjs
@@ -10,6 +12,9 @@
 !/node_modules/neo.mjs/node_modules/@fortawesome/*
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js/*
+
+!/node_modules/neo.mjs/node_modules/siesta-lite/resources/css/siesta-all.css
+!/node_modules/neo.mjs/node_modules/siesta-lite/siesta-all.js
 
 # IDEs and editors
 /.idea
@@ -22,4 +27,3 @@
 #System Files
 .DS_Store
 Thumbs.db
-/package-lock.json
