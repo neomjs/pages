@@ -19,7 +19,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.11.2",
         "highlightjs-line-numbers.js": "^2.7.0",
-        "neo.mjs": "^1.0.5",
+        "neo.mjs": "^1.0.6",
         "siesta-lite": "^5.3.0"
     }
 }
