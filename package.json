@@ -1,0 +1,25 @@
+{
+    "name": "neo.mjs-pages",
+    "version": "1.0.0",
+    "description": "neo.mjs: Github Pages",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/neomjs/pages.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Tobias Uhlig, Nils Dehl",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/neomjs/pages/issues"
+    },
+    "homepage": "https://neomjs.github.io/pages/",
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.11.2",
+        "highlightjs-line-numbers.js": "^2.7.0",
+        "neo.mjs": "^1.0.5",
+        "siesta-lite": "^5.3.0"
+    }
+}
