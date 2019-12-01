@@ -6,6 +6,8 @@
 !/node_modules/neo.mjs/*
 
 /node_modules/neo.mjs/node_modules/*
+!/node_modules/neo.mjs/node_modules/@fortawesome
+!/node_modules/neo.mjs/node_modules/@fortawesome/*
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js/*
 
