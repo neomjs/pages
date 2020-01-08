@@ -1,6 +1,6 @@
 {
     "name": "neo.mjs-pages",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "neo.mjs: Github Pages",
     "repository": {
         "type": "git",
@@ -17,7 +17,7 @@
     },
     "homepage": "https://neomjs.github.io/pages/",
     "dependencies": {
-        "neo.mjs": "^1.0.10"
+        "neo.mjs": "^1.0.31"
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.11.2",
