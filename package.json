@@ -17,7 +17,7 @@
     },
     "homepage": "https://neomjs.github.io/pages/",
     "dependencies": {
-        "neo.mjs": "^1.0.47"
+        "neo.mjs": "^1.0.48"
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.11.2",
