@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Marck+Script|Oswald:400,700');
+
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+body * {
+  /* transition: all .3s ease-out; */
+  line-height: 0.9;
+}
+
+::selection {
+  background: #FFDE00;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+h1, h4, p {
+  margin: 0;
+}
+
+button:focus {
+  outline: none;
+}

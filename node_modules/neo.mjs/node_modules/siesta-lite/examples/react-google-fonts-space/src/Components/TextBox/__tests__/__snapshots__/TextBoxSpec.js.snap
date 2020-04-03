@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextBox renders correctly 1`] = `
+<div
+  className="undefined TextBox"
+  onClick={[Function]}
+>
+  <div
+    className="TextBox__TextArea"
+  >
+    <ul
+      className="Texbx__FontDetails"
+    >
+      <li
+        className="FontsDetails__Item FontsDetails__Item--FontFamily"
+      >
+        Oswald
+      </li>
+      <li
+        className="FontsDetails__Item FontsDetails__Item--FontVariant"
+      >
+        Regular
+      </li>
+      <li
+        className="FontsDetails__Item FontsDetails__Item--FontSize"
+      >
+        40
+        px
+      </li>
+    </ul>
+    <textarea
+      autoFocus={undefined}
+      placeholder="Write Something ..."
+      style={
+        Object {
+          "color": "rgba(0, 0, 0, 1)",
+          "fontFamily": "'Oswald', sans-serif",
+          "fontSize": "40px",
+          "fontStyle": "normal",
+          "fontWeight": 400,
+        }
+      }
+    />
+  </div>
+  <div
+    className="TextBox__CTA"
+  >
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        aria-hidden="true"
+        className="fa fa-plus"
+      />
+      Compare
+    </button>
+    <button
+      className="HowToUse"
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        aria-hidden="true"
+        className="fa fa-code"
+      />
+      How to use
+    </button>
+  </div>
+</div>
+`;
