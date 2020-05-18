@@ -4,7 +4,7 @@
 
 1. package.json: adjust the neo.mjs package version
 2. npm install
-3. github/pages/node_modules/neo.mjs/src/DefaultConfig.mjs => set useGoogleAnalytics to true
+3. github/pages/node_modules/neo.mjs/src/DefaultConfig.mjs => add GoogleAnalytics to the mainThreadAddons
 4. terminal: cd node_modules/neo.mjs/
 5. npm run build-all
 6. git add on the neo.mjs node_module
@@ -12,4 +12,5 @@
     1. @ fortawesome
     2. highlightjs-line-numbers.js
     3. siesta-lite (ONLY siesta-all.js & resources/*)
-8. git push
+8. add the new version into the index.html
+9. git push
