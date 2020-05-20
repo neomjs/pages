@@ -4,7 +4,7 @@
 
 1. package.json: adjust the neo.mjs package version
 2. npm install
-3. github/pages/node_modules/neo.mjs/src/DefaultConfig.mjs => add GoogleAnalytics to the mainThreadAddons
+3. github/pages/node_modules/neo.mjs/src/DefaultConfig.mjs => set useGoogleAnalytics to true
 4. terminal: cd node_modules/neo.mjs/
 5. npm run build-all
 6. git add on the neo.mjs node_module
