@@ -3,14 +3,14 @@
 /package-lock.json
 
 # dependencies
-/node_modules/*
+#/node_modules/*
 !/node_modules/neo.mjs
 /node_modules/neo.mjs/package-lock.json
 !/node_modules/neo.mjs/*
 !/node_modules/neo.mjs/dist/development/*
 !/node_modules/neo.mjs/dist/production/*
 
-/node_modules/neo.mjs/node_modules/*
+#/node_modules/neo.mjs/node_modules/*
 !/node_modules/neo.mjs/node_modules/@fortawesome
 !/node_modules/neo.mjs/node_modules/@fortawesome/*
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js
