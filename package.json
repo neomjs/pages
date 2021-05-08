@@ -17,11 +17,6 @@
     },
     "homepage": "https://neomjs.github.io/pages/",
     "dependencies": {
-        "neo.mjs": "^2.0.26"
-    },
-    "devDependencies": {
-        "@fortawesome/fontawesome-free": "^5.13.0",
-        "highlightjs-line-numbers.js": "^2.7.0",
-        "siesta-lite": "5.0.0"
+        "neo.mjs": "^2.0.27"
     }
 }
