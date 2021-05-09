@@ -10,9 +10,4 @@
 6. terminal: cd node_modules/neo.mjs/
 7. npm run build-all
 8. git add on the neo.mjs node_module
-9. ensure to NOT push the node_modules inside the neo.mjs node_module. except (if the version changed):
-    1. @ fortawesome
-    2. highlightjs-line-numbers.js
-    3. siesta-lite (ONLY siesta-all.js & resources/*)
-10. add the new version into the index.html
-11. git push
+9. git push
