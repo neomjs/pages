@@ -4,6 +4,8 @@
 
 # dependencies
 /node_modules/*
+
+# neo.mjs
 !/node_modules/neo.mjs
 /node_modules/neo.mjs/package-lock.json
 !/node_modules/neo.mjs/*
@@ -18,6 +20,10 @@
 
 !/node_modules/neo.mjs/node_modules/siesta-lite/resources/css/*
 !/node_modules/neo.mjs/node_modules/siesta-lite/siesta-all.js
+
+# neo-offscreen-canvas-demo
+!/node_modules/neo-offscreen-canvas-demo
+!/node_modules/neo-offscreen-canvas-demo/*
 
 # IDEs and editors
 /.idea

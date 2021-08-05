@@ -17,6 +17,7 @@
     },
     "homepage": "https://neomjs.github.io/pages/",
     "dependencies": {
-        "neo.mjs": "2.2.77"
+        "neo.mjs": "2.2.77",
+        "neo-offscreen-canvas-demo": "^1.0.1"
     }
 }
