@@ -19,6 +19,6 @@
     "dependencies": {
         "@material/mwc-button": "^0.22.1",
         "@material/mwc-textfield": "^0.22.1",
-        "neo.mjs": "2.3.5"
+        "neo.mjs": "2.3.6"
     }
 }
