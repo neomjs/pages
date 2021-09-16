@@ -17,6 +17,6 @@
     },
     "homepage": "https://neomjs.github.io/pages/",
     "dependencies": {
-        "neo.mjs": "2.3.7"
+        "neo.mjs": "2.3.10"
     }
 }
