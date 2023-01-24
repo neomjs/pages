@@ -1,6 +1,6 @@
 {
     "name": "neo.mjs-pages",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "neo.mjs: Github Pages",
     "repository": {
         "type": "git",
@@ -17,6 +17,6 @@
     },
     "homepage": "https://neomjs.github.io/pages/",
     "dependencies": {
-        "neo.mjs": "4.8.3"
+        "neo.mjs": "5.0.0"
     }
 }
