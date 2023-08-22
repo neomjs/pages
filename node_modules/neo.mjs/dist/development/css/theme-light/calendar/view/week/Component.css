@@ -9,6 +9,7 @@
   --c-w-header-day-color: #666;
   --c-w-header-today-background-color: red;
   --c-w-header-today-color: #fff;
-  --c-w-weekend-background-color: rgba(240, 240, 240, 0.35);
+  --c-w-weekend-background-color: rgba(240, 240, 240, .35);
 }
+
 /*# sourceMappingURL=Component.css.map */
