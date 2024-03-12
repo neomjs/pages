@@ -18,6 +18,11 @@
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js/*
 
+!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.css
+!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.js
+!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.nls.js
+!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/loader.js
+
 !/node_modules/neo.mjs/node_modules/siesta-lite/resources/css/*
 !/node_modules/neo.mjs/node_modules/siesta-lite/siesta-all.js
 
