@@ -32,6 +32,8 @@
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.css
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.js
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.nls.js
+!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/language
+!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/language/*
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/loader.js
 
 # siesta
