@@ -25,7 +25,10 @@
 !/node_modules/neo.mjs/node_modules/marked/lib/marked.esm.js
 
 # monaco-editor
+!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/base
+!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/base/*
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/basic-languages/javascript/javascript.js
+!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/basic-languages/typescript/typescript.js
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.css
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.js
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.nls.js
