@@ -1,0 +1,28 @@
+.neo-video {
+  position: relative;
+}
+.neo-video > * {
+  position: absolute;
+  inset: 0;
+}
+.neo-video .neo-video-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--video-ghost-color);
+}
+.neo-video .neo-video-ghost .fa-solid {
+  height: var(--video-ghost-size);
+  width: var(--video-ghost-size);
+  font-size: var(--video-ghost-size);
+  cursor: pointer;
+}
+.neo-video .neo-video-media {
+  height: 100%;
+  width: 100%;
+  background: black;
+}
+
+/*# sourceMappingURL=Video.css.map */
