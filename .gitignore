@@ -12,17 +12,25 @@
 !/node_modules/neo.mjs/dist/development/*
 !/node_modules/neo.mjs/dist/production/*
 
+# font awesome
 /node_modules/neo.mjs/node_modules/*
 !/node_modules/neo.mjs/node_modules/@fortawesome
 !/node_modules/neo.mjs/node_modules/@fortawesome/*
+
+# highlight.js
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js/*
 
+# marked
+!/node_modules/neo.mjs/node_modules/marked/lib/marked.esm.js
+
+# monaco-editor
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.css
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.js
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.nls.js
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/loader.js
 
+# siesta
 !/node_modules/neo.mjs/node_modules/siesta-lite/resources/css/*
 !/node_modules/neo.mjs/node_modules/siesta-lite/siesta-all.js
 
