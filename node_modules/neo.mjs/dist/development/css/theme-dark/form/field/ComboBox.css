@@ -1,0 +1,11 @@
+:root .neo-theme-dark {
+  --combobox-input-hint-color: #bbb;
+  --combobox-input-hint-opacity: 0.6;
+  --combobox-list-search-background-color: inherit;
+  --combobox-list-search-color: #fff;
+  --combobox-list-search-color-selected: #000;
+  --combobox-picker-container-border: 1px solid #bbb;
+  --combobox-picker-container-border-radius: 0;
+}
+
+/*# sourceMappingURL=ComboBox.css.map */
