@@ -15,8 +15,8 @@
     "bugs": {
         "url": "https://github.com/neomjs/pages/issues"
     },
-    "homepage": "https://neomjs.github.io/pages/",
+    "homepage": "https://neomjs.com/",
     "dependencies": {
-        "neo.mjs": "6.17.0"
+        "neo.mjs": "6.17.1"
     }
 }
