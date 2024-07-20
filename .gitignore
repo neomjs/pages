@@ -17,6 +17,9 @@
 !/node_modules/neo.mjs/node_modules/@fortawesome
 !/node_modules/neo.mjs/node_modules/@fortawesome/*
 !/node_modules/@fortawesome
+!/node_modules/highlightjs-line-numbers.js
+!/node_modules/marked
+!/node_modules/monaco-editor
 
 # highlight.js
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js
