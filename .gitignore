@@ -16,6 +16,7 @@
 /node_modules/neo.mjs/node_modules/*
 !/node_modules/neo.mjs/node_modules/@fortawesome
 !/node_modules/neo.mjs/node_modules/@fortawesome/*
+!/node_modules/@fortawesome
 
 # highlight.js
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js
