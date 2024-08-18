@@ -18,5 +18,3 @@
 13. ln -s ./neo.mjs/node_modules/marked
 14. ln -s ./neo.mjs/node_modules/monaco-editor
 15. git push
-
-trigger pipeline 2
