@@ -1,0 +1,19 @@
+.neo-pickerfield.neo-not-editable {
+  cursor: pointer;
+}
+.neo-pickerfield.neo-not-editable .neo-textfield-input {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.neo-picker-container {
+  background-color: var(--pickerfield-container-background-color);
+  border: var(--pickerfield-container-border);
+}
+.neo-picker-container:focus {
+  outline: none;
+}
+
+/*# sourceMappingURL=Picker.css.map */
