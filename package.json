@@ -17,6 +17,6 @@
     },
     "homepage": "https://neomjs.com/",
     "dependencies": {
-        "neo.mjs": "7.2.0"
+        "neo.mjs": "7.3.0"
     }
 }
