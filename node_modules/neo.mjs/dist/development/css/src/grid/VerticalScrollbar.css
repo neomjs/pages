@@ -1,0 +1,20 @@
+.neo-grid-vertical-scrollbar {
+  bottom: 1px;
+  opacity: 0;
+  overflow-y: scroll;
+  position: absolute;
+  right: 0;
+  top: 31px;
+  transition: opacity 1s ease-out;
+  width: 16px;
+  z-index: 2;
+}
+.neo-grid-vertical-scrollbar:hover {
+  opacity: 1;
+}
+
+.neo-grid-wrapper:has(.neo-grid-view.neo-is-scrolling) .neo-grid-vertical-scrollbar {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=VerticalScrollbar.css.map */
