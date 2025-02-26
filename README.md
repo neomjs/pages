@@ -17,4 +17,5 @@
 12. ln -s ./neo.mjs/node_modules/highlightjs-line-numbers.js
 13. ln -s ./neo.mjs/node_modules/marked
 14. ln -s ./neo.mjs/node_modules/monaco-editor
+14. ln -s ./neo.mjs/node_modules/siesta-lite
 15. git push
