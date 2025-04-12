@@ -1,6 +1,7 @@
 [
     {
         "country": "China",
+        "countryInfo": {"iso2": "CN"},
         "cases": 80928,
         "todayCases": 34,
         "deaths": 3245,
@@ -12,6 +13,7 @@
     },
     {
         "country": "Italy",
+        "countryInfo": {"iso2": "IT"},
         "cases": 41035,
         "todayCases": 5322,
         "deaths": 3405,
@@ -23,6 +25,7 @@
     },
     {
         "country": "Iran",
+        "countryInfo": {"iso2": "IR"},
         "cases": 18407,
         "todayCases": 1046,
         "deaths": 1284,
@@ -34,6 +37,7 @@
     },
     {
         "country": "Spain",
+        "countryInfo": {"iso2": "ES"},
         "cases": 18077,
         "todayCases": 3308,
         "deaths": 831,
@@ -45,6 +49,7 @@
     },
     {
         "country": "Germany",
+        "countryInfo": {"iso2": "DE"},
         "cases": 15320,
         "todayCases": 2993,
         "deaths": 44,
@@ -56,6 +61,7 @@
     },
     {
         "country": "USA",
+        "countryInfo": {"iso2": "US"},
         "cases": 11780,
         "todayCases": 2521,
         "deaths": 176,
@@ -67,6 +73,7 @@
     },
     {
         "country": "France",
+        "countryInfo": {"iso2": "FR"},
         "cases": 10995,
         "todayCases": 1861,
         "deaths": 372,
@@ -78,6 +85,7 @@
     },
     {
         "country": "S. Korea",
+        "countryInfo": {"iso2": "KP"},
         "cases": 8565,
         "todayCases": 152,
         "deaths": 91,
@@ -89,6 +97,7 @@
     },
     {
         "country": "Switzerland",
+        "countryInfo": {"iso2": "CH"},
         "cases": 4133,
         "todayCases": 1018,
         "deaths": 43,
@@ -100,6 +109,7 @@
     },
     {
         "country": "UK",
+        "countryInfo": {"iso2": "GB"},
         "cases": 3269,
         "todayCases": 643,
         "deaths": 144,
@@ -111,6 +121,7 @@
     },
     {
         "country": "Netherlands",
+        "countryInfo": {"iso2": "NL"},
         "cases": 2460,
         "todayCases": 409,
         "deaths": 76,
@@ -122,6 +133,7 @@
     },
     {
         "country": "Austria",
+        "countryInfo": {"iso2": "AT"},
         "cases": 2179,
         "todayCases": 533,
         "deaths": 6,
@@ -133,6 +145,7 @@
     },
     {
         "country": "Belgium",
+        "countryInfo": {"iso2": "BE"},
         "cases": 1795,
         "todayCases": 309,
         "deaths": 21,
@@ -144,6 +157,7 @@
     },
     {
         "country": "Norway",
+        "countryInfo": {"iso2": "NO"},
         "cases": 1790,
         "todayCases": 199,
         "deaths": 7,
@@ -155,6 +169,7 @@
     },
     {
         "country": "Sweden",
+        "countryInfo": {"iso2": "SE"},
         "cases": 1439,
         "todayCases": 138,
         "deaths": 11,
@@ -166,6 +181,7 @@
     },
     {
         "country": "Denmark",
+        "countryInfo": {"iso2": "DK"},
         "cases": 1151,
         "todayCases": 94,
         "deaths": 6,
@@ -177,6 +193,7 @@
     },
     {
         "country": "Japan",
+        "countryInfo": {"iso2": "JP"},
         "cases": 923,
         "todayCases": 9,
         "deaths": 32,
@@ -188,6 +205,7 @@
     },
     {
         "country": "Malaysia",
+        "countryInfo": {"iso2": "MY"},
         "cases": 900,
         "todayCases": 110,
         "deaths": 2,
@@ -199,6 +217,7 @@
     },
     {
         "country": "Canada",
+        "countryInfo": {"iso2": "CA"},
         "cases": 801,
         "todayCases": 74,
         "deaths": 10,
@@ -210,6 +229,7 @@
     },
     {
         "country": "Portugal",
+        "countryInfo": {"iso2": "PT"},
         "cases": 785,
         "todayCases": 143,
         "deaths": 4,
@@ -220,18 +240,8 @@
         "casesPerOneMillion": 77
     },
     {
-        "country": "Diamond Princess",
-        "cases": 712,
-        "todayCases": 0,
-        "deaths": 7,
-        "todayDeaths": 0,
-        "recovered": 527,
-        "active": 178,
-        "critical": 14,
-        "casesPerOneMillion": 0
-    },
-    {
         "country": "Australia",
+        "countryInfo": {"iso2": "AU"},
         "cases": 709,
         "todayCases": 113,
         "deaths": 6,
@@ -243,6 +253,7 @@
     },
     {
         "country": "Czechia",
+        "countryInfo": {"iso2": "CZ"},
         "cases": 694,
         "todayCases": 172,
         "deaths": 0,
@@ -254,6 +265,7 @@
     },
     {
         "country": "Israel",
+        "countryInfo": {"iso2": "IL"},
         "cases": 677,
         "todayCases": 244,
         "deaths": 0,
@@ -265,6 +277,7 @@
     },
     {
         "country": "Brazil",
+        "countryInfo": {"iso2": "BR"},
         "cases": 621,
         "todayCases": 92,
         "deaths": 7,
@@ -276,6 +289,7 @@
     },
     {
         "country": "Ireland",
+        "countryInfo": {"iso2": "IE"},
         "cases": 557,
         "todayCases": 191,
         "deaths": 3,
@@ -287,6 +301,7 @@
     },
     {
         "country": "Greece",
+        "countryInfo": {"iso2": "GR"},
         "cases": 464,
         "todayCases": 46,
         "deaths": 6,
@@ -298,6 +313,7 @@
     },
     {
         "country": "Qatar",
+        "countryInfo": {"iso2": "QA"},
         "cases": 460,
         "todayCases": 8,
         "deaths": 0,
@@ -309,6 +325,7 @@
     },
     {
         "country": "Pakistan",
+        "countryInfo": {"iso2": "PK"},
         "cases": 454,
         "todayCases": 147,
         "deaths": 2,
@@ -320,6 +337,7 @@
     },
     {
         "country": "Finland",
+        "countryInfo": {"iso2": "FI"},
         "cases": 400,
         "todayCases": 41,
         "deaths": 0,
@@ -331,6 +349,7 @@
     },
     {
         "country": "Poland",
+        "countryInfo": {"iso2": "PL"},
         "cases": 355,
         "todayCases": 68,
         "deaths": 5,
@@ -342,6 +361,7 @@
     },
     {
         "country": "Singapore",
+        "countryInfo": {"iso2": "SG"},
         "cases": 345,
         "todayCases": 32,
         "deaths": 0,
@@ -353,6 +373,7 @@
     },
     {
         "country": "Chile",
+        "countryInfo": {"iso2": "CL"},
         "cases": 342,
         "todayCases": 104,
         "deaths": 0,
@@ -364,6 +385,7 @@
     },
     {
         "country": "Luxembourg",
+        "countryInfo": {"iso2": "LU"},
         "cases": 335,
         "todayCases": 132,
         "deaths": 4,
@@ -375,6 +397,7 @@
     },
     {
         "country": "Iceland",
+        "countryInfo": {"iso2": "IS"},
         "cases": 330,
         "todayCases": 80,
         "deaths": 0,
@@ -386,6 +409,7 @@
     },
     {
         "country": "Slovenia",
+        "countryInfo": {"iso2": "SI"},
         "cases": 319,
         "todayCases": 33,
         "deaths": 1,
@@ -397,6 +421,7 @@
     },
     {
         "country": "Indonesia",
+        "countryInfo": {"iso2": "ID"},
         "cases": 308,
         "todayCases": 81,
         "deaths": 25,
@@ -408,6 +433,7 @@
     },
     {
         "country": "Bahrain",
+        "countryInfo": {"iso2": "BH"},
         "cases": 278,
         "todayCases": 22,
         "deaths": 1,
@@ -419,6 +445,7 @@
     },
     {
         "country": "Romania",
+        "countryInfo": {"iso2": "RO"},
         "cases": 277,
         "todayCases": 17,
         "deaths": 0,
@@ -430,6 +457,7 @@
     },
     {
         "country": "Saudi Arabia",
+        "countryInfo": {"iso2": "SA"},
         "cases": 274,
         "todayCases": 36,
         "deaths": 0,
@@ -441,6 +469,7 @@
     },
     {
         "country": "Thailand",
+        "countryInfo": {"iso2": "TH"},
         "cases": 272,
         "todayCases": 60,
         "deaths": 1,
@@ -452,6 +481,7 @@
     },
     {
         "country": "Estonia",
+        "countryInfo": {"iso2": "EE"},
         "cases": 267,
         "todayCases": 9,
         "deaths": 0,
@@ -463,6 +493,7 @@
     },
     {
         "country": "Egypt",
+        "countryInfo": {"iso2": "EG"},
         "cases": 256,
         "todayCases": 46,
         "deaths": 7,
@@ -474,6 +505,7 @@
     },
     {
         "country": "Peru",
+        "countryInfo": {"iso2": "PE"},
         "cases": 234,
         "todayCases": 89,
         "deaths": 0,
@@ -485,6 +517,7 @@
     },
     {
         "country": "Philippines",
+        "countryInfo": {"iso2": "PH"},
         "cases": 217,
         "todayCases": 15,
         "deaths": 17,
@@ -496,6 +529,7 @@
     },
     {
         "country": "Hong Kong",
+        "countryInfo": {"iso2": "HK"},
         "cases": 208,
         "todayCases": 15,
         "deaths": 4,
@@ -507,6 +541,7 @@
     },
     {
         "country": "Ecuador",
+        "countryInfo": {"iso2": "EC"},
         "cases": 199,
         "todayCases": 31,
         "deaths": 3,
@@ -518,6 +553,7 @@
     },
     {
         "country": "Russia",
+        "countryInfo": {"iso2": "RU"},
         "cases": 199,
         "todayCases": 52,
         "deaths": 1,
@@ -529,6 +565,7 @@
     },
     {
         "country": "India",
+        "countryInfo": {"iso2": "IN"},
         "cases": 194,
         "todayCases": 25,
         "deaths": 4,
@@ -540,6 +577,7 @@
     },
     {
         "country": "Iraq",
+        "countryInfo": {"iso2": "IQ"},
         "cases": 192,
         "todayCases": 28,
         "deaths": 13,
@@ -551,6 +589,7 @@
     },
     {
         "country": "Turkey",
+        "countryInfo": {"iso2": "TR"},
         "cases": 192,
         "todayCases": 1,
         "deaths": 4,
@@ -562,6 +601,7 @@
     },
     {
         "country": "Lebanon",
+        "countryInfo": {"iso2": "LB"},
         "cases": 157,
         "todayCases": 24,
         "deaths": 4,
@@ -573,6 +613,7 @@
     },
     {
         "country": "South Africa",
+        "countryInfo": {"iso2": "ZA"},
         "cases": 150,
         "todayCases": 34,
         "deaths": 0,
@@ -584,6 +625,7 @@
     },
     {
         "country": "Kuwait",
+        "countryInfo": {"iso2": "KW"},
         "cases": 148,
         "todayCases": 6,
         "deaths": 0,
@@ -595,6 +637,7 @@
     },
     {
         "country": "San Marino",
+        "countryInfo": {"iso2": "SM"},
         "cases": 140,
         "todayCases": 0,
         "deaths": 14,
@@ -606,6 +649,7 @@
     },
     {
         "country": "UAE",
+        "countryInfo": {"iso2": "AE"},
         "cases": 140,
         "todayCases": 27,
         "deaths": 0,
@@ -617,6 +661,7 @@
     },
     {
         "country": "Slovakia",
+        "countryInfo": {"iso2": "SK"},
         "cases": 124,
         "todayCases": 19,
         "deaths": 0,
@@ -628,6 +673,7 @@
     },
     {
         "country": "Armenia",
+        "countryInfo": {"iso2": "AM"},
         "cases": 122,
         "todayCases": 12,
         "deaths": 0,
@@ -639,6 +685,7 @@
     },
     {
         "country": "Mexico",
+        "countryInfo": {"iso2": "MX"},
         "cases": 118,
         "todayCases": 25,
         "deaths": 1,
@@ -650,6 +697,7 @@
     },
     {
         "country": "Croatia",
+        "countryInfo": {"iso2": "HR"},
         "cases": 110,
         "todayCases": 21,
         "deaths": 1,
@@ -661,6 +709,7 @@
     },
     {
         "country": "Panama",
+        "countryInfo": {"iso2": "PA"},
         "cases": 109,
         "todayCases": 0,
         "deaths": 1,
@@ -672,6 +721,7 @@
     },
     {
         "country": "Taiwan",
+        "countryInfo": {"iso2": "TW"},
         "cases": 108,
         "todayCases": 8,
         "deaths": 1,
@@ -683,6 +733,7 @@
     },
     {
         "country": "Colombia",
+        "countryInfo": {"iso2": "CO"},
         "cases": 108,
         "todayCases": 15,
         "deaths": 0,
@@ -694,6 +745,7 @@
     },
     {
         "country": "Bulgaria",
+        "countryInfo": {"iso2": "BG"},
         "cases": 107,
         "todayCases": 15,
         "deaths": 3,
@@ -705,6 +757,7 @@
     },
     {
         "country": "Serbia",
+        "countryInfo": {"iso2": "RS"},
         "cases": 103,
         "todayCases": 14,
         "deaths": 0,
@@ -716,6 +769,7 @@
     },
     {
         "country": "Argentina",
+        "countryInfo": {"iso2": "AR"},
         "cases": 97,
         "todayCases": 0,
         "deaths": 3,
@@ -727,6 +781,7 @@
     },
     {
         "country": "Algeria",
+        "countryInfo": {"iso2": "DZ"},
         "cases": 90,
         "todayCases": 15,
         "deaths": 9,
@@ -738,6 +793,7 @@
     },
     {
         "country": "Costa Rica",
+        "countryInfo": {"iso2": "CR"},
         "cases": 87,
         "todayCases": 18,
         "deaths": 1,
@@ -749,6 +805,7 @@
     },
     {
         "country": "Latvia",
+        "countryInfo": {"iso2": "LV"},
         "cases": 86,
         "todayCases": 15,
         "deaths": 0,
@@ -760,6 +817,7 @@
     },
     {
         "country": "Vietnam",
+        "countryInfo": {"iso2": "VN"},
         "cases": 85,
         "todayCases": 9,
         "deaths": 0,
@@ -771,6 +829,7 @@
     },
     {
         "country": "Uruguay",
+        "countryInfo": {"iso2": "UY"},
         "cases": 79,
         "todayCases": 0,
         "deaths": 0,
@@ -782,6 +841,7 @@
     },
     {
         "country": "Andorra",
+        "countryInfo": {"iso2": "AD"},
         "cases": 74,
         "todayCases": 21,
         "deaths": 0,
@@ -793,6 +853,7 @@
     },
     {
         "country": "Hungary",
+        "countryInfo": {"iso2": "HU"},
         "cases": 73,
         "todayCases": 15,
         "deaths": 1,
@@ -804,6 +865,7 @@
     },
     {
         "country": "Brunei",
+        "countryInfo": {"iso2": "BN"},
         "cases": 73,
         "todayCases": 5,
         "deaths": 0,
@@ -815,6 +877,7 @@
     },
     {
         "country": "Faeroe Islands",
+        "countryInfo": {"iso2": "FO"},
         "cases": 72,
         "todayCases": 14,
         "deaths": 0,
@@ -826,6 +889,7 @@
     },
     {
         "country": "Jordan",
+        "countryInfo": {"iso2": "JO"},
         "cases": 69,
         "todayCases": 13,
         "deaths": 0,
@@ -837,6 +901,7 @@
     },
     {
         "country": "Cyprus",
+        "countryInfo": {"iso2": "CY"},
         "cases": 67,
         "todayCases": 9,
         "deaths": 0,
@@ -848,6 +913,7 @@
     },
     {
         "country": "Albania",
+        "countryInfo": {"iso2": "AL"},
         "cases": 64,
         "todayCases": 5,
         "deaths": 2,
@@ -859,6 +925,7 @@
     },
     {
         "country": "Bosnia and Herzegovina",
+        "countryInfo": {"iso2": "BA"},
         "cases": 64,
         "todayCases": 25,
         "deaths": 0,
@@ -870,6 +937,7 @@
     },
     {
         "country": "Morocco",
+        "countryInfo": {"iso2": "MA"},
         "cases": 63,
         "todayCases": 9,
         "deaths": 2,
@@ -881,6 +949,7 @@
     },
     {
         "country": "Sri Lanka",
+        "countryInfo": {"iso2": "LK"},
         "cases": 60,
         "todayCases": 9,
         "deaths": 0,
@@ -892,6 +961,7 @@
     },
     {
         "country": "Malta",
+        "countryInfo": {"iso2": "MT"},
         "cases": 53,
         "todayCases": 5,
         "deaths": 0,
@@ -903,6 +973,7 @@
     },
     {
         "country": "Belarus",
+        "countryInfo": {"iso2": "BY"},
         "cases": 51,
         "todayCases": 0,
         "deaths": 0,
@@ -914,6 +985,7 @@
     },
     {
         "country": "North Macedonia",
+        "countryInfo": {"iso2": "MK"},
         "cases": 50,
         "todayCases": 7,
         "deaths": 0,
@@ -925,6 +997,7 @@
     },
     {
         "country": "Moldova",
+        "countryInfo": {"iso2": "MD"},
         "cases": 49,
         "todayCases": 13,
         "deaths": 1,
@@ -936,6 +1009,7 @@
     },
     {
         "country": "Oman",
+        "countryInfo": {"iso2": "OM"},
         "cases": 48,
         "todayCases": 9,
         "deaths": 0,
@@ -947,6 +1021,7 @@
     },
     {
         "country": "Palestine",
+        "countryInfo": {"iso2": "PS"},
         "cases": 47,
         "todayCases": 3,
         "deaths": 0,
@@ -958,6 +1033,7 @@
     },
     {
         "country": "Kazakhstan",
+        "countryInfo": {"iso2": "KZ"},
         "cases": 44,
         "todayCases": 8,
         "deaths": 3,
@@ -969,6 +1045,7 @@
     },
     {
         "country": "Azerbaijan",
+        "countryInfo": {"iso2": "AZ"},
         "cases": 44,
         "todayCases": 10,
         "deaths": 1,
@@ -980,6 +1057,7 @@
     },
     {
         "country": "Venezuela",
+        "countryInfo": {"iso2": "VE"},
         "cases": 42,
         "todayCases": 6,
         "deaths": 0,
@@ -991,6 +1069,7 @@
     },
     {
         "country": "Lithuania",
+        "countryInfo": {"iso2": "LT"},
         "cases": 41,
         "todayCases": 7,
         "deaths": 0,
@@ -1002,6 +1081,7 @@
     },
     {
         "country": "Georgia",
+        "countryInfo": {"iso2": "GE"},
         "cases": 40,
         "todayCases": 2,
         "deaths": 0,
@@ -1013,6 +1093,7 @@
     },
     {
         "country": "Tunisia",
+        "countryInfo": {"iso2": "TN"},
         "cases": 39,
         "todayCases": 10,
         "deaths": 1,
@@ -1024,6 +1105,7 @@
     },
     {
         "country": "Cambodia",
+        "countryInfo": {"iso2": "KH"},
         "cases": 37,
         "todayCases": 0,
         "deaths": 0,
@@ -1035,6 +1117,7 @@
     },
     {
         "country": "Senegal",
+        "countryInfo": {"iso2": "SN"},
         "cases": 36,
         "todayCases": 0,
         "deaths": 0,
@@ -1046,6 +1129,7 @@
     },
     {
         "country": "Dominican Republic",
+        "countryInfo": {"iso2": "DO"},
         "cases": 34,
         "todayCases": 0,
         "deaths": 2,
@@ -1057,6 +1141,7 @@
     },
     {
         "country": "Burkina Faso",
+        "countryInfo": {"iso2": "BF"},
         "cases": 33,
         "todayCases": 6,
         "deaths": 1,
@@ -1068,6 +1153,7 @@
     },
     {
         "country": "Guadeloupe",
+        "countryInfo": {"iso2": "GP"},
         "cases": 33,
         "todayCases": 0,
         "deaths": 0,
@@ -1079,6 +1165,7 @@
     },
     {
         "country": "New Zealand",
+        "countryInfo": {"iso2": "NZ"},
         "cases": 28,
         "todayCases": 8,
         "deaths": 0,
@@ -1090,6 +1177,7 @@
     },
     {
         "country": "Liechtenstein",
+        "countryInfo": {"iso2": "LI"},
         "cases": 28,
         "todayCases": 0,
         "deaths": 0,
@@ -1101,6 +1189,7 @@
     },
     {
         "country": "Réunion",
+        "countryInfo": {"iso2": "RE"},
         "cases": 28,
         "todayCases": 14,
         "deaths": 0,
@@ -1112,6 +1201,7 @@
     },
     {
         "country": "Martinique",
+        "countryInfo": {"iso2": "MQ"},
         "cases": 23,
         "todayCases": 0,
         "deaths": 1,
@@ -1123,6 +1213,7 @@
     },
     {
         "country": "Uzbekistan",
+        "countryInfo": {"iso2": "UZ"},
         "cases": 23,
         "todayCases": 5,
         "deaths": 0,
@@ -1134,6 +1225,7 @@
     },
     {
         "country": "Afghanistan",
+        "countryInfo": {"iso2": "AF"},
         "cases": 22,
         "todayCases": 0,
         "deaths": 0,
@@ -1145,6 +1237,7 @@
     },
     {
         "country": "Ukraine",
+        "countryInfo": {"iso2": "UA"},
         "cases": 21,
         "todayCases": 5,
         "deaths": 3,
@@ -1156,6 +1249,7 @@
     },
     {
         "country": "Bangladesh",
+        "countryInfo": {"iso2": "BD"},
         "cases": 18,
         "todayCases": 4,
         "deaths": 1,
@@ -1167,6 +1261,7 @@
     },
     {
         "country": "Macao",
+        "countryInfo": {"iso2": "MO"},
         "cases": 17,
         "todayCases": 0,
         "deaths": 0,
@@ -1178,6 +1273,7 @@
     },
     {
         "country": "Jamaica",
+        "countryInfo": {"iso2": "JM"},
         "cases": 15,
         "todayCases": 0,
         "deaths": 1,
@@ -1189,6 +1285,7 @@
     },
     {
         "country": "Bolivia",
+        "countryInfo": {"iso2": "BO"},
         "cases": 15,
         "todayCases": 3,
         "deaths": 0,
@@ -1200,6 +1297,7 @@
     },
     {
         "country": "French Guiana",
+        "countryInfo": {"iso2": "GF"},
         "cases": 15,
         "todayCases": 0,
         "deaths": 0,
@@ -1210,18 +1308,8 @@
         "casesPerOneMillion": 50
     },
     {
-        "country": "DRC",
-        "cases": 14,
-        "todayCases": 7,
-        "deaths": 0,
-        "todayDeaths": 0,
-        "recovered": 0,
-        "active": 14,
-        "critical": 0,
-        "casesPerOneMillion": 0
-    },
-    {
         "country": "Cameroon",
+        "countryInfo": {"iso2": "CM"},
         "cases": 13,
         "todayCases": 0,
         "deaths": 0,
@@ -1233,6 +1321,7 @@
     },
     {
         "country": "Maldives",
+        "countryInfo": {"iso2": "MV"},
         "cases": 13,
         "todayCases": 0,
         "deaths": 0,
@@ -1244,6 +1333,7 @@
     },
     {
         "country": "Nigeria",
+        "countryInfo": {"iso2": "NG"},
         "cases": 12,
         "todayCases": 4,
         "deaths": 0,
@@ -1255,6 +1345,7 @@
     },
     {
         "country": "Guam",
+        "countryInfo": {"iso2": "GU"},
         "cases": 12,
         "todayCases": 4,
         "deaths": 0,
@@ -1266,6 +1357,7 @@
     },
     {
         "country": "Honduras",
+        "countryInfo": {"iso2": "HN"},
         "cases": 12,
         "todayCases": 3,
         "deaths": 0,
@@ -1277,6 +1369,7 @@
     },
     {
         "country": "Cuba",
+        "countryInfo": {"iso2": "CU"},
         "cases": 11,
         "todayCases": 1,
         "deaths": 1,
@@ -1287,18 +1380,8 @@
         "casesPerOneMillion": 1
     },
     {
-        "country": "Channel Islands",
-        "cases": 11,
-        "todayCases": 4,
-        "deaths": 0,
-        "todayDeaths": 0,
-        "recovered": 0,
-        "active": 11,
-        "critical": 0,
-        "casesPerOneMillion": 63
-    },
-    {
         "country": "Ghana",
+        "countryInfo": {"iso2": "GH"},
         "cases": 11,
         "todayCases": 4,
         "deaths": 0,
@@ -1310,6 +1393,7 @@
     },
     {
         "country": "Paraguay",
+        "countryInfo": {"iso2": "PY"},
         "cases": 11,
         "todayCases": 0,
         "deaths": 0,
@@ -1321,6 +1405,7 @@
     },
     {
         "country": "Rwanda",
+        "countryInfo": {"iso2": "RW"},
         "cases": 11,
         "todayCases": 0,
         "deaths": 0,
@@ -1332,6 +1417,7 @@
     },
     {
         "country": "Monaco",
+        "countryInfo": {"iso2": "MC"},
         "cases": 10,
         "todayCases": 1,
         "deaths": 0,
@@ -1343,6 +1429,7 @@
     },
     {
         "country": "Gibraltar",
+        "countryInfo": {"iso2": "GI"},
         "cases": 10,
         "todayCases": 2,
         "deaths": 0,
@@ -1354,6 +1441,7 @@
     },
     {
         "country": "Montenegro",
+        "countryInfo": {"iso2": "ME"},
         "cases": 10,
         "todayCases": 2,
         "deaths": 0,
@@ -1365,6 +1453,7 @@
     },
     {
         "country": "Guatemala",
+        "countryInfo": {"iso2": "GT"},
         "cases": 9,
         "todayCases": 1,
         "deaths": 1,
@@ -1375,18 +1464,8 @@
         "casesPerOneMillion": 0
     },
     {
-        "country": "Ivory Coast",
-        "cases": 9,
-        "todayCases": 0,
-        "deaths": 0,
-        "todayDeaths": 0,
-        "recovered": 1,
-        "active": 8,
-        "critical": 0,
-        "casesPerOneMillion": 0
-    },
-    {
         "country": "Trinidad and Tobago",
+        "countryInfo": {"iso2": "TT"},
         "cases": 9,
         "todayCases": 2,
         "deaths": 0,
@@ -1398,6 +1477,7 @@
     },
     {
         "country": "Ethiopia",
+        "countryInfo": {"iso2": "ET"},
         "cases": 7,
         "todayCases": 1,
         "deaths": 0,
@@ -1409,6 +1489,7 @@
     },
     {
         "country": "Kenya",
+        "countryInfo": {"iso2": "KE"},
         "cases": 7,
         "todayCases": 0,
         "deaths": 0,
@@ -1420,6 +1501,7 @@
     },
     {
         "country": "Mauritius",
+        "countryInfo": {"iso2": "MU"},
         "cases": 7,
         "todayCases": 4,
         "deaths": 0,
@@ -1431,6 +1513,7 @@
     },
     {
         "country": "Equatorial Guinea",
+        "countryInfo": {"iso2": "GQ"},
         "cases": 6,
         "todayCases": 2,
         "deaths": 0,
@@ -1442,6 +1525,7 @@
     },
     {
         "country": "French Polynesia",
+        "countryInfo": {"iso2": "PF"},
         "cases": 6,
         "todayCases": 1,
         "deaths": 0,
@@ -1453,6 +1537,7 @@
     },
     {
         "country": "Mongolia",
+        "countryInfo": {"iso2": "MN"},
         "cases": 6,
         "todayCases": 0,
         "deaths": 0,
@@ -1464,6 +1549,7 @@
     },
     {
         "country": "Puerto Rico",
+        "countryInfo": {"iso2": "PR"},
         "cases": 6,
         "todayCases": 0,
         "deaths": 0,
@@ -1475,6 +1561,7 @@
     },
     {
         "country": "Seychelles",
+        "countryInfo": {"iso2": "SC"},
         "cases": 6,
         "todayCases": 0,
         "deaths": 0,
@@ -1486,6 +1573,7 @@
     },
     {
         "country": "Tanzania",
+        "countryInfo": {"iso2": "TZ"},
         "cases": 6,
         "todayCases": 3,
         "deaths": 0,
@@ -1497,6 +1585,7 @@
     },
     {
         "country": "Guyana",
+        "countryInfo": {"iso2": "GY"},
         "cases": 5,
         "todayCases": 1,
         "deaths": 1,
@@ -1508,6 +1597,7 @@
     },
     {
         "country": "Aruba",
+        "countryInfo": {"iso2": "AW"},
         "cases": 5,
         "todayCases": 1,
         "deaths": 0,
@@ -1519,6 +1609,7 @@
     },
     {
         "country": "Barbados",
+        "countryInfo": {"iso2": "BB"},
         "cases": 5,
         "todayCases": 3,
         "deaths": 0,
@@ -1530,6 +1621,7 @@
     },
     {
         "country": "Cayman Islands",
+        "countryInfo": {"iso2": "KY"},
         "cases": 3,
         "todayCases": 2,
         "deaths": 1,
@@ -1541,6 +1633,7 @@
     },
     {
         "country": "Curaçao",
+        "countryInfo": {"iso2": "CW"},
         "cases": 3,
         "todayCases": 0,
         "deaths": 1,
@@ -1552,6 +1645,7 @@
     },
     {
         "country": "Bahamas",
+        "countryInfo": {"iso2": "BS"},
         "cases": 3,
         "todayCases": 2,
         "deaths": 0,
@@ -1563,6 +1657,7 @@
     },
     {
         "country": "Congo",
+        "countryInfo": {"iso2": "CG"},
         "cases": 3,
         "todayCases": 2,
         "deaths": 0,
@@ -1574,6 +1669,7 @@
     },
     {
         "country": "Gabon",
+        "countryInfo": {"iso2": "GA"},
         "cases": 3,
         "todayCases": 0,
         "deaths": 0,
@@ -1585,6 +1681,7 @@
     },
     {
         "country": "Kyrgyzstan",
+        "countryInfo": {"iso2": "KG"},
         "cases": 3,
         "todayCases": 0,
         "deaths": 0,
@@ -1596,6 +1693,7 @@
     },
     {
         "country": "Mayotte",
+        "countryInfo": {"iso2": "YT"},
         "cases": 3,
         "todayCases": 0,
         "deaths": 0,
@@ -1607,6 +1705,7 @@
     },
     {
         "country": "Namibia",
+        "countryInfo": {"iso2": "NA"},
         "cases": 3,
         "todayCases": 1,
         "deaths": 0,
@@ -1618,6 +1717,7 @@
     },
     {
         "country": "St. Barth",
+        "countryInfo": {"iso2": "BL"},
         "cases": 3,
         "todayCases": 0,
         "deaths": 0,
@@ -1629,6 +1729,7 @@
     },
     {
         "country": "Saint Martin",
+        "countryInfo": {"iso2": "MF"},
         "cases": 3,
         "todayCases": 0,
         "deaths": 0,
@@ -1640,6 +1741,7 @@
     },
     {
         "country": "U.S. Virgin Islands",
+        "countryInfo": {"iso2": "VI"},
         "cases": 3,
         "todayCases": 1,
         "deaths": 0,
@@ -1651,6 +1753,7 @@
     },
     {
         "country": "Sudan",
+        "countryInfo": {"iso2": "SD"},
         "cases": 2,
         "todayCases": 0,
         "deaths": 1,
@@ -1662,6 +1765,7 @@
     },
     {
         "country": "Benin",
+        "countryInfo": {"iso2": "BJ"},
         "cases": 2,
         "todayCases": 0,
         "deaths": 0,
@@ -1673,6 +1777,7 @@
     },
     {
         "country": "Bermuda",
+        "countryInfo": {"iso2": "BM"},
         "cases": 2,
         "todayCases": 0,
         "deaths": 0,
@@ -1684,6 +1789,7 @@
     },
     {
         "country": "Greenland",
+        "countryInfo": {"iso2": "GL"},
         "cases": 2,
         "todayCases": 0,
         "deaths": 0,
@@ -1695,6 +1801,7 @@
     },
     {
         "country": "Liberia",
+        "countryInfo": {"iso2": "LR"},
         "cases": 2,
         "todayCases": 0,
         "deaths": 0,
@@ -1706,6 +1813,7 @@
     },
     {
         "country": "Mauritania",
+        "countryInfo": {"iso2": "MR"},
         "cases": 2,
         "todayCases": 0,
         "deaths": 0,
@@ -1717,6 +1825,7 @@
     },
     {
         "country": "New Caledonia",
+        "countryInfo": {"iso2": "NC"},
         "cases": 2,
         "todayCases": 0,
         "deaths": 0,
@@ -1728,6 +1837,7 @@
     },
     {
         "country": "Saint Lucia",
+        "countryInfo": {"iso2": "LC"},
         "cases": 2,
         "todayCases": 0,
         "deaths": 0,
@@ -1739,6 +1849,7 @@
     },
     {
         "country": "Zambia",
+        "countryInfo": {"iso2": "ZM"},
         "cases": 2,
         "todayCases": 0,
         "deaths": 0,
@@ -1750,6 +1861,7 @@
     },
     {
         "country": "Nepal",
+        "countryInfo": {"iso2": "NP"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1761,6 +1873,7 @@
     },
     {
         "country": "Antigua and Barbuda",
+        "countryInfo": {"iso2": "AG"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1772,6 +1885,7 @@
     },
     {
         "country": "Bhutan",
+        "countryInfo": {"iso2": "BT"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1783,6 +1897,7 @@
     },
     {
         "country": "CAR",
+        "countryInfo": {"iso2": "CF"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1794,6 +1909,7 @@
     },
     {
         "country": "Chad",
+        "countryInfo": {"iso2": "TD"},
         "cases": 1,
         "todayCases": 1,
         "deaths": 0,
@@ -1805,6 +1921,7 @@
     },
     {
         "country": "Djibouti",
+        "countryInfo": {"iso2": "DJ"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1816,6 +1933,7 @@
     },
     {
         "country": "El Salvador",
+        "countryInfo": {"iso2": "SV"},
         "cases": 1,
         "todayCases": 1,
         "deaths": 0,
@@ -1827,6 +1945,7 @@
     },
     {
         "country": "Fiji",
+        "countryInfo": {"iso2": "FJ"},
         "cases": 1,
         "todayCases": 1,
         "deaths": 0,
@@ -1838,6 +1957,7 @@
     },
     {
         "country": "Gambia",
+        "countryInfo": {"iso2": "GM"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1849,6 +1969,7 @@
     },
     {
         "country": "Guinea",
+        "countryInfo": {"iso2": "GN"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1859,18 +1980,8 @@
         "casesPerOneMillion": 0
     },
     {
-        "country": "Vatican City",
-        "cases": 1,
-        "todayCases": 0,
-        "deaths": 0,
-        "todayDeaths": 0,
-        "recovered": 0,
-        "active": 1,
-        "critical": 0,
-        "casesPerOneMillion": 1248
-    },
-    {
         "country": "Montserrat",
+        "countryInfo": {"iso2": "MS"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1882,6 +1993,7 @@
     },
     {
         "country": "Nicaragua",
+        "countryInfo": {"iso2": "NI"},
         "cases": 1,
         "todayCases": 1,
         "deaths": 0,
@@ -1893,6 +2005,7 @@
     },
     {
         "country": "Niger",
+        "countryInfo": {"iso2": "NE"},
         "cases": 1,
         "todayCases": 1,
         "deaths": 0,
@@ -1904,6 +2017,7 @@
     },
     {
         "country": "St. Vincent Grenadines",
+        "countryInfo": {"iso2": "CV"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1915,6 +2029,7 @@
     },
     {
         "country": "Sint Maarten",
+        "countryInfo": {"iso2": "SX"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1926,6 +2041,7 @@
     },
     {
         "country": "Somalia",
+        "countryInfo": {"iso2": "SO"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1937,6 +2053,7 @@
     },
     {
         "country": "Suriname",
+        "countryInfo": {"iso2": "SR"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1948,6 +2065,7 @@
     },
     {
         "country": "Eswatini",
+        "countryInfo": {"iso2": "SZ"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
@@ -1959,6 +2077,7 @@
     },
     {
         "country": "Togo",
+        "countryInfo": {"iso2": "TG"},
         "cases": 1,
         "todayCases": 0,
         "deaths": 0,
