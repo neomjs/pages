@@ -1,0 +1,1 @@
+import t from"./Split.mjs";export default Neo.setupClass(class extends t{static config={className:"Neo.button.Menu",ntype:"menu-button"};splitButtonHandler(t){}});

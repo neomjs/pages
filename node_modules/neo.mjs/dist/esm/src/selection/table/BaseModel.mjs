@@ -1,0 +1,1 @@
+import e from"../Model.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.selection.table.BaseModel"};get dataFields(){return this.view.parent.columns.map((e=>e.dataField))}});

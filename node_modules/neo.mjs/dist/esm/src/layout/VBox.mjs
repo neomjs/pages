@@ -1,0 +1,1 @@
+import t from"./Flexbox.mjs";export default Neo.setupClass(class extends t{static config={className:"Neo.layout.VBox",ntype:"layout-vbox",direction:"column"};applyChildAttributes(t,e){!t.height&&super.applyChildAttributes(t,e)}});

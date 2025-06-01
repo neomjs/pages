@@ -1,0 +1,1 @@
+import e from"./Picker.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.form.field.trigger.Search",ntype:"trigger-search",iconCls:"fas fa-magnifying-glass"}});

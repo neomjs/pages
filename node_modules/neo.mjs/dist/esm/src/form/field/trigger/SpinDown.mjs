@@ -1,0 +1,1 @@
+import e from"./Base.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.form.field.trigger.SpinDown",ntype:"trigger-spindown",align:"start",iconCls:"fa fa-chevron-left",type:"spindown"};onTriggerClick(e){this.field.onSpinButtonDownClick()}});

@@ -1,0 +1,1 @@
+import e from"./Text.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.form.field.Display",ntype:"displayfield",baseCls:["neo-displayfield","neo-textfield"],clearable:!1};construct(e){super.construct(e);let t=this.getInputEl();t.readonly="readonly",t.tabindex="-1",this.update()}});

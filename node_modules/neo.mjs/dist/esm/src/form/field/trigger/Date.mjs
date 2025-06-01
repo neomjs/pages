@@ -1,0 +1,1 @@
+import e from"./Picker.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.form.field.trigger.Date",ntype:"trigger-date",iconCls:"fa fa-calendar-alt"}});

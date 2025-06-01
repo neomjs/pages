@@ -1,0 +1,1 @@
+class e{constructor(e){Object.assign(this,{attributes:e.attributes||[],childNodes:e.childNodes||[],className:e.className||[],id:e.id||Neo.getId("vnode"),innerHTML:e.innerHTML,nodeName:e.nodeName,style:e.style,vtype:e.vtype||"vnode"}),e.static&&(this.static=!0)}}Neo.ns("Neo.vdom",!0).VNode=e;export default e;

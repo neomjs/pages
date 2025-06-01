@@ -1,0 +1,1 @@
+import e from"./Base.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.form.field.Hidden",ntype:"hiddenfield",hidden:!0}});

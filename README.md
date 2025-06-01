@@ -7,7 +7,7 @@
 3.  npm install
 4.  github/pages/node_modules/neo.mjs/src/DefaultConfig.mjs => set isGitHubPages to true
 5.  github/pages/node_modules/neo.mjs/src/DefaultConfig.mjs => set useGoogleAnalytics to true
-6.  github/pages/node_modules/neo.mjs/src/worker/App.mjs => /* webpackExclude: /[\\\/]node_modules/(?!neo.mjs) */
+6.  github/pages/node_modules/neo.mjs/src/worker/App.mjs => /* webpackExclude: /(?:\/|\\)(dist|node_modules)/(?!neo.mjs) */
 7.  terminal: cd node_modules/neo.mjs/
 8.  npm i
 9.  npm run build-all

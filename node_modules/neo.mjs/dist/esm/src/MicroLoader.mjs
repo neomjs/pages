@@ -1,0 +1,1 @@
+fetch("./neo-config.json").then((n=>n.json())).then((n=>{globalThis.Neo={config:{...n}},import(n.mainPath)}));

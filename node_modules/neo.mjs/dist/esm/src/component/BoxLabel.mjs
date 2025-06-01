@@ -1,0 +1,1 @@
+import e from"./Label.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.component.BoxLabel",ntype:"box-label",baseCls:["neo-box-label","neo-label"]}});

@@ -1,0 +1,1 @@
+import e from"./week/Component.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.calendar.view.DayComponent",baseCls:["neo-calendar-daycomponent","neo-calendar-weekcomponent"],columnsBuffer:1,columnsVisible:1};setFirstColumnDate(e){e.setDate(e.getDate()-this.columnsBuffer)}});

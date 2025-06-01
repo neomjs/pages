@@ -1,0 +1,1 @@
+import a from"../container/Base.mjs";export default Neo.setupClass(class extends a{static config={className:"Neo.dashboard.Container",ntype:"dashboard"}});
