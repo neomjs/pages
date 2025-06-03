@@ -1,1 +1,0 @@
-./node_modules/neo.mjs/dist/esm/ServiceWorker.mjs
