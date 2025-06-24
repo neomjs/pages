@@ -1,0 +1,12 @@
+@media (max-width: 600px) {
+  .portal-home-parts-helix .portal-content-text {
+    min-height: 23em;
+  }
+}
+@media (min-width: 841px) {
+  .portal-home-parts-helix {
+    max-height: 100%;
+  }
+}
+
+/*# sourceMappingURL=Helix.css.map */

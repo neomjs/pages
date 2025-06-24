@@ -1,0 +1,70 @@
+.neo-switchfield .neo-switchfield-input {
+  background-color: var(--switchfield-color-off);
+  border-radius: 999px;
+  height: var(--switchfield-height);
+  margin: 0;
+  position: relative;
+  width: var(--switchfield-width);
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.neo-switchfield .neo-switchfield-input:after, .neo-switchfield .neo-switchfield-input:before {
+  content: "";
+  position: absolute;
+}
+.neo-switchfield .neo-switchfield-input:before {
+  background-color: var(--switchfield-color-knob);
+  border-radius: 50%;
+  height: var(--switchfield-knobsize);
+  left: 2px;
+  top: 2px;
+  transition: transform 150ms ease-out;
+  width: var(--switchfield-knobsize);
+}
+.neo-switchfield .neo-switchfield-input:after {
+  border: 1px solid var(--switchfield-color-icon-off);
+  border-radius: 50%;
+  bottom: 8px;
+  height: 6px;
+  right: 5px;
+  width: 6px;
+}
+.neo-switchfield .neo-switchfield-input:checked {
+  background-color: var(--switchfield-color-on);
+}
+.neo-switchfield .neo-switchfield-input:checked:before {
+  transform: translateX(80%);
+}
+.neo-switchfield .neo-switchfield-input:checked:after {
+  background-color: var(--switchfield-color-icon-on);
+  border: 0;
+  border-radius: 0;
+  height: 8px;
+  left: 9px;
+  right: auto;
+  width: 1px;
+}
+.neo-switchfield .neo-switchfield-input:checked:hover {
+  background-color: var(--switchfield-color-on-hovered);
+}
+.neo-switchfield .neo-switchfield-input:focus {
+  outline: var(--switchfield-borderwidth-focused) solid var(--switchfield-bordercolor-focused);
+}
+.neo-switchfield .neo-switchfield-input:hover {
+  background-color: var(--switchfield-color-off-hovered);
+}
+.neo-switchfield .neo-checkbox-value-label {
+  margin-left: 1em;
+}
+
+.neo-disabled .neo-switchfield, .neo-disabled.neo-switchfield {
+  opacity: var(--switchfield-opacity-disabled);
+}
+.neo-disabled .neo-switchfield .neo-switchfield-input, .neo-disabled.neo-switchfield .neo-switchfield-input {
+  background-color: var(--switchfield-color-off-disabled);
+}
+.neo-disabled .neo-switchfield .neo-switchfield-input:checked, .neo-disabled.neo-switchfield .neo-switchfield-input:checked {
+  background-color: var(--switchfield-color-on-disabled);
+}
+
+/*# sourceMappingURL=Switch.css.map */

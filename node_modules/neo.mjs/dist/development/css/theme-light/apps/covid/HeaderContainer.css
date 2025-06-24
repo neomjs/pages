@@ -1,0 +1,12 @@
+:root .neo-theme-light {
+  --covid-header-active-background-color: rgba(100, 181, 246, .65);
+  --covid-header-active-color: rgb(13.3902439024, 133.9024390244, 230.6097560976);
+  --covid-header-cases-background-color: rgba(187, 187, 187, .65);
+  --covid-header-cases-color: rgb(110.5, 110.5, 110.5);
+  --covid-header-deaths-background-color: rgba(251, 103, 103, .65);
+  --covid-header-deaths-color: rgb(245.5384615385, 6.4615384615, 6.4615384615);
+  --covid-header-recovered-background-color: rgba( 40, 218, 111, .65);
+  --covid-header-recovered-color: rgb(23.1404958678, 116.8595041322, 60.1652892562);
+}
+
+/*# sourceMappingURL=HeaderContainer.css.map */

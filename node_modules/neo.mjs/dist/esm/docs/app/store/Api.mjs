@@ -1,0 +1,1 @@
+import s from"../model/Api.mjs";import o from"../../../src/data/Store.mjs";export default Neo.setupClass(class extends o{static config={className:"Docs.app.store.Api",keyProperty:"id",model:s,url:"../../docs/output/structure.json"}});

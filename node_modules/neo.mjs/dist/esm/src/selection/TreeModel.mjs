@@ -1,0 +1,1 @@
+import e from"./ListModel.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.selection.TreeModel",ntype:"selection-treemodel"};onKeyDownEnter(e){}onNavKey(e,o){}});

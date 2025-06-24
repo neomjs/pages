@@ -1,0 +1,30 @@
+.neo-grid-cell .neo-progress-wrapper progress[value] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  display: flex;
+  height: var(--grid-cell-progress-height);
+}
+@-moz-document url-prefix() {
+  .neo-grid-cell .neo-progress-wrapper progress[value] {
+    background-color: var(--grid-cell-progress-track-color);
+    border-radius: var(--grid-cell-progress-border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+}
+.neo-grid-cell .neo-progress-wrapper progress[value]::-webkit-progress-bar {
+  background-color: var(--grid-cell-progress-track-color);
+  border-radius: var(--grid-cell-progress-border-radius);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+.neo-grid-cell .neo-progress-wrapper progress[value]::-moz-progress-bar {
+  background-color: var(--grid-cell-progress-active-color);
+  border-radius: var(--grid-cell-progress-border-radius);
+}
+.neo-grid-cell .neo-progress-wrapper progress[value]::-webkit-progress-value {
+  background-color: var(--grid-cell-progress-active-color);
+  border-radius: var(--grid-cell-progress-border-radius);
+}
+
+/*# sourceMappingURL=Progress.css.map */

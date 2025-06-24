@@ -1,0 +1,1 @@
+import e from"../component/Base.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.component.Iframe",baseCls:["neo-iframe"],src_:null,_vdom:{tag:"iframe"}};afterSetSrc(e,s){this.changeVdomRootKey("src",e)}});

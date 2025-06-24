@@ -1,0 +1,12 @@
+:root .neo-theme-light {
+  --tooltip-bg: white;
+  --tooltip-border: 1px solid lightgrey;
+  --tooltip-borderradius: 4px;
+  --tooltip-boxshadow: none;
+  --tooltip-color: black;
+  --tooltip-fontsize: 14px;
+  --tooltip-height: 24px;
+  --tooltip-padding: 2px 8px 0;
+}
+
+/*# sourceMappingURL=Base.css.map */

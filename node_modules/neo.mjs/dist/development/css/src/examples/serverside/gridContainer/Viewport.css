@@ -1,0 +1,13 @@
+.neo-viewport.neo-serverside-gridcontainer-viewport {
+  padding: 1em;
+}
+.neo-viewport.neo-serverside-gridcontainer-viewport .neo-serverside-gridcontainer-content {
+  border: 1px solid #3E63DD;
+  height: 250px;
+  width: 800px;
+}
+.neo-viewport.neo-serverside-gridcontainer-viewport .neo-serverside-gridcontainer-content .fa-github {
+  margin-right: 0.4em;
+}
+
+/*# sourceMappingURL=Viewport.css.map */

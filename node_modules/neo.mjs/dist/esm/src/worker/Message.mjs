@@ -1,0 +1,1 @@
+import e from"../core/IdGenerator.mjs";class o{constructor(o){o.destination=o.destination||"main",o.id=o.id||e.getId(Neo.workerId),o.origin=o.origin||Neo.workerId,Object.assign(this,o)}}Neo.ns("Neo.worker",!0).Message=o;export default o;

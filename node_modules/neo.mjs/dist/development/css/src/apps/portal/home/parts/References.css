@@ -1,0 +1,42 @@
+.portal-references {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.portal-references .neo-carousel {
+  width: 90%;
+  height: 350px;
+  margin: 0 auto;
+}
+.portal-references .neo-carousel .neo-carousel-inner {
+  border-radius: 15px;
+  border: 1px solid var(--sem-color-fg-neutral-contrast);
+  color: var(--sem-color-fg-neutral-contrast);
+}
+.portal-references .neo-carousel .neo-carousel-inner:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 90px;
+  z-index: 11;
+  background-color: var(--toolbar-background-color);
+  background-image: url("../../../../../../../../resources/images/apps/portal/neo-references.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70% auto;
+}
+.portal-references .neo-carousel .neo-carousel-inner .neo-carousel-item {
+  padding-left: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.portal-references .neo-carousel .neo-carousel-inner .neo-carousel-item .neo-details {
+  margin-top: 1em;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/*# sourceMappingURL=References.css.map */

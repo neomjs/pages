@@ -1,0 +1,37 @@
+body > .neo-viewport {
+  position: fixed;
+}
+
+.neo-viewport .portal-main-content {
+  flex: 1 1 auto;
+}
+.neo-viewport .portal-main-content > * {
+  flex: 1 0 100%;
+}
+.neo-viewport .neo-layout-cube.neo-animate .neo-box {
+  transition: transform 800ms ease-in-out;
+}
+.neo-viewport .neo-layout-cube .neo-face {
+  opacity: 0.8;
+  transition: opacity 50ms ease-out;
+}
+.neo-viewport .neo-layout-cube .neo-plane {
+  transform: translateZ(0px);
+}
+.neo-viewport .neo-worker-setup {
+  align-items: center;
+  background-color: #17141c;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  --fill-opacity: 0.05;
+  --stroke-opacity: 0.05;
+}
+.neo-viewport .neo-worker-setup:hover {
+  --fill-opacity: 1;
+  --stroke-opacity: 1;
+}
+
+/*# sourceMappingURL=Viewport.css.map */

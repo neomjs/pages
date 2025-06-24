@@ -1,0 +1,1 @@
+import e from"./ComboBox.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.form.field.Country",ntype:"countryfield",zipCodeField_:null};afterSetZipCodeField(e,o){e&&e instanceof Neo.form.field.Base&&(e.countryField=this)}beforeSetZipCodeField(e,o){let t=this;return Neo.isString(e)?t.up().getReference(e):e}});

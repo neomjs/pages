@@ -1,0 +1,1 @@
+import s from"../model/Example.mjs";import e from"../../../src/data/Store.mjs";export default Neo.setupClass(class extends e{static config={className:"Docs.app.store.Examples",keyProperty:"id",model:s,url:"../../docs/examples.json"}});

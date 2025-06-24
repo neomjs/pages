@@ -1,0 +1,1 @@
+import e from"../data/Store.mjs";import o from"./Model.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.sitemap.Store",model:o}});

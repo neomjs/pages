@@ -1,0 +1,1 @@
+import e from"./ComboBox.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.form.field.Chip",ntype:"chipfield",listConfig:{useCheckBoxes:!0}}});

@@ -1,0 +1,1 @@
+import e from"../core/Base.mjs";export default Neo.setupClass(class extends e{static config={className:"Neo.util.Css"};static deleteRules(e,s){Array.isArray(s)||(s=[s]),Neo.main.addon.Stylesheet.deleteCssRules({rules:s,windowId:e})}static insertRules(e,s){Array.isArray(s)||(s=[s]),Neo.main.addon.Stylesheet.insertCssRules({rules:s,windowId:e})}});

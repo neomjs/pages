@@ -1,0 +1,27 @@
+.neo-grid-container:has(.neo-is-dragging) .neo-grid-cell {
+  opacity: 0.8;
+  transition: left 200ms ease-out;
+}
+.neo-grid-container:has(.neo-is-dragging) .neo-grid-cell:last-child {
+  border-right-width: 1px;
+}
+
+.neo-dragproxy .neo-grid-container {
+  border: none;
+}
+.neo-dragproxy .neo-grid-container * {
+  scrollbar-width: none;
+}
+.neo-dragproxy .neo-grid-header-toolbar {
+  height: 30px !important;
+}
+.neo-dragproxy .neo-grid-header-toolbar .neo-button {
+  border-right: 1px solid var(--grid-container-border-color);
+}
+
+.neo-grid-header-toolbar.neo-is-dragging .neo-button {
+  border-right: 1px solid var(--grid-container-border-color);
+  opacity: var(--grid-header-button-opacity-is-dragging);
+}
+
+/*# sourceMappingURL=SortZone.css.map */

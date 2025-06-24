@@ -1,0 +1,43 @@
+.portal-home-content-view {
+  min-height: 100%;
+  scroll-snap-align: center;
+}
+.portal-home-content-view .neo-content {
+  font-size: min(max(2.3vw, 16px), 30px);
+}
+.portal-home-content-view .neo-h1 {
+  font-size: min(max(5.5vw, 30px), 64px);
+  line-height: 1em;
+  margin: 0;
+  text-align: center;
+}
+.portal-home-content-view .neo-h2 {
+  font-size: min(max(3.5vw, 24px), 44px);
+  font-weight: 600;
+  line-height: 1em;
+  margin: 0;
+  text-align: center;
+}
+.portal-home-content-view .page-live-preview {
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .portal-home-content-view .portal-content-text {
+    flex: 0.5 !important;
+    justify-content: start;
+    padding: 1rem;
+  }
+}
+.portal-home-content-view .portal-content-wrapper {
+  background-color: lightgray;
+  padding: 20px;
+}
+@media (max-width: 600px) {
+  .portal-home-content-view .portal-content-wrapper {
+    max-height: 35em;
+    min-height: 35em;
+    padding: 5px;
+  }
+}
+
+/*# sourceMappingURL=BaseContainer.css.map */

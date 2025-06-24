@@ -1,0 +1,1 @@
+import t from"../state/Provider.mjs";export default Neo.setupClass(class extends t{static config={className:"Neo.date.SelectorContainerStateProvider",data:{intlFormatDay:null,weekStartDay:0}}});

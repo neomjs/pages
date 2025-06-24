@@ -1,0 +1,1 @@
+import l from"../../table/plugin/CellEditing.mjs";export default Neo.setupClass(class extends l{static config={className:"Neo.grid.plugin.CellEditing",ntype:"plugin-grid-cell-editing",cellCls:"neo-grid-cell",editorCls:["neo-grid-editor"],focusCells:!0}});
