@@ -8,9 +8,9 @@
         "url": "https://github.com/neomjs/pages.git"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "update-neo-version": "node updateNeoVersion.mjs",
-        "enhance-seo": "node enhanceSeo.mjs"
+        "enhance-seo"       : "node buildScripts/enhanceSeo.mjs",
+        "test"              : "echo \"Error: no test specified\" && exit 1",
+        "update-neo-version": "node buildScripts/updateNeoVersion.mjs"
     },
     "keywords": [],
     "author": "Tobias Uhlig, Nils Dehl",
