@@ -126,6 +126,15 @@ if (gitAddProcess.status !== 0) {
 }
 console.log('Step 9: Completed');
 
+// 10. Enhance SEO
+console.log('Step 10: Enhancing SEO...');
+const seoProcess = spawnSync(npmCmd, ['run', 'enhance-seo'], { stdio: 'inherit' });
+if (seoProcess.status !== 0) {
+    console.error(`'npm run enhance-seo' failed with exit code ${seoProcess.status}`);
+    process.exit(1);
+}
+console.log('Step 10: Completed');
+
 
 console.log('Build process completed.');
 console.log("Please review the changes and then commit and push manually.");
