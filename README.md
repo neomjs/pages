@@ -2,8 +2,8 @@
 
 ### Be careful to only push the required node_modules
 
-1.  Delete the node_modules folder 
-2.  package.json: adjust the neo.mjs package version
+1.  package.json: adjust the neo.mjs package version
+2.  Delete the 4 symlinks inside step 12-15
 3.  npm install
 4.  github/pages/node_modules/neo.mjs/src/DefaultConfig.mjs => set isGitHubPages to true
 5.  github/pages/node_modules/neo.mjs/src/DefaultConfig.mjs => set useGoogleAnalytics to true
@@ -14,7 +14,7 @@
 10. git add on the neo.mjs node_module
 11. Terminal: Enter the top-level node_modules
 12. ln -s ./neo.mjs/node_modules/@fortawesome
-12. ln -s ./neo.mjs/node_modules/highlightjs-line-numbers.js
-13. ln -s ./neo.mjs/node_modules/marked
-14. ln -s ./neo.mjs/node_modules/monaco-editor
-15. git push
+13. ln -s ./neo.mjs/node_modules/highlightjs-line-numbers.js
+14. ln -s ./neo.mjs/node_modules/marked
+15. ln -s ./neo.mjs/node_modules/monaco-editor
+16. git push
