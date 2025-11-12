@@ -86,8 +86,8 @@ await writeFile(appWorkerPath, appWorker);
 console.log('Step 6: Completed');
 
 
-// 7. 8. & 9. Build neo.mjs
-console.log('Step 7, 8, 9: Building neo.mjs...');
+// 7. Build neo.mjs
+console.log('Step 7: Building neo.mjs...');
 const neoPath = resolve('node_modules/neo.mjs');
 
 console.log(`Running 'npm i' inside ${neoPath}...`);
@@ -103,19 +103,28 @@ if (neoBuildProcess.status !== 0) {
     console.error(`'npm run build-all' inside neo.mjs failed with exit code ${neoBuildProcess.status}`);
     process.exit(1);
 }
-console.log('Step 7, 8, 9: Completed');
+console.log('Step 7: Completed');
 
-// 10. git add on the neo.mjs node_module
-// This will be a manual step for the user.
-
-// 11. 12. 13. 14. & 15. Create symlinks
-console.log('Step 11-15: Creating new symlinks...');
+// 8. Create symlinks
+console.log('Step 8: Creating new symlinks...');
 const nmPath = resolve('node_modules');
 await symlink('./neo.mjs/node_modules/@fortawesome', resolve(nmPath, '@fortawesome'), 'dir');
 await symlink('./neo.mjs/node_modules/highlightjs-line-numbers.js', resolve(nmPath, 'highlightjs-line-numbers.js'), 'file');
 await symlink('./neo.mjs/node_modules/marked', resolve(nmPath, 'marked'), 'dir');
 await symlink('./neo.mjs/node_modules/monaco-editor', resolve(nmPath, 'monaco-editor'), 'dir');
-console.log('Step 11-15: Completed');
+console.log('Step 8: Completed');
+
+// 9. git add on the neo.mjs node_module
+console.log('Step 9: Staging neo.mjs module...');
+const gitAddProcess = spawnSync('git', ['add', 'node_modules/neo.mjs']);
+if (gitAddProcess.status !== 0) {
+    console.error(`'git add' failed with exit code ${gitAddProcess.status}`);
+    if (gitAddProcess.stderr) {
+        console.error(gitAddProcess.stderr.toString());
+    }
+    process.exit(1);
+}
+console.log('Step 9: Completed');
 
 
 console.log('Build process completed.');
