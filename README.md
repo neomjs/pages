@@ -1,19 +1,18 @@
 # How to update the gh-pages:
 
-### Be careful to only push the required node_modules
+To update the `neo.mjs` version and prepare the gh-pages for deployment, simply run the following command:
 
-1.  package.json: adjust the neo.mjs package version
-2.  Delete the 4 symlinks inside step 12-15
-3.  npm install
-4.  github/pages/node_modules/neo.mjs/src/DefaultConfig.mjs => set isGitHubPages to true
-5.  github/pages/node_modules/neo.mjs/src/worker/App.mjs => /* webpackExclude: /(?:\/|\\)(dist|node_modules)/(?!neo.mjs) */
-6.  terminal: cd node_modules/neo.mjs/
-7.  npm i
-8.  npm run build-all
-9. git add on the neo.mjs node_module
-10. Terminal: Enter the top-level node_modules
-11. ln -s ./neo.mjs/node_modules/@fortawesome
-12. ln -s ./neo.mjs/node_modules/highlightjs-line-numbers.js
-13. ln -s ./neo.mjs/node_modules/marked
-14. ln -s ./neo.mjs/node_modules/monaco-editor
-15. git push
+```bash
+npm run update-neo-version
+```
+
+This script will automatically perform all the necessary steps, including:
+- Fetching the latest `neo.mjs` version.
+- Updating `package.json`.
+- Installing dependencies.
+- Building `neo.mjs`.
+- Applying required configurations for the pages environment.
+- Staging the new `neo.mjs` module.
+- Enhancing SEO by preparing the root `index.html`.
+
+After the script finishes, you can review the changes with `git status`, then commit and push them.
