@@ -8,8 +8,8 @@
         "url": "https://github.com/neomjs/pages.git"
     },
     "scripts": {
-        "enhance-seo"       : "node buildScripts/enhanceSeo.mjs",
-        "test"              : "echo \"Error: no test specified\" && exit 1",
+        "enhance-seo": "node buildScripts/enhanceSeo.mjs",
+        "test": "echo \"Error: no test specified\" && exit 1",
         "update-neo-version": "node buildScripts/updateNeoVersion.mjs"
     },
     "keywords": [],
@@ -20,6 +20,6 @@
     },
     "homepage": "https://neomjs.com/",
     "dependencies": {
-        "neo.mjs": "11.1.0"
+        "neo.mjs": "11.2.0"
     }
 }

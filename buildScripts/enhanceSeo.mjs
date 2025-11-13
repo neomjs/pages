@@ -8,7 +8,7 @@ const destDir = resolve('.');
 
 const filesToCopy = [
     'index.html',
-    'llm.txt',
+    'llms.txt',
     'robots.txt',
     'sitemap.xml'
 ];
