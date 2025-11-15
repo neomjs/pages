@@ -20,6 +20,6 @@
     },
     "homepage": "https://neomjs.com/",
     "dependencies": {
-        "neo.mjs": "11.3.0"
+        "neo.mjs": "11.4.0"
     }
 }
