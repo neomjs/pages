@@ -3,7 +3,7 @@
 <script>
 document.addEventListener('click', function(event) {
     let {target} = event;
-    while (target?.tagName !== 'A') target = target.parentElement;
+    while (target?.tagName !== 'A') target = target?.parentElement;
     if (target?.getAttribute('href')?.startsWith('#')) {
         event.preventDefault();
         window.location.hash = target.getAttribute('href');
