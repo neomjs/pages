@@ -32,6 +32,7 @@
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/base
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/base/*
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/basic-languages/javascript/javascript.js
+!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/basic-languages/markdown/markdown.js
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/basic-languages/typescript/typescript.js
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.css
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.js
