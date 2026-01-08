@@ -1,5 +1,5 @@
 import { spawnSync } from 'child_process';
-import { unlink, symlink, readFile, writeFile } from 'fs/promises';
+import { cp, mkdir, readFile, rm, symlink, unlink, writeFile } from 'fs/promises';
 import os from 'os';
 import { resolve } from 'path';
 
@@ -65,6 +65,31 @@ if (installProcess.status !== 0) {
     process.exit(1);
 }
 console.log('Step 4: Completed');
+
+// 4.1 Fetch Release Notes from source repo
+console.log('Step 4.1: Fetching Release Notes from source repo...');
+const tempClonePath = resolve('temp_neo_clone');
+const releaseNotesDest = resolve('node_modules/neo.mjs/.github');
+
+// Clean up any previous run artifacts
+await rm(tempClonePath, { recursive: true, force: true });
+
+console.log('Cloning neomjs/neo (depth 1)...');
+// We need to use git for cloning
+const gitClone = spawnSync('git', ['clone', '--depth', '1', 'https://github.com/neomjs/neo.git', tempClonePath], { stdio: 'inherit' });
+
+if (gitClone.status !== 0) {
+    console.error('Failed to clone neo repository for release notes.');
+    process.exit(1);
+}
+
+console.log('Copying .github/RELEASE_NOTES...');
+await mkdir(releaseNotesDest, { recursive: true });
+await cp(resolve(tempClonePath, '.github/RELEASE_NOTES'), resolve(releaseNotesDest, 'RELEASE_NOTES'), { recursive: true });
+
+// Cleanup
+await rm(tempClonePath, { recursive: true, force: true });
+console.log('Step 4.1: Completed');
 
 // 5. Modify neo.mjs/src/DefaultConfig.mjs
 console.log('Step 5: Configuring DefaultConfig.mjs for GitHub Pages...');
