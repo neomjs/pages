@@ -139,7 +139,7 @@ await symlink('./neo.mjs/node_modules/highlightjs-line-numbers.js', resolve(nmPa
 await symlink('./neo.mjs/node_modules/marked', resolve(nmPath, 'marked'), 'dir');
 await symlink('./neo.mjs/node_modules/monaco-editor', resolve(nmPath, 'monaco-editor'), 'dir');
 await mkdir(resolve('.github'), { recursive: true });
-await symlink('../node_modules/neo.mjs/.github/RELEASE_NOTES', resolve('.github/RELEASE_NOTES'), 'dir');
+await cp(resolve('node_modules/neo.mjs/.github/RELEASE_NOTES'), resolve('.github/RELEASE_NOTES'), { recursive: true });
 console.log('Step 8: Completed');
 
 // 9. git add on the neo.mjs node_module
