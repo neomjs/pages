@@ -51,6 +51,7 @@ console.log('Step 2: Completed');
 
 // 3. Delete the 4 symlinks
 console.log('Step 3: Deleting old symlinks...');
+try { await unlink('.github'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 try { await unlink('node_modules/@fortawesome'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 try { await unlink('node_modules/highlightjs-line-numbers.js'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 try { await unlink('node_modules/marked'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
@@ -137,6 +138,7 @@ await symlink('./neo.mjs/node_modules/@fortawesome', resolve(nmPath, '@fortaweso
 await symlink('./neo.mjs/node_modules/highlightjs-line-numbers.js', resolve(nmPath, 'highlightjs-line-numbers.js'), 'file');
 await symlink('./neo.mjs/node_modules/marked', resolve(nmPath, 'marked'), 'dir');
 await symlink('./neo.mjs/node_modules/monaco-editor', resolve(nmPath, 'monaco-editor'), 'dir');
+await symlink('node_modules/neo.mjs/.github', resolve('.github'), 'dir');
 console.log('Step 8: Completed');
 
 // 9. git add on the neo.mjs node_module
