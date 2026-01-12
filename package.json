@@ -10,7 +10,8 @@
     "scripts": {
         "enhance-seo": "node buildScripts/enhanceSeo.mjs",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "update-neo-version": "node buildScripts/updateNeoVersion.mjs"
+        "update-neo-version": "node buildScripts/updateNeoVersion.mjs",
+        "update-neo-version-force": "node buildScripts/updateNeoVersion.mjs --force"
     },
     "keywords": [],
     "author": "Tobias Uhlig, Nils Dehl",

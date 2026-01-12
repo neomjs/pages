@@ -31,22 +31,31 @@ try {
     process.exit(1);
 }
 
+const isForce   = process.argv.includes('--force');
 const newVersion = outdated['neo.mjs']?.latest;
 
-if (!newVersion) {
+if (!newVersion && !isForce) {
     console.log('neo.mjs is up to date. Nothing to do.');
     process.exit(0);
 }
 
-console.log(`Found new neo.mjs version: ${newVersion}`);
+if (!newVersion && isForce) {
+    console.log('neo.mjs is up to date, but --force is used. Proceeding...');
+    const packageJsonPath = resolve('package.json');
+    const packageJson     = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
+    const currentVersion  = packageJson.dependencies['neo.mjs'];
+    console.log(`Using current version: ${currentVersion}`);
+} else {
+    console.log(`Found new neo.mjs version: ${newVersion}`);
 
-// 2. package.json: adjust the neo.mjs package version
-console.log(`Step 2: Updating neo.mjs version in package.json to ${newVersion}...`);
-const packageJsonPath = resolve('package.json');
-let packageJson = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
-packageJson.dependencies['neo.mjs'] = newVersion;
-await writeFile(packageJsonPath, JSON.stringify(packageJson, null, 4) + '\n');
-console.log('Step 2: Completed');
+    // 2. package.json: adjust the neo.mjs package version
+    console.log(`Step 2: Updating neo.mjs version in package.json to ${newVersion}...`);
+    const packageJsonPath = resolve('package.json');
+    let packageJson = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
+    packageJson.dependencies['neo.mjs'] = newVersion;
+    await writeFile(packageJsonPath, JSON.stringify(packageJson, null, 4) + '\n');
+    console.log('Step 2: Completed');
+}
 
 
 // 3. Delete the 4 symlinks
@@ -112,7 +121,17 @@ let appWorker = await readFile(appWorkerPath, 'utf-8');
 // This is a placeholder, I need to verify the content of the file first
 // to make sure the replacement is correct.
 // The user wants: /* webpackExclude: /(?:/|\)(dist|node_modules)(?!/)neo.mjs */
-appWorker = appWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\\/|\\\\)(dist|node_modules)(?!\\\/)/');
+
+// Fix potentially broken comment from previous runs (missing closing */)
+const brokenComment = '/* webpackExclude: /(?:\\/|\\\\)(dist|node_modules)(?!\\/)/';
+if (appWorker.includes(brokenComment) && !appWorker.includes(brokenComment + ' */')) {
+    console.log('Fixing broken webpackExclude comment...');
+    appWorker = appWorker.replace(brokenComment, brokenComment + ' */');
+} else {
+    // Standard replacement if not broken
+    appWorker = appWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\\/|\\\\)(dist|node_modules)(?!\\\/)/ */');
+}
+
 await writeFile(appWorkerPath, appWorker);
 console.log('Step 6: Completed');
 
