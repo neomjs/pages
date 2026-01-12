@@ -87,6 +87,12 @@ console.log('Copying resources/content/release-notes...');
 await mkdir(releaseNotesDest, { recursive: true });
 await cp(resolve(tempClonePath, 'resources/content/release-notes'), resolve(releaseNotesDest, 'release-notes'), { recursive: true });
 
+console.log('Copying resources/content/issues...');
+await cp(resolve(tempClonePath, 'resources/content/issues'), resolve(releaseNotesDest, 'issues'), { recursive: true });
+
+console.log('Copying resources/content/issue-archive...');
+await cp(resolve(tempClonePath, 'resources/content/issue-archive'), resolve(releaseNotesDest, 'issue-archive'), { recursive: true });
+
 // Cleanup
 await rm(tempClonePath, { recursive: true, force: true });
 console.log('Step 4.1: Completed');
