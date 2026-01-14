@@ -148,6 +148,22 @@ canvasWorker = canvasWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExc
 await writeFile(canvasWorkerPath, canvasWorker);
 console.log('Step 6.1: Completed');
 
+// 6.2 Modify neo.mjs/src/worker/Task.mjs
+console.log('Step 6.2: Configuring Task.mjs for GitHub Pages...');
+const taskWorkerPath = resolve('node_modules/neo.mjs/src/worker/Task.mjs');
+let taskWorker = await readFile(taskWorkerPath, 'utf-8');
+
+if (taskWorker.includes(brokenComment) && !taskWorker.includes(brokenComment + ' */')) {
+    console.log('Fixing broken webpackExclude comment in Task.mjs...');
+    taskWorker = taskWorker.replace(brokenComment, brokenComment + ' */');
+}
+
+// Update to the correct regex
+taskWorker = taskWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\/|\\\\)(dist|node_modules)\\/(?!neo.mjs)/ */');
+
+await writeFile(taskWorkerPath, taskWorker);
+console.log('Step 6.2: Completed');
+
 
 // 7. Build neo.mjs
 console.log('Step 7: Building neo.mjs...');
