@@ -118,22 +118,35 @@ console.log('Step 5: Completed');
 console.log('Step 6: Configuring App.mjs for GitHub Pages...');
 const appWorkerPath = resolve('node_modules/neo.mjs/src/worker/App.mjs');
 let appWorker = await readFile(appWorkerPath, 'utf-8');
-// This is a placeholder, I need to verify the content of the file first
-// to make sure the replacement is correct.
-// The user wants: /* webpackExclude: /(?:/|\)(dist|node_modules)(?!/)neo.mjs */
 
 // Fix potentially broken comment from previous runs (missing closing */)
 const brokenComment = '/* webpackExclude: /(?:\\/|\\\\)(dist|node_modules)(?!\\/)/';
 if (appWorker.includes(brokenComment) && !appWorker.includes(brokenComment + ' */')) {
     console.log('Fixing broken webpackExclude comment...');
     appWorker = appWorker.replace(brokenComment, brokenComment + ' */');
-} else {
-    // Standard replacement if not broken
-    appWorker = appWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\\/|\\\\)(dist|node_modules)(?!\\\/)/ */');
 }
+
+// Update to the correct regex
+appWorker = appWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\/|\\\\)(dist|node_modules)\\/(?!neo.mjs)/ */');
 
 await writeFile(appWorkerPath, appWorker);
 console.log('Step 6: Completed');
+
+// 6.1 Modify neo.mjs/src/worker/Canvas.mjs
+console.log('Step 6.1: Configuring Canvas.mjs for GitHub Pages...');
+const canvasWorkerPath = resolve('node_modules/neo.mjs/src/worker/Canvas.mjs');
+let canvasWorker = await readFile(canvasWorkerPath, 'utf-8');
+
+if (canvasWorker.includes(brokenComment) && !canvasWorker.includes(brokenComment + ' */')) {
+    console.log('Fixing broken webpackExclude comment in Canvas.mjs...');
+    canvasWorker = canvasWorker.replace(brokenComment, brokenComment + ' */');
+}
+
+// Update to the correct regex
+canvasWorker = canvasWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\/|\\\\)(dist|node_modules)\\/(?!neo.mjs)/ */');
+
+await writeFile(canvasWorkerPath, canvasWorker);
+console.log('Step 6.1: Completed');
 
 
 // 7. Build neo.mjs
