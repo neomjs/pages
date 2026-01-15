@@ -19,6 +19,7 @@
 !/node_modules/@fortawesome
 !/node_modules/highlightjs-line-numbers.js
 !/node_modules/marked
+!/node_modules/mermaid
 !/node_modules/monaco-editor
 
 # highlight.js
@@ -27,6 +28,13 @@
 
 # marked
 !/node_modules/neo.mjs/node_modules/marked/lib/marked.esm.js
+
+# mermaid
+!/node_modules/neo.mjs/node_modules/mermaid
+/node_modules/neo.mjs/node_modules/mermaid/*
+!/node_modules/neo.mjs/node_modules/mermaid/dist
+/node_modules/neo.mjs/node_modules/mermaid/dist/*
+!/node_modules/neo.mjs/node_modules/mermaid/dist/mermaid.min.js
 
 # monaco-editor
 !/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/base
