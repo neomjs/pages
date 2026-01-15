@@ -1,7 +1,7 @@
-import { spawnSync } from 'child_process';
-import { cp, mkdir, readFile, rm, symlink, unlink, writeFile } from 'fs/promises';
-import os from 'os';
-import { resolve } from 'path';
+import {spawnSync}                                           from 'child_process';
+import {cp, mkdir, readFile, rm, symlink, unlink, writeFile} from 'fs/promises';
+import os                                                    from 'os';
+import {resolve}                                             from 'path';
 
 const npmCmd = os.platform().startsWith('win') ? 'npm.cmd' : 'npm';
 
@@ -58,11 +58,12 @@ if (!newVersion && isForce) {
 }
 
 
-// 3. Delete the 4 symlinks
+// 3. Delete the 5 symlinks
 console.log('Step 3: Deleting old symlinks...');
 try { await unlink('node_modules/@fortawesome'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 try { await unlink('node_modules/highlightjs-line-numbers.js'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 try { await unlink('node_modules/marked'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
+try { await unlink('node_modules/mermaid'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 try { await unlink('node_modules/monaco-editor'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 console.log('Step 3: Completed');
 
@@ -190,6 +191,7 @@ const nmPath = resolve('node_modules');
 await symlink('./neo.mjs/node_modules/@fortawesome', resolve(nmPath, '@fortawesome'), 'dir');
 await symlink('./neo.mjs/node_modules/highlightjs-line-numbers.js', resolve(nmPath, 'highlightjs-line-numbers.js'), 'file');
 await symlink('./neo.mjs/node_modules/marked', resolve(nmPath, 'marked'), 'dir');
+await symlink('./neo.mjs/node_modules/mermaid', resolve(nmPath, 'mermaid'), 'dir');
 await symlink('./neo.mjs/node_modules/monaco-editor', resolve(nmPath, 'monaco-editor'), 'dir');
 console.log('Step 8: Completed');
 
