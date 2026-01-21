@@ -121,14 +121,14 @@ const appWorkerPath = resolve('node_modules/neo.mjs/src/worker/App.mjs');
 let appWorker = await readFile(appWorkerPath, 'utf-8');
 
 // Fix potentially broken comment from previous runs (missing closing */)
-const brokenComment = '/* webpackExclude: /(?:\\/|\\\\)(dist|node_modules)(?!\\/)/';
+const brokenComment = '/* webpackExclude: /(?:\\/|\\\\)(buildScripts|dist|node_modules)(?!\\/)/';
 if (appWorker.includes(brokenComment) && !appWorker.includes(brokenComment + ' */')) {
     console.log('Fixing broken webpackExclude comment...');
     appWorker = appWorker.replace(brokenComment, brokenComment + ' */');
 }
 
 // Update to the correct regex
-appWorker = appWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\/|\\\\)(dist|node_modules)\\/(?!neo.mjs)/ */');
+appWorker = appWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\/|\\\\)(buildScripts|dist|node_modules)\\/(?!neo.mjs)/ */');
 
 await writeFile(appWorkerPath, appWorker);
 console.log('Step 6: Completed');
@@ -144,7 +144,7 @@ if (canvasWorker.includes(brokenComment) && !canvasWorker.includes(brokenComment
 }
 
 // Update to the correct regex
-canvasWorker = canvasWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\/|\\\\)(dist|node_modules)\\/(?!neo.mjs)/ */');
+canvasWorker = canvasWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\/|\\\\)(buildScripts|dist|node_modules)\\/(?!neo.mjs)/ */');
 
 await writeFile(canvasWorkerPath, canvasWorker);
 console.log('Step 6.1: Completed');
@@ -160,7 +160,7 @@ if (taskWorker.includes(brokenComment) && !taskWorker.includes(brokenComment + '
 }
 
 // Update to the correct regex
-taskWorker = taskWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\/|\\\\)(dist|node_modules)\\/(?!neo.mjs)/ */');
+taskWorker = taskWorker.replace(/\/\* webpackExclude:.*\*\//, '/* webpackExclude: /(?:\\/|\\\\)(buildScripts|dist|node_modules)\\/(?!neo.mjs)/ */');
 
 await writeFile(taskWorkerPath, taskWorker);
 console.log('Step 6.2: Completed');
