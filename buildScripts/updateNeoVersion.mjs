@@ -103,6 +103,11 @@ await cp(resolve(tempClonePath, 'resources/content/issues'), resolve(releaseNote
 console.log('Copying resources/content/issue-archive...');
 await cp(resolve(tempClonePath, 'resources/content/issue-archive'), resolve(releaseNotesDest, 'issue-archive'), { recursive: true });
 
+console.log('Copying apps/devindex/resources/data/users.jsonl...');
+const devindexDataDest = resolve('node_modules/neo.mjs/apps/devindex/resources/data');
+await mkdir(devindexDataDest, { recursive: true });
+await cp(resolve(tempClonePath, 'apps/devindex/resources/data/users.jsonl'), resolve(devindexDataDest, 'users.jsonl'));
+
 // Cleanup
 await rm(tempClonePath, { recursive: true, force: true });
 console.log('Step 4.1: Completed');
