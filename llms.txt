@@ -12,7 +12,8 @@
 
 > **AI-Native Architecture:**
 > Neo.mjs is the first platform architected for "Context Engineering." It includes dedicated
-> MCP Servers (Knowledge Base, Memory Core) that allow AI agents to act as co-developers.
+> MCP Servers for frontier harnesses (Knowledge Base, Memory Core, GitHub Workflow, Neural Link)
+> plus a File System server for internal Neo.ai.Agent local loops.
 
 Neo.mjs uniquely deploys each application and example in four equivalent environments.
 The URLs listed below use the **development mode** paths (Zero Build), which embody the core philosophy.
@@ -232,7 +233,8 @@ The sections below (Release Notes, Guides/Blogs, and GitHub Tickets) represent p
 - [Code Execution (AI SDK)](https://neomjs.com/raw/learn/agentos/CodeExecution.md)
 - [Shared KB/MC Team Deployment](https://neomjs.com/raw/learn/agentos/SharedDeployment.md)
 - [Deployment Cookbook](https://neomjs.com/raw/learn/agentos/DeploymentCookbook.md)
-- [Overview](https://neomjs.com/raw/learn/agentos/cloud-deployment/Overview.md)
+- [Why Deploy the Agent OS](https://neomjs.com/raw/learn/agentos/cloud-deployment/WhyDeploy.md)
+- [Cloud-Native KB Ingestion Overview](https://neomjs.com/raw/learn/agentos/cloud-deployment/Overview.md)
 - [Day-0 Tutorial](https://neomjs.com/raw/learn/agentos/cloud-deployment/Day0Tutorial.md)
 - [Tenant Ingestion Model](https://neomjs.com/raw/learn/agentos/cloud-deployment/TenantIngestionModel.md)
 - [Configuration](https://neomjs.com/raw/learn/agentos/cloud-deployment/Configuration.md)
