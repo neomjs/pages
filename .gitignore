@@ -12,6 +12,16 @@
 !/node_modules/neo.mjs/dist/development/*
 !/node_modules/neo.mjs/dist/production/*
 
+# neo.mjs agent-OS substrate + repo meta (ships in the npm tarball, not part of the deployed body)
+/node_modules/neo.mjs/.agents
+/node_modules/neo.mjs/.claude
+/node_modules/neo.mjs/.codex
+/node_modules/neo.mjs/.gemini
+/node_modules/neo.mjs/.github
+/node_modules/neo.mjs/.husky
+/node_modules/neo.mjs/.neo-ai-data
+/node_modules/neo.mjs/ai
+
 # font awesome
 /node_modules/neo.mjs/node_modules/*
 !/node_modules/neo.mjs/node_modules/@fortawesome

@@ -93,20 +93,38 @@ if (gitClone.status !== 0) {
     process.exit(1);
 }
 
-console.log('Copying resources/content/release-notes...');
+// Mirror data-sync-pipeline.yml: chunked content buckets, missing-dir tolerant.
+// Legacy layouts (issue-archive, pr-archive) are deleted, never copied — npm install
+// only wipes node_modules/neo.mjs on a version change, so --force re-runs need the rm.
+const contentDirs = ['release-notes', 'issues', 'pulls', 'discussions', 'archive'];
+
 await mkdir(releaseNotesDest, { recursive: true });
-await cp(resolve(tempClonePath, 'resources/content/release-notes'), resolve(releaseNotesDest, 'release-notes'), { recursive: true });
 
-console.log('Copying resources/content/issues...');
-await cp(resolve(tempClonePath, 'resources/content/issues'), resolve(releaseNotesDest, 'issues'), { recursive: true });
+for (const dir of ['issue-archive', 'pr-archive', ...contentDirs]) {
+    await rm(resolve(releaseNotesDest, dir), { recursive: true, force: true });
+}
 
-console.log('Copying resources/content/issue-archive...');
-await cp(resolve(tempClonePath, 'resources/content/issue-archive'), resolve(releaseNotesDest, 'issue-archive'), { recursive: true });
+for (const dir of contentDirs) {
+    console.log(`Copying resources/content/${dir}...`);
+    try {
+        await cp(resolve(tempClonePath, 'resources/content', dir), resolve(releaseNotesDest, dir), { recursive: true });
+    } catch (e) {
+        if (e.code !== 'ENOENT') throw e;
+        console.log(`  Skipped: resources/content/${dir} does not exist in the source repo.`);
+    }
+}
 
 console.log('Copying apps/devindex/resources/data/users.jsonl...');
 const devindexDataDest = resolve('node_modules/neo.mjs/apps/devindex/resources/data');
 await mkdir(devindexDataDest, { recursive: true });
 await cp(resolve(tempClonePath, 'apps/devindex/resources/data/users.jsonl'), resolve(devindexDataDest, 'users.jsonl'));
+
+// The npm tarball ships no lockfile, so a fresh `npm i` inside node_modules/neo.mjs
+// re-resolves floating (dev)dependencies and can hit peer conflicts the release never
+// saw (e.g. pinned postcss vs cssnano@^7 peer ranges). The cloned repo's lockfile is
+// the resolution the release was actually built and tested with. Gitignored in pages.
+console.log('Copying package-lock.json...');
+await cp(resolve(tempClonePath, 'package-lock.json'), resolve('node_modules/neo.mjs/package-lock.json'));
 
 // Cleanup
 await rm(tempClonePath, { recursive: true, force: true });
