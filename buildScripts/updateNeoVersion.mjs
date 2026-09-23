@@ -114,10 +114,8 @@ for (const dir of contentDirs) {
     }
 }
 
-console.log('Copying apps/devindex/resources/data/users.jsonl...');
-const devindexDataDest = resolve('node_modules/neo.mjs/apps/devindex/resources/data');
-await mkdir(devindexDataDest, { recursive: true });
-await cp(resolve(tempClonePath, 'apps/devindex/resources/data/users.jsonl'), resolve(devindexDataDest, 'users.jsonl'));
+// The deploy receipt (step 11) names the exact content revision this site shows.
+const contentCommit = spawnSync('git', ['-C', tempClonePath, 'rev-parse', 'HEAD']).stdout?.toString().trim() || null;
 
 // The npm tarball ships no lockfile, so a fresh `npm i` inside node_modules/neo.mjs
 // re-resolves floating (dev)dependencies and can hit peer conflicts the release never
@@ -189,6 +187,23 @@ if (seoProcess.status !== 0) {
     process.exit(1);
 }
 console.log('Step 10: Completed');
+
+// 11. Deploy receipt: what this site was built from, served at the site root
+console.log('Step 11: Writing the deploy receipt...');
+const neoPackage = JSON.parse(await readFile(resolve('node_modules/neo.mjs/package.json'), 'utf-8'));
+const domain     = (await readFile(resolve('CNAME'), 'utf-8')).trim();
+
+await writeFile(resolve('deploy-receipt.json'), JSON.stringify({
+    builtAt      : new Date().toISOString(),
+    // The pages commit this build ran on; the deploy commit is its child
+    pagesCommit  : spawnSync('git', ['rev-parse', 'HEAD']).stdout?.toString().trim() || null,
+    neoVersion   : neoPackage.version,
+    contentSource: 'https://github.com/neomjs/neo.git',
+    contentCommit,
+    publicBaseUrl: `https://${domain}/`,
+    contentBase  : 'node_modules/neo.mjs/resources/content/'
+}, null, 4) + '\n');
+console.log('Step 11: Completed');
 
 
 console.log('Build process completed.');
