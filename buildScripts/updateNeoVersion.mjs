@@ -149,6 +149,16 @@ if (neoInstallProcess.status !== 0) {
     process.exit(1);
 }
 
+// Regenerate the portal's content indexes and SEO files from the content step 4.1 copied.
+// The npm package ships neither sitemap.xml nor llms.txt, and build-all only copies what
+// exists, so without this the site serves a stale index and step 10 finds no llms.txt.
+console.log(`Regenerating content indexes and SEO files inside ${neoPath}...`);
+const rebuildProcess = spawnSync(process.execPath, ['buildScripts/docs/rebuildContentIndexesAndSeo.mjs'], { cwd: neoPath, stdio: 'inherit' });
+if (rebuildProcess.status !== 0) {
+    console.error(`Regenerating content indexes and SEO files failed with exit code ${rebuildProcess.status}`);
+    process.exit(1);
+}
+
 console.log(`Running 'npm run build-all' inside ${neoPath}...`);
 const neoBuildProcess = spawnSync(npmCmd, ['run', 'build-all'], { cwd: neoPath, stdio: 'inherit' });
 if (neoBuildProcess.status !== 0) {
