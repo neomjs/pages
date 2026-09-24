@@ -1,9 +1,34 @@
 import {spawnSync}                                           from 'child_process';
+import {existsSync}                                          from 'fs';
 import {cp, mkdir, readFile, rm, symlink, unlink, writeFile} from 'fs/promises';
 import os                                                    from 'os';
 import {resolve}                                             from 'path';
 
 const npmCmd = os.platform().startsWith('win') ? 'npm.cmd' : 'npm';
+
+/**
+ * @summary Fetches one revision of a repository at a tag or a full commit SHA, one commit deep, optionally narrowed
+ * to sparse paths.
+ *
+ * Anything but a full SHA is fetched as `refs/tags/<ref>`, so a branch never resolves, whatever its name.
+ * @param {String}   url
+ * @param {String}   ref    A tag name or a full 40-hex commit SHA
+ * @param {String}   dir
+ * @param {String[]} [sparse]
+ * @returns {String|null} The checked-out commit, or null when `ref` names no tag or commit
+ */
+function fetchRevision(url, ref, dir, sparse) {
+    const git     = (...args) => spawnSync('git', args, { stdio: 'inherit' }).status === 0;
+    const refspec = /^[0-9a-f]{40}$/.test(ref) ? ref : `refs/tags/${ref}`;
+
+    const fetched = git('init', '-q', dir) &&
+        git('-C', dir, 'remote', 'add', 'origin', url) &&
+        (!sparse || git('-C', dir, 'sparse-checkout', 'set', ...sparse)) &&
+        git('-C', dir, 'fetch', '-q', '--depth', '1', '--filter=blob:none', 'origin', refspec) &&
+        git('-C', dir, 'checkout', '-q', 'FETCH_HEAD');
+
+    return fetched ? spawnSync('git', ['-C', dir, 'rev-parse', 'HEAD']).stdout.toString().trim() : null;
+}
 
 console.log('Starting neo.mjs version update process...');
 
@@ -76,53 +101,81 @@ if (installProcess.status !== 0) {
 }
 console.log('Step 4: Completed');
 
-// 4.1 Fetch Release Notes from source repo
-console.log('Step 4.1: Fetching Release Notes from source repo...');
-const tempClonePath = resolve('temp_neo_clone');
-const releaseNotesDest = resolve('node_modules/neo.mjs/resources/content');
+// 4.1 Fetch the portal's content at pinned revisions
+// Release notes and the lockfile come from the engine at the release this site installs: the tag equal to the installed
+// neo.mjs version, or --engine-ref=<tag|sha> for a dry run before that tag exists. The conversations come from
+// github-content-sync at the commit contentPins.json pins. Nothing is read at a branch head, so a deploy serves content of
+// known revisions, and a missing family ends the build instead of shipping a portal without it.
+console.log('Step 4.1: Fetching the portal content at pinned revisions...');
+const contentDest      = resolve('node_modules/neo.mjs/resources/content');
+const engineClonePath  = resolve('temp_neo_clone');
+const corpusClonePath  = resolve('temp_corpus_clone');
+const contentPins      = JSON.parse(await readFile(resolve('buildScripts/contentPins.json'), 'utf-8'));
+const installedVersion = JSON.parse(await readFile(resolve('node_modules/neo.mjs/package.json'), 'utf-8')).version;
+const engineRef        = process.argv.find(arg => arg.startsWith('--engine-ref='))?.split('=')[1] || installedVersion;
 
-// Clean up any previous run artifacts
-await rm(tempClonePath, { recursive: true, force: true });
+const removeClones = async () => {
+    await rm(engineClonePath, { recursive: true, force: true });
+    await rm(corpusClonePath, { recursive: true, force: true });
+};
 
-console.log('Cloning neomjs/neo (depth 1)...');
-// We need to use git for cloning
-const gitClone = spawnSync('git', ['clone', '--depth', '1', 'https://github.com/neomjs/neo.git', tempClonePath], { stdio: 'inherit' });
+// Every failure here ends the build: a refusal throws like any other error, and the finally removes both clones
+const failContent = message => { throw new Error(message); };
 
-if (gitClone.status !== 0) {
-    console.error('Failed to clone neo repository for release notes.');
-    process.exit(1);
-}
+let manifestMaxIssueId;
 
-// Mirror data-sync-pipeline.yml: chunked content buckets, missing-dir tolerant.
-// Legacy layouts (issue-archive, pr-archive) are deleted, never copied — npm install
-// only wipes node_modules/neo.mjs on a version change, so --force re-runs need the rm.
-const contentDirs = ['release-notes', 'issues', 'pulls', 'discussions', 'archive'];
+await removeClones();
 
-await mkdir(releaseNotesDest, { recursive: true });
+try {
+    const engineUrl    = 'https://github.com/neomjs/neo.git';
+    const engineCommit = fetchRevision(engineUrl, engineRef, engineClonePath, ['resources/content/release-notes']) ||
+        failContent(`Failed to fetch ${engineUrl} at ${engineRef}: the engine ref must be a release tag or a full commit SHA.`);
+    console.log(`Engine content: ${engineRef} at ${engineCommit}`);
 
-for (const dir of ['issue-archive', 'pr-archive', ...contentDirs]) {
-    await rm(resolve(releaseNotesDest, dir), { recursive: true, force: true });
-}
+    const { repository: corpusRepository, commit: corpusPin } = contentPins.corpus;
+    const corpusCommit = fetchRevision(corpusRepository, corpusPin, corpusClonePath, ['neo']) ||
+        failContent(`Failed to fetch ${corpusRepository} at ${corpusPin}.`);
 
-for (const dir of contentDirs) {
-    console.log(`Copying resources/content/${dir}...`);
-    try {
-        await cp(resolve(tempClonePath, 'resources/content', dir), resolve(releaseNotesDest, dir), { recursive: true });
-    } catch (e) {
-        if (e.code !== 'ENOENT') throw e;
-        console.log(`  Skipped: resources/content/${dir} does not exist in the source repo.`);
+    if (corpusCommit !== corpusPin) {
+        failContent(`contentPins.json must name a full commit SHA: ${corpusPin} resolved to ${corpusCommit}.`);
     }
+    console.log(`Corpus content: ${corpusCommit}`);
+
+    // Step 7 checks the built ticket index against this, so a stale copy cannot pass for the pinned one
+    const corpusIndex  = JSON.parse(await readFile(resolve(corpusClonePath, '_index.json'), 'utf-8'));
+    manifestMaxIssueId = corpusIndex.reduce((max, entry) => entry.repoSlug === 'neo' && entry.type === 'issues' ? Math.max(max, entry.id) : max, 0);
+
+    // Legacy layouts (issue-archive, pr-archive) are deleted, never copied — npm install
+    // only wipes node_modules/neo.mjs on a version change, so --force re-runs need the rm.
+    const contentFamilies = [
+        ['release-notes', resolve(engineClonePath, 'resources/content/release-notes')],
+        ...['issues', 'pulls', 'discussions', 'archive'].map(dir => [dir, resolve(corpusClonePath, 'neo', dir)])
+    ];
+
+    await mkdir(contentDest, { recursive: true });
+
+    for (const dir of ['issue-archive', 'pr-archive', ...contentFamilies.map(([dir]) => dir)]) {
+        await rm(resolve(contentDest, dir), { recursive: true, force: true });
+    }
+
+    for (const [dir, source] of contentFamilies) {
+        if (!existsSync(source)) {
+            failContent(`Content family '${dir}' is missing: ${source}`);
+        }
+
+        console.log(`Copying ${dir}...`);
+        await cp(source, resolve(contentDest, dir), { recursive: true });
+    }
+
+    // The npm tarball ships no lockfile, so a fresh `npm i` inside node_modules/neo.mjs
+    // re-resolves floating (dev)dependencies and can hit peer conflicts the release never
+    // saw (e.g. pinned postcss vs cssnano@^7 peer ranges). The tagged engine's lockfile is
+    // the resolution the release was actually built and tested with. Gitignored in pages.
+    console.log('Copying package-lock.json...');
+    await cp(resolve(engineClonePath, 'package-lock.json'), resolve('node_modules/neo.mjs/package-lock.json'));
+} finally {
+    await removeClones();
 }
-
-// The npm tarball ships no lockfile, so a fresh `npm i` inside node_modules/neo.mjs
-// re-resolves floating (dev)dependencies and can hit peer conflicts the release never
-// saw (e.g. pinned postcss vs cssnano@^7 peer ranges). The cloned repo's lockfile is
-// the resolution the release was actually built and tested with. Gitignored in pages.
-console.log('Copying package-lock.json...');
-await cp(resolve(tempClonePath, 'package-lock.json'), resolve('node_modules/neo.mjs/package-lock.json'));
-
-// Cleanup
-await rm(tempClonePath, { recursive: true, force: true });
 console.log('Step 4.1: Completed');
 
 // 5. Modify neo.mjs/src/DefaultConfig.mjs
@@ -155,6 +208,17 @@ if (rebuildProcess.status !== 0) {
     console.error(`Regenerating content indexes and SEO files failed with exit code ${rebuildProcess.status}`);
     process.exit(1);
 }
+
+// A generator that read anything but the pinned content builds green too. The ticket index's highest id tells them
+// apart: it must reach the pinned manifest's.
+const ticketIdMap     = JSON.parse(await readFile(resolve(neoPath, 'apps/portal/resources/data/tickets/idMap.json'), 'utf-8'));
+const builtMaxIssueId = Object.keys(ticketIdMap).reduce((max, id) => Math.max(max, Number(id)), 0);
+
+if (builtMaxIssueId < manifestMaxIssueId) {
+    console.error(`The built ticket index stops at ${builtMaxIssueId}, below the pinned corpus manifest's ${manifestMaxIssueId}.`);
+    process.exit(1);
+}
+console.log(`Ticket index reaches ${builtMaxIssueId} (pinned manifest: ${manifestMaxIssueId}).`);
 
 console.log(`Running 'npm run build-all' inside ${neoPath}...`);
 const neoBuildProcess = spawnSync(npmCmd, ['run', 'build-all'], { cwd: neoPath, stdio: 'inherit' });
