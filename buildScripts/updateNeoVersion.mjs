@@ -114,11 +114,6 @@ for (const dir of contentDirs) {
     }
 }
 
-console.log('Copying apps/devindex/resources/data/users.jsonl...');
-const devindexDataDest = resolve('node_modules/neo.mjs/apps/devindex/resources/data');
-await mkdir(devindexDataDest, { recursive: true });
-await cp(resolve(tempClonePath, 'apps/devindex/resources/data/users.jsonl'), resolve(devindexDataDest, 'users.jsonl'));
-
 // The npm tarball ships no lockfile, so a fresh `npm i` inside node_modules/neo.mjs
 // re-resolves floating (dev)dependencies and can hit peer conflicts the release never
 // saw (e.g. pinned postcss vs cssnano@^7 peer ranges). The cloned repo's lockfile is
@@ -148,6 +143,16 @@ console.log(`Running 'npm i' inside ${neoPath}...`);
 const neoInstallProcess = spawnSync(npmCmd, ['i'], { cwd: neoPath, stdio: 'inherit' });
 if (neoInstallProcess.status !== 0) {
     console.error(`'npm i' inside neo.mjs failed with exit code ${neoInstallProcess.status}`);
+    process.exit(1);
+}
+
+// Regenerate the portal's content indexes and SEO files from the content step 4.1 copied.
+// The npm package ships neither sitemap.xml nor llms.txt, and build-all only copies what
+// exists, so without this the site serves a stale index and step 10 finds no llms.txt.
+console.log(`Regenerating content indexes and SEO files inside ${neoPath}...`);
+const rebuildProcess = spawnSync(process.execPath, ['buildScripts/docs/rebuildContentIndexesAndSeo.mjs'], { cwd: neoPath, stdio: 'inherit' });
+if (rebuildProcess.status !== 0) {
+    console.error(`Regenerating content indexes and SEO files failed with exit code ${rebuildProcess.status}`);
     process.exit(1);
 }
 
@@ -189,7 +194,6 @@ if (seoProcess.status !== 0) {
     process.exit(1);
 }
 console.log('Step 10: Completed');
-
 
 console.log('Build process completed.');
 console.log("Please review the changes and then commit and push manually.");
