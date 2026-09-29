@@ -127,8 +127,10 @@ let manifestMaxIssueId;
 await removeClones();
 
 try {
-    const engineUrl    = 'https://github.com/neomjs/neo.git';
-    const engineCommit = fetchRevision(engineUrl, engineRef, engineClonePath, ['resources/content/release-notes']) ||
+    // The engine authors its notes in .github/RELEASE_NOTES from 13.2 on; earlier tags carry resources/content/release-notes
+    const releaseNotePaths = ['.github/RELEASE_NOTES', 'resources/content/release-notes'];
+    const engineUrl        = 'https://github.com/neomjs/neo.git';
+    const engineCommit     = fetchRevision(engineUrl, engineRef, engineClonePath, releaseNotePaths) ||
         failContent(`Failed to fetch ${engineUrl} at ${engineRef}: the engine ref must be a release tag or a full commit SHA.`);
     console.log(`Engine content: ${engineRef} at ${engineCommit}`);
 
@@ -147,8 +149,9 @@ try {
 
     // Legacy layouts (issue-archive, pr-archive) are deleted, never copied — npm install
     // only wipes node_modules/neo.mjs on a version change, so --force re-runs need the rm.
+    const releaseNotes    = releaseNotePaths.map(dir => resolve(engineClonePath, dir));
     const contentFamilies = [
-        ['release-notes', resolve(engineClonePath, 'resources/content/release-notes')],
+        ['release-notes', releaseNotes.find(existsSync) ?? releaseNotes[0]],
         ...['issues', 'pulls', 'discussions', 'archive'].map(dir => [dir, resolve(corpusClonePath, 'neo', dir)])
     ];
 
