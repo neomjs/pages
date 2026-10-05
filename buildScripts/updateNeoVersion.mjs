@@ -181,12 +181,19 @@ try {
 }
 console.log('Step 4.1: Completed');
 
-// 5. Modify neo.mjs/src/DefaultConfig.mjs
-console.log('Step 5: Configuring DefaultConfig.mjs for GitHub Pages...');
+// 5. Modify neo.mjs/src/DefaultConfig.mjs and the portal's neo-config.json
+console.log('Step 5: Configuring DefaultConfig.mjs and the portal for GitHub Pages...');
 const defaultConfigPath = resolve('node_modules/neo.mjs/src/DefaultConfig.mjs');
 let defaultConfig = await readFile(defaultConfigPath, 'utf-8');
 defaultConfig = defaultConfig.replace(/isGitHubPages\s*:\s*false/, 'isGitHubPages: true');
 await writeFile(defaultConfigPath, defaultConfig);
+
+// The portal fetches release notes from `releaseNotesBasePath`, which defaults to the engine's own
+// .github/RELEASE_NOTES. This site serves them from the copy step 4.1 made.
+const portalConfigPath = resolve('node_modules/neo.mjs/apps/portal/neo-config.json');
+const portalConfig     = JSON.parse(await readFile(portalConfigPath, 'utf-8'));
+portalConfig.releaseNotesBasePath = 'resources/content/release-notes/';
+await writeFile(portalConfigPath, JSON.stringify(portalConfig, null, 4) + '\n');
 console.log('Step 5: Completed');
 
 
@@ -205,8 +212,13 @@ if (neoInstallProcess.status !== 0) {
 // Regenerate the portal's content indexes and SEO files from the content step 4.1 copied.
 // The npm package ships neither sitemap.xml nor llms.txt, and build-all only copies what
 // exists, so without this the site serves a stale index and step 10 finds no llms.txt.
+// The engine takes both content roots as inputs (neomjs/neo#19166); an engine before that ignores the flags.
 console.log(`Regenerating content indexes and SEO files inside ${neoPath}...`);
-const rebuildProcess = spawnSync(process.execPath, ['buildScripts/docs/rebuildContentIndexesAndSeo.mjs'], { cwd: neoPath, stdio: 'inherit' });
+const rebuildProcess = spawnSync(process.execPath, [
+    'buildScripts/docs/rebuildContentIndexesAndSeo.mjs',
+    '--corpus-root',   'resources/content',
+    '--release-notes', 'resources/content/release-notes'
+], { cwd: neoPath, stdio: 'inherit' });
 if (rebuildProcess.status !== 0) {
     console.error(`Regenerating content indexes and SEO files failed with exit code ${rebuildProcess.status}`);
     process.exit(1);
