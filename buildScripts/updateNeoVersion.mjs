@@ -141,7 +141,15 @@ try {
     if (corpusCommit !== corpusPin) {
         failContent(`contentPins.json must name a full commit SHA: ${corpusPin} resolved to ${corpusCommit}.`);
     }
-    console.log(`Corpus content: ${corpusCommit}`);
+    // The pin only moves by a deliberate commit, so the log shows how old it is and whether the corpus has moved on
+    const corpusDate = spawnSync('git', ['-C', corpusClonePath, 'log', '-1', '--format=%cs']).stdout.toString().trim();
+    const corpusHead = spawnSync('git', ['ls-remote', corpusRepository, 'HEAD']).stdout.toString().split('\t')[0] || 'unreadable';
+
+    console.log(`Corpus content: ${corpusCommit} (${corpusDate})`);
+
+    if (corpusHead !== corpusCommit) {
+        console.log(`Corpus head: ${corpusHead}. To serve newer conversations, move buildScripts/contentPins.json there first.`);
+    }
 
     // Step 7 checks the built ticket index against this, so a stale copy cannot pass for the pinned one
     const corpusIndex  = JSON.parse(await readFile(resolve(corpusClonePath, '_index.json'), 'utf-8'));
