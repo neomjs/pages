@@ -8,7 +8,7 @@ A deploy serves one `neo.mjs` release and one revision of the conversation corpu
    git ls-remote https://github.com/neomjs/github-content-sync.git HEAD
    ```
 
-   Put that SHA into `corpus.commit`. The deploy commit then records which conversations the site serves.
+   Put that SHA into `corpus.commit`. The deploy commit then records which conversations and release notes the site serves. A pin from before the sync archived the previous release omits that release's note.
 
 2. **Build and stage:**
 
@@ -16,7 +16,7 @@ A deploy serves one `neo.mjs` release and one revision of the conversation corpu
    npm run update-neo-version
    ```
 
-   The script installs the latest `neo.mjs`, reads the release notes from that version's engine tag and the conversations from the pin, builds `neo.mjs` for GitHub Pages, stages `node_modules/neo.mjs` and prepares the root SEO files. Step 4.1 prints the pin's date, and the corpus head when the pin trails it.
+   The script installs the latest `neo.mjs`, reads the conversations and the released notes from the pin, adds the notes that version's engine tag has not released yet, builds `neo.mjs` for GitHub Pages, stages `node_modules/neo.mjs` and prepares the root SEO files. Step 4.1 prints the pin's date, and the corpus head when the pin trails it.
 
    When the installed `neo.mjs` is already the latest release, the script stops at step 1 ("neo.mjs is up to date") and never reads the pin. To redeploy with only a moved pin, run `node buildScripts/updateNeoVersion.mjs --force`.
 
