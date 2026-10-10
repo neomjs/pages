@@ -185,9 +185,10 @@ try {
     // released yet. A version both hold keeps the corpus copy, so the release index lists none twice.
     const isNote      = name => /^v.+\.md$/.test(name);
     const listedNotes = new Set((await readdir(resolve(contentDest, 'release-notes'), { recursive: true })).map(name => basename(name)).filter(isNote));
-    const engineNotes = releaseNotes.find(existsSync);
+    const engineNotes = releaseNotes.find(existsSync) ??
+        failContent(`The engine's release notes are missing at ${engineRef}: neither ${releaseNotePaths.join(' nor ')} exists.`);
 
-    for (const name of engineNotes ? await readdir(engineNotes, { recursive: true }) : []) {
+    for (const name of await readdir(engineNotes, { recursive: true })) {
         if (isNote(basename(name)) && !listedNotes.has(basename(name))) {
             console.log(`Adding the engine's unreleased note ${basename(name)}...`);
             await cp(resolve(engineNotes, name), resolve(contentDest, 'release-notes', basename(name)));
