@@ -1,8 +1,8 @@
 import {spawnSync}                                           from 'child_process';
 import {existsSync}                                          from 'fs';
-import {cp, mkdir, readFile, rm, symlink, unlink, writeFile} from 'fs/promises';
-import os                                                    from 'os';
-import {resolve}                                             from 'path';
+import {cp, mkdir, readdir, readFile, rm, symlink, unlink, writeFile} from 'fs/promises';
+import os                                                             from 'os';
+import {basename, resolve}                                            from 'path';
 
 const npmCmd = os.platform().startsWith('win') ? 'npm.cmd' : 'npm';
 
@@ -102,9 +102,9 @@ if (installProcess.status !== 0) {
 console.log('Step 4: Completed');
 
 // 4.1 Fetch the portal's content at pinned revisions
-// Release notes and the lockfile come from the engine at the release this site installs: the tag equal to the installed
-// neo.mjs version, or --engine-ref=<tag|sha> for a dry run before that tag exists. The conversations come from
-// github-content-sync at the commit contentPins.json pins. Nothing is read at a branch head, so a deploy serves content of
+// The lockfile and the notes the engine has not released yet come from the engine at the release this site installs:
+// the tag equal to the installed neo.mjs version, or --engine-ref=<tag|sha> for a dry run before that tag exists. The
+// conversations and the released notes come from github-content-sync at the commit contentPins.json pins. Nothing is read at a branch head, so a deploy serves content of
 // known revisions, and a missing family ends the build instead of shipping a portal without it.
 console.log('Step 4.1: Fetching the portal content at pinned revisions...');
 const contentDest      = resolve('node_modules/neo.mjs/resources/content');
@@ -127,7 +127,8 @@ let manifestMaxIssueId;
 await removeClones();
 
 try {
-    // The engine authors its notes in .github/RELEASE_NOTES from 13.2 on; earlier tags carry resources/content/release-notes
+    // The engine authors its notes in .github/RELEASE_NOTES from 13.2 on; earlier tags carry resources/content/release-notes.
+    // Either may still hold released notes; the corpus copy of those wins below.
     const releaseNotePaths = ['.github/RELEASE_NOTES', 'resources/content/release-notes'];
     const engineUrl        = 'https://github.com/neomjs/neo.git';
     const engineCommit     = fetchRevision(engineUrl, engineRef, engineClonePath, releaseNotePaths) ||
@@ -163,10 +164,7 @@ try {
     // Legacy layouts (issue-archive, pr-archive) are deleted, never copied — npm install
     // only wipes node_modules/neo.mjs on a version change, so --force re-runs need the rm.
     const releaseNotes    = releaseNotePaths.map(dir => resolve(engineClonePath, dir));
-    const contentFamilies = [
-        ['release-notes', releaseNotes.find(existsSync) ?? releaseNotes[0]],
-        ...['issues', 'pulls', 'discussions', 'archive'].map(dir => [dir, resolve(corpusClonePath, 'neo', dir)])
-    ];
+    const contentFamilies = ['release-notes', 'issues', 'pulls', 'discussions', 'archive'].map(dir => [dir, resolve(corpusClonePath, 'neo', dir)]);
 
     await mkdir(contentDest, { recursive: true });
 
@@ -181,6 +179,20 @@ try {
 
         console.log(`Copying ${dir}...`);
         await cp(source, resolve(contentDest, dir), { recursive: true });
+    }
+
+    // The corpus archives each released note from its GitHub Release; the engine tag adds the notes it has not
+    // released yet. A version both hold keeps the corpus copy, so the release index lists none twice.
+    const isNote      = name => /^v.+\.md$/.test(name);
+    const listedNotes = new Set((await readdir(resolve(contentDest, 'release-notes'), { recursive: true })).map(name => basename(name)).filter(isNote));
+    const engineNotes = releaseNotes.find(existsSync);
+
+    for (const name of engineNotes ? await readdir(engineNotes, { recursive: true }) : []) {
+        if (isNote(basename(name)) && !listedNotes.has(basename(name))) {
+            console.log(`Adding the engine's unreleased note ${basename(name)}...`);
+            await cp(resolve(engineNotes, name), resolve(contentDest, 'release-notes', basename(name)));
+            listedNotes.add(basename(name));
+        }
     }
 
     // The npm tarball ships no lockfile, so a fresh `npm i` inside node_modules/neo.mjs
