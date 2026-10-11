@@ -1,0 +1,100 @@
+---
+id: 5822
+title: 'main.addon.MonacoEditor: remove editor/editor.main.nls.js'
+state: CLOSED
+labels:
+  - bug
+  - dependencies
+  - no auto close
+  - ai
+  - testing
+  - regression
+assignees:
+  - neo-gpt
+createdAt: '2024-08-26T18:35:11Z'
+updatedAt: '2026-09-05T13:13:46Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5822'
+author: tobiu
+commentsCount: 3
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2026-09-05T13:13:46Z'
+---
+# main.addon.MonacoEditor: remove editor/editor.main.nls.js
+
+i upgraded to v0.51.0, and was missing that the setup changed.
+
+the breaking change was not mentioned inside the release notes:
+https://github.com/microsoft/monaco-editor/releases/tag/v0.51.0
+
+i found it here:
+https://github.com/microsoft/monaco-editor/commit/e52ff427290808dff6809b3f77866ae7a62a119b
+
+## Timeline
+
+- 2024-08-26T18:35:11Z @tobiu added the `enhancement` label
+- 2024-08-26T18:35:11Z @tobiu assigned to @tobiu
+- 2024-08-26T18:42:49Z @tobiu added the `bug` label
+### @tobiu - 2024-08-26T18:44:54Z
+
+tried it out with removing the file, and it is causing serious damage:
+![Screenshot 2024-08-26 at 20 41 32](https://github.com/user-attachments/assets/cd567936-6100-4026-bd58-d432694ffe87)
+
+i will switch back to the previous version and create a bug ticket for microsoft.
+
+- 2024-08-26T18:50:41Z @tobiu cross-referenced by #4654
+- 2024-08-26T18:52:59Z @tobiu referenced in commit `97c9ffb` - "#5822 switching back to the last stable monaco-editor version for now"
+- 2024-08-27T20:40:37Z @tobiu added the `no auto close` label
+### @neo-gpt - 2026-09-05T12:02:58Z
+
+## Resumed compatibility repair — operator-directed, 2026-09-05
+
+The original `0.51.0` migration is still relevant: the operator reports a blank `apps/portal` after the grouped dependency update moved Monaco from exact `0.50.0` to exact `0.56.0` (commit `c691107353`, PR #18325), while both integration classes stayed unchanged. The original comment's warning that deleting the NLS script alone is insufficient remains a useful negative control.
+
+**Intake:** valid as the existing compatibility lane, with the operator's current request covering the main-thread addon, wrapper APIs, and missing browser coverage. Ticket created 2024-08-26, updated 2026-05-16, `no auto close`; current source and package bytes, not its age, validate the work. No competing Monaco implementation surfaced in live PR/A2A sweeps. No ADR mutation or new runtime subsystem.
+
+The `0.56.0` package lacks `editor/editor.main.nls.js`; its `editor.main.js` is now a small named AMD entry whose dependencies/factory install the stylesheet, workers and global editor API. Neo currently injects that file as a raw script and never awaits AMD module resolution. The actual portal MIME/rejection failure will be recorded before the repair.
+
+| Surface | Authority | Intended change | Failure behavior | Evidence |
+|---|---|---|---|---|
+| `main.addon.MonacoEditor#loadFiles` | shipped Monaco AMD entry | load the AMD loader and await `vs/editor/editor.main`, allowing its own NLS/CSS/worker setup | reject with an actionable load error | real installed-package browser boot; no fake global `monaco` |
+| addon editor operations | Monaco public editor/model APIs | validate language, theme, model value, options, resize and disposal; replace private/removed access where necessary | safe missing/retired editor handling | browser operations against the real editor |
+| wrapper lifecycle | `core.Base` async ownership and `component.Base` mount/window lifecycle | prevent retired mounts from creating editors; release native editor/model/listener ownership | late work cannot revive a destroyed or moved holder | mount/change/destroy/recreate controls |
+| exact dependency pin | operator's deliberate compatibility boundary | retain an exact Monaco version; prevent it riding inside the broad version-update group | future integration change stays explicit | Dependabot configuration and a browser job that runs on dependency changes |
+| CI coverage | existing component suite runs on dependency edits | exercise portal boot plus the Monaco wrapper under Chromium | missing assets and rejected initialization fail CI | red on old integration, green on repair |
+
+Acceptance for this resumed work:
+1. Portal boot completes with Monaco `0.56.0`; the installed assets return the proper content types and no Monaco initialization failure remains.
+2. The real editor renders and supports value editing, runtime language/theme/options changes and its worker-backed language path.
+3. Destroy/recreate and retired mount/window-generation controls leave no duplicate live editor/model and no late recreation.
+4. CI browser coverage reaches the production addon and wrapper with the installed Monaco package; the broken loader is a discriminating red control.
+5. Monaco remains exact-pinned and isolated from bulk version bumps. No DOMPurify security closure is claimed: #18354 owns the bundled-sanitizer issue.
+
+Picking up on the operator's current direction; previous assignee @tobiu, last recorded issue implementation comment 2024-08-26T18:44:54Z. I will preserve the original issue body and its rollback evidence.
+
+Origin Session ID: cb7ccc74-b375-4785-9adf-df6d1112957b
+
+### @neo-gpt - 2026-09-05T12:03:01Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `neo-gpt`
+**Reason:** Operator requested the Monaco addon/wrapper compatibility repair in this session; resuming the existing ticket rather than creating a duplicate. Original operator body and rollback comment preserved.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-09-05T12:32:10Z @neo-fable-clio cross-referenced by #115
+- 2026-09-05T12:37:20Z @neo-gpt cross-referenced by PR #18355
+- 2026-09-05T15:38:14Z @neo-gpt cross-referenced by #18365
+- 2026-09-05T15:54:49Z @neo-gpt cross-referenced by PR #18366
+- 2026-09-09T19:30:22Z @neo-opus-ada cross-referenced by #18564
+
