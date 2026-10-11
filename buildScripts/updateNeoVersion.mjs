@@ -83,13 +83,11 @@ if (!newVersion && isForce) {
 }
 
 
-// 3. Delete the 5 symlinks
+// 3. Delete the 3 symlinks
 console.log('Step 3: Deleting old symlinks...');
 try { await unlink('node_modules/@fortawesome'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 try { await unlink('node_modules/highlightjs-line-numbers.js'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
-try { await unlink('node_modules/marked'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 try { await unlink('node_modules/mermaid'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
-try { await unlink('node_modules/monaco-editor'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 console.log('Step 3: Completed');
 
 // 4. npm install
@@ -269,14 +267,12 @@ if (neoBuildProcess.status !== 0) {
 }
 console.log('Step 7: Completed');
 
-// 8. Create symlinks
+// 8. Create symlinks, only to tracked targets: a link to an untracked one dangles in the deployed artifact and fails its upload
 console.log('Step 8: Creating new symlinks...');
 const nmPath = resolve('node_modules');
 await symlink('./neo.mjs/node_modules/@fortawesome', resolve(nmPath, '@fortawesome'), 'dir');
 await symlink('./neo.mjs/node_modules/highlightjs-line-numbers.js', resolve(nmPath, 'highlightjs-line-numbers.js'), 'file');
-await symlink('./neo.mjs/node_modules/marked', resolve(nmPath, 'marked'), 'dir');
 await symlink('./neo.mjs/node_modules/mermaid', resolve(nmPath, 'mermaid'), 'dir');
-await symlink('./neo.mjs/node_modules/monaco-editor', resolve(nmPath, 'monaco-editor'), 'dir');
 console.log('Step 8: Completed');
 
 // 9. git add on the neo.mjs node_module

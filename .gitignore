@@ -28,16 +28,11 @@
 !/node_modules/neo.mjs/node_modules/@fortawesome/*
 !/node_modules/@fortawesome
 !/node_modules/highlightjs-line-numbers.js
-!/node_modules/marked
 !/node_modules/mermaid
-!/node_modules/monaco-editor
 
 # highlight.js
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js
 !/node_modules/neo.mjs/node_modules/highlightjs-line-numbers.js/*
-
-# marked
-!/node_modules/neo.mjs/node_modules/marked/lib/marked.esm.js
 
 # mermaid
 !/node_modules/neo.mjs/node_modules/mermaid
@@ -45,19 +40,6 @@
 !/node_modules/neo.mjs/node_modules/mermaid/dist
 /node_modules/neo.mjs/node_modules/mermaid/dist/*
 !/node_modules/neo.mjs/node_modules/mermaid/dist/mermaid.min.js
-
-# monaco-editor
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/base
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/base/*
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/basic-languages/javascript/javascript.js
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/basic-languages/markdown/markdown.js
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/basic-languages/typescript/typescript.js
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.css
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.js
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/editor/editor.main.nls.js
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/language
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/language/*
-!/node_modules/neo.mjs/node_modules/monaco-editor/min/vs/loader.js
 
 # siesta
 !/node_modules/neo.mjs/node_modules/siesta-lite/resources/css/*

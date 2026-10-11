@@ -1,3 +1,4 @@
+import { spawnSync } from 'child_process';
 import { copyFile, readFile, writeFile } from 'fs/promises';
 import { resolve } from 'path';
 
@@ -60,5 +61,17 @@ if (indexContent.includes('</body>')) {
 
 await writeFile(indexPath, indexContent);
 console.log('Step 2: Completed');
+
+// 3. Stage the root files, which the deploy commits. --sparse stages them in a sparse clone too.
+console.log('Step 3: Staging the root files...');
+const gitAddProcess = spawnSync('git', ['add', '--sparse', ...filesToCopy]);
+if (gitAddProcess.status !== 0) {
+    console.error(`'git add' failed with exit code ${gitAddProcess.status}`);
+    if (gitAddProcess.stderr) {
+        console.error(gitAddProcess.stderr.toString());
+    }
+    process.exit(1);
+}
+console.log('Step 3: Completed');
 
 console.log('SEO enhancement process completed.');
