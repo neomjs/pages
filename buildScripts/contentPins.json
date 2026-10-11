@@ -2,6 +2,6 @@
     "about": "The content revision a site build serves. Step 4.1 of buildScripts/updateNeoVersion.mjs reads the portal's conversations (issues, pulls, discussions, archive) from github-content-sync at this full commit SHA. Bump it deliberately: the pages commit that changes it records what the next deploy serves.",
     "corpus": {
         "repository": "https://github.com/neomjs/github-content-sync.git",
-        "commit"    : "1152671f7e6330b8558befc6e0e45d345e595256"
+        "commit"    : "3beb1e6599aaad68cdbaff2874e2151d7eba57cb"
     }
 }
