@@ -28,7 +28,7 @@
   "type": "Bug",
   "area": "Build",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-15",
   "comments": 0
  },
@@ -50,7 +50,7 @@
   "type": "Bug",
   "area": "Core",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-15",
   "comments": 0
  },
@@ -105,7 +105,7 @@
   "type": "Bug",
   "area": "Core",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-14",
   "comments": 0
  },
@@ -138,7 +138,7 @@
   "type": "Bug",
   "area": "Core",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-13",
   "comments": 0
  },
@@ -237,7 +237,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-13",
   "comments": 0
  },
@@ -402,7 +402,7 @@
   "type": "Feature",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-12",
   "comments": 1
  },
@@ -490,7 +490,7 @@
   "type": "Epic",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-12",
   "comments": 3
  },
@@ -633,7 +633,7 @@
   "type": "Bug",
   "area": "Build",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-11",
   "comments": 0
  },
@@ -875,7 +875,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-11",
   "comments": 2
  },
@@ -897,7 +897,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-11",
   "comments": 0
  },
@@ -919,7 +919,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-10",
   "comments": 0
  },
@@ -930,7 +930,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-10",
   "comments": 0
  },
@@ -974,7 +974,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-10",
   "comments": 0
  },
@@ -996,7 +996,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-10",
   "comments": 0
  },
@@ -1029,7 +1029,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-10",
   "comments": 0
  },
@@ -1062,7 +1062,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-10",
   "comments": 1
  },
@@ -1084,7 +1084,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-10",
   "comments": 0
  },
@@ -1128,7 +1128,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-10",
   "comments": 0
  },
@@ -1194,7 +1194,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-09",
   "comments": 21
  },
@@ -1216,7 +1216,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-09",
   "comments": 1
  },
@@ -1293,7 +1293,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Open",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-09",
   "comments": 4
  },
@@ -1304,7 +1304,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-09",
   "comments": 7
  },
@@ -1458,7 +1458,7 @@
   "type": "Bug",
   "area": "Testing",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-09",
   "comments": 0
  },
@@ -1491,7 +1491,7 @@
   "type": "Feature",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-08",
   "comments": 0
  },
@@ -1513,7 +1513,7 @@
   "type": "Bug",
   "area": "Core",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-08",
   "comments": 0
  },
@@ -1546,7 +1546,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-07",
   "comments": 0
  },
@@ -1557,7 +1557,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-07",
   "comments": 0
  },
@@ -1656,7 +1656,7 @@
   "type": "Bug",
   "area": "Core",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-06",
   "comments": 1
  },
@@ -1766,7 +1766,7 @@
   "type": "Feature",
   "area": "Docs",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-05",
   "comments": 0
  },
@@ -1810,7 +1810,7 @@
   "type": "Task",
   "area": "Docs",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-04",
   "comments": 0
  },
@@ -1832,7 +1832,7 @@
   "type": "Feature",
   "area": "Build",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-10-03",
   "comments": 0
  },
@@ -1854,7 +1854,7 @@
   "type": "Feature",
   "area": "Docs",
   "state": "Not planned",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-03",
   "comments": 1
  },
@@ -1898,7 +1898,7 @@
   "type": "Feature",
   "area": "Docs",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-03",
   "comments": 0
  },
@@ -1964,7 +1964,7 @@
   "type": "Feature",
   "area": "Docs",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-02",
   "comments": 0
  },
@@ -2019,7 +2019,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-01",
   "comments": 1
  },
@@ -2030,7 +2030,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-10-01",
   "comments": 0
  },
@@ -2492,7 +2492,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-26",
   "comments": 0
  },
@@ -2503,7 +2503,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-26",
   "comments": 5
  },
@@ -2514,7 +2514,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Not planned",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-26",
   "comments": 1
  },
@@ -2536,7 +2536,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-26",
   "comments": 1
  },
@@ -2558,7 +2558,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-26",
   "comments": 0
  },
@@ -2646,7 +2646,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-25",
   "comments": 2
  },
@@ -2668,7 +2668,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-25",
   "comments": 1
  },
@@ -2690,7 +2690,7 @@
   "type": "Bug",
   "area": "Testing",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-25",
   "comments": 0
  },
@@ -2712,7 +2712,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-25",
   "comments": 0
  },
@@ -2723,7 +2723,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-25",
   "comments": 0
  },
@@ -2833,7 +2833,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-24",
   "comments": 5
  },
@@ -2844,7 +2844,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-24",
   "comments": 3
  },
@@ -2855,7 +2855,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-24",
   "comments": 7
  },
@@ -2877,7 +2877,7 @@
   "type": "Bug",
   "area": "Core",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-24",
   "comments": 0
  },
@@ -2921,7 +2921,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-24",
   "comments": 0
  },
@@ -2998,7 +2998,7 @@
   "type": "Feature",
   "area": "Docs",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-24",
   "comments": 0
  },
@@ -3064,7 +3064,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-24",
   "comments": 0
  },
@@ -3295,7 +3295,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-23",
   "comments": 0
  },
@@ -3306,7 +3306,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-23",
   "comments": 3
  },
@@ -3317,7 +3317,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Not planned",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-23",
   "comments": 1
  },
@@ -3328,7 +3328,7 @@
   "type": "Feature",
   "area": "Docs",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-09-23",
   "comments": 0
  },
@@ -3350,7 +3350,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-23",
   "comments": 1
  },
@@ -3372,7 +3372,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-23",
   "comments": 0
  },
@@ -3471,7 +3471,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-23",
   "comments": 0
  },
@@ -3482,7 +3482,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-23",
   "comments": 0
  },
@@ -3537,7 +3537,7 @@
   "type": "Bug",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-23",
   "comments": 1
  },
@@ -3614,7 +3614,7 @@
   "type": "Feature",
   "area": "Dashboard",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-23",
   "comments": 2
  },
@@ -3680,7 +3680,7 @@
   "type": "Feature",
   "area": "Docs",
   "state": "Open",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-22",
   "comments": 1
  },
@@ -3702,7 +3702,7 @@
   "type": "Feature",
   "area": "Docs",
   "state": "Not planned",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-22",
   "comments": 4
  },
@@ -3724,7 +3724,7 @@
   "type": "Feature",
   "area": "Docs",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-22",
   "comments": 3
  },
@@ -4087,7 +4087,7 @@
   "type": "Task",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-19",
   "comments": 0
  },
@@ -4109,7 +4109,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-19",
   "comments": 0
  },
@@ -4131,7 +4131,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-09-19",
   "comments": 0
  },
@@ -4142,7 +4142,7 @@
   "type": "Feature",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-09-19",
   "comments": 0
  },
@@ -4175,7 +4175,7 @@
   "type": "Feature",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-19",
   "comments": 0
  },
@@ -4219,7 +4219,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-gpt",
+  "author": "neo-gpt-euclid",
   "created": "2026-09-19",
   "comments": 0
  },
@@ -4241,7 +4241,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-19",
   "comments": 0
  },
@@ -4263,7 +4263,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-19",
   "comments": 0
  },
@@ -4296,7 +4296,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-19",
   "comments": 0
  },
@@ -4318,7 +4318,7 @@
   "type": "Bug",
   "area": "Core",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4373,7 +4373,7 @@
   "type": "Feature",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4384,7 +4384,7 @@
   "type": "Feature",
   "area": "Testing",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4406,7 +4406,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4428,7 +4428,7 @@
   "type": "Bug",
   "area": "Core",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4450,7 +4450,7 @@
   "type": "Bug",
   "area": "Core",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4472,7 +4472,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4560,7 +4560,7 @@
   "type": "Feature",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4582,7 +4582,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4615,7 +4615,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4626,7 +4626,7 @@
   "type": "Feature",
   "area": "Refactoring",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4747,7 +4747,7 @@
   "type": "Bug",
   "area": "Core",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4813,7 +4813,7 @@
   "type": "Feature",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 1
  },
@@ -4835,7 +4835,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 1
  },
@@ -4846,7 +4846,7 @@
   "type": "Bug",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
@@ -4857,7 +4857,7 @@
   "type": "Feature",
   "area": "Grid",
   "state": "Closed",
-  "author": "neo-fable",
+  "author": "neo-fable-mnemosyne",
   "created": "2026-09-18",
   "comments": 0
  },
