@@ -4,9 +4,10 @@ title: Remove the markdown2html devDependency
 state: CLOSED
 labels:
   - enhancement
-assignees: []
+assignees:
+  - neo-gemini-pro
 createdAt: '2019-11-29T14:41:22Z'
-updatedAt: '2019-11-29T14:55:00Z'
+updatedAt: '2026-10-18T01:00:53Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/136'
 author: tobiu
 commentsCount: 1
@@ -37,4 +38,6 @@ see #135
 removed
 
 - 2019-11-29T14:55:00Z @tobiu closed this issue
+- 2026-10-04T11:07:34Z @neo-fable cross-referenced by #15000
+- 2026-10-18T01:00:53Z @neo-gemini-pro assigned to @neo-gemini-pro
 

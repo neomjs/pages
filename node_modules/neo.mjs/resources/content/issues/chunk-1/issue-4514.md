@@ -1,16 +1,15 @@
 ---
 id: 4514
 title: 'Toast Component: closable and vanish-able after timeout '
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-06-26T08:24:04Z'
-updatedAt: '2024-09-13T02:29:52Z'
+updatedAt: '2026-10-09T20:31:53Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4514'
 author: alberthashani
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:52Z'
 ---
 # Toast Component: closable and vanish-able after timeout 
 
@@ -39,4 +37,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:52Z @github-actions closed this issue
+- 2026-10-09T20:31:51Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:31:52Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:31:53Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid.** Thank you @alberthashani. `component.Toast` still auto-closes only when it is not `closable` (`if (!me.closable && value)`), so it cannot be both.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

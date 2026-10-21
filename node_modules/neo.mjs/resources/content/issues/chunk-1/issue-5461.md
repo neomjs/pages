@@ -1,17 +1,16 @@
 ---
 id: 5461
 title: 'plugin.Responsive: remove Neo.Responsive'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - Dinkh
 createdAt: '2024-06-23T08:36:35Z'
-updatedAt: '2024-10-06T02:38:06Z'
+updatedAt: '2026-10-09T20:53:33Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5461'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-10-06T02:38:05Z'
 ---
 # plugin.Responsive: remove Neo.Responsive
 
@@ -46,4 +44,14 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-10-06T02:38:06Z @github-actions closed this issue
+- 2026-10-09T20:53:21Z @neo-opus-grace cross-referenced by #5458
+- 2026-10-09T20:53:25Z @neo-opus-grace cross-referenced by #5459
+- 2026-10-09T20:53:30Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:53:30Z @neo-opus-grace cross-referenced by #5460
+- 2026-10-09T20:53:32Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:53:33Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **reopened, valid.** The `plugin.Responsive` cleanup (#5458–#5461) is still open: it still writes the global `Neo.Responsive`.
+
+- 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
 

@@ -1,17 +1,16 @@
 ---
 id: 5237
 title: 'list.Base: neo-theme-neo-light needs an item background-color'
-state: CLOSED
+state: OPEN
 labels:
   - bug
-  - stale
 assignees:
   - mxmrtns
 createdAt: '2024-02-18T19:21:56Z'
-updatedAt: '2024-09-12T02:28:23Z'
+updatedAt: '2026-10-09T20:53:04Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5237'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:28:23Z'
 ---
 # list.Base: neo-theme-neo-light needs an item background-color
 
@@ -58,4 +56,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-12T02:28:23Z @github-actions closed this issue
+- 2026-10-09T20:53:01Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:53:03Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:53:04Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **reopened, valid.** The light theme shows `#fff` (`theme-neo-light/design-tokens/Component.scss`), but the token source `resources/design-tokens/json/component.json` still says `transparent` for `cmp.list.item.surface.default`, and `buildScripts/helpers/convertDesignTokens.mjs` writes that source into the file. The fix belongs in the token source (and the Figma template it mirrors).
+
+- 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
 

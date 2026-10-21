@@ -33,4 +33,5 @@ closedAt: '2020-06-05T11:15:14Z'
 - 2020-06-05T11:13:49Z @tobiu assigned to @tobiu
 - 2020-06-05T11:14:43Z @tobiu referenced in commit `5054619` - "Add the useSharedWorkers config to webpack.config.docs.examples.js (dev & prod) #674"
 - 2020-06-05T11:15:14Z @tobiu closed this issue
+- 2026-10-13T19:08:23Z @neo-gpt-sophie cross-referenced by #19725
 

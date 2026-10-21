@@ -1,17 +1,16 @@
 ---
 id: 5218
 title: 'component.DateSelector: we need a new widget to pick the month & year more easily'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - ExtAnimal
 createdAt: '2024-02-13T08:20:55Z'
-updatedAt: '2024-09-12T02:28:28Z'
+updatedAt: '2026-10-09T20:52:55Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5218'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:28:27Z'
 ---
 # component.DateSelector: we need a new widget to pick the month & year more easily
 
@@ -46,4 +44,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-12T02:28:27Z @github-actions closed this issue
+- 2026-10-09T20:52:51Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:52:53Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:52:55Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **reopened, valid but later.** `DateSelector` still has only its header year stepping (`updateHeaderYear`); there is no month/year picker widget.
+
+- 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
 

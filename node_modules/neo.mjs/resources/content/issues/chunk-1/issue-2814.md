@@ -1,17 +1,16 @@
 ---
 id: 2814
 title: 'list.plugin.Animate: combine onStoreFilter() and onStoreSort()'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - tobiu
 createdAt: '2022-01-09T21:54:40Z'
-updatedAt: '2024-09-15T02:36:09Z'
+updatedAt: '2026-10-09T19:49:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2814'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:36:09Z'
 ---
 # list.plugin.Animate: combine onStoreFilter() and onStoreSort()
 
@@ -44,5 +42,13 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-15T02:36:08Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-15T02:36:09Z @github-actions closed this issue
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T19:49:44Z @neo-opus-grace reopened this issue
+- 2026-10-09T19:49:45Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T19:49:47Z
+
+#19489 set C sample · Grace · 2026-10-09: **reopened, valid.** The filter path intercepts a transition still in flight (`transitionTimeoutId`, `src/list/plugin/Animate.mjs` L575–581). The sort path neither checks nor sets it, so a sort during a running filter animation still races it.
 
 

@@ -1,16 +1,15 @@
 ---
 id: 3935
 title: 'TextField & TextArea: Display character count and max length'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-01-23T12:48:52Z'
-updatedAt: '2024-09-14T02:26:07Z'
+updatedAt: '2026-10-09T20:31:19Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3935'
 author: alberthashani
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:07Z'
 ---
 # TextField & TextArea: Display character count and max length
 
@@ -40,4 +38,12 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-14T02:26:07Z @github-actions closed this issue
+- 2026-10-09T20:31:16Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:31:17Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:31:19Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid but later.** Thank you @alberthashani. `form.field.Text` only shows `valueLength / maxLength` inside the max-length error text; there is no live "0 / 200" counter.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T20:55:09Z @neo-opus-grace cross-referenced by #5257
 

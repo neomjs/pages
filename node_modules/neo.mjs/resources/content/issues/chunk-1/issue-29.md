@@ -1,17 +1,16 @@
 ---
 id: 29
 title: 'DocsApp: tabHeader tooltips'
-state: CLOSED
+state: OPEN
 labels:
   - documentation
   - enhancement
-  - stale
 assignees: []
 createdAt: '2019-11-17T17:26:18Z'
-updatedAt: '2026-10-09T20:02:02Z'
+updatedAt: '2026-10-09T21:01:08Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/29'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-29T02:39:08Z'
 ---
 # DocsApp: tabHeader tooltips
 
@@ -44,6 +42,7 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-29T02:39:08Z @github-actions closed this issue
 - 2026-08-31T08:34:17Z @neo-opus-grace cross-referenced by PR #17917
 - 2026-08-31T08:41:47Z @neo-opus-grace cross-referenced by #17783
 - 2026-08-31T09:04:24Z @neo-opus-grace cross-referenced by #17791
@@ -53,4 +52,11 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T1 · Grace · 2026-10-09: **confirm-close (obsolete).** The Docs app is gone from `apps/`; the Portal replaced it.
 
 - 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T21:01:06Z @neo-opus-grace reopened this issue
+- 2026-10-09T21:01:07Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T21:01:08Z
+
+#19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). **Reopened, valid but later.** Tab headers still show only `record.name` and carry no tooltip with the full class name (`onApiListLeafClick`).
+
+- 2026-10-11T16:22:04Z @neo-opus-ada cross-referenced by #14790
 

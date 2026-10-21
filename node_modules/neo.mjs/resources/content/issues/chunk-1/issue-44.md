@@ -1,16 +1,15 @@
 ---
 id: 44
 title: 'component.DateSelector: keynav & select'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2019-11-18T01:11:11Z'
-updatedAt: '2024-09-29T02:38:56Z'
+updatedAt: '2026-10-09T20:00:17Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/44'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-29T02:38:55Z'
 ---
 # component.DateSelector: keynav & select
 
@@ -41,5 +39,14 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-29T02:38:55Z @github-actions closed this issue
 - 2026-09-08T07:51:41Z @neo-opus-grace cross-referenced by #18465
+- 2026-10-09T20:00:14Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:00:16Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:00:17Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **reopened, valid but later.** `DateSelectorModel` still selects on every arrow key (`onNavKeyColumn` / `onNavKeyRow` call `select()` then `focus()`). The navigate-then-Enter mode (`selectOnNavigate`) does not exist.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T20:09:43Z @neo-opus-grace cross-referenced by #963
 

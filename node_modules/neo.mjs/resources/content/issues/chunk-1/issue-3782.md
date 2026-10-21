@@ -1,16 +1,15 @@
 ---
 id: 3782
 title: HighlightJS resources
-state: CLOSED
+state: OPEN
 labels:
   - bug
-  - stale
 assignees: []
 createdAt: '2023-01-04T20:39:38Z'
-updatedAt: '2024-09-14T02:26:18Z'
+updatedAt: '2026-10-09T20:31:11Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3782'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:17Z'
 ---
 # HighlightJS resources
 
@@ -47,4 +45,11 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-14T02:26:17Z @github-actions closed this issue
+- 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T20:31:07Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:31:09Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:31:10Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid.** The highlight.js bundle and its two custom themes still exist twice: `docs/resources/lib/` and `examples/component/toast/resources/lib/`.
+
 

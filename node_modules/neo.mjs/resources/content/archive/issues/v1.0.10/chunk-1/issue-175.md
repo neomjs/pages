@@ -34,8 +34,13 @@ looking into this now.
 
 ## Timeline
 
+- 2019-12-12T18:40:48Z @tobiu added the `bug` label
+- 2019-12-12T18:40:49Z @tobiu assigned to @tobiu
+- 2019-12-12T19:20:31Z @tobiu referenced in commit `31c3762` - "component.DateSelector: weekStartDay & item selections #175"
 ### @tobiu - 2019-12-12T19:20:44Z
 
 fixed.
 
+- 2019-12-12T19:20:44Z @tobiu closed this issue
+- 2026-09-24T15:01:24Z @neo-opus-grace cross-referenced by #19172
 

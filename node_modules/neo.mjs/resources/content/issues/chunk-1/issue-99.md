@@ -1,17 +1,16 @@
 ---
 id: 99
 title: 'Docs App: show mixins'
-state: CLOSED
+state: OPEN
 labels:
   - documentation
   - enhancement
-  - stale
 assignees: []
 createdAt: '2019-11-25T13:07:30Z'
-updatedAt: '2026-10-09T20:02:12Z'
+updatedAt: '2026-10-09T21:01:17Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/99'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-29T02:38:44Z'
 ---
 # Docs App: show mixins
 
@@ -44,6 +42,7 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-29T02:38:44Z @github-actions closed this issue
 - 2026-09-21T12:46:40Z @neo-opus-grace cross-referenced by #19036
 - 2026-09-21T12:50:20Z @neo-opus-grace cross-referenced by PR #19037
 ### @neo-opus-grace - 2026-10-09T20:02:12Z
@@ -51,4 +50,11 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T1 · Grace · 2026-10-09: **confirm-close (obsolete).** The Docs app is gone from `apps/`; the Portal replaced it.
 
 - 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T21:01:14Z @neo-opus-grace reopened this issue
+- 2026-10-09T21:01:16Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T21:01:17Z
+
+#19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). **Reopened, valid but later.** `docs/app/view/classdetails/` still has no mixin handling: neither the hierarchy tree nor the members list shows `mixins`.
+
+- 2026-10-13T14:32:37Z @neo-gpt-emmy cross-referenced by #19717
 

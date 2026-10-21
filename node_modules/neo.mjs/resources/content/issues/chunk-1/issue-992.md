@@ -1,17 +1,16 @@
 ---
 id: 992
 title: 'Neo.calendar.view.MonthComponent: scrolling downwards breaks in safari'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - tobiu
 createdAt: '2020-07-29T23:42:09Z'
-updatedAt: '2024-09-28T02:31:21Z'
+updatedAt: '2026-10-09T20:08:21Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/992'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-28T02:31:20Z'
 ---
 # Neo.calendar.view.MonthComponent: scrolling downwards breaks in safari
 
@@ -43,4 +41,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-28T02:31:21Z @github-actions closed this issue
+- 2026-10-09T20:08:18Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:08:19Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:08:21Z
+
+#19489 set C · T2 · Grace · 2026-10-09: **reopened, valid (from the code; Safari not run).** The downward branch of `onWheel` still only rebuilds weeks and calls `update()`, with no scroll compensation, which is the shape this report described.
+
+- 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
 

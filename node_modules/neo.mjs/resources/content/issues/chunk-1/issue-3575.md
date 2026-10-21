@@ -1,16 +1,15 @@
 ---
 id: 3575
 title: 'form.Container: fieldDefaults config'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2022-12-03T19:43:11Z'
-updatedAt: '2024-09-14T02:26:46Z'
+updatedAt: '2026-10-09T19:49:55Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3575'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:45Z'
 ---
 # form.Container: fieldDefaults config
 
@@ -40,5 +38,13 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-14T02:26:45Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-14T02:26:45Z @github-actions closed this issue
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T19:49:52Z @neo-opus-grace reopened this issue
+- 2026-10-09T19:49:54Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T19:49:55Z
+
+#19489 set C sample · Grace · 2026-10-09: **reopened, valid but later.** `itemDefaults` still reaches direct children only, and nothing in `src` provides a `fieldDefaults` for nested or dynamically added fields.
 
 

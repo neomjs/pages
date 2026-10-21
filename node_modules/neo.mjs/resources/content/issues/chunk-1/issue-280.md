@@ -1,17 +1,16 @@
 ---
 id: 280
 title: 'component.Helix: support for mobile'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
   - help wanted
-  - stale
 assignees: []
 createdAt: '2020-03-14T19:59:43Z'
-updatedAt: '2024-09-28T02:32:15Z'
+updatedAt: '2026-10-09T20:00:45Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/280'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-28T02:32:15Z'
 ---
 # component.Helix: support for mobile
 
@@ -49,4 +47,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-28T02:32:15Z @github-actions closed this issue
+- 2026-10-09T20:00:42Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:00:43Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:00:45Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **reopened, narrowed.** The Helix rotates on touch (`touchmove` → `onTouchMove`, `src/component/Helix.mjs`). Pinch-to-zoom (translateZ) and swipe-to-select are still missing.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

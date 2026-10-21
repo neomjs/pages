@@ -1,16 +1,15 @@
 ---
 id: 991
 title: 'Neo.calendar.view.MonthComponent: on base font size change => fetch the new header height in px'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2020-07-29T23:39:51Z'
-updatedAt: '2024-09-28T02:31:23Z'
+updatedAt: '2026-10-09T20:08:17Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/991'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-28T02:31:22Z'
 ---
 # Neo.calendar.view.MonthComponent: on base font size change => fetch the new header height in px
 
@@ -39,4 +37,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-28T02:31:22Z @github-actions closed this issue
+- 2026-10-09T20:08:14Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:08:15Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:08:17Z
+
+#19489 set C · T2 · Grace · 2026-10-09: **reopened, narrowed.** The month view measures `headerHeight` each time it becomes active, but not when the base font size changes while it is shown, and `onWheel` divides by that value.
+
+- 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
 

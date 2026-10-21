@@ -1,16 +1,15 @@
 ---
 id: 3699
 title: Neo-Carousel should support less than 3 items
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2022-12-28T12:59:47Z'
-updatedAt: '2024-09-14T02:26:30Z'
+updatedAt: '2026-10-09T20:24:05Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3699'
 author: Dinkh
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:30Z'
 ---
 # Neo-Carousel should support less than 3 items
 
@@ -40,4 +38,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-14T02:26:30Z @github-actions closed this issue
+- 2026-10-09T20:24:02Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:24:04Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:24:05Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **reopened, valid (from the code, not run).** Thank you @Dinkh. `component.Carousel` still builds a fixed three-slot track (`for (i; i < 3; i++)`).
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

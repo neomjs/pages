@@ -1,16 +1,15 @@
 ---
 id: 3762
 title: ComponentModel store entries should default to being typed as stores
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-01-04T01:51:00Z'
-updatedAt: '2024-09-14T02:26:25Z'
+updatedAt: '2026-10-09T20:24:09Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3762'
 author: maxrahder
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:24Z'
 ---
 # ComponentModel store entries should default to being typed as stores
 
@@ -40,4 +38,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-14T02:26:24Z @github-actions closed this issue
+- 2026-10-09T20:24:07Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:24:08Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:24:09Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **reopened, valid.** Thank you @maxrahder. `state.Provider` still instantiates `stores` entries through `ClassSystemUtil.beforeSetInstance(storeValue)` with no default class, so an entry without `module` or `ntype` does not become a store.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

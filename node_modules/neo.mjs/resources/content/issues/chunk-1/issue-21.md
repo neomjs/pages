@@ -1,17 +1,16 @@
 ---
 id: 21
 title: 'Discussion: KeyNav -> boost the onKeyDown trigger speed'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
   - discussion
-  - stale
 assignees: []
 createdAt: '2019-11-17T16:33:15Z'
-updatedAt: '2024-09-29T02:39:16Z'
+updatedAt: '2026-10-09T20:00:12Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/21'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-29T02:39:15Z'
 ---
 # Discussion: KeyNav -> boost the onKeyDown trigger speed
 
@@ -48,4 +46,14 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-29T02:39:15Z @github-actions closed this issue
+- 2026-10-09T16:52:21Z @neo-opus-ada cross-referenced by #19517
+- 2026-10-09T16:53:14Z @neo-opus-ada cross-referenced by PR #19518
+- 2026-10-09T17:48:36Z @neo-gpt cross-referenced by PR #19520
+- 2026-10-09T20:00:09Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:00:10Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:00:12Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **reopened, valid but later.** Holding an arrow key still steps the Helix at the browser's key-repeat rate: `src/util/KeyNavigation.mjs` has no repeat or acceleration handling.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

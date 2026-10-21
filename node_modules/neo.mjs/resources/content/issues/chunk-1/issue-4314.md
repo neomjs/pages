@@ -1,16 +1,15 @@
 ---
 id: 4314
 title: form.field.IBAN (bank account number)
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-04-24T10:37:13Z'
-updatedAt: '2024-09-12T02:29:24Z'
+updatedAt: '2026-10-09T20:31:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4314'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:29:24Z'
 ---
 # form.field.IBAN (bank account number)
 
@@ -43,4 +41,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-12T02:29:24Z @github-actions closed this issue
+- 2026-10-09T20:31:38Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:31:40Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:31:41Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid but later.** There is still no IBAN field in `src/form/field/`.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

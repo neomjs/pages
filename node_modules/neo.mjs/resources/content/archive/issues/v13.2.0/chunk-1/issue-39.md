@@ -1,0 +1,140 @@
+---
+id: 39
+title: 'form.field.Text: hideLabel & labelPosition inline'
+state: CLOSED
+labels:
+  - enhancement
+  - stale
+assignees: []
+createdAt: '2019-11-18T01:04:18Z'
+updatedAt: '2026-10-09T20:01:20Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/39'
+author: tobiu
+commentsCount: 3
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2026-10-09T20:01:19Z'
+---
+# form.field.Text: hideLabel & labelPosition inline
+
+the combination breaks right now.
+
+it does not make sense anyway, so there should be check to throw an error if it does get combined at any point.
+
+or setting the position to inline should set hideLabel to false and vice versa.
+
+thoughts?
+
+## Timeline
+
+- 2019-11-18T01:04:18Z @tobiu added the `enhancement` label
+### @github-actions - 2024-09-15T02:37:13Z
+
+This issue is stale because it has been open for 90 days with no activity.
+
+- 2024-09-15T02:37:13Z @github-actions added the `stale` label
+### @github-actions - 2024-09-29T02:38:58Z
+
+This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-29T02:38:58Z @github-actions closed this issue
+- 2026-08-28T21:30:41Z @neo-opus-vega cross-referenced by #17837
+- 2026-08-28T21:34:13Z @neo-gpt cross-referenced by #17836
+- 2026-09-01T03:07:46Z @neo-gpt-emmy cross-referenced by #17540
+- 2026-09-15T13:30:57Z @tobiu referenced in commit `525b999` - "fix(build): the engine archaeology guard reads a numeric HTML entity as a codepoint (#16553) (#18734)
+
+* fix(build): the engine archaeology guard reads a numeric HTML entity as a codepoint (#16553)
+
+The published guard learned this at `neo-agent-skills#68`; this is neo's own copy,
+which runs on the `lint-staged` pre-commit hook and in `ticket-archaeology-lint`.
+Without the same exclusion the two disagree about one line, which is the exact
+divergence the typed escape was introduced to end.
+
+The two rules differ in reach, so they trip on different entities: the published
+`#\d+` sees `&#39;`, while this guard's `#\d{4,}` cannot — but it does see
+`&#8212;` and `&#8217;`, the em dash and right quote a comment describing rendered
+markup carries most often. Measured before writing the fix.
+
+Blanked rather than skipped, like an annotated colour, so a genuine ref on the same
+line still fires. Arms: both entities pass, a real ref beside an entity still
+reports, and the hex form plus a bare `#8212` are the controls. Dropping the
+exclusion reds the first arm.
+
+* fix(build): colour syntax excuses a colour in the engine guard, as it does upstream (#16553)
+
+The second half of the rule the published guard takes at neo-agent-skills#68: a
+colour-length number directly after `color:`, `backgroundColor_=`, `fillStyle=` or
+`CSS color` is a colour with no marker, and a number with a leading zero is never a
+ticket. Both guards must carry it or they disagree line for line, which is the
+divergence the typed escape was introduced to end.
+
+A bare `#123456` in prose still reports — nothing tells it from a six-digit ticket —
+and an excused colour cannot hide a real ref on the same line, because the colour is
+blanked rather than the line skipped.
+
+Two existing arms changed subject rather than expectation. An annotated colour is now
+excused by its own syntax, so it can no longer witness "the pattern still detects" or
+"an unknown escape kind is not a bypass"; a bare number in prose and a real ref carry
+those jobs. The typed escape stays accepted, so a consumer still holding the marker
+never reds — which is what lets the two engine escapes come out after the bump rather
+than here.
+
+Measured: with this rule, both engine lines that carry the marker today report zero
+without it, so the removal is unblocked on this side.
+
+* fix(build): the guard's own comments stop tripping both guards (#16553)
+
+The engine guard flagged a line in its own source, and the published guard flagged
+four more. Two were real archaeology I wrote — a cross-repo PR ref and a literal
+six-digit example. Three were HTML entities quoted in prose to illustrate the very
+rule this branch adds, which only the unpublished guard release can pass.
+
+Prose now names the shapes instead of quoting them. The entity literals stay where
+they are load-bearing — the four assertions — so the rule is still pinned by tests
+rather than by a comment. Both guards read this tree clean at the currently
+published release, so the branch no longer waits on a publish to go green.
+
+* chore(deps): neo-agent-skills 0.1.5, and the two colour escapes come out (#16553)
+
+The published guard now carries the colour-context and leading-zero rules, so the annotations
+on Gallery and Helix no longer buy anything — and an escape that is not needed is a comment
+asserting a judgement call where there is none.
+
+Measured against the installed 0.1.5 rather than assumed: the un-escaped
+`backgroundColor_='#000000'` reports nothing, while `see #16553` and a ref sharing the line
+with that colour each still report one. The same line under 0.1.4 reported one, which is why
+the bump had to land first.
+
+This is step 4 of the ticket's fix order, and the last of it: published guard, release, engine
+guard, bump and escapes.
+
+* ci(baseline): the reusable workflow pin moves to the release that carries the rules (#16553)
+
+The dependency bump alone reaches the local hook and `ticket-archaeology-lint`, but not the
+baseline job: that job installs `neo-agent-skills@${SKILLS_VERSION}` from the REUSABLE workflow,
+and neo pins that workflow at an exact SHA. The pin still named a commit whose three
+SKILLS_VERSION values read 0.1.4, so the job kept judging this branch by the release the branch
+exists to replace — and reported the two un-escaped colours it was 0.1.5's job to pass.
+
+Moving the SHA to the merge that carries them. Measured at the new pin: all three
+SKILLS_VERSION values read 0.1.5.
+
+The pin is exact on purpose, so a release cannot change what a pull request is judged by without
+a commit here saying so. That property is why this needed its own line rather than riding along
+with the dependency bump."
+- 2026-10-09T20:01:18Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:01:19Z @neo-opus-grace closed this issue
+### @neo-opus-grace - 2026-10-09T20:01:20Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** The combination works: `Text#afterSetHideLabel` removes the center border label when `labelPosition` is `inline` (`src/form/field/Text.mjs`).
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
+

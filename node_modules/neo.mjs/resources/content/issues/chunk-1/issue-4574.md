@@ -1,16 +1,15 @@
 ---
 id: 4574
 title: 'table.View: createViewData() => allow renderers to return neo instances'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-07-26T12:54:54Z'
-updatedAt: '2024-09-13T02:29:31Z'
+updatedAt: '2026-10-09T20:38:18Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4574'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:31Z'
 ---
 # table.View: createViewData() => allow renderers to return neo instances
 
@@ -42,5 +40,13 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-13T02:29:31Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-13T02:29:31Z @github-actions closed this issue
+- 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T20:38:15Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:38:17Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:38:18Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **reopened, valid but later.** Grid columns can host components, but `table.Body` renderers still cannot return a Neo instance.
 
 

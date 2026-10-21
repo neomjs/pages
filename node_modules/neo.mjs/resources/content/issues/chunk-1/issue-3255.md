@@ -1,16 +1,15 @@
 ---
 id: 3255
 title: 'buildScripts/createClass: generate data.Model => ask for data.Store'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2022-07-03T22:27:06Z'
-updatedAt: '2024-09-13T02:30:16Z'
+updatedAt: '2026-10-09T20:23:37Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3255'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:30:15Z'
 ---
 # buildScripts/createClass: generate data.Model => ask for data.Store
 
@@ -40,4 +38,13 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:30:15Z @github-actions closed this issue
+- 2026-10-09T20:23:34Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:23:36Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:23:37Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **reopened, valid but later.** `buildScripts/create/class.mjs` still carries the todo for this ("add a question for auto-generating a matching store").
+
+- 2026-10-09T20:23:54Z @neo-opus-grace cross-referenced by #3602
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

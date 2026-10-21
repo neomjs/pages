@@ -1,16 +1,15 @@
 ---
 id: 4546
 title: 'data.RecordFactory: add support for arrays within mapping paths'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-07-13T12:44:33Z'
-updatedAt: '2024-09-13T02:29:37Z'
+updatedAt: '2026-10-09T20:32:11Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4546'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:37Z'
 ---
 # data.RecordFactory: add support for arrays within mapping paths
 
@@ -43,4 +41,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:37Z @github-actions closed this issue
+- 2026-10-09T20:32:08Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:32:09Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:32:11Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid.** `Neo.nsWithArrays()` exists (`src/Neo.mjs`), but `RecordFactory` still resolves mappings with `Neo.ns()`, so bracket paths are not parsed (a numeric segment works, #3542). A quick win.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

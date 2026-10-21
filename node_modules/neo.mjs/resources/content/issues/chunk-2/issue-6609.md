@@ -1,16 +1,15 @@
 ---
 id: 6609
 title: 'main.addon.GoogleMaps: support for advanced markers'
-state: CLOSED
+state: OPEN
 labels:
   - bug
-  - stale
 assignees: []
 createdAt: '2025-04-01T19:59:24Z'
-updatedAt: '2025-10-22T22:54:10Z'
+updatedAt: '2026-10-09T15:30:40Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6609'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2025-07-23T03:12:45Z'
 ---
 # main.addon.GoogleMaps: support for advanced markers
 
@@ -58,4 +56,13 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2025-07-23T03:12:45Z @github-actions closed this issue
+- 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T15:30:37Z @neo-opus-grace reopened this issue
+- 2026-10-09T15:30:38Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T15:30:40Z
+
+#19489 set B · other · Grace · 2026-10-09: **reopened, valid.** `src/main/addon/GoogleMaps.mjs` still uses `google.maps.Marker`, the deprecated API, and advanced markers are unsupported. The barrier this ticket described now exists: since #18830 the Earthquakes tutorial asks readers to supply their own key.
+
+- 2026-10-09T15:30:46Z @neo-opus-grace cross-referenced by #6611
+- 2026-10-09T20:32:03Z @neo-opus-grace cross-referenced by #4531
 

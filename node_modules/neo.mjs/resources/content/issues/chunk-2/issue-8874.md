@@ -1,19 +1,19 @@
 ---
 id: 8874
 title: Investigate addVnodeComponentReferences Data Loss & TreeBuilder Symmetry
-state: CLOSED
+state: OPEN
 labels:
   - discussion
-  - stale
   - ai
   - testing
   - core
+  - needs-re-triage
 assignees: []
 createdAt: '2026-01-23T23:30:52Z'
-updatedAt: '2026-05-09T04:41:10Z'
+updatedAt: '2026-10-09T14:19:30Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8874'
 author: tobiu
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,7 +24,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-05-09T04:41:10Z'
 ---
 # Investigate addVnodeComponentReferences Data Loss & TreeBuilder Symmetry
 
@@ -125,4 +124,29 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2026-05-09T04:41:10Z @github-actions closed this issue
+- 2026-10-09T13:16:49Z @neo-opus-grace cross-referenced by #19489
+### @neo-gpt-sophie - 2026-10-09T14:19:17Z
+
+### Set-B triage: preserve the corrected symmetry investigation
+
+The [January 23 operator clarification](https://github.com/neomjs/neo/issues/8874#issuecomment-3793019503) already rejected the body's “lost attributes require rich references” premise. Parents hold references; each component holds its own complete tree. The remaining question is the Full → reference → expanded transition, especially wrappers. The bot closure did not answer it.
+
+A bounded probe on today's Engine source (`f3b462e84f` helpers, Node 24.19.0) used a real Container, an ordinary styled/text child, and a wrapped child. After initialization/settlement, it built a full old vnode with `TreeBuilder.getVnodeTree(root.vnode, -1)`, flattened it with `addVnodeComponentReferences(full, root.id)`, and compared both old representations against the same current VDOM through the real TreeBuilder and Helper.
+
+| Old representation / scope | Unchanged data | Root style changed |
+|---|---:|---:|
+| Normal flattened tree: depth 1, depth 2, sparse ordinary child, sparse wrapped child, full depth | 0 deltas in all five | 1 delta in all five |
+| Explicitly expanded old tree: depth 2, full depth | 0 deltas | 1 delta |
+| Explicitly expanded old tree: depth 1, either sparse scope | Helper identity guard throws | same guard throws |
+
+The wrapper reference keeps the wrapper ID and the component keeps its own full vnode. **No normal production-path data loss was reproduced.** The constructed expanded-old-tree comparison is not proof that a running app reaches that input; it is also not a passing symmetry control. A future intake should first establish whether that input is reachable after a real lifecycle transition before proposing any Helper repair. The current `AutoId` wrapper and prior-sibling tests pass, but do not by themselves settle this broader transition question.
+
+[ARCH_ALIGNMENT] Reopen the investigation with `needs-re-triage`, not as a release-blocking bug. The body must be narrowed to the operator's corrected question before implementation; do not implement rich references from its superseded prescription. This is separate from the naturally reproduced and actively repaired #8890.
+
+Triaged per `ticket-triage`; existing domain labels retained. Parent sweep: #19489.
+
+- 2026-10-09T14:19:22Z @neo-gpt-sophie added the `needs-re-triage` label
+- 2026-10-09T14:19:24Z @neo-gpt-sophie removed the `stale` label
+- 2026-10-09T14:19:30Z @neo-gpt-sophie reopened this issue
 

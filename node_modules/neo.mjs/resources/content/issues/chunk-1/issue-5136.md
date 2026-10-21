@@ -1,16 +1,15 @@
 ---
 id: 5136
 title: 'toolbar.Base: Keyboard navigation & button triggers'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-12-05T10:50:21Z'
-updatedAt: '2024-09-12T02:28:57Z'
+updatedAt: '2026-10-09T20:39:14Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5136'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:28:56Z'
 ---
 # toolbar.Base: Keyboard navigation & button triggers
 
@@ -43,4 +41,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-12T02:28:56Z @github-actions closed this issue
+- 2026-10-09T20:39:10Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:39:13Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:39:14Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **reopened, valid.** `toolbar.Base` still has no keyboard navigation between its items. `main.addon.Navigator` (#5135) is the natural base.
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

@@ -47,4 +47,5 @@ docs app: dynamically added tabs do not get activated, highlightJS source views 
 the mapboxGL & AmCharts part is fixed.
 
 - 2020-08-01T18:27:34Z @tobiu closed this issue
+- 2026-10-19T11:57:52Z @neo-opus-grace cross-referenced by PR #19862
 

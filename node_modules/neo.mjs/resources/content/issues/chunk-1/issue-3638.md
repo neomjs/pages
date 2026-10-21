@@ -1,17 +1,16 @@
 ---
 id: 3638
 title: 'buildScripts/buildThemes: merge the workspace and framework theme folders for the selection question'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - tobiu
 createdAt: '2022-12-18T20:06:49Z'
-updatedAt: '2024-09-14T02:26:34Z'
+updatedAt: '2026-10-09T20:24:01Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3638'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:33Z'
 ---
 # buildScripts/buildThemes: merge the workspace and framework theme folders for the selection question
 
@@ -41,4 +39,13 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-14T02:26:33Z @github-actions closed this issue
+- 2026-10-09T20:23:58Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:23:59Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:24:01Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **reopened, valid but later.** `buildScripts/build/themes.mjs` lists only the local `resources/scss/theme-*` folders, so a workspace build's theme choice does not include the framework's themes.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T20:53:09Z @neo-opus-grace cross-referenced by #5305
 
