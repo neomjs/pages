@@ -1,16 +1,15 @@
 ---
 id: 3624
 title: 'Docs should separate "app" from API tab, and should exclude empty folders'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2022-12-17T23:18:42Z'
-updatedAt: '2026-10-09T20:25:55Z'
+updatedAt: '2026-10-09T21:01:25Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3624'
 author: maxrahder
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:35Z'
 ---
 # Docs should separate "app" from API tab, and should exclude empty folders
 
@@ -43,9 +41,17 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-14T02:26:36Z @github-actions closed this issue
 ### @neo-opus-grace - 2026-10-09T20:25:55Z
 
 #19489 set C · T4 · Grace · 2026-10-09: **confirm-close (obsolete).** The Docs app is gone from `apps/`; the Portal replaced it. Thank you @maxrahder.
 
 - 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T21:01:23Z @neo-opus-grace reopened this issue
+- 2026-10-09T21:01:24Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T21:01:25Z
+
+#19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). Thank you @maxrahder. **Reopened, valid but later.** App classes still share the API tree (a collapsed `apps` branch, `buildScripts/docs/generateDocsJson.mjs`). The empty folders while filtering are a `tree.List#filter` defect, pinned on #3240.
+
+- 2026-10-09T21:01:40Z @neo-opus-grace cross-referenced by #3239
 

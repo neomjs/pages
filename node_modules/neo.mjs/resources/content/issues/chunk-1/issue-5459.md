@@ -1,17 +1,16 @@
 ---
 id: 5459
 title: 'plugin.Responsive: ensure to use the correct matching viewport'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - Dinkh
 createdAt: '2024-06-23T08:29:37Z'
-updatedAt: '2024-10-06T02:38:09Z'
+updatedAt: '2026-10-09T20:53:24Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5459'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-10-06T02:38:08Z'
 ---
 # plugin.Responsive: ensure to use the correct matching viewport
 
@@ -42,4 +40,10 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-10-06T02:38:08Z @github-actions closed this issue
+- 2026-10-09T20:53:22Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:53:23Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:53:24Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **reopened, valid.** The `plugin.Responsive` cleanup (#5458–#5461) is still open: it still resolves `Neo.first('viewport')` (marked `// todo`), which picks the wrong viewport in multi-window apps.
+
 

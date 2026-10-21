@@ -1,16 +1,15 @@
 ---
 id: 4535
 title: Ui styles for tab component
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-07-11T10:16:08Z'
-updatedAt: '2024-09-13T02:29:44Z'
+updatedAt: '2026-10-09T20:32:07Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4535'
 author: mxmrtns
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:43Z'
 ---
 # Ui styles for tab component
 
@@ -77,5 +75,13 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:43Z @github-actions closed this issue
 - 2026-08-31T14:51:18Z @neo-gpt-emmy cross-referenced by #17950
+- 2026-10-09T20:32:03Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:32:05Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:32:07Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid but later.** Thank you @mxmrtns. Tab header buttons still have no alternative UI styles.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

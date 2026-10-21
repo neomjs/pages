@@ -1,16 +1,15 @@
 ---
 id: 4386
 title: 'form.field.Phone: inputPattern edge cases'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-05-04T19:44:21Z'
-updatedAt: '2024-09-12T02:29:19Z'
+updatedAt: '2026-10-09T20:31:45Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4386'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:29:19Z'
 ---
 # form.field.Phone: inputPattern edge cases
 
@@ -70,4 +68,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-12T02:29:19Z @github-actions closed this issue
+- 2026-10-09T20:31:43Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:31:44Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:31:45Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid.** Run today: the current `form.field.Phone` `inputPattern` rejects `+49 (151) 1234 567`.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

@@ -1,17 +1,16 @@
 ---
 id: 3130
 title: Object.hasOwn()
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - tobiu
 createdAt: '2022-06-07T09:28:28Z'
-updatedAt: '2024-09-15T02:35:54Z'
+updatedAt: '2026-10-09T20:23:28Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3130'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:35:54Z'
 ---
 # Object.hasOwn()
 
@@ -50,5 +48,13 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-15T02:35:54Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-15T02:35:54Z @github-actions closed this issue
+- 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T20:23:25Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:23:27Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:23:28Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **reopened, narrowed.** Most of the migration landed: `src` has 191 `Object.hasOwn` calls. About 20 `hasOwnProperty` call sites remain (`src/core/Base.mjs`, `core/Config.mjs`, `core/Observable.mjs` and others). A good first issue.
 
 

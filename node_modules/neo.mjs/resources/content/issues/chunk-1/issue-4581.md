@@ -1,17 +1,16 @@
 ---
 id: 4581
 title: 'main.addon.ScrollSync: register() => add a data.constrainTo param'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - tobiu
 createdAt: '2023-07-26T16:14:50Z'
-updatedAt: '2024-09-13T02:29:30Z'
+updatedAt: '2026-10-09T20:38:22Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4581'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:30Z'
 ---
 # main.addon.ScrollSync: register() => add a data.constrainTo param
 
@@ -41,4 +39,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:30Z @github-actions closed this issue
+- 2026-10-09T20:38:20Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:38:21Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:38:22Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **reopened, valid but later.** `main.addon.ScrollSync` still has no `constrainTo` parameter.
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

@@ -1,16 +1,15 @@
 ---
 id: 3256
 title: 'buildScripts/createClass: generate view => ask for view controller & model'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2022-07-03T22:28:35Z'
-updatedAt: '2024-09-13T02:30:14Z'
+updatedAt: '2026-10-09T20:23:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3256'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:30:13Z'
 ---
 # buildScripts/createClass: generate view => ask for view controller & model
 
@@ -39,4 +37,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:30:13Z @github-actions closed this issue
+- 2026-10-09T20:23:38Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:23:40Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:23:41Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **reopened, valid but later.** Generating a view with `create/class.mjs` still asks nothing about a matching controller or state provider.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

@@ -1,18 +1,17 @@
 ---
 id: 5007
 title: 'config order: add an exception for `layout` to always be in front of `items`'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
   - help wanted
   - good first issue
-  - stale
 assignees: []
 createdAt: '2023-10-12T05:42:21Z'
-updatedAt: '2024-09-13T02:29:00Z'
+updatedAt: '2026-10-09T20:39:00Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5007'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +22,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:00Z'
 ---
 # config order: add an exception for `layout` to always be in front of `items`
 
@@ -50,4 +48,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:00Z @github-actions closed this issue
+- 2026-10-09T20:38:56Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:38:57Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:38:59Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **reopened, valid.** `.github/CODING_GUIDELINES.md` still has no layout-before-items exception; #5402 fixes the same section's ordering wording.
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

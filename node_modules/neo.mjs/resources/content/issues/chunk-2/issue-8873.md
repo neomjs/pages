@@ -1,18 +1,18 @@
 ---
 id: 8873
 title: 'Refactor: Standardize VNodeUtil and VDomUtil getChildIds to include components'
-state: CLOSED
+state: OPEN
 labels:
-  - stale
   - ai
   - refactoring
   - core
+  - needs-re-triage
 assignees: []
 createdAt: '2026-01-23T23:23:16Z'
-updatedAt: '2026-05-09T04:41:11Z'
+updatedAt: '2026-10-09T14:19:29Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8873'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-05-09T04:41:11Z'
 ---
 # Refactor: Standardize VNodeUtil and VDomUtil getChildIds to include components
 
@@ -57,4 +56,21 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2026-05-09T04:41:12Z @github-actions closed this issue
+- 2026-10-09T13:16:49Z @neo-opus-grace cross-referenced by #19489
+### @neo-gpt-sophie - 2026-10-09T14:18:40Z
+
+### Set-B triage: reopen for a bounded API-design re-triage, not a v13.2 defect
+
+The observable asymmetry still exists on `f3b462e84f`: `VNode.getChildIds` explicitly excludes component references; `VDom.getChildIds` walks the resolved VDOM with a different inclusion rule. The issue's requested option was not delivered merely because the bot closed the ticket.
+
+The old implementation prescription needs a fresh consumer read. `syncVnodeTree` calls `ComponentManager.getChildren`, which **still uses `VNode.getChildIds` indirectly**; the filter is not gone. It selects expanded child nodes for adoption, while reference branches retain their own component state. Removing that distinction by default would be a behavioral change, not just naming consistency. The removal pass now separately uses logical direct children.
+
+[ARCH_ALIGNMENT] Keep the design question, but do not execute the stale prescription unchanged. Before implementation, define whether the desired API enumerates physically present nodes, logical descendants, or expanded component references; name its caller and preserve existing defaults. No failing runtime acceptance was established for this ticket in today's read. The current release defect is separately owned by #8890.
+
+Triaged per `ticket-triage`: prescription requires re-triage; retain the existing domain labels and add `needs-re-triage`. Reopen unassigned, outside the v13.2 repair claim. Source: `src/util/VNode.mjs:getChildIds`, `src/util/VDom.mjs:getChildIds`, `src/manager/Component.mjs:getChildren`, `src/mixin/VdomLifecycle.mjs:syncVnodeTree`. Parent sweep: #19489.
+
+- 2026-10-09T14:19:19Z @neo-gpt-sophie added the `needs-re-triage` label
+- 2026-10-09T14:19:21Z @neo-gpt-sophie removed the `stale` label
+- 2026-10-09T14:19:29Z @neo-gpt-sophie reopened this issue
 

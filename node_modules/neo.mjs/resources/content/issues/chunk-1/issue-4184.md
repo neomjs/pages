@@ -1,16 +1,15 @@
 ---
 id: 4184
 title: 'form.Container: setErrors(obj)'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-03-08T16:20:09Z'
-updatedAt: '2024-09-12T02:29:27Z'
+updatedAt: '2026-10-09T20:31:37Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4184'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:29:27Z'
 ---
 # form.Container: setErrors(obj)
 
@@ -41,4 +39,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-12T02:29:27Z @github-actions closed this issue
+- 2026-10-09T20:31:35Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:31:36Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:31:37Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid but later.** `form.Container` still has no way to set many field errors at once (for example from an API response).
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

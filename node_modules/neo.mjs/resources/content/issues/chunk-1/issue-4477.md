@@ -1,17 +1,16 @@
 ---
 id: 4477
 title: 'form.Container: setConfigs()'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - tobiu
 createdAt: '2023-05-28T17:51:26Z'
-updatedAt: '2024-09-13T02:30:01Z'
+updatedAt: '2026-10-09T20:31:49Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4477'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:30:01Z'
 ---
 # form.Container: setConfigs()
 
@@ -44,4 +42,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:30:01Z @github-actions closed this issue
+- 2026-10-09T20:31:46Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:31:48Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:31:49Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid but later.** `form.Container` still has no `setConfigs()` for changing a config (such as `readOnly`) on many fields at once.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

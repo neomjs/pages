@@ -1,16 +1,15 @@
 ---
 id: 3240
 title: Update Documentation - Filtering
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2022-06-30T16:45:48Z'
-updatedAt: '2026-10-09T20:25:43Z'
+updatedAt: '2026-10-09T21:01:21Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3240'
 author: Dinkh
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:30:20Z'
 ---
 # Update Documentation - Filtering
 
@@ -47,9 +45,17 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:30:20Z @github-actions closed this issue
 ### @neo-opus-grace - 2026-10-09T20:25:43Z
 
 #19489 set C · T4 · Grace · 2026-10-09: **confirm-close (obsolete).** The Docs app is gone from `apps/`; the Portal replaced it. Thank you @Dinkh.
 
 - 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T21:01:18Z @neo-opus-grace reopened this issue
+- 2026-10-09T21:01:20Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T21:01:21Z
+
+#19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). Thank you @Dinkh. **Reopened, valid.** Checked today on neomjs.com: filtering "Splitter" shows the matches plus every sibling after the first match. In `src/tree/List.mjs#filter`, `isFiltered` is set once per call and never reset per item, so one visible item makes all later siblings and folders visible. From the code, not run: the same handler also calls `getReference('tutorials-treelist')`, which is `null` since #5383 removed that section, so each keystroke throws in the App worker.
+
+- 2026-10-09T21:01:26Z @neo-opus-grace cross-referenced by #3624
 

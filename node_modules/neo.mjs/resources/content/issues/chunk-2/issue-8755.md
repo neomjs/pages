@@ -1,18 +1,17 @@
 ---
 id: 8755
 title: Enhance LivePreview to Support Mermaid Diagrams
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
   - developer-experience
-  - stale
   - ai
 assignees: []
 createdAt: '2026-01-17T10:46:30Z'
-updatedAt: '2026-05-02T04:34:30Z'
+updatedAt: '2026-10-09T15:30:56Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8755'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +22,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-05-02T04:34:30Z'
 ---
 # Enhance LivePreview to Support Mermaid Diagrams
 
@@ -59,5 +57,13 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2026-05-02T04:34:30Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2026-05-02T04:34:30Z @github-actions closed this issue
+- 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T15:30:52Z @neo-opus-grace reopened this issue
+- 2026-10-09T15:30:54Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T15:30:55Z
+
+#19489 set B · other · Grace · 2026-10-09: **reopened, valid but later.** `src/code/LivePreview.mjs` has no Mermaid mode. Guides render Mermaid fences, but nothing lets an author edit a diagram live, and nothing superseded this.
 
 

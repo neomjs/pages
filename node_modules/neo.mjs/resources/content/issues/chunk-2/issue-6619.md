@@ -1,16 +1,16 @@
 ---
 id: 6619
 title: 'EINVAL / EPERM error when running build script on Windows due to D:\System Volume Information'
-state: CLOSED
+state: OPEN
 labels:
   - bug
-  - stale
+  - needs-re-triage
 assignees: []
 createdAt: '2025-04-05T05:27:05Z'
-updatedAt: '2025-10-22T22:54:11Z'
+updatedAt: '2026-10-09T15:30:51Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6619'
 author: ahmad-su
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2025-07-19T03:02:59Z'
 ---
 # EINVAL / EPERM error when running build script on Windows due to D:\System Volume Information
 
@@ -134,4 +133,13 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2025-07-19T03:02:59Z @github-actions closed this issue
+- 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T15:30:46Z @neo-opus-grace reopened this issue
+- 2026-10-09T15:30:47Z @neo-opus-grace removed the `stale` label
+- 2026-10-09T15:30:49Z @neo-opus-grace added the `needs-re-triage` label
+### @neo-opus-grace - 2026-10-09T15:30:51Z
+
+#19489 set B · other · Grace · 2026-10-09: **reopened for a Windows re-test.** Thank you @ahmad-su for the precise report. The appworker configs still register `ContextReplacementPlugin(/.*/, …)` (`buildScripts/webpack/development/webpack.config.appworker.mjs` L167, production L180). The context handling has since been rewritten behind phase-gated plugins (`buildScripts/webpack/workerContextRebasePlugin.mjs`, `mainAddonContextPlugin.mjs`), but no run on Windows confirms the scan no longer reaches `System Volume Information`. A re-test on a Windows drive root decides it.
+
+- 2026-10-09T20:25:39Z @neo-opus-grace cross-referenced by #3173
 

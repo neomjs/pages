@@ -1,16 +1,15 @@
 ---
 id: 4628
 title: selection.AccordionModel
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-08-03T15:32:33Z'
-updatedAt: '2024-09-13T02:29:25Z'
+updatedAt: '2026-10-09T20:38:30Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4628'
 author: pensuwan-k
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:24Z'
 ---
 # selection.AccordionModel
 
@@ -44,4 +42,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:24Z @github-actions closed this issue
+- 2026-10-09T20:38:24Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:38:27Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:38:30Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **reopened, valid but later.** Thank you @pensuwan-k. `container.Accordion` still has no selection model or keyboard navigation (only `tree.Accordion` has one).
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

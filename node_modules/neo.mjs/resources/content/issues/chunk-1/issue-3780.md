@@ -1,16 +1,15 @@
 ---
 id: 3780
 title: Select field should allow an array of items
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-01-04T18:13:28Z'
-updatedAt: '2024-09-14T02:26:20Z'
+updatedAt: '2026-10-09T19:49:59Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3780'
 author: Dinkh
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:20Z'
 ---
 # Select field should allow an array of items
 
@@ -47,5 +45,13 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-14T02:26:20Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-14T02:26:20Z @github-actions closed this issue
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T19:49:56Z @neo-opus-grace reopened this issue
+- 2026-10-09T19:49:58Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T19:49:59Z
+
+#19489 set C sample · Grace · 2026-10-09: **reopened, valid.** Thank you @Dinkh. `form.field.Select` still takes its choices from a store only; the `options_` config agreed in this thread does not exist yet (`src/form/field/Select.mjs`).
 
 

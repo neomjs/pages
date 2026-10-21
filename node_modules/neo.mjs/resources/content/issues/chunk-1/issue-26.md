@@ -1,17 +1,16 @@
 ---
 id: 26
 title: 'tab.Container: Closable tabs'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
   - good first issue
-  - stale
 assignees: []
 createdAt: '2019-11-17T16:51:44Z'
-updatedAt: '2024-09-29T02:39:11Z'
+updatedAt: '2026-10-09T19:49:43Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/26'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-29T02:39:11Z'
 ---
 # tab.Container: Closable tabs
 
@@ -47,4 +45,11 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-08-31T08:41:47Z @neo-opus-grace cross-referenced by #17783
 - 2026-08-31T09:04:24Z @neo-opus-grace cross-referenced by #17791
 - 2026-08-31T12:21:51Z @neo-opus-grace cross-referenced by #17175
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T19:49:40Z @neo-opus-grace reopened this issue
+- 2026-10-09T19:49:41Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T19:49:42Z
+
+#19489 set C sample · Grace · 2026-10-09: **reopened, valid but later.** `tab.Container` still has no close affordance for its tabs (`src/tab` has no `closable`). The Dock Layouts close panes through their own header actions (`src/dashboard/dock/projection/HeaderActionPolicy.mjs`), which a plain tab container does not get.
+
 

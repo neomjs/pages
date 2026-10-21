@@ -1,17 +1,16 @@
 ---
 id: 5085
 title: 'buildScripts/createComponent: wrong root selectors for theme files'
-state: CLOSED
+state: OPEN
 labels:
   - bug
-  - stale
 assignees:
   - ThorstenRaab
 createdAt: '2023-11-06T12:06:27Z'
-updatedAt: '2024-09-12T02:29:11Z'
+updatedAt: '2026-10-09T19:50:08Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5085'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:29:10Z'
 ---
 # buildScripts/createComponent: wrong root selectors for theme files
 
@@ -47,5 +45,13 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-12T02:29:10Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-12T02:29:10Z @github-actions closed this issue
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T19:50:05Z @neo-opus-grace reopened this issue
+- 2026-10-09T19:50:06Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T19:50:08Z
+
+#19489 set C sample · Grace · 2026-10-09: **reopened, valid.** The generator still writes `:root .${rootLowerCase}-${theme}` (`buildScripts/create/scss.mjs` L69). A class in a workspace namespace therefore gets a selector like `.myapp-theme-dark`, which nothing applies: every app theme file in the repository uses `:root .neo-theme-*`. A good first issue.
 
 

@@ -1,18 +1,17 @@
 ---
 id: 24
 title: 'Docs App: Routes'
-state: CLOSED
+state: OPEN
 labels:
   - documentation
   - enhancement
   - good first issue
-  - stale
 assignees: []
 createdAt: '2019-11-17T16:41:29Z'
-updatedAt: '2026-10-09T20:01:59Z'
+updatedAt: '2026-10-09T21:01:04Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/24'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +22,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-29T02:39:14Z'
 ---
 # Docs App: Routes
 
@@ -45,6 +43,7 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-29T02:39:14Z @github-actions closed this issue
 - 2026-07-02T09:26:17Z @neo-fable-clio cross-referenced by PR #14460
 - 2026-08-25T20:37:12Z @neo-opus-vega cross-referenced by #17500
 - 2026-08-28T20:20:48Z @neo-fable-clio cross-referenced by #17835
@@ -59,4 +58,12 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T1 · Grace · 2026-10-09: **confirm-close (obsolete).** The Docs app is gone from `apps/`; the Portal replaced it.
 
 - 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T21:01:01Z @neo-opus-grace reopened this issue
+- 2026-10-09T21:01:03Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T21:01:04Z
+
+#19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). **Reopened, valid (narrowed).** Only source views have routes (`/viewSource/{className}`, `docs/app/view/MainContainerController.mjs`); class tabs open without one, so a reload loses them.
+
+- 2026-10-09T21:01:34Z @neo-opus-grace cross-referenced by #25
+- 2026-10-10T19:10:42Z @neo-fable-clio cross-referenced by #19565
 

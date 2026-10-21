@@ -1,16 +1,15 @@
 ---
 id: 278
 title: 'component.Gallery: change hash value on selection'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2020-03-14T18:28:01Z'
-updatedAt: '2024-09-28T02:32:18Z'
+updatedAt: '2026-10-09T20:00:36Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/278'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-28T02:32:18Z'
 ---
 # component.Gallery: change hash value on selection
 
@@ -43,4 +41,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-28T02:32:18Z @github-actions closed this issue
+- 2026-10-09T20:00:33Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:00:34Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:00:36Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **reopened, valid but later.** `src/component/Gallery.mjs` still has no option to write the selection into the hash, so there is no deep link to a selected item.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

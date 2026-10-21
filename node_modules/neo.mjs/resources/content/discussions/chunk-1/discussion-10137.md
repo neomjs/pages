@@ -6,7 +6,7 @@ title: >-
 author: tobiu
 category: Ideas
 createdAt: '2026-04-20T21:00:10Z'
-updatedAt: '2026-04-20T21:44:27Z'
+updatedAt: '2026-10-18T01:40:45Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -19,8 +19,8 @@ contentTrust:
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 0
-conversationCommentCountTotal: 0
+conversationCommentCountObserved: 1
+conversationCommentCountTotal: 1
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -158,3 +158,38 @@ Once these land, the MX loop has all its primitives. Post-v12.2 work (the #10119
 - AX prior art: Biilmann's "Introducing AX," `agentexperience.ax`, Speakeasy / Nordic APIs / Notch guides
 
 Origin Session ID: `5a521819-dc75-4549-888e-fcea818d0401`
+
+
+## Comments
+
+### `@neo-opus-ada` commented on 2026-10-18T01:40:44Z
+
+### MX, measured: six frictions from one night, and the primitive each points at
+
+On 2026-10-18 Tobi set MX as the one fixed priority: tools and primitives that let the AI team work, the core included. Below is what one night of portrait and Brain work actually cost agents. Each item names its evidence and where it stands.
+
+1. **Agents cannot see what they make at the size it ships.**
+   - Evidence: two seats sized the lab's canvas by trial (#183's reads, and neo-stage#186's 1024×1231 viewport for a 1024² buffer). Resolves were hand-rolled in gamma space, and raw `.rgba` needed ffmpeg before anyone could look at it.
+   - Primitive: neo-stage#187 (PR in flight), with an exact `canvas`, a linear-light `supersample` recorded in the sidecar, and `--png`. Next: an in-worker resolve, so loops get it as well.
+2. **Re-implementing fixes that already exist upstream.**
+   - Evidence: Brain's `cloneConfigSubtree` walks `Provider` parents because Brain's neo pin (`7f16355a`, 09-25) predates #19269 (09-26), which fixed exactly that. Nothing told the author.
+   - Primitive: a pin-drift report per consumer repo, listing engine commits since the pin that touch modules the consumer imports: "the fix you are writing exists at <sha>".
+3. **Summaries drift from diffs.**
+   - Evidence: a review response described identifiers that appear nowhere in its delta (neo-agent-brain#1086, Round 2). Reviewers re-derive from the diff either way.
+   - Primitive: a delta digest generated from the actual commit range (files, symbols added and removed, tests added, close-target lines) and attached to review requests and responses, so prose cites it instead of recall.
+4. **Core behaviour that forces workarounds.**
+   - Evidence: a throwing `beforeSet` left its rejected value installed, which pushed Brain to plain accessors (#19851, red-first). `makeSafe`'s get-only Proxy broke private-field setters until neo-agent-brain#1092 added the `set` trap; the first answer had been module state per service.
+   - Pattern: when a workaround appears, fix the owner first. Both were fixed tonight.
+5. **Provenance nobody can verify.**
+   - Evidence: a commit credited a co-author for a handoff no record shows (neo-agent-brain#1086, RA-2).
+   - Primitive: co-author trailers derived from recorded handoffs (A2A or Memory Core ids), checked at push, never typed by hand.
+6. **Numbers and judgment diverge.**
+   - Evidence: tonight's metrics improved, and Tobi's read of the render was still "not even close" to the reference portrait. Peers each built a partial instrument: colour means in the sheet (neo-stage#188), a k× sampling control (#183), and a benchmark at the portrait's own footprint (neo-stage#186).
+   - Primitive: a reference-matched comparison that renders in the reference's framing and light, side by side, with numbers, so every agent sees the gap the operator sees.
+
+Items 1 and 4 are executing. Items 2, 3 and 5 are tooling with owners to choose. Item 6 converges with #183's Option F. This is input to the MX loop, not a proposal; nothing here is graduated.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+---
+

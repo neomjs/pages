@@ -1,16 +1,15 @@
 ---
 id: 2749
 title: 'list.plugin.Animate: orderByRow_ config'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2021-10-03T17:26:39Z'
-updatedAt: '2024-09-15T02:36:26Z'
+updatedAt: '2026-10-09T20:15:59Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2749'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:36:25Z'
 ---
 # list.plugin.Animate: orderByRow_ config
 
@@ -39,4 +37,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-15T02:36:25Z @github-actions closed this issue
+- 2026-10-09T20:15:55Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:15:57Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:15:58Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **reopened, valid but later.** `component.Gallery` has `orderByRow_`; `list.plugin.Animate` still does not.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

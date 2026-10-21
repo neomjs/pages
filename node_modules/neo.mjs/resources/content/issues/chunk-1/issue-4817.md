@@ -1,16 +1,15 @@
 ---
 id: 4817
 title: Required should be part of the base field
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-09-01T11:05:43Z'
-updatedAt: '2024-09-13T02:29:13Z'
+updatedAt: '2026-10-09T20:38:45Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4817'
 author: r-l-d
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:12Z'
 ---
 # Required should be part of the base field
 
@@ -40,4 +38,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:12Z @github-actions closed this issue
+- 2026-10-09T20:38:41Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:38:43Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:38:45Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **reopened, valid but later.** Thank you @r-l-d. `required_` still lives on `form.field.Text`, not on `form.field.Base`.
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

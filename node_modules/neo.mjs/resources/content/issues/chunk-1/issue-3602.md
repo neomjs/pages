@@ -1,16 +1,15 @@
 ---
 id: 3602
 title: Enhance create class build script
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2022-12-15T16:33:30Z'
-updatedAt: '2024-09-14T02:26:40Z'
+updatedAt: '2026-10-09T20:23:53Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3602'
 author: Krytechs
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:39Z'
 ---
 # Enhance create class build script
 
@@ -45,4 +43,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-14T02:26:39Z @github-actions closed this issue
+- 2026-10-09T20:23:50Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:23:52Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:23:53Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **reopened, valid but later.** Thank you @Krytechs. `create/class.mjs` still does not offer a model when generating a store, nor the reverse (#3255).
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

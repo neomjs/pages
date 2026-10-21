@@ -1,17 +1,16 @@
 ---
 id: 5460
 title: 'plugin.Responsive: owner.on({mounted: ''onOwnerMounted''})'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - Dinkh
 createdAt: '2024-06-23T08:31:45Z'
-updatedAt: '2024-10-06T02:38:07Z'
+updatedAt: '2026-10-09T20:53:29Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5460'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-10-06T02:38:07Z'
 ---
 # plugin.Responsive: owner.on({mounted: 'onOwnerMounted'})
 
@@ -45,4 +43,10 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-10-06T02:38:07Z @github-actions closed this issue
+- 2026-10-09T20:53:26Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:53:28Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:53:29Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **reopened, valid.** The `plugin.Responsive` cleanup (#5458–#5461) is still open: its resize listener is still set up at construction, not when the owner mounts.
+
 

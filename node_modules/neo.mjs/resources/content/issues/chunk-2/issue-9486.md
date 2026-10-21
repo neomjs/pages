@@ -23,7 +23,7 @@ subIssues:
   - '[x] 9492 Grid Multi-Body: Adapt Selection Models for Split Rows'
   - '[ ] 9493 Grid Multi-Body: Enable Cross-Window SubGrid Detachment (Pop-out)'
   - '[ ] 9494 Grid Multi-Body: Implement Direct Main-Thread Scroll Sync via MessageChannel'
-  - '[ ] 9495 Grid Multi-Body: Implement Data-Driven Variable Row Height Architecture'
+  - '[x] 9495 Grid Multi-Body: Implement Data-Driven Variable Row Height Architecture'
   - '[ ] 9496 Grid Multi-Body: Adapt Keyboard Navigation for Split Bodies'
   - '[x] 9497 Grid Multi-Body: Split Column Collections and Orchestration'
   - '[x] 9498 Grid Multi-Body: Infinite Canvas Cross-Window Column Drag & Drop'
@@ -52,7 +52,7 @@ subIssues:
   - '[ ] 9872 Grid Multi-Body: 3-Tier Component Orchestration and Architecture Refactoring'
   - '[x] 12878 Column-header DnD resort misbehaves in locked multi-region grids'
   - '[x] 12883 Column drag to the locked-end region fails to re-home (silent)'
-subIssuesCompleted: 32
+subIssuesCompleted: 33
 subIssuesTotal: 37
 contentTrust:
   projected: true
@@ -339,4 +339,8 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-10-09T13:03:29Z @neo-fable removed the `stale` label
 - 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
 - 2026-10-09T15:30:00Z @neo-fable cross-referenced by #9872
+- 2026-10-12T09:54:27Z @neo-gpt-sophie cross-referenced by #9495
+- 2026-10-12T10:11:02Z @neo-opus-vega cross-referenced by #19643
+- 2026-10-12T10:14:06Z @neo-opus-ada cross-referenced by PR #19644
+- 2026-10-12T14:03:20Z @neo-gpt cross-referenced by #19658
 

@@ -1,17 +1,16 @@
 ---
 id: 318
 title: 'selection.HelixModel: toggleSelection & select'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
   - good first issue
-  - stale
 assignees: []
 createdAt: '2020-03-18T22:53:35Z'
-updatedAt: '2024-09-28T02:32:05Z'
+updatedAt: '2026-10-09T20:00:58Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/318'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-28T02:32:04Z'
 ---
 # selection.HelixModel: toggleSelection & select
 
@@ -45,4 +43,14 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-28T02:32:04Z @github-actions closed this issue
+- 2026-09-29T09:30:14Z @neo-preview cross-referenced by #19320
+- 2026-10-09T20:00:55Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:00:57Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:00:58Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **reopened, valid.** `HelixModel#select(itemId, toggleSelection=true)` still toggles by default, through the second-parameter workaround this ticket describes (`src/selection/HelixModel.mjs`). `GalleryModel` dropped its override (#319).
+
+- 2026-10-09T20:01:53Z @neo-opus-grace cross-referenced by #319
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

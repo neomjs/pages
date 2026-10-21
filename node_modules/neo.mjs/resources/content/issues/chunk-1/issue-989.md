@@ -1,17 +1,16 @@
 ---
 id: 989
 title: 'Neo.calendar.view.MonthComponent: onWheelEnd() => header date'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - tobiu
 createdAt: '2020-07-29T22:44:42Z'
-updatedAt: '2024-09-28T02:31:25Z'
+updatedAt: '2026-10-09T20:08:07Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/989'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-28T02:31:25Z'
 ---
 # Neo.calendar.view.MonthComponent: onWheelEnd() => header date
 
@@ -41,5 +39,77 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-28T02:31:25Z @github-actions closed this issue
 - 2026-09-16T19:15:33Z @neo-opus-grace cross-referenced by PR #18811
+- 2026-09-16T19:20:32Z @neo-opus-vega referenced in commit `cb4212c` - "docs: the calendar todos drop pointers to tickets closed as not planned (#18810)
+
+@neo-opus-grace: both markers vouched for '#989/#990, the open ticket tracking this
+todo'. Both were closed NOT_PLANNED on 2024-09-28. So the escape's reason -- the one
+part of a marker a reader trusts -- asserted a fact I never checked, and I wrote a
+fresh false claim into a durable comment while repairing decayed ones.
+
+They are category D by this PR's own table: drop the number, keep the content. The
+todo's subject is its description, not its ticket, so the work stays named and AC-4
+still holds.
+
+Also moves Pull.mjs's marker outside the quoted title sample, so the example stays a
+verbatim PR title rather than one with an annotation inside the quotes."
+- 2026-09-16T19:34:37Z @tobiu referenced in commit `85dcc8b` - "docs: the comments CI's archaeology guard flags say which kind they are (#18810) (#18811)
+
+* docs: the comments CI's archaeology guard flags say which kind they are (#18810)
+
+22 comments in this tree were flagged by the published guard CI runs and passed by
+the mirrored copy the hook runs, so any PR staging one of those files reds on a line
+it did not write. That happened twice today, in PRs whose subject was elsewhere.
+
+Four kinds, four remedies, because a blanket suppression would hide all four equally.
+
+A deliberate reference carrying the RETIRED `ticket-ref-ok` marker takes the typed
+one instead, with the same reason it already carried: the ticket a guard implements
+is load-bearing and stays.
+
+Review archaeology is rephrased, because that family has no escape in any version.
+Which review round produced a decision is the part that decays; what the arm asserts
+and why is behaviour and stays. `RA-2` becomes the token contract it describes, and
+`Cycle-1 RA1` becomes the rule itself -- a sort restores selection on both axes.
+
+Eleven sites are not references at all: ordinal labels the numeric pattern cannot
+tell from a ticket. `Refresh #1`, `product truth #2`, `identity #1`. These are the
+cheapest to mark and the most valuable, because they are the ones a future reader
+would otherwise "fix" by deleting a true statement.
+
+`VerticalScrollbar`'s `To solve #3` was nearly one of those deletions. It points at
+item 3 of the numbered list directly above it, not at a ticket -- which reading the
+comment showed and treating the finding as a defect would have destroyed.
+
+The genuine ticket refs lose the number and keep the content, which was already
+beside them: a suite that "reproduces the regression described in #9165" also
+describes the regression. The two calendar `todo:` markers keep theirs, since an
+open todo pointing at its tracked work is the case the escape exists for.
+
+Comment-only, verified by blanking every comment with acorn and comparing what
+remains -- a `sed` strip reported five false positives on JSDoc blocks.
+
+One finding remains, `RA-3` in check-spec-retirement, already repaired in #18808.
+
+* docs: the calendar todos drop pointers to tickets closed as not planned (#18810)
+
+@neo-opus-grace: both markers vouched for '#989/#990, the open ticket tracking this
+todo'. Both were closed NOT_PLANNED on 2024-09-28. So the escape's reason -- the one
+part of a marker a reader trusts -- asserted a fact I never checked, and I wrote a
+fresh false claim into a durable comment while repairing decayed ones.
+
+They are category D by this PR's own table: drop the number, keep the content. The
+todo's subject is its description, not its ticket, so the work stays named and AC-4
+still holds.
+
+Also moves Pull.mjs's marker outside the quoted title sample, so the example stays a
+verbatim PR title rather than one with an annotation inside the quotes."
+- 2026-10-09T20:08:05Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:08:06Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:08:07Z
+
+#19489 set C · T2 · Grace · 2026-10-09: **reopened, valid but later.** `calendar.view.month.Component#onWheel` swaps weeks in and out, but nothing derives the header date from the first fully visible row.
+
+- 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
 

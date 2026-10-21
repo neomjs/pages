@@ -1,17 +1,16 @@
 ---
 id: 2797
 title: 'list.plugin.Animate: support for dynamically adding and removing items'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - tobiu
 createdAt: '2022-01-03T06:59:42Z'
-updatedAt: '2024-09-15T02:36:11Z'
+updatedAt: '2026-10-09T20:16:02Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2797'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:36:10Z'
 ---
 # list.plugin.Animate: support for dynamically adding and removing items
 
@@ -43,4 +41,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-15T02:36:10Z @github-actions closed this issue
+- 2026-10-09T20:16:00Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:16:01Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:16:02Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **reopened, valid but later.** `list.plugin.Animate` still animates filter and sort only; it does not handle a `mutate` that adds or removes items.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

@@ -1,17 +1,16 @@
 ---
 id: 1069
 title: 'calendar.view.WeekComponent: trigger the infinite scrolling onDragScroll (edge)'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - tobiu
 createdAt: '2020-08-14T20:49:59Z'
-updatedAt: '2024-09-27T02:34:35Z'
+updatedAt: '2026-10-09T20:08:25Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/1069'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-27T02:34:34Z'
 ---
 # calendar.view.WeekComponent: trigger the infinite scrolling onDragScroll (edge)
 
@@ -44,4 +42,11 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-27T02:34:34Z @github-actions closed this issue
+- 2026-10-09T20:08:22Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:08:24Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:08:25Z
+
+#19489 set C · T2 · Grace · 2026-10-09: **reopened, valid but later.** `calendar.view.week.Component` has no scroll-edge paging, so drag-scrolling to an edge does not page.
+
+- 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
 

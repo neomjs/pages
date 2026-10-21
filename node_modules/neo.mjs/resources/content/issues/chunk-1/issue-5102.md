@@ -1,16 +1,15 @@
 ---
 id: 5102
 title: 'selection/RowModel.mjs  onRowClick:   additionally respond according to key-press properties '
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-11-19T06:12:30Z'
-updatedAt: '2024-12-12T02:44:46Z'
+updatedAt: '2026-10-09T20:39:09Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5102'
 author: gplanansky
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-12-12T02:44:45Z'
 ---
 # selection/RowModel.mjs  onRowClick:   additionally respond according to key-press properties 
 
@@ -90,8 +88,17 @@ I still need this.   Almost a  year old.
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2024-11-28T02:43:02Z @github-actions added the `stale` label
 ### @github-actions - 2024-12-12T02:44:45Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-12-12T02:44:45Z @github-actions closed this issue
+- 2026-10-09T20:39:06Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:39:07Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:39:09Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **reopened, valid but later.** Thank you @gplanansky. The row selection models (`src/selection/grid/RowModel.mjs`, `table/RowModel.mjs`) still ignore `ctrlKey` / `metaKey` / `shiftKey`.
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

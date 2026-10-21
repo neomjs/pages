@@ -1,16 +1,15 @@
 ---
 id: 4531
 title: 'component.wrapper.GoogleMaps: once the component gets mounted multiple times, markers no longer appear'
-state: CLOSED
+state: OPEN
 labels:
   - bug
-  - stale
 assignees: []
 createdAt: '2023-07-10T13:20:44Z'
-updatedAt: '2024-09-13T02:29:45Z'
+updatedAt: '2026-10-09T20:32:02Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4531'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:44Z'
 ---
 # component.wrapper.GoogleMaps: once the component gets mounted multiple times, markers no longer appear
 
@@ -42,4 +40,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:44Z @github-actions closed this issue
+- 2026-10-09T20:31:59Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:32:00Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:32:02Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid (from the code, not run).** `GoogleMaps` re-adds markers when the marker store changes, not when the map mounts again. This pairs with #6609's marker rework.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

@@ -1,17 +1,16 @@
 ---
 id: 3805
 title: 'component.Toast: multi window support'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - Dinkh
 createdAt: '2023-01-06T12:17:36Z'
-updatedAt: '2024-09-14T02:26:15Z'
+updatedAt: '2026-10-09T20:31:15Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3805'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:15Z'
 ---
 # component.Toast: multi window support
 
@@ -44,4 +42,11 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-14T02:26:15Z @github-actions closed this issue
+- 2026-10-09T20:31:12Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:31:13Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:31:14Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid but later.** `manager.Toast` still counts running toasts per position, not per window, so it is not multi-window aware.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

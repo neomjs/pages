@@ -1,16 +1,15 @@
 ---
 id: 3063
 title: Buildscript create-app should create an example ViewController in the demo app
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2022-05-19T15:39:32Z'
-updatedAt: '2024-09-15T02:36:02Z'
+updatedAt: '2026-10-09T20:16:07Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3063'
 author: davhm
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:36:02Z'
 ---
 # Buildscript create-app should create an example ViewController in the demo app
 
@@ -39,4 +37,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-15T02:36:02Z @github-actions closed this issue
+- 2026-10-09T20:16:04Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:16:05Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:16:07Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **reopened, valid.** Thank you @davhm for the idea. `buildScripts/create/app.mjs` still scaffolds no view controller. A good first issue.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

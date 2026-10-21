@@ -1,17 +1,16 @@
 ---
 id: 6611
 title: 'Earthquakes Tutorial: Add a new maps provider'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees:
   - tobiu
 createdAt: '2025-04-01T20:02:40Z'
-updatedAt: '2025-07-16T03:10:30Z'
+updatedAt: '2026-10-09T15:30:44Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6611'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2025-07-16T03:10:30Z'
 ---
 # Earthquakes Tutorial: Add a new maps provider
 
@@ -41,5 +39,13 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2025-07-16T03:10:29Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2025-07-16T03:10:30Z @github-actions closed this issue
+- 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T15:30:41Z @neo-opus-grace reopened this issue
+- 2026-10-09T15:30:43Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T15:30:44Z
+
+#19489 set B · other · Grace · 2026-10-09: **reopened, valid.** Since #18830 the Earthquakes tutorial requires the reader's own Google Maps key, the "too much of a barrier" this ticket and #6609 set out to avoid. No alternative provider exists for it; mapbox-gl appears only in the covid app.
 
 

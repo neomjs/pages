@@ -1,16 +1,15 @@
 ---
 id: 5076
 title: Radio button error message shown only once for the whole radio group
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-11-03T09:34:41Z'
-updatedAt: '2024-09-12T02:29:13Z'
+updatedAt: '2026-10-09T20:39:04Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5076'
 author: linchen
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:29:12Z'
 ---
 # Radio button error message shown only once for the whole radio group
 
@@ -40,4 +38,12 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-12T02:29:12Z @github-actions closed this issue
+- 2026-10-09T20:39:01Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:39:03Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:39:04Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **reopened, valid (from the code, not run).** Thank you @linchen. `form.field.Radio` (which extends `CheckBox`) has no logic that shows the group error once.
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

@@ -1,16 +1,15 @@
 ---
 id: 4528
 title: 'Docs should default to showing API for selected component, and not the hierarchy.'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
 assignees: []
 createdAt: '2023-07-07T00:03:11Z'
-updatedAt: '2026-10-09T19:51:32Z'
+updatedAt: '2026-10-09T21:01:30Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4528'
 author: maxrahder
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:49Z'
 ---
 # Docs should default to showing API for selected component, and not the hierarchy.
 
@@ -46,5 +44,11 @@ This issue was closed because it has been inactive for 14 days since being marke
 ### @neo-opus-grace - 2026-10-09T19:51:32Z
 
 #19489 set C sample · Grace · 2026-10-09: **confirm-close (obsolete).** Thank you @maxrahder. The Docs app and its class viewer are gone, so there is no API member view left to change.
+
+- 2026-10-09T21:01:27Z @neo-opus-grace reopened this issue
+- 2026-10-09T21:01:28Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T21:01:29Z
+
+#19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). Thank you @maxrahder. **Reopened, valid.** `HierarchyTreeList` still checks every ancestor by default (`checked: true`), so a class opens with all inherited members.
 
 
