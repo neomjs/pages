@@ -8,17 +8,17 @@ labels:
   - good first issue
 assignees: []
 createdAt: '2019-11-17T16:41:29Z'
-updatedAt: '2026-10-09T21:01:04Z'
+updatedAt: '2026-10-22T00:15:27Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/24'
 author: tobiu
-commentsCount: 4
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy: []
 blocking: []
@@ -66,4 +66,50 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2026-10-09T21:01:34Z @neo-opus-grace cross-referenced by #25
 - 2026-10-10T19:10:42Z @neo-fable-clio cross-referenced by #19565
+- 2026-10-17T23:38:57Z @tobiu referenced in commit `fbb9ec0` - "feat(hooks): a Bash guard refuses gh edit --body-file - fed by an unchecked pipe (#19847) (#19848)
+
+* feat(hooks): a Bash guard refuses gh edit --body-file - fed by an unchecked pipe (#19847)
+
+A pipe into gh pr|issue edit --body-file - still runs when its producer
+fails, and GitHub stores the empty stdin as the body: neo-stage #24 and
+#170 were blanked this way. The guard blocks that shape unless the producer
+prints one variable whose length or emptiness the command checks, and names
+the safe shape in its message. It is an Engine-only contributor guard
+(ADR 0040 section 2.7), a sibling of the rg guard whose tokenizer it reuses.
+
+* fix(hooks): the body guard admits only checked shapes and reads env prefixes and line breaks (#19847)
+
+The first allow rule matched check text anywhere in the command, so a
+non-gating, late, reassigned or quoted check, an empty printf format or
+echo's option parsing still let an empty body through (Euclid's review).
+The guard now parses statements, and-or lists and pipelines and admits two
+shapes only: the check joined by && to printf '%s' "$V" | gh ... edit, or
+a foreground [ check ] || exit N statement before that pipeline with no
+statement between that branches, nests or changes V. Leading NAME=value
+assignments and env no longer hide the consumer, and the shared tokenizer
+splits lines when asked (backslash continues them), leaving the rg guard's
+reading unchanged.
+
+* fix(hooks): a check counts only on the double-quoted value it prints (#19847)
+
+The grammar read quote-erased words, so [ -n '$V' ], a literal, and
+[ -n $V ], which passes when V is empty, both admitted an empty body
+(Euclid's round 2). The shared tokenizer now keeps a word's quotes when
+asked, the check's operand and printf's value must be "$V", and command
+words and keywords are still read as the shell reads them, so a quoted
+"gh" stays a consumer."
+### @sharmis-tp - 2026-10-22T00:15:13Z
+
+I'd like to take this. I'd add routing to the docs app so the active tab is reflected in the URL and reloading reopens it, following the approach used in the Real World App, and verify it by opening a few tabs, reloading and checking the right one comes back. Could you assign it to me?
+
+
+### @github-actions - 2026-10-22T00:15:27Z
+
+Thanks for claiming this, @sharmis-tp, and welcome! You're first in line, so you can start now.
+
+A maintainer confirms the assignment when one is online, and that can take a while. You don't need to wait for it.
+
+<sub>An automatic reply. A maintainer follows up. How claims work [QUARANTINED_URL: github.com]</sub>
+<!-- claim-responder:@sharmis-tp -->
+
 
