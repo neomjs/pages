@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://neomjs.com/news/tickets/20106</loc>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/tickets/20101</loc>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/tickets/20099</loc>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/tickets/20095</loc>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/tickets/20091</loc>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/tickets/20090</loc>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/tickets/20089</loc>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/tickets/20088</loc>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/tickets/20086</loc>
-  </url>
-  <url>
     <loc>https://neomjs.com/news/tickets/20084</loc>
   </url>
   <url>
@@ -37687,50 +37660,6 @@
     <loc>https://neomjs.com/news/tickets/1</loc>
   </url>
   <url>
-    <loc>https://neomjs.com/news/pulls/20107</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/pulls/20105</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/pulls/20103</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/pulls/20102</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/pulls/20100</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/pulls/20097</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/pulls/20096</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/pulls/20094</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/pulls/20093</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/pulls/20092</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/pulls/20087</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://neomjs.com/news/pulls/20085</loc>
     <priority>0.6</priority>
   </url>
@@ -65309,10 +65238,6 @@
   <url>
     <loc>https://neomjs.com/news/pulls/4</loc>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://neomjs.com/news/discussions/20098</loc>
-    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://neomjs.com/news/discussions/19994</loc>
