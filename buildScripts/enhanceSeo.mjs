@@ -1,4 +1,11 @@
+/**
+ * @module buildScripts.enhanceSeo
+ * @summary Copies production Portal entry, sitemap (`sitemap.xml`, `sitemap-core.xml`, `sitemap-archive.xml`),
+ * and LLM context (`llms.txt`, `llms-full.txt`, `llms-all.txt`) artifacts to the site root and injects the
+ * GitHub Pages `<base>` tag into the root `index.html`.
+ */
 import { spawnSync } from 'child_process';
+import { existsSync } from 'fs';
 import { copyFile, readFile, writeFile } from 'fs/promises';
 import { resolve } from 'path';
 
@@ -7,20 +14,41 @@ console.log('Starting SEO enhancement process...');
 const sourceDir = resolve('node_modules/neo.mjs/dist/production/apps/portal');
 const destDir = resolve('.');
 
-const filesToCopy = [
+const requiredFilesToCopy = [
     'index.html',
     'llms.txt',
     'robots.txt',
     'sitemap.xml'
 ];
 
+const optionalFilesToCopy = [
+    'llms-full.txt',
+    'llms-all.txt',
+    'sitemap-core.xml',
+    'sitemap-archive.xml'
+];
+
+const copiedFiles = [];
+
 // 1. Copy files
 console.log('Step 1: Copying files to root...');
-for (const file of filesToCopy) {
+for (const file of requiredFilesToCopy) {
     const sourceFile = resolve(sourceDir, file);
     const destFile = resolve(destDir, file);
     console.log(`  Copying ${sourceFile} to ${destFile}`);
     await copyFile(sourceFile, destFile);
+    copiedFiles.push(file);
+}
+
+for (const file of optionalFilesToCopy) {
+    const sourceFile = resolve(sourceDir, file);
+    if (!existsSync(sourceFile)) {
+        continue;
+    }
+    const destFile = resolve(destDir, file);
+    console.log(`  Copying ${sourceFile} to ${destFile}`);
+    await copyFile(sourceFile, destFile);
+    copiedFiles.push(file);
 }
 console.log('Step 1: Completed');
 
@@ -64,7 +92,7 @@ console.log('Step 2: Completed');
 
 // 3. Stage the root files, which the deploy commits. --sparse stages them in a sparse clone too.
 console.log('Step 3: Staging the root files...');
-const gitAddProcess = spawnSync('git', ['add', '--sparse', ...filesToCopy]);
+const gitAddProcess = spawnSync('git', ['add', '--sparse', ...copiedFiles]);
 if (gitAddProcess.status !== 0) {
     console.error(`'git add' failed with exit code ${gitAddProcess.status}`);
     if (gitAddProcess.stderr) {
