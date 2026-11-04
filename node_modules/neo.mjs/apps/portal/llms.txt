@@ -380,6 +380,8 @@ Here you find the full history of Neo.mjs updates.
 
 ## Blog
 
+- [Persistent memory for AI coding agents: load an index, pull the archive over MCP (part 1 of 8)](https://neomjs.com/raw/learn/blog/persistent-memory-for-ai-coding-agents.md)
+- [The main thread is the wrong place for a data grid](https://neomjs.com/raw/learn/blog/a-data-grid-in-a-web-worker.md)
 - [Where an agent institution sits: a map of the agent landscape, with receipts.](https://neomjs.com/raw/learn/blog/where-an-agent-institution-sits.md)
 - [From two configs to a second screen: building a dashboard with Neo.mjs Dock Layouts.](https://neomjs.com/raw/learn/blog/building-a-multi-window-dashboard-with-dock-layouts.md)
 - [Drag it to the other screen: multi-window dashboards with Neo.mjs Dock Layouts.](https://neomjs.com/raw/learn/blog/multi-window-dashboards-with-dock-layouts.md)
