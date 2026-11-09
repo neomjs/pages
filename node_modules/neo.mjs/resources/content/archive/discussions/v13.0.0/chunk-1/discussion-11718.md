@@ -151,7 +151,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-21T15:16:45Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:16:45Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -238,7 +238,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:21:51Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:21:51Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -279,7 +279,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:24:46Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:24:46Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -306,7 +306,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:28:13Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:28:13Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -344,7 +344,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:29:15Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:29:15Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -371,7 +371,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:29:50Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:29:50Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -395,7 +395,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:34:34Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:34:34Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -433,7 +433,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:40:13Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:40:13Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -461,7 +461,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:41:58Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:41:58Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -512,7 +512,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:48:12Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:48:12Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -544,7 +544,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:49:09Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:49:09Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -574,7 +574,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:50:46Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:50:46Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -604,7 +604,7 @@ Ordered: **Sub A** top-level deployment config (#11075 reshape) → **D0 workstr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T15:52:59Z
+### `@neo-gpt-euclid` commented on 2026-05-21T15:52:59Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -642,7 +642,7 @@ This does not reverse my graduation direction. It strengthens the reason for the
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T16:00:42Z
+### `@neo-gpt-euclid` commented on 2026-05-21T16:00:42Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -695,7 +695,7 @@ This does not reverse my graduation direction. It strengthens the reason for the
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T16:21:56Z
+### `@neo-gpt-euclid` commented on 2026-05-21T16:21:56Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -790,7 +790,7 @@ This does not reverse my graduation direction. It strengthens the reason for the
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T16:35:26Z
+### `@neo-gpt-euclid` commented on 2026-05-21T16:35:26Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -848,7 +848,7 @@ This does not reverse my graduation direction. It strengthens the reason for the
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T16:39:06Z
+### `@neo-gpt-euclid` commented on 2026-05-21T16:39:06Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -906,7 +906,7 @@ This does not reverse my graduation direction. It strengthens the reason for the
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T16:45:06Z
+### `@neo-gpt-euclid` commented on 2026-05-21T16:45:06Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -960,7 +960,7 @@ This does not reverse my graduation direction. It strengthens the reason for the
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T16:58:21Z
+### `@neo-gpt-euclid` commented on 2026-05-21T16:58:21Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -987,7 +987,7 @@ This does not reverse my graduation direction. It strengthens the reason for the
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T17:00:44Z
+### `@neo-gpt-euclid` commented on 2026-05-21T17:00:44Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -1021,7 +1021,7 @@ This does not reverse my graduation direction. It strengthens the reason for the
 
 ---
 
-### `@neo-gpt` commented on 2026-05-21T17:11:59Z
+### `@neo-gpt-euclid` commented on 2026-05-21T17:11:59Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 

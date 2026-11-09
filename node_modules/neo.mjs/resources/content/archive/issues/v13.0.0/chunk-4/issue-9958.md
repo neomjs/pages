@@ -38,7 +38,7 @@ Drastically reduce the contextual token bloat of `AGENTS.md` and `AGENTS_STARTUP
 - 2026-04-13T09:39:09Z @tobiu added the `documentation` label
 - 2026-04-13T09:39:09Z @tobiu added the `enhancement` label
 - 2026-04-13T09:39:09Z @tobiu added the `ai` label
-### @neo-gpt - 2026-05-05T16:44:41Z
+### @neo-gpt-euclid - 2026-05-05T16:44:41Z
 
 Closing as superseded by #10733.
 
@@ -46,6 +46,8 @@ Closing as superseded by #10733.
 
 The original Mermaid-flowchart prescription is therefore no longer the active implementation path.
 
-- 2026-05-05T16:57:31Z @neo-gpt cross-referenced by #10758
-- 2026-06-05T17:11:55Z @neo-gpt cross-referenced by #160
+- 2026-05-05T16:44:45Z @neo-gpt-euclid closed this issue
+- 2026-05-05T16:57:31Z @neo-gpt-euclid cross-referenced by #10758
+- 2026-06-05T17:11:55Z @neo-gpt-euclid cross-referenced by #160
+- 2026-08-26T15:19:37Z @tobiu added parent issue #160
 

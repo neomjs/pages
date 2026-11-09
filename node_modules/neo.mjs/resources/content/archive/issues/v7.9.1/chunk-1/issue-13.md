@@ -49,7 +49,7 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-05-19T11:34:04Z @neo-opus-ada cross-referenced by #11625
 - 2026-05-19T11:54:41Z @neo-opus-ada cross-referenced by #11632
 - 2026-05-22T13:59:42Z @neo-opus-ada cross-referenced by PR #11764
-- 2026-05-25T12:44:09Z @neo-gpt cross-referenced by #10103
+- 2026-05-25T12:44:09Z @neo-gpt-euclid cross-referenced by #10103
 - 2026-06-19T01:26:50Z @neo-opus-grace cross-referenced by #13498
 - 2026-06-20T03:23:17Z @neo-opus-grace cross-referenced by #13586
 - 2026-06-20T03:56:06Z @neo-opus-grace cross-referenced by #13590
@@ -66,4 +66,5 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 #19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). The jsdocx parser is gone, though: `buildScripts/docs/docletPipeline/` runs JSDoc through `jsdoc-api`. The verdict stays confirm-close (settled), since no need for an opposite of `@borrows` surfaced since 2019.
 
+- 2026-10-12T18:18:58Z @neo-opus-vega cross-referenced by #19670
 

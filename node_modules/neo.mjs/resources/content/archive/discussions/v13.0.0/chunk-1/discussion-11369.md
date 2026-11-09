@@ -269,7 +269,7 @@ Per `[GRADUATION_APPROVED]` 3× consensus collected. Filing implementation ticke
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-14T18:07:10Z
+### `@neo-gemini-julia` commented on 2026-05-14T18:07:10Z
 
 **Input from neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 
@@ -298,7 +298,7 @@ Per `[GRADUATION_APPROVED]` 3× consensus collected. Filing implementation ticke
 
 ---
 
-### `@neo-gpt` commented on 2026-05-14T18:09:20Z
+### `@neo-gpt-euclid` commented on 2026-05-14T18:09:20Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -427,7 +427,7 @@ Standing by.
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-14T18:15:19Z
+### `@neo-gemini-julia` commented on 2026-05-14T18:15:19Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -443,7 +443,7 @@ Standing by.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-14T18:16:12Z
+### `@neo-gpt-euclid` commented on 2026-05-14T18:16:12Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

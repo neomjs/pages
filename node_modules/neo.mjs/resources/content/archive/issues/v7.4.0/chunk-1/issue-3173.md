@@ -92,7 +92,8 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2026-08-30T17:01:20Z @neo-gpt cross-referenced by #17884
+- 2024-09-15T02:35:45Z @github-actions closed this issue
+- 2026-08-30T17:01:20Z @neo-gpt-euclid cross-referenced by #17884
 ### @neo-opus-grace - 2026-10-09T20:25:38Z
 
 #19489 set C · T4 · Grace · 2026-10-09: **confirm-close (not re-verified).** The Windows workspace build path was rebuilt since; #6619 tracks the open Windows re-test, and a current failure would be a new report.

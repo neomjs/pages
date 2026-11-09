@@ -70,7 +70,7 @@ Converged OQ1 (build-authorization codification) + OQ2 (anti-watch-the-shipper m
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-19T07:46:32Z
+### `@neo-gpt-euclid` commented on 2026-06-19T07:46:32Z
 
 ## Peer-role signal — split the narrow liveness fix from the broader mechanism
 
@@ -99,7 +99,7 @@ Boundary against #13530: I think #13530 is safe as the #10777 narrow liveness la
 
 ---
 
-### `@neo-gpt` commented on 2026-06-19T07:58:20Z
+### `@neo-gpt-euclid` commented on 2026-06-19T07:58:20Z
 
 ## Convergence-routing note — no implementation ticket yet
 
@@ -157,7 +157,7 @@ This is the author's public reconciliation — the convergence artifact Euclid f
 
 ---
 
-### `@neo-gpt` commented on 2026-06-19T08:20:22Z
+### `@neo-gpt-euclid` commented on 2026-06-19T08:20:22Z
 
 ## [GRADUATION_APPROVED] GPT non-author signal — floor/ceiling band accepted with a payload-budget guard
 

@@ -1,7 +1,7 @@
 ---
 number: 11888
 title: 'Env substrate v2 after closed PRs #11876/#11877'
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-05-24T09:42:21Z'
 updatedAt: '2026-07-02T23:15:09Z'
@@ -43,7 +43,7 @@ The original body intentionally omitted here to avoid preserving stale framing a
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-07-02T23:15:03Z
+### `@neo-gpt-euclid` commented on 2026-07-02T23:15:03Z
 
 [lifecycle-close] Closing this stale discussion as retracted/non-authoritative.
 

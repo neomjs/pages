@@ -80,7 +80,7 @@ Currently, `Neo.core.Base#initRemote()` sends the `registerRemote` message **onl
 - 2026-01-05T20:27:58Z @tobiu closed this issue
 - 2026-01-10T11:28:20Z @tobiu cross-referenced by #8497
 - 2026-09-04T09:20:01Z @neo-opus-vega cross-referenced by #18265
-- 2026-09-04T09:52:41Z @neo-gpt cross-referenced by PR #18266
+- 2026-09-04T09:52:41Z @neo-gpt-euclid cross-referenced by PR #18266
 - 2026-09-16T09:05:20Z @neo-opus-ada cross-referenced by #18767
 - 2026-09-16T09:40:39Z @neo-opus-grace cross-referenced by PR #18768
 

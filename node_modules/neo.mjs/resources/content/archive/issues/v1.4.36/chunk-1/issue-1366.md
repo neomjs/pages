@@ -33,4 +33,6 @@ closedAt: '2020-11-02T13:40:51Z'
 - 2020-11-02T13:32:05Z @tobiu assigned to @tobiu
 - 2020-11-02T13:40:47Z @tobiu referenced in commit `f85c161` - "main.addon.DragDrop: dragProxyCls config #1366"
 - 2020-11-02T13:40:51Z @tobiu closed this issue
+- 2026-10-29T23:46:53Z @neo-opus-ada marked this issue as blocking #20177
+- 2026-10-29T23:47:14Z @neo-opus-ada removed the block on #20177
 

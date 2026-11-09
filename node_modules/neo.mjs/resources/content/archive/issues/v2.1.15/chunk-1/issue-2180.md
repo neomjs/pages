@@ -29,5 +29,9 @@ closedAt: '2021-05-26T23:44:41Z'
 
 ## Timeline
 
-- 2026-08-30T17:53:40Z @neo-gpt cross-referenced by #17884
+- 2021-05-26T23:44:20Z @tobiu added the `enhancement` label
+- 2021-05-26T23:44:20Z @tobiu assigned to @tobiu
+- 2021-05-26T23:44:38Z @tobiu referenced in commit `3d18896` - "appworker builds: neo-config.json => change the appPath to exist on top level #2180"
+- 2021-05-26T23:44:41Z @tobiu closed this issue
+- 2026-08-30T17:53:40Z @neo-gpt-euclid cross-referenced by #17884
 

@@ -58,12 +58,13 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2026-06-23T03:56:38Z @neo-gpt cross-referenced by #8163
-### @neo-fable - 2026-10-09T13:03:10Z
+- 2026-04-16T04:28:47Z @github-actions closed this issue
+- 2026-06-23T03:56:38Z @neo-gpt-euclid cross-referenced by #8163
+### @neo-fable-mnemosyne - 2026-10-09T13:03:10Z
 
 **confirm-close** (2026-10-09, #19489 set B, dock): superseded by the 13.2 Dock return path — a whole stack comes home atomically (#15501), live-header preparation keeps pane identities (#18684), the title-bar dwell returns a whole stack (#19181), a pane torn out again after a return opens with its content (#19208). The popup round trip on real windows is the operator's hand read, carried on #15252.
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
 
-- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
+- 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
 

@@ -8,7 +8,7 @@ labels:
   - ai
   - core
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2024-07-20T19:09:11Z'
 updatedAt: '2026-06-24T17:18:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5598'
@@ -49,7 +49,7 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2024-10-19T02:31:18Z @github-actions added the `stale` label
 - 2024-10-19T13:41:59Z @tobiu removed the `stale` label
 - 2024-10-19T13:41:59Z @tobiu added the `no auto close` label
-### @neo-gpt - 2026-06-23T04:47:02Z
+### @neo-gpt-euclid - 2026-06-23T04:47:02Z
 
 [INTAKE_VALIDATED]
 
@@ -71,11 +71,29 @@ Acceptance backstop:
 
 No labels changed; the next author can claim this directly under #5598.
 
-### @neo-gpt - 2026-06-23T04:50:17Z
+- 2026-06-23T04:50:15Z @neo-gpt-euclid added the `ai` label
+- 2026-06-23T04:50:15Z @neo-gpt-euclid added the `core` label
+### @neo-gpt-euclid - 2026-06-23T04:50:17Z
 
 Triaged per `ticket-triage` skill. Applied: `ai`, `core`.
 
 Stage retrospective passed: premise is still current against `src/selection/Model.mjs`; prescription stays inside the core selection substrate; consumer is framework component selection behavior; no service-boundary or ADR impact found. Assignment disposition: proceeding into ticket-intake / implementation under #5598.
 
-- 2026-06-23T04:59:53Z @neo-gpt cross-referenced by PR #13908
+- 2026-06-23T04:50:21Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-23T04:59:53Z @neo-gpt-euclid cross-referenced by PR #13908
+- 2026-06-23T17:58:51Z @neo-gpt-euclid referenced in commit `8fa56a4` - "fix(selection): support collection item ids (#5598)"
+- 2026-06-23T17:58:51Z @neo-gpt-euclid referenced in commit `b8c5779` - "fix(selection): align collection id fallback formatting (#5598)"
+- 2026-06-24T10:32:44Z @neo-gpt-euclid referenced in commit `9fbdd37` - "fix(selection): align collection id fallback formatting (#5598)"
+- 2026-06-24T16:38:29Z @neo-gpt-euclid referenced in commit `869cbf7` - "fix(selection): preserve declaration block alignment (#5598)"
+- 2026-06-24T17:08:01Z @neo-gpt-euclid referenced in commit `e909b4b` - "fix(selection): preserve lone-keyword block alignment (#5598)"
+- 2026-06-24T17:18:41Z @tobiu referenced in commit `2ffe7a9` - "fix(selection): support collection item ids (#5598) (#13908)
+
+* fix(selection): support collection item ids (#5598)
+
+* fix(selection): align collection id fallback formatting (#5598)
+
+* fix(selection): preserve declaration block alignment (#5598)
+
+* fix(selection): preserve lone-keyword block alignment (#5598)"
+- 2026-06-24T17:18:41Z @tobiu closed this issue
 

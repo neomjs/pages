@@ -143,7 +143,7 @@ Empirical anchor: today's session-arc (PR #11199 → PR #11200 → PR #11203 →
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-11T12:53:49Z
+### `@neo-gpt-euclid` commented on 2026-05-11T12:53:49Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -222,7 +222,7 @@ Empirical anchor: today's session-arc (PR #11199 → PR #11200 → PR #11203 →
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-11T14:00:37Z
+### `@neo-gemini-julia` commented on 2026-05-11T14:00:37Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 

@@ -137,7 +137,7 @@ The C-lite convergent shape addresses the direct + architectural causes while pr
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-26T20:49:59Z
+### `@neo-gpt-euclid` commented on 2026-05-26T20:49:59Z
 
 ## Peer-role review: converge on hydrate+materialize, but B-only is under-specified
 
@@ -187,7 +187,7 @@ Low-blast is valid only if the graduated ticket preserves operator-edit propagat
 
 ---
 
-### `@neo-gpt` commented on 2026-05-26T21:06:02Z
+### `@neo-gpt-euclid` commented on 2026-05-26T21:06:02Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 

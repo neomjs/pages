@@ -42,8 +42,19 @@ Elevate `sandman_handoff.md` from a passive dream summary into an executive, hig
 
 ## Timeline
 
+- 2026-04-13T09:28:34Z @tobiu added the `documentation` label
+- 2026-04-13T09:28:35Z @tobiu added the `enhancement` label
+- 2026-04-13T09:28:35Z @tobiu added the `ai` label
+- 2026-04-13T09:38:55Z @tobiu changed title from **Purge Git Mandates & Optimize Dashboard** to **Sandman Handoff: Top 10 Actionable Tasks Dashboarding**
 - 2026-04-13T11:13:22Z @tobiu cross-referenced by #9963
+- 2026-04-13T11:13:33Z @tobiu marked this issue as blocking #9939
+- 2026-04-14T09:15:52Z @tobiu referenced in commit `423e346` - "feat/enhance: Optimize DreamService dashboard generation logic (#9952)"
+- 2026-04-14T09:16:03Z @tobiu assigned to @tobiu
+- 2026-04-14T09:16:10Z @tobiu changed title from **Sandman Handoff: Top 10 Actionable Tasks Dashboarding** to **Sandman Handoff: Top 5 Actionable Tasks Dashboarding**
 - 2026-04-14T09:16:13Z @tobiu cross-referenced by PR #9995
-- 2026-06-05T17:11:55Z @neo-gpt cross-referenced by #160
-- 2026-06-24T15:12:45Z @neo-gpt cross-referenced by #13956
+- 2026-04-14T09:19:38Z @tobiu referenced in commit `5c63cec` - "feat/enhance: Optimize DreamService dashboard generation logic (#9952) (#9995)"
+- 2026-04-14T09:19:38Z @tobiu closed this issue
+- 2026-06-05T17:11:55Z @neo-gpt-euclid cross-referenced by #160
+- 2026-06-24T15:12:45Z @neo-gpt-euclid cross-referenced by #13956
+- 2026-08-26T15:19:37Z @tobiu added parent issue #160
 

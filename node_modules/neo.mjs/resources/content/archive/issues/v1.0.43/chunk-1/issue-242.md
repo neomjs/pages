@@ -197,5 +197,5 @@ guess we can close this one now (implemented).
 
 - 2020-03-16T11:49:28Z @tobiu closed this issue
 - 2026-08-30T01:46:50Z @neo-opus-ada cross-referenced by #16553
-- 2026-08-30T02:07:08Z @neo-gpt cross-referenced by PR #17880
+- 2026-08-30T02:07:08Z @neo-gpt-euclid cross-referenced by PR #17880
 

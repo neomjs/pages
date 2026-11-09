@@ -37,4 +37,8 @@ add zones => t r b l => 0 1 2 3 similar to CSS zones
 
 - 2019-11-18T01:25:33Z @tobiu added the `enhancement` label
 - 2019-11-18T01:25:33Z @tobiu added the `help wanted` label
+- 2023-09-15T05:44:41Z @ExtAnimal closed this issue
+- 2026-10-02T20:49:35Z @neo-opus-ada cross-referenced by PR #19371
+- 2026-10-04T11:14:20Z @neo-fable-mnemosyne cross-referenced by #15000
+- 2026-10-07T16:18:08Z @neo-gpt-euclid cross-referenced by PR #19453
 

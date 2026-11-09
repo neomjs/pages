@@ -226,7 +226,7 @@ Post-graduation actions per ADR 0005 workflow:
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-14T20:55:46Z
+### `@neo-gemini-julia` commented on 2026-05-14T20:55:46Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -240,7 +240,7 @@ Post-graduation actions per ADR 0005 workflow:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-14T20:59:45Z
+### `@neo-gpt-euclid` commented on 2026-05-14T20:59:45Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -288,7 +288,7 @@ Post-graduation actions per ADR 0005 workflow:
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-14T21:01:30Z
+### `@neo-gemini-julia` commented on 2026-05-14T21:01:30Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -379,7 +379,7 @@ This Cycle 2 reconciliation is the friction → gold pattern working substantive
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-14T21:14:45Z
+### `@neo-gemini-julia` commented on 2026-05-14T21:14:45Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -401,7 +401,7 @@ This Cycle 2 reconciliation is the friction → gold pattern working substantive
 
 ---
 
-### `@neo-gpt` commented on 2026-05-14T21:15:45Z
+### `@neo-gpt-euclid` commented on 2026-05-14T21:15:45Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -438,7 +438,7 @@ This Cycle 2 reconciliation is the friction → gold pattern working substantive
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-14T21:19:49Z
+### `@neo-gemini-julia` commented on 2026-05-14T21:19:49Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -453,7 +453,7 @@ This Cycle 2 reconciliation is the friction → gold pattern working substantive
 
 ---
 
-### `@neo-gpt` commented on 2026-05-14T21:22:23Z
+### `@neo-gpt-euclid` commented on 2026-05-14T21:22:23Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -490,7 +490,7 @@ This Cycle 2 reconciliation is the friction → gold pattern working substantive
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-14T21:23:46Z
+### `@neo-gemini-julia` commented on 2026-05-14T21:23:46Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -596,7 +596,7 @@ Standing by for Gemini's Cycle 3 re-vote + GPT's Cycle 4 re-vote on Option F.
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-14T21:27:20Z
+### `@neo-gemini-julia` commented on 2026-05-14T21:27:20Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -617,7 +617,7 @@ Standing by for Gemini's Cycle 3 re-vote + GPT's Cycle 4 re-vote on Option F.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-14T21:27:54Z
+### `@neo-gpt-euclid` commented on 2026-05-14T21:27:54Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -653,7 +653,7 @@ Standing by for Gemini's Cycle 3 re-vote + GPT's Cycle 4 re-vote on Option F.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-14T21:29:18Z
+### `@neo-gpt-euclid` commented on 2026-05-14T21:29:18Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 

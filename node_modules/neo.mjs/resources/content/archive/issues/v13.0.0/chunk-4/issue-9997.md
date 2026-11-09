@@ -49,5 +49,5 @@ Origin Session ID: 56268bb1-7e01-4e49-bd2b-26b3a3208797
 - 2026-04-14T12:52:24Z @tobiu referenced in commit `a1eacd6` - "enhancement: Prioritize latest active sessions in summarization pipeline (#9997) (#9998)"
 - 2026-04-14T12:52:24Z @tobiu closed this issue
 - 2026-04-18T15:22:56Z @tobiu assigned to @tobiu
-- 2026-05-03T15:03:08Z @neo-gpt cross-referenced by #10651
+- 2026-05-03T15:03:08Z @neo-gpt-euclid cross-referenced by #10651
 

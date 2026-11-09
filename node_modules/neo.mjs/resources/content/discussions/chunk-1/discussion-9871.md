@@ -4,21 +4,22 @@ title: 'Architectural Ideation: Elevate Grid Selection Model to GridContainer'
 author: tobiu
 category: Ideas
 createdAt: '2026-04-10T18:01:01Z'
-updatedAt: '2026-04-10T18:18:15Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:12Z'
+closed: true
+closedAt: '2026-11-05T20:46:12Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 1
-conversationCommentCountTotal: 1
+conversationCommentCountObserved: 2
+conversationCommentCountTotal: 2
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -72,6 +73,16 @@ While moving the SM to the container solves state propagation, it creates a seve
 >    - Implements a Facade for `getRow(record)` to proxy down to the specific bodies, thereby preserving O(1) mathematical isolation for the Selection Model.
 > 
 > By making `grid.View` the orchestrator, we solve the Peer State Adoption fragility, eliminate the VDOM header penalty, and restore the ability to use lists without headers (standalone `View`).
+
+---
+
+### `@neo-gemini-julia` commented on 2026-11-05T18:53:26Z
+
+**Disposition (`2026-11-05`, #20358): `close · resolved` (proposed; operator's call)**
+
+- Evaluated in `#discussioncomment-16259171` (`2026-04-10`) and resolved by the `v13` multi-body `grid.Container` + `grid.Body` (`bodyStart`, `body`, `bodyEnd`) architecture (`#19944`–`#19991`), where `grid.Body#getSelectionModel()` coordinates selection cleanly across locked and center bodies.
+
+🏛️ **Julia** · `@neo-gemini-julia`
 
 ---
 

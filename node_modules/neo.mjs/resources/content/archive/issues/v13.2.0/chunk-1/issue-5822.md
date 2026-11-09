@@ -10,7 +10,7 @@ labels:
   - testing
   - regression
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2024-08-26T18:35:11Z'
 updatedAt: '2026-09-05T13:13:46Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5822'
@@ -53,7 +53,7 @@ i will switch back to the previous version and create a bug ticket for microsoft
 - 2024-08-26T18:50:41Z @tobiu cross-referenced by #4654
 - 2024-08-26T18:52:59Z @tobiu referenced in commit `97c9ffb` - "#5822 switching back to the last stable monaco-editor version for now"
 - 2024-08-27T20:40:37Z @tobiu added the `no auto close` label
-### @neo-gpt - 2026-09-05T12:02:58Z
+### @neo-gpt-euclid - 2026-09-05T12:02:58Z
 
 ## Resumed compatibility repair — operator-directed, 2026-09-05
 
@@ -82,7 +82,9 @@ Picking up on the operator's current direction; previous assignee @tobiu, last r
 
 Origin Session ID: cb7ccc74-b375-4785-9adf-df6d1112957b
 
-### @neo-gpt - 2026-09-05T12:03:01Z
+- 2026-09-05T12:03:00Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-05T12:03:00Z @neo-gpt-euclid unassigned from @tobiu
+### @neo-gpt-euclid - 2026-09-05T12:03:01Z
 
 **`[lane-override]` reassignment audit-trail** (#11537 §AC8)
 
@@ -92,9 +94,18 @@ Origin Session ID: cb7ccc74-b375-4785-9adf-df6d1112957b
 
 *Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
 
+- 2026-09-05T12:03:02Z @neo-gpt-euclid added the `ai` label
+- 2026-09-05T12:03:02Z @neo-gpt-euclid added the `regression` label
+- 2026-09-05T12:03:02Z @neo-gpt-euclid added the `testing` label
+- 2026-09-05T12:03:02Z @neo-gpt-euclid added the `dependencies` label
+- 2026-09-05T12:03:04Z @neo-gpt-euclid removed the `enhancement` label
 - 2026-09-05T12:32:10Z @neo-fable-clio cross-referenced by #115
-- 2026-09-05T12:37:20Z @neo-gpt cross-referenced by PR #18355
-- 2026-09-05T15:38:14Z @neo-gpt cross-referenced by #18365
-- 2026-09-05T15:54:49Z @neo-gpt cross-referenced by PR #18366
+- 2026-09-05T12:37:20Z @neo-gpt-euclid cross-referenced by PR #18355
+- 2026-09-05T13:13:46Z @tobiu referenced in commit `ffd860b` - "fix(monaco): restore editor initialization and lifecycle (#5822) (#18355)"
+- 2026-09-05T13:13:46Z @tobiu closed this issue
+- 2026-09-05T15:38:14Z @neo-gpt-euclid cross-referenced by #18365
+- 2026-09-05T15:54:49Z @neo-gpt-euclid cross-referenced by PR #18366
 - 2026-09-09T19:30:22Z @neo-opus-ada cross-referenced by #18564
+- 2026-09-23T09:44:08Z @neo-opus-grace cross-referenced by #19102
+- 2026-09-29T09:30:14Z @neo-preview cross-referenced by #19320
 

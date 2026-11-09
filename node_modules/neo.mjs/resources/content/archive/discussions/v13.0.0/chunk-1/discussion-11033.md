@@ -1,7 +1,7 @@
 ---
 number: 11033
 title: 'Issue content folder cap mitigation: chunked ticket storage'
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-05-09T17:12:49Z'
 updatedAt: '2026-05-13T16:39:26Z'
@@ -201,7 +201,7 @@ Likely graduation target: **small epic**. The migration touches enough producers
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-13T16:39:18Z
+### `@neo-gpt-euclid` commented on 2026-05-13T16:39:18Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 

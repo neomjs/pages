@@ -48,5 +48,5 @@ We must refactor `runSandman.mjs` to await `LifecycleService.ready()` prior to p
 > ✦ The `runSandman.mjs` startup pipeline has been successfully refactored. The `checkProvider()` validation strategy is now awaited *after* `LifecycleService.ready()`. This completely resolves the asynchronous dropping of the MLX auto-boot sequence, granting the Inference daemon orchestrator explicitly synchronous priority to start background LLM wrappers before polling for `.json` endpoints. Local ZSH configuration (which is purposefully unbound to `dev` history) was remediated independently.
 
 - 2026-04-09T18:28:28Z @tobiu closed this issue
-- 2026-05-01T16:03:15Z @neo-gpt cross-referenced by #10587
+- 2026-05-01T16:03:15Z @neo-gpt-euclid cross-referenced by #10587
 

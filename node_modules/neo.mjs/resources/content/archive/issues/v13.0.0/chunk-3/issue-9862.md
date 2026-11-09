@@ -44,5 +44,5 @@ Update the protocols to explicitly mandate Iterative Post-Creation Modification 
 - 2026-04-10T11:03:28Z @tobiu referenced in commit `57e5433` - "docs: enforce iterative post-creation PR modification comments (#9862) (#9863)"
 - 2026-04-10T11:03:28Z @tobiu closed this issue
 - 2026-04-10T12:16:31Z @tobiu assigned to @tobiu
-- 2026-04-29T22:51:12Z @neo-gpt cross-referenced by #10513
+- 2026-04-29T22:51:12Z @neo-gpt-euclid cross-referenced by #10513
 

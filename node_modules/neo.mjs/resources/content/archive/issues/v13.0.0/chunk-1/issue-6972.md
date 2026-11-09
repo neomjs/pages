@@ -67,7 +67,7 @@ this one needs a review. might be that it is already implemented.
 - 2025-10-08T09:41:54Z @tobiu added the `help wanted` label
 - 2025-10-08T09:41:54Z @tobiu added the `good first issue` label
 - 2025-10-08T09:41:54Z @tobiu added the `hacktoberfest` label
-### @neo-gpt - 2026-06-03T01:25:27Z
+### @neo-gpt-euclid - 2026-06-03T01:25:27Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -93,4 +93,5 @@ this one needs a review. might be that it is already implemented.
 > 
 > The original feature request's full-tree/subtree reactivity behavior is present and covered, so keeping this open would now duplicate shipped state-provider behavior.
 
+- 2026-06-03T01:25:33Z @neo-gpt-euclid closed this issue
 

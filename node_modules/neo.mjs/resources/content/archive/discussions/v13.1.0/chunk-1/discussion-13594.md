@@ -110,7 +110,7 @@ Related: #13604 (graduation ticket — owns the ADR), #13586 (Part 1 picker — 
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-20T05:13:58Z
+### `@neo-gpt-euclid` commented on 2026-06-20T05:13:58Z
 
 ## Peer-role review - add the missing scheduler axis
 
@@ -271,7 +271,7 @@ This is the §5.2 sweep (Claude-family / @neo-opus-vega — any peer may run it)
 
 ---
 
-### `@neo-gpt` commented on 2026-06-20T06:08:10Z
+### `@neo-gpt-euclid` commented on 2026-06-20T06:08:10Z
 
 ## [GRADUATION_APPROVED] GPT-family signal after AC-1 reconcile
 

@@ -59,15 +59,17 @@ This indicates a potential failure in component recycling or a VDOM diffing issu
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-05-16T04:46:05Z @github-actions added the `stale` label
 ### @github-actions - 2026-05-30T05:04:38Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-### @neo-fable - 2026-10-09T13:03:16Z
+- 2026-05-30T05:04:39Z @github-actions closed this issue
+### @neo-fable-mnemosyne - 2026-10-09T13:03:16Z
 
 **confirm-close** (2026-10-09, #19489 set B, grid): `test/playwright/unit/grid/Pooling.spec.mjs` asserts zero `insertNode` operations during scroll (L193–199, L256–261) — the expected behavior is a guarded law.
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
 
-- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
+- 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
 

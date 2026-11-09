@@ -50,6 +50,6 @@ Fix committed locally and pushed to the repository. The implementation removes t
 
 Fix committed locally and pushed to the repository. The implementation removes the global `embeddingProvider` fallback and enforces rigorous provider configurations in `TextEmbeddingService`, ensuring deterministic routing in `both` engine setups.
 
-- 2026-05-06T09:00:58Z @neo-gpt cross-referenced by #10804
-- 2026-05-06T09:22:17Z @neo-gpt cross-referenced by PR #10810
+- 2026-05-06T09:00:58Z @neo-gpt-euclid cross-referenced by #10804
+- 2026-05-06T09:22:17Z @neo-gpt-euclid cross-referenced by PR #10810
 

@@ -76,14 +76,14 @@ When a user drags a column header from the `center` toolbar into the `start` too
 
 *Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
 
-- 2026-06-07T23:36:08Z @neo-gpt cross-referenced by #12698
+- 2026-06-07T23:36:08Z @neo-gpt-euclid cross-referenced by #12698
 - 2026-06-07T23:55:00Z @neo-opus-ada cross-referenced by #12707
 - 2026-06-07T23:56:40Z @neo-opus-ada cross-referenced by PR #12708
-- 2026-06-08T00:37:37Z @neo-gpt cross-referenced by PR #12714
-- 2026-06-08T03:53:46Z @neo-gpt cross-referenced by PR #12730
-- 2026-06-08T04:20:15Z @neo-gpt cross-referenced by #12733
-- 2026-06-08T04:49:29Z @neo-gpt cross-referenced by #12734
-- 2026-06-08T05:16:28Z @neo-gpt cross-referenced by PR #12736
+- 2026-06-08T00:37:37Z @neo-gpt-euclid cross-referenced by PR #12714
+- 2026-06-08T03:53:46Z @neo-gpt-euclid cross-referenced by PR #12730
+- 2026-06-08T04:20:15Z @neo-gpt-euclid cross-referenced by #12733
+- 2026-06-08T04:49:29Z @neo-gpt-euclid cross-referenced by #12734
+- 2026-06-08T05:16:28Z @neo-gpt-euclid cross-referenced by PR #12736
 - 2026-06-08T09:48:00Z @neo-opus-grace cross-referenced by #9872
 - 2026-06-08T11:14:24Z @neo-opus-ada cross-referenced by PR #12754
 - 2026-06-08T17:01:08Z @neo-opus-vega cross-referenced by PR #12777
@@ -91,8 +91,8 @@ When a user drags a column header from the `center` toolbar into the `start` too
 
 onDragMove captures the release x-coordinate (lastDragClientX); onDragEnd resolves the start/end body rects and calls getDropRegion for the position-based lock region, overriding column.locked ONLY for cross-region moves (positionRegion != column.locked). Within-region drops keep the existing neighbor-inference path, so the within-region resort is preserved (purely additive). The cross-region re-homing end-to-end is visual-verify-gated (the integration is embedded in the async onDragEnd, not unit-testable in isolation); getDropRegion itself stays unit-tested. Follow-up slices on this branch: cross-boundary visual indicators + the local-to-global column-index remap for cross-region moves, then visual-verify the motion."
 - 2026-06-08T19:52:26Z @neo-opus-vega cross-referenced by PR #12785
-- 2026-06-08T20:04:38Z @neo-gpt cross-referenced by #12696
-- 2026-06-08T20:30:34Z @neo-gpt cross-referenced by #12787
+- 2026-06-08T20:04:38Z @neo-gpt-euclid cross-referenced by #12696
+- 2026-06-08T20:30:34Z @neo-gpt-euclid cross-referenced by #12787
 - 2026-06-08T20:35:18Z @neo-opus-ada referenced in commit `8811188` - "feat(grid): offset SortZone.moveTo column indices for locked regions (#9491)
 
 moveTo reordered the global gridContainer.columns using the owner toolbar's LOCAL indices, which only matched the global indices in the no-locked common case. New columnIndexOffset() offsets the local index by the preceding regions' column counts (start->0, center->start count, end->start+center counts), so center/end toolbars move the correct columns in locked-multi-region grids. Backward-compatible: offset is 0 with no locked columns, so within-region resort is unchanged. columnIndexOffset is unit-tested; the live within-region positioning in a locked grid is visual-verify-gated."
@@ -101,7 +101,7 @@ moveTo reordered the global gridContainer.columns using the owner toolbar's LOCA
 - 2026-06-09T00:11:22Z @neo-opus-grace cross-referenced by #12800
 - 2026-06-09T02:12:08Z @neo-opus-ada cross-referenced by #12807
 - 2026-06-09T02:12:43Z @neo-opus-ada cross-referenced by #12808
-- 2026-06-09T08:04:32Z @neo-gpt cross-referenced by PR #12801
+- 2026-06-09T08:04:32Z @neo-gpt-euclid cross-referenced by PR #12801
 - 2026-06-09T10:27:19Z @tobiu referenced in commit `0ff1128` - "feat(grid): cross-toolbar column DnD across split headers (#9491) (#12792)
 
 * feat(grid): add cross-toolbar drop-region detection to SortZone (#9491)
@@ -120,8 +120,8 @@ moveTo reordered the global gridContainer.columns using the owner toolbar's LOCA
 
 Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-06-09T10:27:19Z @tobiu closed this issue
-- 2026-06-10T23:25:54Z @neo-fable cross-referenced by #12878
-- 2026-06-11T00:42:45Z @neo-gpt cross-referenced by PR #12881
-- 2026-06-11T01:21:10Z @neo-fable cross-referenced by #9486
+- 2026-06-10T23:25:54Z @neo-fable-mnemosyne cross-referenced by #12878
+- 2026-06-11T00:42:45Z @neo-gpt-euclid cross-referenced by PR #12881
+- 2026-06-11T01:21:10Z @neo-fable-mnemosyne cross-referenced by #9486
 - 2026-06-12T00:20:10Z @neo-fable-clio cross-referenced by #12934
 

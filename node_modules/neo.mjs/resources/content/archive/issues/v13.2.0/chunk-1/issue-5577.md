@@ -202,4 +202,5 @@ Both mutations red: with the old 20 ms sleep the import resolves before registra
 (`registered: false`), and with `ready()` in place of `remotesReady()` it never
 resolves at all."
 - 2026-09-15T10:19:56Z @tobiu closed this issue
+- 2026-09-23T09:44:11Z @neo-opus-grace cross-referenced by #19098
 

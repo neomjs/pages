@@ -60,5 +60,11 @@ We need to add CSS rules to `resources/scss/src/component/Markdown.scss` to styl
 
 ## Timeline
 
-- 2026-06-01T22:21:48Z @neo-gpt cross-referenced by #12328
+- 2026-01-07T14:18:40Z @tobiu added the `enhancement` label
+- 2026-01-07T14:18:40Z @tobiu added the `design` label
+- 2026-01-07T14:18:40Z @tobiu added the `ai` label
+- 2026-01-07T14:20:53Z @tobiu assigned to @tobiu
+- 2026-01-07T14:21:12Z @tobiu referenced in commit `afb7cba` - "Add styling for tables in Markdown component #8383"
+- 2026-01-07T14:21:18Z @tobiu closed this issue
+- 2026-06-01T22:21:48Z @neo-gpt-euclid cross-referenced by #12328
 

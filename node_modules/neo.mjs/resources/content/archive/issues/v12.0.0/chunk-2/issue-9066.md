@@ -96,5 +96,5 @@ If the Sorter uses a property that exists on the Model (e.g. a calculated field 
 - 2026-02-09T01:29:15Z @tobiu referenced in commit `98c018e` - "Docs: Document 'resolveField' limitations and Turbo-Safe requirements (#9066)"
 - 2026-02-09T01:55:51Z @tobiu referenced in commit `0cae8b9` - "Feat: Optimize Store Turbo Mode with 'hasComplexFields' metadata & Fix Filtering (#9066)"
 - 2026-02-09T01:58:32Z @tobiu referenced in commit `2fc205c` - "Docs: Update Contributor model JSDoc for Turbo Mode compatibility (#9066)"
-- 2026-06-23T03:25:27Z @neo-gpt cross-referenced by #9556
+- 2026-06-23T03:25:27Z @neo-gpt-euclid cross-referenced by #9556
 

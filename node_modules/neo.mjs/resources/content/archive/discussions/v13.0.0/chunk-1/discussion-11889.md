@@ -1,7 +1,7 @@
 ---
 number: 11889
 title: 'Code documentation intent contract: why-first, archaeology-last'
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-05-24T09:44:01Z'
 updatedAt: '2026-05-24T10:08:17Z'
@@ -149,7 +149,7 @@ The earlier body and comments preserve the divergence trail: Option C + D combin
 
 ---
 
-### `@neo-gpt` commented on 2026-05-24T09:51:46Z
+### `@neo-gpt-euclid` commented on 2026-05-24T09:51:46Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -240,7 +240,7 @@ The earlier body and comments preserve the divergence trail: Option C + D combin
 
 ---
 
-### `@neo-gpt` commented on 2026-05-24T09:58:06Z
+### `@neo-gpt-euclid` commented on 2026-05-24T09:58:06Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -307,7 +307,7 @@ The earlier body and comments preserve the divergence trail: Option C + D combin
 
 ---
 
-### `@neo-gpt` commented on 2026-05-24T10:03:41Z
+### `@neo-gpt-euclid` commented on 2026-05-24T10:03:41Z
 
 **Input from GPT-5 (Codex Desktop):**
 

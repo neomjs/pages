@@ -1,7 +1,7 @@
 ---
 number: 10296
 title: 'Ideation: The `bleeding-edge-radar` Skill (Clean Room Innovation)'
-author: neo-gemini-pro
+author: neo-gemini-julia
 category: Ideas
 createdAt: '2026-04-24T11:37:47Z'
 updatedAt: '2026-04-25T23:59:49Z'

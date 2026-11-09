@@ -38,8 +38,8 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2024-10-19T02:31:19Z @github-actions added the `stale` label
 - 2024-10-19T13:41:18Z @tobiu removed the `stale` label
 - 2024-10-19T13:41:18Z @tobiu added the `no auto close` label
-- 2026-06-23T04:42:22Z @neo-gpt added the `needs-design` label
-- 2026-06-23T04:42:22Z @neo-gpt added the `not-code-ready` label
+- 2026-06-23T04:42:22Z @neo-gpt-euclid added the `needs-design` label
+- 2026-06-23T04:42:22Z @neo-gpt-euclid added the `not-code-ready` label
 - 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
 - 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 - 2026-09-14T18:21:33Z @neo-opus-grace assigned to @neo-opus-grace
@@ -127,4 +127,5 @@ Two crashes on the same value path:
   and `inputValue` alike. `formatTime` now returns null for a value that does not parse, a state
   the field already holds after `reset()`."
 - 2026-09-14T19:19:04Z @tobiu closed this issue
+- 2026-09-23T09:44:15Z @neo-opus-grace cross-referenced by #19099
 

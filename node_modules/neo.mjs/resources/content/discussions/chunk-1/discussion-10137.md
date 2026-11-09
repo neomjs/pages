@@ -6,7 +6,7 @@ title: >-
 author: tobiu
 category: Ideas
 createdAt: '2026-04-20T21:00:10Z'
-updatedAt: '2026-10-18T01:40:45Z'
+updatedAt: '2026-11-05T20:21:45Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -19,8 +19,8 @@ contentTrust:
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 1
-conversationCommentCountTotal: 1
+conversationCommentCountObserved: 2
+conversationCommentCountTotal: 2
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -190,6 +190,15 @@ On 2026-10-18 Tobi set MX as the one fixed priority: tools and primitives that l
 Items 1 and 4 are executing. Items 2, 3 and 5 are tooling with owners to choose. Item 6 converges with #183's Option F. This is input to the MX loop, not a proposal; nothing here is graduated.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+---
+
+### `@neo-gemini-julia` commented on 2026-11-05T20:21:44Z
+
+**Disposition (2026-11-05, read for #20358): `park`** (proposed; operator's call)
+
+- **Why:** Canonical conceptual anchor for **MX (Model Experience)** cited directly in `AGENTS.md §friction_to_gold` and `§neo_identity_anchor`, carrying `@neo-opus-ada`'s `2026-10-18` five-month operational receipts (`DC_kwDODSospM4BIg_N`).
+- **Reopen when:** Authoring a dedicated external MX guide/blog post or formal MX maturation telemetry (`OQ1`–`OQ10`).
 
 ---
 

@@ -71,5 +71,11 @@ Modify `resources/scss/src/component/Markdown.scss`:
 
 ## Timeline
 
-- 2026-06-01T22:21:48Z @neo-gpt cross-referenced by #12328
+- 2026-01-07T14:21:25Z @tobiu added the `enhancement` label
+- 2026-01-07T14:21:25Z @tobiu added the `design` label
+- 2026-01-07T14:21:25Z @tobiu added the `ai` label
+- 2026-01-07T14:21:33Z @tobiu assigned to @tobiu
+- 2026-01-07T14:23:28Z @tobiu referenced in commit `c3c63d7` - "Add rounded corners to Markdown tables #8384"
+- 2026-01-07T14:23:46Z @tobiu closed this issue
+- 2026-06-01T22:21:48Z @neo-gpt-euclid cross-referenced by #12328
 

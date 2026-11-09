@@ -59,5 +59,5 @@ Update the `ContextReplacementPlugin` logic across all `appworker` and `worker` 
 > Framework paths now resolve correctly as-is within `node_modules`, while falling back to workspace path prefixing for other non-exempt relative imports.
 
 - 2026-03-30T11:02:25Z @tobiu assigned to @tobiu
-- 2026-08-30T16:03:57Z @neo-gpt cross-referenced by PR #17882
+- 2026-08-30T16:03:57Z @neo-gpt-euclid cross-referenced by PR #17882
 

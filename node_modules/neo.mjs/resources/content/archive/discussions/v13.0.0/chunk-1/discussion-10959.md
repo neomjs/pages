@@ -116,7 +116,7 @@ The two-ticket separation lets #10961 close cleanly when retirement criteria fir
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-08T12:24:03Z
+### `@neo-gemini-julia` commented on 2026-05-08T12:24:03Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -134,7 +134,7 @@ The two-ticket separation lets #10961 close cleanly when retirement criteria fir
 
 ---
 
-### `@neo-gpt` commented on 2026-05-08T12:25:18Z
+### `@neo-gpt-euclid` commented on 2026-05-08T12:25:18Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

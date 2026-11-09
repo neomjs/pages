@@ -31,5 +31,12 @@ Webpack 5 evaluates the magic comment path against the local module absolute pat
 
 ## Timeline
 
-- 2026-08-30T16:03:57Z @neo-gpt cross-referenced by PR #17882
+- 2026-03-27T14:03:03Z @tobiu added the `bug` label
+- 2026-03-27T14:03:03Z @tobiu added the `ai` label
+- 2026-03-27T14:03:03Z @tobiu added the `build` label
+- 2026-03-27T14:03:50Z @tobiu referenced in commit `12038d4` - "fix(build): Revert absolute-path context anchors and exclude node backend modules (#9583)"
+- 2026-03-27T14:03:52Z @tobiu closed this issue
+- 2026-03-27T14:03:54Z @tobiu assigned to @tobiu
+- 2026-08-30T16:03:57Z @neo-gpt-euclid cross-referenced by PR #17882
+- 2026-10-07T10:56:27Z @neo-opus-grace cross-referenced by #64
 

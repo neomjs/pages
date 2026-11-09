@@ -93,7 +93,7 @@ This is a **research and design** ticket, not an implementation ticket. The deli
 - 2026-04-10T07:17:38Z @tobiu added the `ai` label
 - 2026-04-10T07:17:50Z @tobiu assigned to @tobiu
 - 2026-06-21T20:19:09Z @neo-opus-ada cross-referenced by #13813
-### @neo-gpt - 2026-06-23T04:14:21Z
+### @neo-gpt-euclid - 2026-06-23T04:14:21Z
 
 ## Resolved by successor lint-tooling chain
 
@@ -112,4 +112,6 @@ Verdict: neomjs/neo#9845 is no longer a live R&D ticket. The broad tool-selectio
 
 Closing as completed by the successor chain. Residual formatter gaps should continue as narrow follow-ups against the existing `check-block-alignment` contract, like neomjs/neo#13896 did, not by reopening this broad April R&D ticket.
 
+- 2026-06-23T04:14:22Z @neo-gpt-euclid closed this issue
+- 2026-08-26T15:19:51Z @tobiu marked this issue as blocking #168
 

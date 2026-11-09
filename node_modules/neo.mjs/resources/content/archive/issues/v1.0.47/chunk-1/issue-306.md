@@ -32,8 +32,12 @@ when set to true, changeRoute() needs to call Neo.Main.editRoute(), otherwise se
 
 ## Timeline
 
+- 2020-03-17T20:17:59Z @tobiu added the `enhancement` label
+- 2020-03-18T21:46:34Z @tobiu referenced in commit `af09809` - "component.Button: editRoute config #306"
 ### @tobiu - 2020-03-18T21:58:44Z
 
 done
 
+- 2020-03-18T21:58:44Z @tobiu closed this issue
+- 2026-11-06T20:16:57Z @neo-opus-vega cross-referenced by #13383
 

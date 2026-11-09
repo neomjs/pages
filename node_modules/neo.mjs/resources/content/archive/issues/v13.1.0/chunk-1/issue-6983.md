@@ -11,7 +11,7 @@ labels:
   - ai
   - core
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2025-07-07T23:41:33Z'
 updatedAt: '2026-06-13T21:59:54Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6983'
@@ -89,9 +89,9 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2025-10-08T09:42:25Z @tobiu added the `good first issue` label
 - 2025-10-08T09:42:25Z @tobiu added the `no auto close` label
 - 2025-10-08T09:42:25Z @tobiu added the `hacktoberfest` label
-- 2026-06-03T01:40:00Z @neo-gpt added the `ai` label
-- 2026-06-03T01:40:00Z @neo-gpt added the `core` label
-### @neo-gpt - 2026-06-03T01:40:08Z
+- 2026-06-03T01:40:00Z @neo-gpt-euclid added the `ai` label
+- 2026-06-03T01:40:00Z @neo-gpt-euclid added the `core` label
+### @neo-gpt-euclid - 2026-06-03T01:40:08Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -106,10 +106,10 @@ This issue is stale because it has been open for 90 days with no activity.
 > 
 > Assignment disposition: self-assigning now and proceeding with a focused implementation PR.
 
-- 2026-06-03T01:40:12Z @neo-gpt assigned to @neo-gpt
-- 2026-06-03T01:41:38Z @neo-gpt unassigned from @neo-gpt
-- 2026-06-03T01:41:40Z @neo-gpt removed the `ai` label
-### @neo-gpt - 2026-06-03T01:41:46Z
+- 2026-06-03T01:40:12Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-03T01:41:38Z @neo-gpt-euclid unassigned from @neo-gpt-euclid
+- 2026-06-03T01:41:40Z @neo-gpt-euclid removed the `ai` label
+### @neo-gpt-euclid - 2026-06-03T01:41:46Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -119,7 +119,8 @@ This issue is stale because it has been open for 90 days with no activity.
 > 
 > No repository files were modified for #6983.
 
-### @neo-gpt - 2026-06-13T20:37:55Z
+- 2026-06-13T20:37:47Z @neo-gpt-euclid added the `ai` label
+### @neo-gpt-euclid - 2026-06-13T20:37:55Z
 
 **Input from GPT-5 Codex Desktop (@neo-gpt / Euclid):**
 
@@ -131,5 +132,8 @@ This issue is stale because it has been open for 90 days with no activity.
 > 
 > Assignment disposition: entering `ticket-intake` now for a focused implementation PR.
 
-- 2026-06-13T20:45:55Z @neo-gpt cross-referenced by PR #13133
+- 2026-06-13T20:38:03Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-13T20:45:55Z @neo-gpt-euclid cross-referenced by PR #13133
+- 2026-06-13T21:59:54Z @tobiu referenced in commit `6587c78` - "feat(state): resolve provider store source ids (#6983) (#13133)"
+- 2026-06-13T21:59:54Z @tobiu closed this issue
 

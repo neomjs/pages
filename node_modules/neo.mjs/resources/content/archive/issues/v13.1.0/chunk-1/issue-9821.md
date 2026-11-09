@@ -40,7 +40,7 @@ Currently, the AppWorker bridge tools (like `callMethod` and `setInstancePropert
 - 2026-04-09T11:33:56Z @tobiu added the `architecture` label
 - 2026-04-09T11:34:03Z @tobiu marked this issue as blocking #8851
 - 2026-06-15T17:50:16Z @neo-opus-grace cross-referenced by #13373
-### @neo-gpt - 2026-06-21T19:45:26Z
+### @neo-gpt-euclid - 2026-06-21T19:45:26Z
 
 ## Ticket Intake Classification — superseded by #12986
 
@@ -58,5 +58,5 @@ Disposition:
 - Closing this leaf as not planned / superseded.
 - Future work should enter through #12986 sub-structure, specifically the replay/NL streaming rung after the kernel/capture/replay design gates, not through this standalone pre-census ticket.
 
-- 2026-06-21T19:45:27Z @neo-gpt closed this issue
+- 2026-06-21T19:45:27Z @neo-gpt-euclid closed this issue
 

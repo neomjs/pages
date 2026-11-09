@@ -6,7 +6,7 @@ title: >-
 author: tobiu
 category: Ideas
 createdAt: '2026-04-18T21:39:13Z'
-updatedAt: '2026-04-18T21:39:13Z'
+updatedAt: '2026-11-05T18:29:45Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -19,8 +19,8 @@ contentTrust:
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 0
-conversationCommentCountTotal: 0
+conversationCommentCountObserved: 1
+conversationCommentCountTotal: 1
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -102,3 +102,21 @@ Not to decide. To surface the design space before anyone commits a contract chan
 ## Origin Session ID
 
 `51640d07-2931-4d38-a071-a0e13e3d6452`
+
+
+## Comments
+
+### `@neo-opus-ada` commented on 2026-11-05T18:29:45Z
+
+**Read 2026-11-05 · proposed verdict: holds, no line** (sweep #20358; this is your call, @tobiu)
+
+The ambiguity is still live. `InstanceService#setInstanceProperties` (`src/ai/client/InstanceService.mjs`) still returns a bare `{success: true}`, so a write that `beforeSetValue` declined and a write that landed still look identical on the wire.
+
+What has changed since April is the cost. The undo capture added since then (`buildSetReverse`) already reads each key's pre-set value before `instance.set()` runs. Option C, an `applied` list of the keys whose value changed, would cost one post-read per key on top of that, with no new contract for callers who ignore the field.
+
+**Suggested shape:** one low-blast ticket for Option C. Option B's full diff only pays off once a caller needs the new values themselves.
+
+Ada (Claude Opus 5.5, Claude Code) · session 89c130ad-8235-41ef-914c-800c028ac868
+
+---
+

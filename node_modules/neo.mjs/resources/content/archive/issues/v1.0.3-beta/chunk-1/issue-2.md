@@ -37,6 +37,9 @@ and add content
 done.
 
 - 2019-11-11T14:24:27Z @tobiu closed this issue
+- 2023-01-01T15:27:46Z @Dinkh referenced in commit `136da52` - "Merge pull request #2 from Dinkh/Dinkh-patch-NeoFirst
+
+Added Neo.first() for debugging purposes."
 - 2026-01-28T15:29:32Z @tobiu cross-referenced by #8899
 - 2026-04-12T08:25:03Z @tobiu cross-referenced by PR #9897
 - 2026-04-18T20:53:05Z @tobiu cross-referenced by PR #10071
@@ -73,12 +76,152 @@ done.
 - 2026-05-01T11:53:08Z @neo-opus-ada cross-referenced by PR #10573
 - 2026-05-02T10:15:11Z @neo-opus-ada cross-referenced by #10611
 - 2026-05-02T10:29:30Z @neo-opus-ada cross-referenced by #10615
-- 2026-05-02T23:24:20Z @neo-gpt cross-referenced by PR #10619
+- 2026-05-02T23:24:20Z @neo-gpt-euclid cross-referenced by PR #10619
+- 2026-05-03T20:32:02Z @neo-opus-ada referenced in commit `45bc8c7` - "fix(ai): clarify single-key vs multi-step seed primitive distinction (#10664)
+
+Cycle 2 polish addressing @neo-gpt's PR #10665 review (commentId
+IC_kwDODSospM8AAAABBEy2HQ) Required Action #2: tighten the
+`meta.focusSeedKey` wording so future operators do not infer that
+`focusSeedKey: 'r'` is a validated safe Codex opt-in.
+
+Per the review: `focusSeedKey` is a SINGLE-KEY primitive (the bridge
+emits one keystroke before the destructive clear). The `r → Cmd+Z →
+Cmd+A → Cmd+X` candidate under investigation is a MULTI-STEP probe-
+and-undo SEQUENCE — if it proves safe across the 5-row matrix, it
+needs a distinct implementation path (e.g. `meta.focusSeedSequence`
+primitive or routed via the Codex app-server adapter), NOT a
+`focusSeedKey: 'r'` opt-in (which would silently re-introduce the
+mutating-prompt failure mode the fail-closed guard exists to prevent).
+
+- bridge-daemon.mjs Anchor & Echo: explicit single-key vs multi-step
+  scope distinction; the multi-step candidate now framed as needing
+  separate implementation, not a focusSeedKey value
+- bridge-daemon.spec.mjs test comment: same refinement; clarifies
+  `meta.focusSeedKey` is single-key non-mutating primitive only
+
+Spec: 9/9 pass. PR body update will land separately via gh pr edit
+addressing Required Action #1 (replacement-vs-append framing)."
+- 2026-05-03T20:42:42Z @tobiu referenced in commit `60b9c7b` - "fix(ai): fail closed for Codex UI wake (#10664) (#10665)
+
+* fix(ai): fail closed for Codex UI wake (#10664)
+
+Reverts PR #10663's Codex `focusSeedKey: 'space'` default and adds a
+defense-in-depth fail-closed guard, after @tobiu's manual matrix
+validation 2026-05-03 falsified the Space-seed hypothesis for Codex
+Desktop. Empirical findings (per #10664 + GPT broadcast
+MESSAGE:71db3874-f74b-4cc8-8095-a7ea1a385b05):
+
+- Pressing Space when the Codex prompt field is unfocused applies a
+  focus outline but does NOT focus the composer
+- Enter behaves identically — outline only, not usable composer focus
+- Printable keys (e.g. 'r') CAN focus, but if the prompt already
+  contains text, the keystroke replaces existing input — destructive
+
+No empirically-validated non-destructive composer-focus primitive
+exists for Codex Desktop today. Until either operator-explicit
+`meta.focusSeedKey` opt-in with a verified primitive OR the Codex
+app-server adapter ships under #10517 (`turn/start` / `turn/steer` /
+`thread/inject_items` via `codex debug app-server send-message-v2`),
+the bridge MUST refuse to proceed past the destructive Cmd+A / Cmd+X
+clear sequence for Codex.
+
+Defense-in-depth: even with @neo-gpt's WAKE_SUBSCRIPTION currently set
+to `harnessTarget: 'disabled'` (per #10664 immediate operator
+mitigation), this bridge-side guard prevents accidental subscription
+re-enable from triggering the disproved Space-seed path.
+
+- ai/scripts/bridge-daemon.mjs:
+  - Reverted line 588 conditional from
+    `(appName === 'Claude' || appName === 'Codex')` back to
+    `appName === 'Claude'` only
+  - Added a fail-closed guard that returns + writeLog('WARN', ...)
+    when `appName === 'Codex' && !focusSeedKey`
+  - Anchor & Echo block expanded with full empirical disproval rationale,
+    including the printable-key-replaces-content failure mode and the
+    #10517 medium-term supersession path
+- test/playwright/unit/ai/scripts/bridge-daemon.spec.mjs:
+  - Removed the disproved Codex ordering test (PR #10663 added)
+  - Added a fail-closed test that asserts the bridge logs the
+    refusal warning AND never invokes osascript when Codex
+    subscription lacks focusSeedKey
+- test/playwright/unit/ai/mcp/server/memory-core/services/
+  WakeSubscriptionService.spec.mjs:
+  - Removed the Codex `focusSeedKey: 'space'` round-trip test that
+    PR #10663 added (schema-layer round-trip already covered by the
+    existing Claude test; duplicating it for Codex implied Space was
+    valid configuration, now disproved)
+  - Replaced with an inline note citing #10664 empirical anchor
+
+Claude (Cmd+3 → Space → clear) and Antigravity (Cmd+Shift+I → clear)
+delivery paths remain unchanged and green per the matrix execution at
+19:23Z and 19:29Z respectively.
+
+Reactivation gate stays tripped per #10650 protocol pending Codex
+matrix-row evidence (now requires either operator-validated
+metadata-explicit focusSeedKey OR #10517 app-server adapter).
+
+* fix(ai): refine Anchor & Echo with append-not-replace evidence (#10664)
+
+Polish commit responding to @neo-gpt's updated empirical evidence
+(MESSAGE:121a44ad-fefa-4c1a-8bbb-c5b97a804124, before formal review):
+@tobiu's manual probe shows pressing `r` while Codex prompt is
+unfocused APPENDS to the existing draft rather than fully replacing
+it — softer failure mode than the original "destructively replace"
+framing in this PR's commit.
+
+The correctness of the fail-closed posture is unchanged: appending
+into the prompt is still mutation that the subsequent Cmd+A/Cmd+X
+clear captures and the wake paste overwrites. Without a verified
+probe-and-undo or non-mutating focus primitive, printable-key seeding
+remains unsafe pre-clear.
+
+Per `feedback_truth_in_code` discipline, refining the Anchor & Echo
+block + spec test comment to match the empirically-current evidence
+rather than propagating the more-extreme framing as fact:
+
+- bridge-daemon.mjs Anchor & Echo: clarifies that printable keys
+  APPEND (not replace) but appending is still mutation; explicitly
+  cites #10664's `r → Cmd+Z → Cmd+A → Cmd+X` candidate as
+  in-investigation against a 5-row state matrix
+- bridge-daemon.spec.mjs test comment: same refinement; cites the
+  probe-and-undo candidate as a possible future operator-validated
+  focusSeedKey
+
+No code-path change. Spec re-run: 9 passed.
+
+* fix(ai): clarify single-key vs multi-step seed primitive distinction (#10664)
+
+Cycle 2 polish addressing @neo-gpt's PR #10665 review (commentId
+IC_kwDODSospM8AAAABBEy2HQ) Required Action #2: tighten the
+`meta.focusSeedKey` wording so future operators do not infer that
+`focusSeedKey: 'r'` is a validated safe Codex opt-in.
+
+Per the review: `focusSeedKey` is a SINGLE-KEY primitive (the bridge
+emits one keystroke before the destructive clear). The `r → Cmd+Z →
+Cmd+A → Cmd+X` candidate under investigation is a MULTI-STEP probe-
+and-undo SEQUENCE — if it proves safe across the 5-row matrix, it
+needs a distinct implementation path (e.g. `meta.focusSeedSequence`
+primitive or routed via the Codex app-server adapter), NOT a
+`focusSeedKey: 'r'` opt-in (which would silently re-introduce the
+mutating-prompt failure mode the fail-closed guard exists to prevent).
+
+- bridge-daemon.mjs Anchor & Echo: explicit single-key vs multi-step
+  scope distinction; the multi-step candidate now framed as needing
+  separate implementation, not a focusSeedKey value
+- bridge-daemon.spec.mjs test comment: same refinement; clarifies
+  `meta.focusSeedKey` is single-key non-mutating primitive only
+
+Spec: 9/9 pass. PR body update will land separately via gh pr edit
+addressing Required Action #1 (replacement-vs-append framing).
+
+---------
+
+Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-05-04T22:04:15Z @neo-opus-ada cross-referenced by #10721
 - 2026-05-05T18:26:43Z @neo-opus-ada cross-referenced by #10772
 - 2026-05-05T19:30:03Z @neo-opus-ada cross-referenced by #10494
 - 2026-05-05T20:08:23Z @neo-opus-ada cross-referenced by #10776
-- 2026-05-06T16:10:45Z @neo-gpt cross-referenced by #10824
+- 2026-05-06T16:10:45Z @neo-gpt-euclid cross-referenced by #10824
 - 2026-05-06T16:14:34Z @neo-opus-ada cross-referenced by #10826
 - 2026-05-06T17:20:57Z @neo-opus-ada cross-referenced by PR #10836
 - 2026-05-07T10:17:54Z @neo-opus-ada cross-referenced by PR #10888
@@ -130,7 +273,7 @@ canonical anti-pattern table is §7.7. Placed the new row in §7.7 to match the
 existing structure and adjacent anti-patterns.
 
 Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
-- 2026-05-15T17:47:43Z @neo-gpt cross-referenced by #11430
+- 2026-05-15T17:47:43Z @neo-gpt-euclid cross-referenced by #11430
 - 2026-05-15T18:04:28Z @neo-opus-ada cross-referenced by PR #11432
 - 2026-05-15T18:59:33Z @neo-opus-ada cross-referenced by PR #11436
 - 2026-05-16T14:21:54Z @neo-opus-ada cross-referenced by PR #11462
@@ -350,9 +493,9 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-06-10T19:43:11Z @neo-opus-vega cross-referenced by PR #12857
 - 2026-06-10T21:44:42Z @neo-opus-grace cross-referenced by PR #12868
 - 2026-06-11T01:19:37Z @neo-opus-vega cross-referenced by #12879
-- 2026-06-11T12:52:04Z @neo-fable cross-referenced by #12696
+- 2026-06-11T12:52:04Z @neo-fable-mnemosyne cross-referenced by #12696
 - 2026-06-12T00:42:15Z @neo-fable-clio cross-referenced by #12936
-- 2026-06-12T20:26:59Z @neo-fable cross-referenced by #144
+- 2026-06-12T20:26:59Z @neo-fable-mnemosyne cross-referenced by #144
 - 2026-06-13T01:33:31Z @neo-opus-ada cross-referenced by PR #13055
 - 2026-06-13T19:57:18Z @neo-opus-ada cross-referenced by #13129
 - 2026-06-13T20:09:30Z @neo-opus-ada cross-referenced by PR #13130
@@ -364,12 +507,12 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-06-15T10:16:42Z @neo-opus-vega cross-referenced by PR #13325
 - 2026-06-15T15:21:31Z @neo-opus-ada cross-referenced by PR #13356
 - 2026-06-16T16:54:29Z @neo-opus-vega cross-referenced by PR #13443
-- 2026-06-19T09:47:02Z @neo-gpt cross-referenced by #13540
+- 2026-06-19T09:47:02Z @neo-gpt-euclid cross-referenced by #13540
 - 2026-06-20T00:57:45Z @neo-opus-vega cross-referenced by PR #13577
 - 2026-06-20T04:09:28Z @neo-opus-grace cross-referenced by #13590
 - 2026-06-20T20:07:00Z @neo-opus-grace cross-referenced by #136
 - 2026-06-20T22:03:27Z @neo-opus-grace cross-referenced by #13626
-- 2026-06-20T23:58:02Z @neo-gpt cross-referenced by PR #13684
+- 2026-06-20T23:58:02Z @neo-gpt-euclid cross-referenced by PR #13684
 - 2026-06-21T00:55:16Z @neo-opus-vega cross-referenced by PR #13486
 - 2026-06-21T01:05:54Z @neo-opus-ada cross-referenced by #142
 - 2026-06-21T02:39:59Z @neo-opus-ada cross-referenced by PR #13699
@@ -452,9 +595,9 @@ The heal already exists and is wired — repairProviderRoleSetResidency (the war
 - 2026-06-28T00:41:06Z @neo-opus-ada cross-referenced by PR #14282
 - 2026-06-29T11:06:43Z @neo-opus-grace cross-referenced by PR #14334
 - 2026-06-29T13:20:20Z @neo-opus-grace cross-referenced by PR #14346
-- 2026-07-02T01:44:05Z @neo-fable cross-referenced by #124
+- 2026-07-02T01:44:05Z @neo-fable-mnemosyne cross-referenced by #124
 - 2026-07-02T06:27:04Z @neo-opus-grace cross-referenced by PR #14384
-- 2026-07-02T10:01:04Z @neo-gpt cross-referenced by PR #14464
+- 2026-07-02T10:01:04Z @neo-gpt-euclid cross-referenced by PR #14464
 - 2026-07-02T11:23:10Z @neo-fable-clio cross-referenced by PR #14469
 - 2026-07-02T14:35:46Z @neo-fable-clio cross-referenced by PR #14470
 - 2026-07-02T15:06:12Z @neo-opus-ada cross-referenced by #121
@@ -463,23 +606,23 @@ The heal already exists and is wired — repairProviderRoleSetResidency (the war
 - 2026-07-02T18:37:03Z @neo-opus-grace cross-referenced by #14500
 - 2026-07-04T09:55:18Z @neo-opus-grace cross-referenced by PR #14729
 - 2026-07-04T12:21:42Z @neo-opus-ada cross-referenced by PR #14732
-- 2026-07-04T12:33:43Z @neo-fable cross-referenced by #8
+- 2026-07-04T12:33:43Z @neo-fable-mnemosyne cross-referenced by #8
 - 2026-07-04T12:51:47Z @neo-opus-grace cross-referenced by PR #14730
-- 2026-07-04T13:16:40Z @neo-gpt cross-referenced by PR #14761
+- 2026-07-04T13:16:40Z @neo-gpt-euclid cross-referenced by PR #14761
 - 2026-07-04T13:40:38Z @neo-opus-ada cross-referenced by #14758
 - 2026-07-04T13:42:38Z @neo-opus-ada cross-referenced by PR #14775
 - 2026-07-04T13:43:48Z @neo-opus-ada cross-referenced by #14759
 - 2026-07-04T14:15:12Z @neo-opus-ada cross-referenced by PR #14792
-- 2026-07-04T14:35:10Z @neo-fable cross-referenced by PR #14740
+- 2026-07-04T14:35:10Z @neo-fable-mnemosyne cross-referenced by PR #14740
 - 2026-07-04T15:06:47Z @neo-opus-ada cross-referenced by PR #14804
-- 2026-07-09T23:10:18Z @neo-fable cross-referenced by PR #14904
-- 2026-07-10T00:06:09Z @neo-fable cross-referenced by #14903
-- 2026-07-10T00:35:03Z @neo-fable cross-referenced by #14908
-- 2026-07-10T02:42:07Z @neo-fable cross-referenced by #14915
+- 2026-07-09T23:10:18Z @neo-fable-mnemosyne cross-referenced by PR #14904
+- 2026-07-10T00:06:09Z @neo-fable-mnemosyne cross-referenced by #14903
+- 2026-07-10T00:35:03Z @neo-fable-mnemosyne cross-referenced by #14908
+- 2026-07-10T02:42:07Z @neo-fable-mnemosyne cross-referenced by #14915
 - 2026-07-10T02:59:08Z @neo-opus-grace cross-referenced by #14911
-- 2026-07-10T03:28:16Z @neo-fable cross-referenced by PR #14922
-- 2026-07-10T04:28:22Z @neo-fable cross-referenced by PR #14919
-- 2026-07-10T23:19:36Z @neo-fable cross-referenced by PR #14997
+- 2026-07-10T03:28:16Z @neo-fable-mnemosyne cross-referenced by PR #14922
+- 2026-07-10T04:28:22Z @neo-fable-mnemosyne cross-referenced by PR #14919
+- 2026-07-10T23:19:36Z @neo-fable-mnemosyne cross-referenced by PR #14997
 - 2026-07-11T19:55:32Z @neo-opus-vega cross-referenced by PR #15044
 - 2026-07-12T05:22:43Z @neo-opus-ada cross-referenced by PR #15073
 - 2026-07-12T09:03:58Z @neo-opus-ada cross-referenced by #14680
@@ -834,8 +977,8 @@ Co-authored-by: neo-gpt <neo-gpt@neomjs.com>"
 - 2026-07-26T06:46:16Z @neo-kimi-phoebe cross-referenced by PR #15959
 - 2026-08-01T11:07:34Z @neo-opus-vega cross-referenced by #16208
 - 2026-08-02T21:18:16Z @neo-fable-clio cross-referenced by #16398
-- 2026-08-03T10:30:56Z @neo-fable cross-referenced by #16425
-- 2026-08-04T00:00:52Z @neo-fable cross-referenced by PR #16473
+- 2026-08-03T10:30:56Z @neo-fable-mnemosyne cross-referenced by #16425
+- 2026-08-04T00:00:52Z @neo-fable-mnemosyne cross-referenced by PR #16473
 - 2026-08-04T11:42:47Z @neo-opus-grace cross-referenced by #16320
 - 2026-08-04T20:58:43Z @neo-opus-vega cross-referenced by #16206
 - 2026-08-11T02:33:50Z @neo-opus-ada cross-referenced by PR #16947
@@ -855,7 +998,7 @@ Co-authored-by: neo-gpt <neo-gpt@neomjs.com>"
 - 2026-08-18T11:50:38Z @neo-opus-grace cross-referenced by PR #17347
 - 2026-08-24T10:27:28Z @neo-opus-vega cross-referenced by PR #17698
 - 2026-08-24T11:38:03Z @neo-gpt-emmy cross-referenced by #17701
-- 2026-08-25T16:29:06Z @neo-gpt cross-referenced by #17500
+- 2026-08-25T16:29:06Z @neo-gpt-euclid cross-referenced by #17500
 - 2026-08-31T15:32:43Z @tobiu referenced in commit `de7f9c7` - "test(dashboard): close AC-3 and AC-5 at the boundaries they name (#17945)
 
 AC-3 claimed a retained action survives reconciliation, and proved it before reconciliation
@@ -1382,13 +1525,13 @@ only it. test-unit 2913 passed."
 - 2026-09-03T10:17:29Z @neo-opus-vega cross-referenced by #18027
 - 2026-09-03T20:57:15Z @neo-opus-grace cross-referenced by #18216
 - 2026-09-04T00:33:16Z @neo-opus-grace cross-referenced by PR #18245
-- 2026-09-04T19:10:17Z @neo-gpt cross-referenced by PR #18323
-- 2026-09-05T00:14:15Z @neo-fable cross-referenced by PR #18347
-- 2026-09-05T00:39:17Z @neo-fable referenced in commit `d68a374` - "test(dock): two durable comments say the same without the tokens the published archaeology checker flags (#18306)
+- 2026-09-04T19:10:17Z @neo-gpt-euclid cross-referenced by PR #18323
+- 2026-09-05T00:14:15Z @neo-fable-mnemosyne cross-referenced by PR #18347
+- 2026-09-05T00:39:17Z @neo-fable-mnemosyne referenced in commit `d68a374` - "test(dock): two durable comments say the same without the tokens the published archaeology checker flags (#18306)
 
 The baseline CI job runs the published neo-agent-skills checker, which has no escape marker and reads a bare `#2` as a tracking ref. The record reference now names the decision file's path — a location, not a tracking number — and "finding #2" is "second finding". The repo's own checker already passed both lines; this makes the published one agree until it learns the marker."
-- 2026-09-05T00:46:15Z @neo-fable cross-referenced by #16553
-- 2026-09-05T01:14:48Z @neo-fable referenced in commit `bf9886a` - "test(dock): two durable comments say the same without the tokens the published archaeology checker flags (#18306)
+- 2026-09-05T00:46:15Z @neo-fable-mnemosyne cross-referenced by #16553
+- 2026-09-05T01:14:48Z @neo-fable-mnemosyne referenced in commit `bf9886a` - "test(dock): two durable comments say the same without the tokens the published archaeology checker flags (#18306)
 
 The baseline CI job runs the published neo-agent-skills checker, which has no escape marker and reads a bare `#2` as a tracking ref. The record reference now names the decision file's path — a location, not a tracking number — and "finding #2" is "second finding". The repo's own checker already passed both lines; this makes the published one agree until it learns the marker."
 - 2026-09-05T01:31:45Z @tobiu referenced in commit `49b4b03` - "feat(dock): the header-action presentation policy leaves Workspace for an owned collaborator (#18306) (#18347)
@@ -1463,4 +1606,7 @@ still holds.
 Also moves Pull.mjs's marker outside the quoted title sample, so the example stays a
 verbatim PR title rather than one with an annotation inside the quotes."
 - 2026-09-19T13:17:18Z @neo-opus-vega cross-referenced by #18961
+- 2026-10-23T00:03:23Z @neo-opus-grace cross-referenced by #20017
+- 2026-10-23T07:40:00Z @neo-opus-grace cross-referenced by #20018
+- 2026-10-26T01:02:58Z @neo-gemini-julia cross-referenced by #20115
 

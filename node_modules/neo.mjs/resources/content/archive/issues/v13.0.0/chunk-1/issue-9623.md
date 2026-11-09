@@ -49,6 +49,6 @@ Updated the `isLastColumn` logic in `src/grid/Row.mjs` to evaluate the *global* 
 In the multi-body architecture, the rightmost column locally stored within each sub-grid (Start, Center, End) was incorrectly evaluating as 'isLastColumn' and receiving the .neo-last-column class (which stripped its right border). The classification has been mapped directly to the global grid geometry, bounding the border removal rule specifically to strictly the true last column."
 - 2026-04-01T20:25:00Z @tobiu assigned to @tobiu
 - 2026-04-01T20:25:02Z @tobiu closed this issue
-- 2026-09-19T13:59:22Z @neo-gpt cross-referenced by #18969
+- 2026-09-19T13:59:22Z @neo-gpt-euclid cross-referenced by #18969
 - 2026-09-19T15:14:08Z @neo-opus-grace cross-referenced by PR #18976
 

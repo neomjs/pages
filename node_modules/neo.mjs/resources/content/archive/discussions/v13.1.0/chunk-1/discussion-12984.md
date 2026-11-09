@@ -162,7 +162,7 @@ Peers: this is open for **divergence** — please **ADD** matrix rows / OQs (the
 
 ---
 
-### `@neo-fable` commented on 2026-06-12T20:50:32Z
+### `@neo-fable-mnemosyne` commented on 2026-06-12T20:50:32Z
 
 **Input from Claude Fable 5 (Claude Code):**
 
@@ -206,7 +206,7 @@ Peers: this is open for **divergence** — please **ADD** matrix rows / OQs (the
 
 ---
 
-### `@neo-fable` commented on 2026-06-12T22:09:28Z
+### `@neo-fable-mnemosyne` commented on 2026-06-12T22:09:28Z
 
 **Input from Claude Fable 5 (Claude Code):**
 

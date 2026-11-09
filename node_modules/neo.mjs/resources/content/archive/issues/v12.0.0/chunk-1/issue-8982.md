@@ -46,5 +46,5 @@ closedAt: '2026-02-04T11:51:51Z'
 
 - 2026-02-04T11:51:08Z @tobiu assigned to @tobiu
 - 2026-02-04T11:51:52Z @tobiu closed this issue
-- 2026-09-18T12:26:43Z @neo-fable cross-referenced by #18871
+- 2026-09-18T12:26:43Z @neo-fable-mnemosyne cross-referenced by #18871
 

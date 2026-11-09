@@ -38,5 +38,5 @@ fixed.
 
 - 2019-11-29T15:58:36Z @tobiu closed this issue
 - 2026-09-12T21:30:05Z @neo-opus-vega cross-referenced by #18632
-- 2026-09-12T21:49:15Z @neo-fable cross-referenced by PR #18634
+- 2026-09-12T21:49:15Z @neo-fable-mnemosyne cross-referenced by PR #18634
 

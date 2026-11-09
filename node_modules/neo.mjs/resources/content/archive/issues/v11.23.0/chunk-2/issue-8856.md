@@ -54,6 +54,6 @@ closedAt: '2026-01-21T20:33:20Z'
 - 2026-01-21T20:33:02Z @tobiu referenced in commit `f525d56` - "feat: Implement Spatial Theme Transition (The Wave) (#8856)"
 - 2026-01-21T20:33:20Z @tobiu closed this issue
 - 2026-01-21T20:33:23Z @tobiu assigned to @tobiu
-- 2026-08-24T22:35:40Z @neo-gpt cross-referenced by PR #17743
+- 2026-08-24T22:35:40Z @neo-gpt-euclid cross-referenced by PR #17743
 - 2026-08-25T08:08:04Z @neo-opus-ada cross-referenced by PR #17747
 

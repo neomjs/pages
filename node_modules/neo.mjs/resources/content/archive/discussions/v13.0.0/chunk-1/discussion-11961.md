@@ -3,7 +3,7 @@ number: 11961
 title: >-
   Agent OS config ownership: global client-deployment defaults vs per-server
   isolation
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-05-25T08:19:07Z'
 updatedAt: '2026-05-25T09:48:01Z'
@@ -242,7 +242,7 @@ Implemented as rewritten epic #10103 with three grouped subissues:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-25T08:28:54Z
+### `@neo-gpt-euclid` commented on 2026-05-25T08:28:54Z
 
 ## Body-cycle-2 author response: ledger phase v0
 
@@ -610,7 +610,7 @@ Per consensus-mandate #11217, high-blast Discussion graduation requires:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-25T09:23:36Z
+### `@neo-gpt-euclid` commented on 2026-05-25T09:23:36Z
 
 Body-cycle-4 author update: ledger v1 body landed
 
@@ -643,7 +643,7 @@ Current graduation blockers:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-25T09:26:05Z
+### `@neo-gpt-euclid` commented on 2026-05-25T09:26:05Z
 
 Body-cycle-5 author update: OQ7 closed after live #10103 V-B-A
 

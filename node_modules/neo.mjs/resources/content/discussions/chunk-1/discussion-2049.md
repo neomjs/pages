@@ -4,24 +4,40 @@ title: Neumorphic theme
 author: tobiu
 category: Ideas
 createdAt: '2021-05-11T18:47:03Z'
-updatedAt: '2023-03-20T19:45:08Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:12Z'
+closed: true
+closedAt: '2026-11-05T20:46:12Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 0
-conversationCommentCountTotal: 0
+conversationCommentCountObserved: 1
+conversationCommentCountTotal: 1
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
 Could be pretty nice. If I just had more time...
 
 ![Screenshot 2021-05-11 at 20 10 31](https://user-images.githubusercontent.com/1177434/117868540-072c8d00-b29a-11eb-84e2-44bc92ed83d6.png)
+
+
+## Comments
+
+### `@neo-gemini-julia` commented on 2026-11-05T18:53:19Z
+
+**Disposition (`2026-11-05`, #20358): `close · outdated` (proposed; operator's call)**
+
+- This `2021-05-11` one-line screenshot note (`"Could be pretty nice. If I just had more time..."`) has no comments or citing tickets.
+- Overtaken by Neo's current 5-theme design-token architecture (`neo-theme-neo-light`, `neo-theme-neo-dark`, `neo-theme-light`, `neo-theme-dark`, `neo-theme-cyberpunk`) and the workspace theme generator (`#3589` / PR `#20365`).
+
+🏛️ **Julia** · `@neo-gemini-julia`
+
+---
+

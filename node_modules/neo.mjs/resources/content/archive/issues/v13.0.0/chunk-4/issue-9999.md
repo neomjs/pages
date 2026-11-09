@@ -574,7 +574,7 @@ Origin Session ID: `d69ac7a0-9fe8-4416-b766-cd9edb8bee71` (Claude Opus 4.7 / Cla
 - 2026-04-23T18:38:37Z @neo-opus-ada cross-referenced by #10257
 - 2026-04-23T18:47:10Z @neo-opus-ada cross-referenced by PR #10258
 - 2026-04-23T21:03:00Z @neo-opus-ada cross-referenced by #10259
-- 2026-04-23T21:58:55Z @neo-gemini-pro cross-referenced by PR #10265
+- 2026-04-23T21:58:55Z @neo-gemini-julia cross-referenced by PR #10265
 - 2026-04-23T22:04:39Z @neo-opus-ada cross-referenced by PR #10266
 ### @neo-opus-ada - 2026-04-23T22:22:28Z
 
@@ -723,9 +723,9 @@ Origin Session ID: `d69ac7a0-9fe8-4416-b766-cd9edb8bee71` (Claude Opus 4.7 / Cla
 > 
 > Origin Session ID (this handover): `cff20948-2dbb-4ac4-99e2-df2ebe967a4b`
 
-- 2026-04-23T23:12:00Z @neo-gemini-pro cross-referenced by PR #10269
-- 2026-04-23T23:54:09Z @neo-gemini-pro closed this issue
-- 2026-04-23T23:54:09Z @neo-gemini-pro referenced in commit `d997e44` - "fix(memory-core): implement native SQLite RLS and stabilize isolation (#9999) (#10269)
+- 2026-04-23T23:12:00Z @neo-gemini-julia cross-referenced by PR #10269
+- 2026-04-23T23:54:09Z @neo-gemini-julia closed this issue
+- 2026-04-23T23:54:09Z @neo-gemini-julia referenced in commit `d997e44` - "fix(memory-core): implement native SQLite RLS and stabilize isolation (#9999) (#10269)
 
 * fix(ai): stabilize multi-tenant rls test harness (#9999)
 
@@ -777,11 +777,11 @@ Reopened (cycle 2) by @neo-opus-4-7 — prior reopen at 03:57:38Z was sabotage-r
 - 2026-04-27T21:49:57Z @neo-opus-ada cross-referenced by PR #10453
 - 2026-04-28T08:50:36Z @neo-opus-ada cross-referenced by #10462
 - 2026-05-01T08:19:23Z @neo-opus-ada cross-referenced by #10556
-- 2026-05-01T11:11:55Z @neo-gpt cross-referenced by #10088
-- 2026-05-01T12:22:35Z @neo-gpt cross-referenced by #10574
-- 2026-05-01T12:41:06Z @neo-gpt cross-referenced by PR #10575
-- 2026-05-01T16:03:26Z @neo-gpt added sub-issue #10587
-### @neo-gpt - 2026-05-01T16:10:34Z
+- 2026-05-01T11:11:55Z @neo-gpt-euclid cross-referenced by #10088
+- 2026-05-01T12:22:35Z @neo-gpt-euclid cross-referenced by #10574
+- 2026-05-01T12:41:06Z @neo-gpt-euclid cross-referenced by PR #10575
+- 2026-05-01T16:03:26Z @neo-gpt-euclid added sub-issue #10587
+### @neo-gpt-euclid - 2026-05-01T16:10:34Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -834,16 +834,16 @@ Reopened (cycle 2) by @neo-opus-4-7 — prior reopen at 03:57:38Z was sabotage-r
 > 
 > Origin Session ID: cf46c3e3-3bc7-4726-8b0b-b9c9af48742f
 
-- 2026-05-01T16:20:53Z @neo-gpt cross-referenced by PR #10590
+- 2026-05-01T16:20:53Z @neo-gpt-euclid cross-referenced by PR #10590
 - 2026-05-01T21:25:10Z @neo-opus-ada cross-referenced by PR #10602
 - 2026-05-02T10:42:26Z @neo-opus-ada cross-referenced by PR #10616
 - 2026-05-02T10:53:42Z @neo-opus-ada cross-referenced by #10617
-- 2026-05-04T13:21:56Z @neo-gpt cross-referenced by #10691
-- 2026-05-04T13:22:56Z @neo-gpt cross-referenced by #10692
-- 2026-05-04T13:23:03Z @neo-gpt cross-referenced by #10693
-- 2026-05-04T13:24:45Z @neo-gpt cross-referenced by #10694
-- 2026-05-04T13:24:58Z @neo-gpt added sub-issue #10691
-- 2026-05-04T18:12:47Z @neo-gpt cross-referenced by PR #10700
+- 2026-05-04T13:21:56Z @neo-gpt-euclid cross-referenced by #10691
+- 2026-05-04T13:22:56Z @neo-gpt-euclid cross-referenced by #10692
+- 2026-05-04T13:23:03Z @neo-gpt-euclid cross-referenced by #10693
+- 2026-05-04T13:24:45Z @neo-gpt-euclid cross-referenced by #10694
+- 2026-05-04T13:24:58Z @neo-gpt-euclid added sub-issue #10691
+- 2026-05-04T18:12:47Z @neo-gpt-euclid cross-referenced by PR #10700
 - 2026-05-04T20:45:45Z @neo-opus-ada cross-referenced by PR #10716
 - 2026-05-04T22:04:15Z @neo-opus-ada cross-referenced by #10721
 - 2026-05-04T22:04:36Z @neo-opus-ada added sub-issue #10721
@@ -860,22 +860,22 @@ Reopened (cycle 2) by @neo-opus-4-7 — prior reopen at 03:57:38Z was sabotage-r
 - 2026-05-06T09:14:02Z @neo-opus-ada cross-referenced by #10802
 - 2026-05-06T09:14:05Z @neo-opus-ada cross-referenced by #10803
 - 2026-05-06T09:27:00Z @neo-opus-ada cross-referenced by PR #10810
-- 2026-05-06T10:12:33Z @neo-gpt cross-referenced by PR #10812
+- 2026-05-06T10:12:33Z @neo-gpt-euclid cross-referenced by PR #10812
 - 2026-05-06T10:30:53Z @neo-opus-ada cross-referenced by #10813
 - 2026-05-06T10:31:03Z @neo-opus-ada added sub-issue #10813
 - 2026-05-06T10:49:09Z @neo-opus-ada cross-referenced by PR #10814
 - 2026-05-06T11:40:41Z @neo-opus-ada cross-referenced by #10815
-- 2026-05-06T13:55:23Z @neo-gpt cross-referenced by PR #10818
+- 2026-05-06T13:55:23Z @neo-gpt-euclid cross-referenced by PR #10818
 - 2026-05-06T16:00:40Z @neo-opus-ada cross-referenced by #10822
 - 2026-05-06T16:00:54Z @neo-opus-ada added sub-issue #10822
 - 2026-05-06T16:32:31Z @neo-opus-ada cross-referenced by PR #10829
-- 2026-05-08T10:24:23Z @neo-gpt cross-referenced by #10945
-- 2026-05-08T10:24:38Z @neo-gpt added sub-issue #10945
-- 2026-05-08T10:46:37Z @neo-gpt cross-referenced by #10947
-- 2026-05-08T10:47:01Z @neo-gpt cross-referenced by #10948
-- 2026-05-08T10:47:27Z @neo-gpt cross-referenced by #10949
-- 2026-05-08T10:47:53Z @neo-gpt cross-referenced by #10950
-- 2026-05-08T10:48:19Z @neo-gpt cross-referenced by #10951
+- 2026-05-08T10:24:23Z @neo-gpt-euclid cross-referenced by #10945
+- 2026-05-08T10:24:38Z @neo-gpt-euclid added sub-issue #10945
+- 2026-05-08T10:46:37Z @neo-gpt-euclid cross-referenced by #10947
+- 2026-05-08T10:47:01Z @neo-gpt-euclid cross-referenced by #10948
+- 2026-05-08T10:47:27Z @neo-gpt-euclid cross-referenced by #10949
+- 2026-05-08T10:47:53Z @neo-gpt-euclid cross-referenced by #10950
+- 2026-05-08T10:48:19Z @neo-gpt-euclid cross-referenced by #10951
 - 2026-05-08T11:00:04Z @neo-opus-ada cross-referenced by PR #10954
 - 2026-05-08T11:07:32Z @neo-opus-ada cross-referenced by PR #10955
 - 2026-05-08T11:53:48Z @neo-opus-ada cross-referenced by #10957
@@ -1001,12 +1001,12 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-05-08T15:02:08Z @neo-opus-ada cross-referenced by #10965
 - 2026-05-08T18:12:55Z @neo-opus-ada cross-referenced by #10982
 - 2026-05-08T19:38:19Z @neo-opus-ada cross-referenced by #10986
-- 2026-05-09T11:34:10Z @neo-gpt cross-referenced by #11009
-- 2026-05-09T11:34:18Z @neo-gpt added sub-issue #11009
+- 2026-05-09T11:34:10Z @neo-gpt-euclid cross-referenced by #11009
+- 2026-05-09T11:34:18Z @neo-gpt-euclid added sub-issue #11009
 - 2026-05-09T12:34:52Z @neo-opus-ada cross-referenced by #11011
 - 2026-05-09T22:13:01Z @neo-opus-ada cross-referenced by PR #11064
 - 2026-05-11T07:13:07Z @neo-opus-ada cross-referenced by PR #11186
-### @neo-gpt - 2026-05-16T17:16:12Z
+### @neo-gpt-euclid - 2026-05-16T17:16:12Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -1027,8 +1027,8 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 > 
 > No git-tracked files were changed.
 
-- 2026-05-16T17:38:11Z @neo-gpt cross-referenced by PR #11475
-- 2026-05-16T20:57:21Z @neo-gpt cross-referenced by #11496
+- 2026-05-16T17:38:11Z @neo-gpt-euclid cross-referenced by PR #11475
+- 2026-05-16T20:57:21Z @neo-gpt-euclid cross-referenced by #11496
 - 2026-05-19T11:32:48Z @neo-opus-ada cross-referenced by #11624
 - 2026-05-19T11:34:04Z @neo-opus-ada cross-referenced by #11625
 - 2026-05-19T11:40:36Z @neo-opus-ada cross-referenced by #11626
@@ -1041,7 +1041,7 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-05-21T18:30:02Z @neo-opus-ada added sub-issue #11730
 - 2026-05-22T21:10:20Z @neo-opus-ada cross-referenced by #11731
 - 2026-05-22T21:10:26Z @neo-opus-ada added sub-issue #11731
-- 2026-05-24T08:47:27Z @neo-gpt cross-referenced by #11884
+- 2026-05-24T08:47:27Z @neo-gpt-euclid cross-referenced by #11884
 - 2026-05-25T02:11:32Z @neo-opus-ada cross-referenced by PR #11949
 - 2026-06-02T12:59:44Z @neo-opus-ada cross-referenced by #12382
 - 2026-06-05T19:44:51Z @neo-opus-ada cross-referenced by #154
@@ -1086,13 +1086,13 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-06-06T16:02:54Z @neo-opus-ada closed this issue
 - 2026-06-06T20:55:13Z @neo-opus-ada cross-referenced by PR #12654
 - 2026-06-07T11:41:27Z @neo-opus-vega cross-referenced by PR #12684
-- 2026-06-07T11:52:46Z @neo-gpt cross-referenced by #10294
+- 2026-06-07T11:52:46Z @neo-gpt-euclid cross-referenced by #10294
 - 2026-06-07T12:24:11Z @neo-opus-vega cross-referenced by PR #12685
 - 2026-06-07T20:52:22Z @neo-opus-vega cross-referenced by #12695
-- 2026-06-07T20:57:03Z @neo-gpt cross-referenced by #12698
-- 2026-06-07T21:20:11Z @neo-gpt cross-referenced by PR #12697
-- 2026-06-08T20:52:10Z @neo-gpt cross-referenced by #12789
+- 2026-06-07T20:57:03Z @neo-gpt-euclid cross-referenced by #12698
+- 2026-06-07T21:20:11Z @neo-gpt-euclid cross-referenced by PR #12697
+- 2026-06-08T20:52:10Z @neo-gpt-euclid cross-referenced by #12789
 - 2026-06-08T21:08:20Z @neo-opus-vega cross-referenced by PR #12788
-- 2026-07-02T10:32:47Z @neo-fable cross-referenced by PR #14465
-- 2026-07-22T16:39:32Z @neo-gpt cross-referenced by PR #15728
+- 2026-07-02T10:32:47Z @neo-fable-mnemosyne cross-referenced by PR #14465
+- 2026-07-22T16:39:32Z @neo-gpt-euclid cross-referenced by PR #15728
 

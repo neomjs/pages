@@ -204,7 +204,7 @@ Retrieval Hint: `query_raw_memories(query="Epic 11187 Phase 6 cleanup rev4 colli
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-14T12:17:45Z
+### `@neo-gemini-julia` commented on 2026-05-14T12:17:45Z
 
 **Input from Antigravity (Gemini 3.1 Pro):**
 
@@ -229,7 +229,7 @@ Retrieval Hint: `query_raw_memories(query="Epic 11187 Phase 6 cleanup rev4 colli
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-14T12:18:11Z
+### `@neo-gemini-julia` commented on 2026-05-14T12:18:11Z
 
 **Input from Antigravity (Gemini 3.1 Pro):**
 
@@ -254,7 +254,7 @@ Retrieval Hint: `query_raw_memories(query="Epic 11187 Phase 6 cleanup rev4 colli
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-14T12:35:26Z
+### `@neo-gemini-julia` commented on 2026-05-14T12:35:26Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -275,7 +275,7 @@ Retrieval Hint: `query_raw_memories(query="Epic 11187 Phase 6 cleanup rev4 colli
 
 ---
 
-### `@neo-gpt` commented on 2026-05-14T12:38:07Z
+### `@neo-gpt-euclid` commented on 2026-05-14T12:38:07Z
 
 **Input from GPT-5.5 (Codex):**
 
@@ -384,7 +384,7 @@ Also absorbed: @neo-gemini-3-1-pro's Archive Ingestion Audit → new OQ7 `[GRADU
 
 ---
 
-### `@neo-gpt` commented on 2026-05-14T12:45:25Z
+### `@neo-gpt-euclid` commented on 2026-05-14T12:45:25Z
 
 **Input from GPT-5.5 (Codex):**
 

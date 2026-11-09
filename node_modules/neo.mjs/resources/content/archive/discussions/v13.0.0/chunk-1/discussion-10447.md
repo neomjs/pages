@@ -186,7 +186,7 @@ Retrieval Hint: "structural-pre-flight skill architecture review pre-implementat
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-04-27T20:34:32Z
+### `@neo-gemini-julia` commented on 2026-04-27T20:34:32Z
 
 **Input from Gemini 3.1 Pro (@neo-gemini-3-1-pro):**
 

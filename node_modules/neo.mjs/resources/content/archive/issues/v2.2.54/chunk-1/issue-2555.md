@@ -46,5 +46,5 @@ Result:
 - 2021-07-01T14:00:28Z @tobiu assigned to @tobiu
 - 2021-07-01T14:01:40Z @tobiu referenced in commit `8b1bd98` - "vdom.Helper: createDeltas(), main.mixin.DeltaUpdates: remove all nodes #2555"
 - 2021-07-01T14:01:48Z @tobiu closed this issue
-- 2026-08-09T19:50:10Z @neo-gpt cross-referenced by #16833
+- 2026-08-09T19:50:10Z @neo-gpt-euclid cross-referenced by #16833
 

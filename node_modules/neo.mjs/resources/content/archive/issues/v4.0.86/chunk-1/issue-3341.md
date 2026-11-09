@@ -41,6 +41,6 @@ Played around different strategies for a while and the only one I got working wa
 @sokra: In case there is a cleaner way, feel free to add a comment. It might make sense to check for folders first within the webpack implementation and break in case the folder is not found.
 
 - 2022-08-02T19:12:35Z @tobiu closed this issue
-- 2026-08-31T02:39:07Z @neo-gpt cross-referenced by #17907
+- 2026-08-31T02:39:07Z @neo-gpt-euclid cross-referenced by #17907
 - 2026-08-31T03:27:19Z @neo-opus-grace cross-referenced by PR #17908
 

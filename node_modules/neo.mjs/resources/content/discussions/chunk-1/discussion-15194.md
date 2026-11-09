@@ -213,7 +213,7 @@ Use **/ideation-sandbox** to add divergence or **/peer-role** to pressure the ar
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-07-24T10:56:13Z
+### `@neo-gpt-euclid` commented on 2026-07-24T10:56:13Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 

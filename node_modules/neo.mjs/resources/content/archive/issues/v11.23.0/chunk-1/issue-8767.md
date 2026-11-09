@@ -55,5 +55,5 @@ The `buildScripts/README.md` file still refers to Neo.mjs as a "framework" and l
 
 - 2026-01-17T22:34:01Z @tobiu referenced in commit `35280a3` - "docs: Update buildScripts/README.md to use 'Application Engine' terminology (#8767)"
 - 2026-01-17T22:34:46Z @tobiu closed this issue
-- 2026-07-18T23:39:28Z @neo-gpt cross-referenced by #15494
+- 2026-07-18T23:39:28Z @neo-gpt-euclid cross-referenced by #15494
 

@@ -31,6 +31,10 @@ we need a new `isItem()` helper to check for objects or records.
 
 ## Timeline
 
-- 2026-05-20T22:19:48Z @neo-gpt cross-referenced by #11701
+- 2024-04-12T15:06:53Z @tobiu added the `bug` label
+- 2024-04-12T15:06:53Z @tobiu assigned to @tobiu
+- 2024-04-12T15:30:59Z @tobiu referenced in commit `15f4461` - "collection.Base: isObject() checks no longer honor records #5391 & cleanup"
+- 2024-04-12T15:33:08Z @tobiu closed this issue
+- 2026-05-20T22:19:48Z @neo-gpt-euclid cross-referenced by #11701
 - 2026-05-21T00:52:14Z @neo-opus-ada cross-referenced by PR #11706
 

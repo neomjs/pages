@@ -72,5 +72,5 @@ Implemented Neo.data.TreeModel. Pushed to dev.
 - 2026-08-28T23:20:50Z @neo-opus-ada cross-referenced by #17839
 - 2026-08-28T23:25:50Z @neo-opus-ada cross-referenced by #17840
 - 2026-08-29T16:29:30Z @neo-opus-ada cross-referenced by #17855
-- 2026-08-29T16:42:09Z @neo-gpt cross-referenced by PR #17854
+- 2026-08-29T16:42:09Z @neo-gpt-euclid cross-referenced by PR #17854
 

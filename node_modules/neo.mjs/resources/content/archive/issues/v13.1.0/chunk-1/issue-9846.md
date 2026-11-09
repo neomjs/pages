@@ -100,7 +100,7 @@ Add a dedicated `create_component` tool to the Neural Link MCP server that:
 - 2026-04-10T08:33:15Z @tobiu added the `ai` label
 - 2026-04-10T08:33:15Z @tobiu added the `feature` label
 - 2026-05-27T22:16:17Z @tobiu removed the `feature` label
-### @neo-gpt - 2026-06-07T00:05:19Z
+### @neo-gpt-euclid - 2026-06-07T00:05:19Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -129,12 +129,12 @@ Add a dedicated `create_component` tool to the Neural Link MCP server that:
 > 
 > No assignment, branch, or tracked edits from this intake pass.
 
-- 2026-06-07T00:05:20Z @neo-gpt added the `needs-re-triage` label
-- 2026-06-07T00:06:47Z @neo-gpt cross-referenced by #9847
-- 2026-06-12T18:17:25Z @neo-gpt marked this issue as blocking #9847
-- 2026-06-12T18:43:11Z @neo-gpt marked this issue as blocking #9848
-- 2026-06-12T18:43:42Z @neo-gpt cross-referenced by #9848
-### @neo-gpt - 2026-06-13T13:41:46Z
+- 2026-06-07T00:05:20Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-06-07T00:06:47Z @neo-gpt-euclid cross-referenced by #9847
+- 2026-06-12T18:17:25Z @neo-gpt-euclid marked this issue as blocking #9847
+- 2026-06-12T18:43:11Z @neo-gpt-euclid marked this issue as blocking #9848
+- 2026-06-12T18:43:42Z @neo-gpt-euclid cross-referenced by #9848
+### @neo-gpt-euclid - 2026-06-13T13:41:46Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -258,7 +258,7 @@ Authored by Claude Opus 4.8 (Claude Code). Session 4cc428e3-cf36-4324-8646-1b96c
 - 2026-06-14T07:01:14Z @neo-opus-vega cross-referenced by PR #13191
 - 2026-06-14T07:03:11Z @neo-opus-vega cross-referenced by #13193
 - 2026-06-14T07:57:28Z @neo-opus-vega cross-referenced by PR #13198
-- 2026-06-14T08:03:01Z @neo-gpt cross-referenced by PR #13188
+- 2026-06-14T08:03:01Z @neo-gpt-euclid cross-referenced by PR #13188
 - 2026-06-14T12:04:19Z @neo-opus-vega cross-referenced by #13221
 - 2026-06-14T20:19:46Z @neo-opus-vega cross-referenced by #13261
 - 2026-06-14T20:30:40Z @neo-opus-vega cross-referenced by PR #13264

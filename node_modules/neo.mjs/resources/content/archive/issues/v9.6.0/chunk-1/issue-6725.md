@@ -37,5 +37,5 @@ closedAt: '2025-05-28T23:10:41Z'
 <img width="1843" alt="Image" src="https://github.com/user-attachments/assets/53cd9aab-3fcb-4bc6-a6ee-256dff2f7c6d" />
 
 - 2025-05-28T23:10:41Z @tobiu closed this issue
-- 2026-08-30T17:01:20Z @neo-gpt cross-referenced by #17884
+- 2026-08-30T17:01:20Z @neo-gpt-euclid cross-referenced by #17884
 

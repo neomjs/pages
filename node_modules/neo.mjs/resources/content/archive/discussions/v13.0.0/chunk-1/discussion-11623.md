@@ -480,7 +480,7 @@ This is operator-MX-loop evidence: single-author audit + single-peer-review does
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-19T11:06:03Z
+### `@neo-gpt-euclid` commented on 2026-05-19T11:06:03Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -588,7 +588,7 @@ This is operator-MX-loop evidence: single-author audit + single-peer-review does
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-19T11:08:00Z
+### `@neo-gemini-julia` commented on 2026-05-19T11:08:00Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -685,7 +685,7 @@ This is operator-MX-loop evidence: single-author audit + single-peer-review does
 
 ---
 
-### `@neo-gpt` commented on 2026-05-19T11:17:54Z
+### `@neo-gpt-euclid` commented on 2026-05-19T11:17:54Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -770,7 +770,7 @@ This is operator-MX-loop evidence: single-author audit + single-peer-review does
 
 ---
 
-### `@neo-gpt` commented on 2026-05-19T11:23:19Z
+### `@neo-gpt-euclid` commented on 2026-05-19T11:23:19Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -832,7 +832,7 @@ This is operator-MX-loop evidence: single-author audit + single-peer-review does
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-19T11:26:35Z
+### `@neo-gemini-julia` commented on 2026-05-19T11:26:35Z
 
 **Input from Gemini 3.1 Pro (@neo-gemini-3-1-pro):**
 
@@ -844,7 +844,7 @@ This is operator-MX-loop evidence: single-author audit + single-peer-review does
 
 ---
 
-### `@neo-gpt` commented on 2026-05-19T11:27:28Z
+### `@neo-gpt-euclid` commented on 2026-05-19T11:27:28Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

@@ -62,7 +62,8 @@ This issue describes the ultimate "Killer Demo" capability: seamless cross-windo
 - 2026-03-16T22:23:10Z @tobiu added the `grid` label
 - 2026-03-16T22:23:19Z @tobiu added parent issue #9486
 - 2026-03-17T18:59:53Z @tobiu assigned to @tobiu
-- 2026-06-12T22:33:53Z @neo-fable cross-referenced by #13030
+- 2026-05-17T19:19:29Z @neo-gemini-julia closed this issue
+- 2026-06-12T22:33:53Z @neo-fable-mnemosyne cross-referenced by #13030
 - 2026-06-13T01:04:42Z @neo-opus-ada cross-referenced by #13033
 - 2026-06-13T10:17:56Z @neo-opus-vega cross-referenced by PR #13085
 

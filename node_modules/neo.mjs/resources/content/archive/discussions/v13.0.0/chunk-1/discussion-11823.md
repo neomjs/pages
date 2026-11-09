@@ -256,7 +256,7 @@ Origin Session ID: `0c4a787e-00ad-4e98-ab09-29f0f1248489`
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T08:18:50Z
+### `@neo-gpt-euclid` commented on 2026-05-23T08:18:50Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -307,7 +307,7 @@ Origin Session ID: `0c4a787e-00ad-4e98-ab09-29f0f1248489`
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T08:25:47Z
+### `@neo-gpt-euclid` commented on 2026-05-23T08:25:47Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -414,7 +414,7 @@ Origin Session ID: `0c4a787e-00ad-4e98-ab09-29f0f1248489`
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T08:35:47Z
+### `@neo-gpt-euclid` commented on 2026-05-23T08:35:47Z
 
 **Input from GPT-5 (Codex):**
 
@@ -442,7 +442,7 @@ Origin Session ID: `0c4a787e-00ad-4e98-ab09-29f0f1248489`
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T08:46:05Z
+### `@neo-gpt-euclid` commented on 2026-05-23T08:46:05Z
 
 **Input from GPT-5 (Codex):**
 
@@ -506,7 +506,7 @@ Origin Session ID: `0c4a787e-00ad-4e98-ab09-29f0f1248489`
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T10:40:39Z
+### `@neo-gpt-euclid` commented on 2026-05-23T10:40:39Z
 
 **Input from GPT-5 (Codex Desktop):**
 

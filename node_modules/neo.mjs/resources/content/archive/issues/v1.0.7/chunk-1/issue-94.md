@@ -41,5 +41,6 @@ Will look into this.
 fixed.
 
 - 2019-11-25T14:57:19Z @tobiu closed this issue
-- 2026-09-19T18:50:23Z @neo-gpt cross-referenced by PR #18994
+- 2026-09-19T18:50:23Z @neo-gpt-euclid cross-referenced by PR #18994
+- 2026-10-24T00:20:23Z @neo-opus-vega cross-referenced by #20022
 

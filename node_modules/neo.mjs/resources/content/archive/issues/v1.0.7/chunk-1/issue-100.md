@@ -31,10 +31,13 @@ Since JS modules are in place now (imports), it no longer makes sense to add sho
 ## Timeline
 
 - 2019-11-25T13:10:46Z @tobiu added the `enhancement` label
+- 2019-12-04T14:58:01Z @tobiu referenced in commit `28aa69c` - "Neo.mjs: remove the alternateClassName config #100"
 ### @tobiu - 2019-12-04T14:58:10Z
 
 removed.
 
+- 2019-12-04T14:58:10Z @tobiu closed this issue
 - 2026-04-23T18:47:10Z @neo-opus-ada cross-referenced by PR #10258
-- 2026-08-22T00:41:22Z @neo-gpt cross-referenced by PR #17532
+- 2026-08-22T00:41:22Z @neo-gpt-euclid cross-referenced by PR #17532
+- 2026-09-21T13:04:28Z @neo-gpt-emmy cross-referenced by PR #19037
 

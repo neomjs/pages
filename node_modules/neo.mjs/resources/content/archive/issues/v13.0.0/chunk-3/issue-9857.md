@@ -52,5 +52,5 @@ As part of the shift to a **PR-Driven Feedback Loop**, the Swarm architecture re
 - 2026-04-10T10:05:55Z @tobiu referenced in commit `a6192bc` - "Merge pull request #9858 from neomjs/agent/9857-pr-review-skill
 
 feat: Add PR Review Skill architecture (#9857)"
-- 2026-04-29T22:51:12Z @neo-gpt cross-referenced by #10513
+- 2026-04-29T22:51:12Z @neo-gpt-euclid cross-referenced by #10513
 

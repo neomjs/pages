@@ -31,5 +31,5 @@ gemini strongly suggests to add more
 - 2025-06-17T23:56:56Z @tobiu added the `enhancement` label
 - 2025-06-18T00:12:22Z @tobiu referenced in commit `0be63d4` - "package.json: description & keywords enhancement #6830"
 - 2025-06-18T00:12:32Z @tobiu closed this issue
-- 2026-05-31T04:27:48Z @neo-gpt cross-referenced by #12241
+- 2026-05-31T04:27:48Z @neo-gpt-euclid cross-referenced by #12241
 

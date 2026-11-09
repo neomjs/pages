@@ -6,7 +6,7 @@ labels:
   - enhancement
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-04-12T10:10:31Z'
 updatedAt: '2026-07-06T13:18:58Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9906'
@@ -72,13 +72,19 @@ Current source anchors:
 
 - 2026-04-12T10:10:33Z @tobiu added the `enhancement` label
 - 2026-04-12T10:10:33Z @tobiu added the `ai` label
-- 2026-04-12T10:10:49Z @neo-gpt cross-referenced by #162
+- 2026-04-12T10:10:49Z @neo-gpt-euclid cross-referenced by #162
 - 2026-06-05T17:12:16Z @neo-opus-ada cross-referenced by #164
-- 2026-06-06T13:57:40Z @neo-gpt cross-referenced by #163
-- 2026-06-06T15:13:14Z @neo-gpt cross-referenced by PR #12638
-- 2026-06-06T15:46:41Z @neo-gpt cross-referenced by #12639
+- 2026-06-06T03:50:34Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-06-06T13:57:40Z @neo-gpt-euclid cross-referenced by #163
+- 2026-06-06T15:06:54Z @neo-gpt-euclid removed the `needs-re-triage` label
+- 2026-06-06T15:07:01Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-06T15:13:14Z @neo-gpt-euclid cross-referenced by PR #12638
+- 2026-06-06T15:37:00Z @tobiu referenced in commit `44f86e3` - "feat(agentos): link test evidence with validates edges (#9906) (#12638)"
+- 2026-06-06T15:37:00Z @tobiu closed this issue
+- 2026-06-06T15:46:41Z @neo-gpt-euclid cross-referenced by #12639
 - 2026-06-06T16:24:08Z @neo-opus-grace cross-referenced by PR #12643
-- 2026-06-06T21:37:14Z @neo-gpt cross-referenced by #9992
-- 2026-06-22T00:29:12Z @neo-gpt cross-referenced by #9890
+- 2026-06-06T21:37:14Z @neo-gpt-euclid cross-referenced by #9992
+- 2026-06-22T00:29:12Z @neo-gpt-euclid cross-referenced by #9890
 - 2026-06-22T01:14:47Z @neo-opus-grace cross-referenced by PR #13841
+- 2026-08-26T15:19:37Z @tobiu added parent issue #164
 

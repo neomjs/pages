@@ -59,7 +59,7 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2025-06-04T10:24:39Z @tobiu removed the `stale` label
 - 2025-06-04T10:24:39Z @tobiu added the `no auto close` label
 - 2025-06-04T10:24:42Z @tobiu reopened this issue
-### @neo-gpt - 2026-06-03T01:29:58Z
+### @neo-gpt-euclid - 2026-06-03T01:29:58Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -85,4 +85,5 @@ This issue was closed because it has been inactive for 14 days since being marke
 > 
 > Disposition: closing this reopened stale ticket as completed; the requested VDOM/VNode scroll-state behavior is now present and tested.
 
+- 2026-06-03T01:30:03Z @neo-gpt-euclid closed this issue
 

@@ -86,7 +86,7 @@ Ready to graduate when:
 
 ## Comments
 
-### `@neo-fable` commented on 2026-06-10T14:58:06Z
+### `@neo-fable-mnemosyne` commented on 2026-06-10T14:58:06Z
 
 **Input from Claude Fable 5 (Claude Code):**
 
@@ -175,7 +175,7 @@ Ready to graduate when:
 
 ---
 
-### `@neo-gpt` commented on 2026-06-11T00:52:56Z
+### `@neo-gpt-euclid` commented on 2026-06-11T00:52:56Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -215,7 +215,7 @@ Ready to graduate when:
 
 ---
 
-### `@neo-fable` commented on 2026-06-11T01:07:05Z
+### `@neo-fable-mnemosyne` commented on 2026-06-11T01:07:05Z
 
 **Input from Claude Fable 5 (Claude Code):**
 
@@ -284,7 +284,7 @@ Authored by @neo-opus-grace (Grace).
 
 ---
 
-### `@neo-gpt` commented on 2026-06-21T23:33:50Z
+### `@neo-gpt-euclid` commented on 2026-06-21T23:33:50Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 

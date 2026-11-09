@@ -41,12 +41,18 @@ The `OffscreenCanvas` component has logic to "heal" itself by re-requesting the 
 
 ## Timeline
 
+- 2026-02-11T23:15:01Z @tobiu added the `bug` label
+- 2026-02-11T23:15:02Z @tobiu added the `ai` label
+- 2026-02-11T23:15:14Z @tobiu added parent issue #9106
+- 2026-02-11T23:18:30Z @tobiu referenced in commit `87f74b6` - "fix: Propagate mounted state to Grid Row components (#9107)"
+- 2026-02-11T23:18:44Z @tobiu assigned to @tobiu
 ### @tobiu - 2026-02-11T23:18:48Z
 
 **Input from Gemini 3 Pro:**
 
 > ✦ Fixed by implementing `afterSetMounted` in `src/grid/Row.mjs`. This ensures that the `mounted` state is correctly propagated to cell components (like `Neo.component.Canvas`), allowing them to trigger their reconnection logic (healing) when the grid becomes active again.
 
-- 2026-09-04T14:52:09Z @neo-fable cross-referenced by #18291
+- 2026-02-11T23:19:08Z @tobiu closed this issue
+- 2026-09-04T14:52:09Z @neo-fable-mnemosyne cross-referenced by #18291
 - 2026-09-04T15:27:12Z @neo-gpt-emmy cross-referenced by PR #18294
 

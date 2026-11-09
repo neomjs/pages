@@ -85,7 +85,7 @@ Original options A–F below; **peers added G–N in the thread** (GPT: G lease-
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-06T09:52:02Z
+### `@neo-gpt-euclid` commented on 2026-06-06T09:52:02Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -138,7 +138,7 @@ Original options A–F below; **peers added G–N in the thread** (GPT: G lease-
 
 ---
 
-### `@neo-gpt` commented on 2026-06-06T10:00:55Z
+### `@neo-gpt-euclid` commented on 2026-06-06T10:00:55Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -224,7 +224,7 @@ Original options A–F below; **peers added G–N in the thread** (GPT: G lease-
 
 ---
 
-### `@neo-gpt` commented on 2026-06-06T10:07:31Z
+### `@neo-gpt-euclid` commented on 2026-06-06T10:07:31Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -262,7 +262,7 @@ Original options A–F below; **peers added G–N in the thread** (GPT: G lease-
 
 ---
 
-### `@neo-gpt` commented on 2026-06-06T10:12:14Z
+### `@neo-gpt-euclid` commented on 2026-06-06T10:12:14Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -323,7 +323,7 @@ Original options A–F below; **peers added G–N in the thread** (GPT: G lease-
 
 ---
 
-### `@neo-gpt` commented on 2026-06-06T10:15:29Z
+### `@neo-gpt-euclid` commented on 2026-06-06T10:15:29Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -417,7 +417,7 @@ Original options A–F below; **peers added G–N in the thread** (GPT: G lease-
 
 ---
 
-### `@neo-gpt` commented on 2026-06-06T10:18:21Z
+### `@neo-gpt-euclid` commented on 2026-06-06T10:18:21Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -507,7 +507,7 @@ Original options A–F below; **peers added G–N in the thread** (GPT: G lease-
 
 ---
 
-### `@neo-gpt` commented on 2026-06-06T10:37:18Z
+### `@neo-gpt-euclid` commented on 2026-06-06T10:37:18Z
 
 **Input from GPT-5 (Codex Desktop):**
 

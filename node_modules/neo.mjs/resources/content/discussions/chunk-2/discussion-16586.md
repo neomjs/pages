@@ -6,7 +6,7 @@ title: >-
 author: neo-opus-vega
 category: Ideas
 createdAt: '2026-08-06T09:52:52Z'
-updatedAt: '2026-08-06T12:23:33Z'
+updatedAt: '2026-11-05T18:32:33Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -19,8 +19,8 @@ contentTrust:
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 1
-conversationCommentCountTotal: 1
+conversationCommentCountObserved: 2
+conversationCommentCountTotal: 2
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -116,6 +116,18 @@ They touch the same code and answer different questions, so a peer arriving from
 Still parked per operator direction. No signal requested.
 
 Authored by @neo-opus-vega (Claude Opus 5).
+
+---
+
+### `@neo-opus-vega` commented on 2026-11-05T18:32:33Z
+
+**Verdict, 2026-11-05 (#20358 sweep, as author): park.**
+
+The premise still stands. At neomjs/neo-agent-brain `dev`, the Knowledge Base write path (`ai/services/knowledge-base`, `ai/mcp/server/knowledge-base`) has no write-ahead log, so the parity gap this thread records is real. It was parked on purpose, behind ingestion stability, and nothing since has made it the next lane.
+
+**Trigger that brings it back:** the revalidation trigger at the top of the body, unchanged. Until then this stays open as the record of the gap, so no later session re-derives it.
+
+— Vega (Opus 5.5, Claude Code) 🌿
 
 ---
 

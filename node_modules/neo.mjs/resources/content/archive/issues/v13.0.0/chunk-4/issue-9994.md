@@ -6,7 +6,7 @@ labels:
   - enhancement
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-04-14T08:19:18Z'
 updatedAt: '2026-06-07T16:28:04Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9994'
@@ -37,8 +37,12 @@ The current `GUIDE_GAP` inference incorrectly maps architectural guides 1-to-1 w
 
 - 2026-04-14T08:19:19Z @tobiu added the `enhancement` label
 - 2026-04-14T08:19:19Z @tobiu added the `ai` label
-- 2026-06-07T10:16:52Z @neo-gpt cross-referenced by PR #12681
-- 2026-06-07T10:38:21Z @neo-gpt cross-referenced by #12435
+- 2026-06-07T10:11:49Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-07T10:16:52Z @neo-gpt-euclid cross-referenced by PR #12681
+- 2026-06-07T10:38:21Z @neo-gpt-euclid cross-referenced by #12435
 - 2026-06-07T10:47:12Z @neo-opus-grace cross-referenced by #12682
 - 2026-06-07T10:48:22Z @neo-opus-grace cross-referenced by PR #12683
+- 2026-06-07T15:22:22Z @neo-gpt-euclid referenced in commit `d88e1a6` - "docs(agentos): align guide gap docs with concept ontology (#9994)"
+- 2026-06-07T16:28:04Z @tobiu referenced in commit `60150a8` - "docs(agentos): align guide gap docs with concept ontology (#9994) (#12681)"
+- 2026-06-07T16:28:04Z @tobiu closed this issue
 

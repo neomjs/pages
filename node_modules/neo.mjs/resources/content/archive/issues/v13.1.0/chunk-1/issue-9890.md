@@ -6,7 +6,7 @@ labels:
   - enhancement
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-04-11T19:22:38Z'
 updatedAt: '2026-06-22T12:54:31Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9890'
@@ -85,14 +85,14 @@ The 4th vector slots into `processUndigestedSessions()` after `executeCapability
 - 2026-04-11T19:23:12Z @tobiu marked this issue as being blocked by #9889
 - 2026-04-12T11:40:05Z @tobiu marked this issue as being blocked by #9913
 - 2026-05-26T00:29:34Z @neo-opus-ada cross-referenced by #12007
-- 2026-06-06T03:50:57Z @neo-gpt cross-referenced by #9906
-- 2026-06-06T13:57:40Z @neo-gpt cross-referenced by #163
-- 2026-06-06T13:57:41Z @neo-gpt cross-referenced by #162
-- 2026-06-06T15:04:17Z @neo-gpt cross-referenced by #164
-- 2026-06-06T15:13:14Z @neo-gpt cross-referenced by PR #12638
-- 2026-06-22T00:29:09Z @neo-gpt assigned to @neo-gpt
-- 2026-06-22T00:29:09Z @neo-gpt unassigned from @tobiu
-### @neo-gpt - 2026-06-22T00:29:10Z
+- 2026-06-06T03:50:57Z @neo-gpt-euclid cross-referenced by #9906
+- 2026-06-06T13:57:40Z @neo-gpt-euclid cross-referenced by #163
+- 2026-06-06T13:57:41Z @neo-gpt-euclid cross-referenced by #162
+- 2026-06-06T15:04:17Z @neo-gpt-euclid cross-referenced by #164
+- 2026-06-06T15:13:14Z @neo-gpt-euclid cross-referenced by PR #12638
+- 2026-06-22T00:29:09Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-22T00:29:09Z @neo-gpt-euclid unassigned from @tobiu
+### @neo-gpt-euclid - 2026-06-22T00:29:10Z
 
 **`[lane-override]` reassignment audit-trail** (#11537 §AC8)
 
@@ -102,11 +102,19 @@ The 4th vector slots into `processUndigestedSessions()` after `executeCapability
 
 *Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
 
-- 2026-06-22T00:54:30Z @neo-gpt cross-referenced by PR #13841
-- 2026-06-22T01:38:04Z @neo-gpt referenced in commit `14d4d01` - "feat(ai): digest Neural Link action evidence (#9890)"
-- 2026-06-22T01:38:04Z @neo-gpt referenced in commit `42e2650` - "fix(ai): tighten NL action digest evidence (#9890)"
-- 2026-06-22T02:00:27Z @neo-gpt referenced in commit `8ab3ccc` - "feat(ai): digest Neural Link action evidence (#9890)"
-- 2026-06-22T02:00:27Z @neo-gpt referenced in commit `4bdf25a` - "fix(ai): tighten NL action digest evidence (#9890)"
-- 2026-06-22T02:00:27Z @neo-gpt referenced in commit `2b48d58` - "fix(ai): gate NL action digest read tools (#9890)"
-- 2026-06-24T23:34:24Z @neo-gpt cross-referenced by #13751
+- 2026-06-22T00:54:30Z @neo-gpt-euclid cross-referenced by PR #13841
+- 2026-06-22T01:38:04Z @neo-gpt-euclid referenced in commit `14d4d01` - "feat(ai): digest Neural Link action evidence (#9890)"
+- 2026-06-22T01:38:04Z @neo-gpt-euclid referenced in commit `42e2650` - "fix(ai): tighten NL action digest evidence (#9890)"
+- 2026-06-22T02:00:27Z @neo-gpt-euclid referenced in commit `8ab3ccc` - "feat(ai): digest Neural Link action evidence (#9890)"
+- 2026-06-22T02:00:27Z @neo-gpt-euclid referenced in commit `4bdf25a` - "fix(ai): tighten NL action digest evidence (#9890)"
+- 2026-06-22T02:00:27Z @neo-gpt-euclid referenced in commit `2b48d58` - "fix(ai): gate NL action digest read tools (#9890)"
+- 2026-06-22T12:54:31Z @tobiu referenced in commit `93c8c36` - "feat(ai): digest Neural Link action evidence (#9890) (#13841)
+
+* feat(ai): digest Neural Link action evidence (#9890)
+
+* fix(ai): tighten NL action digest evidence (#9890)
+
+* fix(ai): gate NL action digest read tools (#9890)"
+- 2026-06-22T12:54:31Z @tobiu closed this issue
+- 2026-06-24T23:34:24Z @neo-gpt-euclid cross-referenced by #13751
 

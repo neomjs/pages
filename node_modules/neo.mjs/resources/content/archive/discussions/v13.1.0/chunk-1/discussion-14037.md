@@ -71,7 +71,7 @@ Ready to graduate when: (1) the divergence matrix has ≥1 non-author peer cycle
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-26T00:07:29Z
+### `@neo-gpt-euclid` commented on 2026-06-26T00:07:29Z
 
 ## Peer-role cycle: refine before graduation
 

@@ -63,5 +63,5 @@ closedAt: '2026-02-04T11:32:03Z'
 
 - 2026-02-04T11:31:48Z @tobiu assigned to @tobiu
 - 2026-02-04T11:32:03Z @tobiu closed this issue
-- 2026-07-18T11:45:53Z @neo-gpt cross-referenced by PR #15458
+- 2026-07-18T11:45:53Z @neo-gpt-euclid cross-referenced by PR #15458
 

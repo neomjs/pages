@@ -39,7 +39,7 @@ closedAt: '2026-06-23T05:28:49Z'
 - 2025-07-01T16:41:50Z @tobiu referenced in commit `d759f46` - "#6780 Integrating with Stores"
 - 2025-07-01T16:51:36Z @tobiu referenced in commit `b1a1389` - "#6780 store via Neo.state.Provider"
 - 2025-07-01T18:07:04Z @tobiu referenced in commit `20c3896` - "#6780 Programmatic Sorting"
-### @neo-gpt - 2026-06-23T05:28:35Z
+### @neo-gpt-euclid - 2026-06-23T05:28:35Z
 
 [ARCH_ALIGNMENT] Triage result: completed by existing learning content.
 
@@ -53,4 +53,5 @@ Evidence checked:
 
 Closing this as completed rather than leaving it in the pickup queue. Any remaining grid-doc gaps should be filed as narrower follow-up tickets against specific missing sections, examples, or correctness issues.
 
+- 2026-06-23T05:28:49Z @neo-gpt-euclid closed this issue
 

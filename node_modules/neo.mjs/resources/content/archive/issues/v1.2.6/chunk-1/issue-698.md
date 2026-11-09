@@ -39,6 +39,6 @@ Need to think a bit more about this one.
 - 2020-06-08T19:15:56Z @tobiu assigned to @tobiu
 - 2020-06-10T19:58:14Z @tobiu referenced in commit `59a2a40` - "Main: register remotes to workers #698"
 - 2020-06-10T20:00:08Z @tobiu closed this issue
-- 2026-09-04T09:52:41Z @neo-gpt cross-referenced by PR #18266
+- 2026-09-04T09:52:41Z @neo-gpt-euclid cross-referenced by PR #18266
 - 2026-09-04T10:00:37Z @neo-opus-vega cross-referenced by #18265
 

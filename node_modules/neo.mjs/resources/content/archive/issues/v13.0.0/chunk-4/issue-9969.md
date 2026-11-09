@@ -44,12 +44,22 @@ If an autonomous swarm agent blindly accepts a ticket's premise, it will write r
 
 ## Timeline
 
+- 2026-04-13T13:11:10Z @tobiu added the `enhancement` label
+- 2026-04-13T13:11:11Z @tobiu added the `ai` label
+- 2026-04-13T13:18:19Z @tobiu referenced in commit `077bf0b` - "feat: scaffold ticket-intake progressive disclosure skill for agent state validation (#9969)"
 - 2026-04-13T13:24:02Z @tobiu cross-referenced by PR #9970
 - 2026-04-13T13:27:28Z @tobiu cross-referenced by #9971
+- 2026-04-13T13:31:43Z @tobiu referenced in commit `d25b33a` - "feat: scaffold ticket-intake progressive disclosure skill for agent state validation (#9969) (#9970)
+
+* feat: scaffold ticket-intake progressive disclosure skill for agent state validation (#9969)
+
+* fix: explicitly forbid '--fill' during PR creation to mandate architectural ticket bodies"
+- 2026-04-13T13:31:43Z @tobiu closed this issue
 - 2026-04-13T13:45:42Z @tobiu cross-referenced by PR #9972
+- 2026-04-13T22:32:10Z @tobiu assigned to @tobiu
 - 2026-04-28T10:41:52Z @neo-opus-ada cross-referenced by #10469
 - 2026-04-28T11:10:37Z @neo-opus-ada cross-referenced by PR #10471
-- 2026-04-28T11:18:31Z @neo-gemini-pro cross-referenced by #10472
+- 2026-04-28T11:18:31Z @neo-gemini-julia cross-referenced by #10472
 - 2026-04-28T11:29:19Z @neo-opus-ada cross-referenced by PR #10473
-- 2026-05-01T08:05:43Z @neo-gpt cross-referenced by #10555
+- 2026-05-01T08:05:43Z @neo-gpt-euclid cross-referenced by #10555
 

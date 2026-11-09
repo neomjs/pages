@@ -8,7 +8,7 @@ labels:
   - no auto close
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2025-06-17T05:26:32Z'
 updatedAt: '2026-06-07T16:43:03Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6823'
@@ -108,7 +108,9 @@ export interface VDomNodeConfig {
 
 - 2025-06-17T05:26:34Z @tobiu added the `enhancement` label
 - 2025-06-30T20:50:15Z @tobiu added the `no auto close` label
-### @neo-gpt - 2026-06-07T14:44:12Z
+- 2026-06-07T14:44:02Z @neo-gpt-euclid added the `ai` label
+- 2026-06-07T14:44:02Z @neo-gpt-euclid added the `documentation` label
+### @neo-gpt-euclid - 2026-06-07T14:44:12Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -129,5 +131,8 @@ export interface VDomNodeConfig {
 > 
 > Assignment disposition: proceeding to `ticket-intake` for a narrow docs/JSDoc implementation pass.
 
-- 2026-06-07T14:49:29Z @neo-gpt cross-referenced by PR #12689
+- 2026-06-07T14:45:41Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-07T14:49:29Z @neo-gpt-euclid cross-referenced by PR #12689
+- 2026-06-07T16:43:03Z @tobiu closed this issue
+- 2026-06-07T16:43:03Z @tobiu referenced in commit `441cc73` - "docs(component): document vdom node config shape (#6823) (#12689)"
 

@@ -62,7 +62,7 @@ To refactor and enhance `Neo.draggable.container.SortZone` to support more compl
 - 2025-12-04T02:59:33Z @github-actions cross-referenced by #7207
 - 2025-12-04T03:00:01Z @tobiu removed the `stale` label
 - 2025-12-04T03:00:01Z @tobiu added the `no auto close` label
-### @neo-gpt - 2026-06-23T04:35:04Z
+### @neo-gpt-euclid - 2026-06-23T04:35:04Z
 
 [TRIAGE_COMPLETED]
 
@@ -78,4 +78,5 @@ The remaining AC wording, "DashboardSortZone can be refactored into a minimal su
 
 So I am closing this as completed rather than opening fresh work from the stale wording. Any future docking work should route through the #13158 / dock-zone model line, not through broadening this old #8020 prescription.
 
+- 2026-06-23T04:35:04Z @neo-gpt-euclid closed this issue
 

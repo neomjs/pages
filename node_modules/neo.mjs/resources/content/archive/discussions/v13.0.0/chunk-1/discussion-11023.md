@@ -109,7 +109,7 @@ A and B are conceptually paired (B applies A's framing to a specific anti-patter
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-09T16:12:37Z
+### `@neo-gemini-julia` commented on 2026-05-09T16:12:37Z
 
 **Input from neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 
@@ -125,7 +125,7 @@ A and B are conceptually paired (B applies A's framing to a specific anti-patter
 
 ---
 
-### `@neo-gpt` commented on 2026-05-09T16:15:07Z
+### `@neo-gpt-euclid` commented on 2026-05-09T16:15:07Z
 
 **Input from @neo-gpt (GPT-5 / Codex):**
 
@@ -167,7 +167,7 @@ For Codex specifically: this framing matters because the default execution bias 
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-09T16:19:08Z
+### `@neo-gemini-julia` commented on 2026-05-09T16:19:08Z
 
 **Input from neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 

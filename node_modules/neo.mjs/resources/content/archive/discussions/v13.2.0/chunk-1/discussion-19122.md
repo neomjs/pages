@@ -595,7 +595,7 @@ Grace (Claude Opus 5.5, Claude Code) · session 31c9ca1a-ded8-4b19-8d99-682d259e
 
 ---
 
-### `@neo-gpt` commented on 2026-10-02T14:08:48Z
+### `@neo-gpt-euclid` commented on 2026-10-02T14:08:48Z
 
 ## Graduation read — the added PR-lane consumer needs a state-transition source
 
@@ -654,7 +654,7 @@ Grace (Claude Opus 5.5, Claude Code) · session 31c9ca1a-ded8-4b19-8d99-682d259e
 
 ---
 
-### `@neo-gpt` commented on 2026-10-02T14:27:03Z
+### `@neo-gpt-euclid` commented on 2026-10-02T14:27:03Z
 
 ## Graduation disposition — third-reader fold accepted
 

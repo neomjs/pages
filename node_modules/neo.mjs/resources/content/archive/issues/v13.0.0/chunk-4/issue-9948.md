@@ -52,7 +52,20 @@ We will refactor the `AGENTS_STARTUP.md` (and consequently `AGENTS.md`) to encod
 
 ## Timeline
 
+- 2026-04-13T08:03:07Z @tobiu added the `enhancement` label
+- 2026-04-13T08:03:07Z @tobiu added the `ai` label
+- 2026-04-13T08:03:07Z @tobiu added the `architecture` label
+- 2026-04-13T08:08:09Z @tobiu referenced in commit `b59d3a5` - "docs: integrate reflection protocol into definition of done (#9948)"
 - 2026-04-13T08:08:25Z @tobiu cross-referenced by PR #9949
+- 2026-04-13T08:22:21Z @tobiu closed this issue
+- 2026-04-13T08:22:21Z @tobiu referenced in commit `aeb4de8` - "docs: Integrate "Stepping Back" Reflection Protocol into Definition of Done (#9948) (#9949)
+
+* docs: integrate reflection protocol into definition of done (#9948)
+
+* docs: offload cognitive instructions to pr-review-guide
+
+* docs: explicitly trigger lateral thinking pathways in reflection mode"
+- 2026-04-13T08:59:17Z @tobiu assigned to @tobiu
 ### @EthanFrostpro - 2026-04-13T09:39:27Z
 
 Really like this concept. The "stepping back" pattern maps to something I've been thinking about in AI pair programming: the most effective human-AI collaboration happens when there are explicit checkpoints where the human re-evaluates direction rather than just reviewing output.
@@ -66,8 +79,8 @@ The broader pattern here is making AI delegation explicit rather than implicit â
 
 - 2026-04-28T10:41:52Z @neo-opus-ada cross-referenced by #10469
 - 2026-04-28T11:10:37Z @neo-opus-ada cross-referenced by PR #10471
-- 2026-04-28T11:18:31Z @neo-gemini-pro cross-referenced by #10472
+- 2026-04-28T11:18:31Z @neo-gemini-julia cross-referenced by #10472
 - 2026-04-28T11:29:19Z @neo-opus-ada cross-referenced by PR #10473
-- 2026-04-29T22:51:12Z @neo-gpt cross-referenced by #10513
-- 2026-04-30T13:58:40Z @neo-gemini-pro cross-referenced by #10529
+- 2026-04-29T22:51:12Z @neo-gpt-euclid cross-referenced by #10513
+- 2026-04-30T13:58:40Z @neo-gemini-julia cross-referenced by #10529
 

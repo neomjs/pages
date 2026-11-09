@@ -42,7 +42,11 @@ We must perform a matrix validation to ensure the native Main thread resolution 
 
 ## Timeline
 
+- 2026-03-27T15:08:03Z @tobiu added the `enhancement` label
+- 2026-03-27T15:08:03Z @tobiu added the `ai` label
+- 2026-03-27T15:08:03Z @tobiu added the `architecture` label
 - 2026-03-27T15:09:39Z @tobiu cross-referenced by #9585
+- 2026-03-27T15:10:14Z @tobiu assigned to @tobiu
 ### @tobiu - 2026-03-27T17:50:47Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
@@ -60,6 +64,11 @@ We must perform a matrix validation to ensure the native Main thread resolution 
 > > 
 > > All matrix evaluations are currently passing!
 
+- 2026-03-27T17:51:32Z @tobiu referenced in commit `0c9adee` - "test: Add LivePreview multi-window E2E validation (#9586)
+
+fix: Resolve LivePreview popout window regression with dynamically loaded addons (#9586)"
+- 2026-03-27T17:51:35Z @tobiu closed this issue
+- 2026-03-27T18:03:45Z @tobiu referenced in commit `c34eb32` - "test: Add sequential route validation for LivePreview (#9586)"
 - 2026-07-05T19:55:09Z @neo-opus-vega cross-referenced by PR #14865
-- 2026-08-30T17:01:20Z @neo-gpt cross-referenced by #17884
+- 2026-08-30T17:01:20Z @neo-gpt-euclid cross-referenced by #17884
 

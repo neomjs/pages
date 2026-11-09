@@ -56,5 +56,7 @@ appPath         : '../../apps/myapp/app.mjs', // ../../ at the start
 
             
 
-- 2026-08-30T17:01:20Z @neo-gpt cross-referenced by #17884
+- 2021-04-30T10:50:51Z @tobiu referenced in commit `c67ffef` - "create-app program: index file => main thread include #1876"
+- 2021-04-30T10:54:46Z @tobiu closed this issue
+- 2026-08-30T17:01:20Z @neo-gpt-euclid cross-referenced by #17884
 

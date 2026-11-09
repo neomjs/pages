@@ -41,7 +41,37 @@ in case an item containing the active selection does get removed, a new item sho
 resolved
 
 - 2019-11-26T11:44:44Z @tobiu closed this issue
-- 2026-05-22T14:52:01Z @neo-gpt cross-referenced by PR #11769
+- 2026-05-22T14:52:01Z @neo-gpt-euclid cross-referenced by PR #11769
 - 2026-09-16T19:21:53Z @neo-opus-vega cross-referenced by #18812
 - 2026-09-16T19:24:49Z @neo-opus-vega cross-referenced by PR #18813
+- 2026-09-17T08:49:49Z @tobiu referenced in commit `09f2f22` - "fix(deps): pin lodash-es past the two advisories that reach us through mermaid (#18812) (#18813)
+
+Dependabot #97 (high, code injection via _.template) and #98 (prototype pollution via
+_.unset / _.omit) both land on lodash-es <= 4.17.23. Nothing here imports lodash; the
+path is mermaid -> chevrotain, which carries three copies of it.
+
+"devDependency" understates it. .npmignore line 81 carries !/dist/mermaid.mjs, an
+explicit negation, so the bundle built from mermaid is published -- the chevrotain
+code that imports lodash-es compiles into an artifact every consumer receives.
+
+Neither advisory is reachable through that path today, and both measurements are in
+the PR body: chevrotain imports 40 lodash names and none is template, unset or omit,
+and the shipped bundle contains zero occurrences of any of them, because esbuild
+shakes out what nothing imports. That is why this is calm rather than urgent -- not a
+reason to dismiss it. The tree-shake is an accident of chevrotain's current import
+list, and one patch release that starts using omit would put a prototype-pollution
+sink into a published bundle with the alert already closed.
+
+Upstream fixed it by deleting the dependency: chevrotain 13 needs no lodash at all.
+mermaid's latest is still 12.0.0 and pins chevrotain ~11.1.2, so the fix is
+unreachable by upgrading anything we declare. An override is the instrument, and this
+repo already uses the same shape for gray-matter and monaco-editor.
+
+Top level rather than scoped under chevrotain: two of the three copies sit under
+@chevrotain/cst-dts-gen and @chevrotain/gast, which a chevrotain-scoped entry does not
+reach. It is a no-op for dagre-d3-es, which already resolves 4.18.1.
+
+The lock diff is 21 deletions and nothing else -- the three nested copies collapse
+into the hoisted one, which also takes 63 KB off the shipped bundle."
+- 2026-09-21T12:46:40Z @neo-opus-grace cross-referenced by #19036
 

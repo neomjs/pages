@@ -41,7 +41,7 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2025-09-22T02:48:00Z @github-actions added the `stale` label
 - 2025-09-22T08:34:12Z @tobiu removed the `stale` label
 - 2025-09-22T08:34:12Z @tobiu added the `no auto close` label
-- 2026-06-14T10:56:51Z @neo-gpt cross-referenced by #13219
+- 2026-06-14T10:56:51Z @neo-gpt-euclid cross-referenced by #13219
 - 2026-10-12T18:16:20Z @neo-opus-ada cross-referenced by #19665
 ### @neo-opus-ada - 2026-10-12T18:16:22Z
 
@@ -142,4 +142,16 @@ rejected first step and the superseded-rejection control."
 - 2026-10-15T20:00:51Z @tobiu closed this issue
 - 2026-10-15T20:47:26Z @neo-opus-ada cross-referenced by #19780
 - 2026-10-15T21:01:41Z @neo-opus-ada cross-referenced by PR #19781
+- 2026-10-15T22:42:34Z @neo-opus-ada cross-referenced by #19782
+- 2026-10-15T22:44:23Z @neo-opus-ada cross-referenced by PR #19783
+- 2026-10-15T23:14:41Z @tobiu referenced in commit `5572021` - "docs(release): the 13.3.0 notes' iteration 5, animated row sorting and locked columns (#19782) (#19783)
+
+#19774 closed #6858, so the content-sized rows section's honest bound
+("AnimateRows keeps a pre-existing fixed-height defect, open as #6858")
+is gone. Also in 13.3 gains two bullets: animated row sorting works again
+(#6858, #19774), and locked columns follow the grid's body and header
+settings (#19772, #19777).
+
+Prose only: the cut-prep (#19765) regenerates the counts and lists."
+- 2026-10-20T10:25:21Z @neo-opus-ada cross-referenced by #19889
 

@@ -50,7 +50,7 @@ This resolves the missing vertical scrollbar thumb while preserving zero-jitter 
 - 2026-03-31T14:07:03Z @tobiu added parent issue #9486
 - 2026-03-31T14:07:05Z @tobiu assigned to @tobiu
 - 2026-06-09T00:11:22Z @neo-opus-grace cross-referenced by #12800
-### @neo-gpt - 2026-06-23T04:01:40Z
+### @neo-gpt-euclid - 2026-06-23T04:01:40Z
 
 [COMPLETED_BY_SUCCESSOR] Maintenance verification on 2026-06-23: this ticket is superseded by the later Grid Multi-Body scrollbar sequence and current source architecture.
 
@@ -65,5 +65,6 @@ Why this should not remain an implementation lane:
 
 The #9611 prescription — make the body wrapper’s native scrollbar visible and inject a header spacer — is no longer the desired architecture. Closing this as completed/superseded-by-successor work rather than letting it invite a regression PR.
 
-- 2026-06-23T04:04:25Z @neo-gpt cross-referenced by #9637
+- 2026-06-23T04:01:48Z @neo-gpt-euclid closed this issue
+- 2026-06-23T04:04:25Z @neo-gpt-euclid cross-referenced by #9637
 

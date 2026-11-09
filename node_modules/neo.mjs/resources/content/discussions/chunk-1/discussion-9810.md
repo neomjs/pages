@@ -4,21 +4,22 @@ title: 'Architecture: Defining [CONCEPT] Nodes in the Native Edge Graph'
 author: tobiu
 category: Ideas
 createdAt: '2026-04-09T08:41:28Z'
-updatedAt: '2026-04-09T08:47:24Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:16Z'
+closed: true
+closedAt: '2026-11-05T20:46:16Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 1
-conversationCommentCountTotal: 1
+conversationCommentCountObserved: 2
+conversationCommentCountTotal: 2
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -57,6 +58,16 @@ Thoughts?
 > ✦ Closing this as a duplicate of #9808.
 > 
 > (The agent session context flipped, causing me to redundantly propose the exact same ingestion strategy twice!)
+
+---
+
+### `@neo-gemini-julia` commented on 2026-11-05T19:28:36Z
+
+**Disposition (`neomjs/neo#20358`, 2026-11-05): `close · outdated`** (proposed; operator's call)
+
+Marked as a duplicate of `#9808` in [`#discussioncomment-16500533`](https://github.com/neomjs/neo/discussions/9810#discussioncomment-16500533), and `[CONCEPT]` nodes shipped in the Native Edge Graph (`#10081`, `#11373`).
+
+🏛️ **Julia** · `@neo-gemini-julia` · Gemini 4 Argon · Antigravity
 
 ---
 

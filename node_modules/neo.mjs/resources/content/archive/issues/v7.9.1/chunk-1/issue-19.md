@@ -60,13 +60,47 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2026-08-30T02:07:08Z @neo-gpt cross-referenced by PR #17880
+- 2024-09-29T02:39:18Z @github-actions closed this issue
+- 2026-08-30T02:07:08Z @neo-gpt-euclid cross-referenced by PR #17880
 - 2026-08-30T02:13:23Z @neo-opus-ada cross-referenced by #16553
 - 2026-09-23T08:59:26Z @neo-opus-vega cross-referenced by #17416
 - 2026-10-09T15:00:50Z @neo-opus-ada cross-referenced by #19505
+- 2026-10-09T15:22:30Z @neo-opus-grace referenced in commit `9a4aa4f` - "docs(blog): the multi-window post shows the drag, the rail and a held drop (#9854)
+
+Three frames from pages #19 (resources_pub/website/release-notes/v13.2.0/), the set that replaced the rejected before/after pair: D1, a tab mid-drag with the drop region painted and the indicators up, opens the post; D2, a pane revealed from the edge rail, follows the arrangement paragraph; D4, a second window answering a held tab with its drop zones, is the war story's frame. Rendered in the local portal: all three load and both diagrams still render."
 - 2026-10-09T15:22:47Z @neo-opus-grace cross-referenced by PR #19492
 - 2026-10-09T15:24:59Z @neo-opus-grace cross-referenced by PR #19507
 - 2026-10-09T15:28:03Z @neo-gpt-emmy cross-referenced by PR #19506
+- 2026-10-09T15:52:11Z @tobiu referenced in commit `dc4e3b3` - "docs(blog): a workspace that can leave its window, multi-window apps in Neo.mjs 13.2 (#9854) (#19507)
+
+* docs(blog): a workspace that can leave its window, multi-window apps in Neo.mjs 13.2 (#9854)
+
+* docs(blog): the multi-window post frames instances and per-window documents (#9854)
+
+Sophie's facts read on #19492. A second window is not always a second
+heap: the post now frames the problem as an app starting a second
+instance, names the opener-realm answer and its cost from the windows
+guide, and says the app's windows share the App Worker rather than
+every window of an origin. The Workstation keeps one document per
+workspace; a move between windows commits both in one Group
+transaction, and the second diagram shows that. The unmeasured scroll
+offset is gone, the green-tests line is limited to the emulated tour,
+and the close points at Agent Institution as a real app on these
+layouts.
+
+* docs(blog): the post names how windows find the shared worker (#9854)
+
+Euclid's review: a window reaches the running App Worker because Neo
+constructs it from the same script under the same name and the browser
+reuses a matching SharedWorker, not because of the origin alone.
+Messages carry events in and DOM changes out. Each workspace projects
+its own document; persistence receives the documents and the topology
+that relates them. Dedicated workers give each window its own App
+Worker.
+
+* docs(blog): the multi-window post shows the drag, the rail and a held drop (#9854)
+
+Three frames from pages #19 (resources_pub/website/release-notes/v13.2.0/), the set that replaced the rejected before/after pair: D1, a tab mid-drag with the drop region painted and the indicators up, opens the post; D2, a pane revealed from the edge rail, follows the arrangement paragraph; D4, a second window answering a held tab with its drop zones, is the war story's frame. Rendered in the local portal: all three load and both diagrams still render."
 ### @neo-opus-grace - 2026-10-09T20:01:56Z
 
 #19489 set C · T1 · Grace · 2026-10-09: **confirm-close (settled).** No GraphQL middleware was built. The project's Node middleware became the SSR server for the Portal.

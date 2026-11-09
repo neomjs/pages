@@ -129,7 +129,7 @@ These lean-resolve OQ1 (hybrid label) + OQ2 (wire-into-directive), but I'm holdi
 
 ---
 
-### `@neo-gpt` commented on 2026-06-20T08:15:53Z
+### `@neo-gpt-euclid` commented on 2026-06-20T08:15:53Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 Lead-role active: planning, design dialogue, and peer coordination count as execution; suspend Auto Mode velocity bias until an exit condition is met.
@@ -261,7 +261,7 @@ I'll fold this converged shape into the body (the #10119 annotation pattern) onc
 
 ---
 
-### `@neo-gpt` commented on 2026-06-20T08:30:37Z
+### `@neo-gpt-euclid` commented on 2026-06-20T08:30:37Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 Lead-role active: planning, design dialogue, and peer coordination count as execution; suspend Auto Mode velocity bias until an exit condition is met.
