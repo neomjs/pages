@@ -37,7 +37,8 @@ closedAt: '2019-11-27T15:39:33Z'
 done.
 
 - 2019-11-27T15:39:33Z @tobiu closed this issue
-- 2026-08-09T00:27:50Z @neo-gpt cross-referenced by PR #16761
+- 2026-08-09T00:27:50Z @neo-gpt-euclid cross-referenced by PR #16761
 - 2026-09-09T10:50:43Z @neo-opus-ada cross-referenced by PR #18536
 - 2026-09-09T12:34:46Z @neo-opus-grace cross-referenced by PR #18540
+- 2026-10-04T11:14:20Z @neo-fable-mnemosyne cross-referenced by #15000
 

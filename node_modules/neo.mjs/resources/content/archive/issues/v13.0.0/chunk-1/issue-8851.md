@@ -27,7 +27,7 @@ contentTrust:
   signals: []
 blockedBy:
   - '[x] 9821 Enhancement: Neural Link VDOM Sync Primitives'
-  - '[ ] 9820 R&D: Grid Component Mutability & Column Synchronization'
+  - '[x] 9820 R&D: Grid Component Mutability & Column Synchronization'
   - '[x] 9819 R&D: Identify Ideal Candidates for Whitebox E2E Testing'
 blocking: []
 closedAt: '2026-04-08T10:16:33Z'
@@ -119,6 +119,17 @@ This capability would uniquely position Neo.mjs as an exceptionally testable fra
 - 2026-01-26T18:45:10Z @tobiu cross-referenced by #8884
 - 2026-04-05T00:24:53Z @tobiu added the `no auto close` label
 - 2026-04-05T10:22:32Z @tobiu assigned to @tobiu
+- 2026-04-08T09:44:32Z @tobiu added sub-issue #9782
+- 2026-04-08T09:44:33Z @tobiu added sub-issue #9783
+- 2026-04-08T10:04:39Z @tobiu referenced in commit `108fffc` - "feat: Neural Link Driven Playwright Integration (#8851)
+
+Resolves #8851, #9782, #9783
+
+- Updated Bridge and ConnectionService to track test clients and App Names.
+
+- Created neuralLink test fixture exposing MCP state observation.
+
+- Added end-to-end smoke test validating God Mode access."
 ### @tobiu - 2026-04-08T10:04:56Z
 
 **Input from Antigravity (Gemini 3.1 Pro):**
@@ -139,6 +150,37 @@ This capability would uniquely position Neo.mjs as an exceptionally testable fra
 > Changes have been pushed to `feature/issue-8851-neural-link-playwright`.
 
 - 2026-04-08T10:13:00Z @tobiu cross-referenced by PR #9788
+- 2026-04-08T10:16:33Z @tobiu referenced in commit `dc50d2d` - "Merge pull request #9788 from neomjs/feature/issue-8851-neural-link-playwright
+
+feat: Neural Link Driven Playwright Integration (#8851)"
+- 2026-04-08T10:16:34Z @tobiu closed this issue
+- 2026-04-09T11:34:01Z @tobiu marked this issue as being blocked by #9819
+- 2026-04-09T11:34:02Z @tobiu marked this issue as being blocked by #9820
+- 2026-04-09T11:34:03Z @tobiu marked this issue as being blocked by #9821
+- 2026-04-09T11:35:07Z @tobiu referenced in commit `38fd22e` - "test(playwright): stabilize Neural Link test environment and fix DevIndex bindings (#8851)"
 - 2026-04-09T12:18:25Z @tobiu cross-referenced by PR #9823
-- 2026-06-23T03:10:14Z @neo-gpt cross-referenced by #9820
+- 2026-04-09T12:20:11Z @tobiu referenced in commit `383d838` - "Merge pull request #9823 from neomjs/feature/issue-8851-neural-link-playwright
+
+Feature: Stabilize Neural Link Grid Tests & E2E Bindings (#8851)"
+- 2026-06-23T03:10:14Z @neo-gpt-euclid cross-referenced by #9820
+- 2026-10-13T14:14:33Z @neo-opus-grace cross-referenced by #19713
+- 2026-10-13T14:15:16Z @neo-opus-grace cross-referenced by PR #19715
+- 2026-10-13T15:28:03Z @tobiu referenced in commit `1984e6f` - "feat(test): connectToApp polls the page's App Worker id and never binds by appName (#19713) (#19715)
+
+* feat(test): connectToApp polls the page's App Worker id and never binds by appName (#19713)
+
+The identity read used page.waitForFunction with an async predicate. Its Promise is truthy, so the
+wait resolved on the first read, null while the App Worker still booted, and the fixture fell back
+to waitForSession(appName), which returns the oldest same-name session. connectToApp now polls the
+id from Node through the exported readWorkerId, bounded by identityTimeout, and fails when none
+arrives. The appName fallback is gone: its 2 s Neo wait passed {timeout} as the predicate's arg
+since #8851, so a page without Neo hung until the test timeout, and no spec reached it.
+
+* fix(test): connectToApp binds an explicit App Worker id exactly (#19713)
+
+087ae843a9 claimed no spec reached the argument fallback. WorkstationTopologyGroupsNL does: it
+closes the fixture's context, reads a worker id from a page in a fresh context, and passes that id
+to connectToApp. The old read threw on the closed page and fell back to the argument, an exact id.
+The previous commit polled the closed page for 30 s and threw, red on both attempts in CI shard 9.
+A worker id is now bound as given; only a name goes through the page's own id."
 

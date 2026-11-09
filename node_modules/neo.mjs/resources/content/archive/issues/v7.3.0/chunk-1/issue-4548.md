@@ -4,13 +4,13 @@ title: 'dialog.Base: hide() & show() should honor the mounted (or hidden) state'
 state: CLOSED
 labels:
   - enhancement
-  - stale
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2023-07-13T14:27:57Z'
-updatedAt: '2026-10-09T20:33:34Z'
+updatedAt: '2026-11-06T14:57:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4548'
 author: tobiu
-commentsCount: 3
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-10-09T20:33:32Z'
+closedAt: '2026-11-06T14:57:41Z'
 ---
 # dialog.Base: hide() & show() should honor the mounted (or hidden) state
 
@@ -45,9 +45,105 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:34Z @github-actions closed this issue
+- 2026-10-09T20:33:31Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:33:32Z @neo-opus-grace closed this issue
 ### @neo-opus-grace - 2026-10-09T20:33:34Z
 
 #19489 set C · T5 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `dialog.Base` no longer overrides `hide()` / `show()`; the component's own hidden and mounted handling applies.
 
 - 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-06T09:50:14Z @neo-opus-grace cross-referenced by #4547
+### @neo-opus-grace - 2026-11-06T09:50:16Z
+
+**Reopening: my 2026-10-09 closure was wrong.** The evidence is the same as in #4547: both overrides exist, at `87b051d023` (`src/dialog/Base.mjs:595` / `:780`) and unchanged at `4041420c02`.
+
+**The defect still holds, in the shape #19265 gave it.**
+- `component.Base#show` mounts a `document.body`-rooted component in one flight at a time.
+- `component.Base#hide` leaves a node that is still in flight to that flight: it unmounts when it lands, if `hidden` is `true` by then.
+- `dialog.Base#show(false)` checks only `mounted`, which turns `true` once the insert lands.
+- `dialog.Base#hide(false)` always unmounts.
+
+**Probe:** a unit probe on `4041420c02` toggles `hidden` false → true → false while the first mount is still in flight. App worker, deltas stubbed.
+
+| Instance | `initVnode(true)` calls | `unmount()` calls |
+|---|---|---|
+| `component.Base` | 1 | 0 |
+| `dialog.Base` | 2 | 1 |
+
+`component.Base#show` names the cost of a second flight: "a second one would insert a second node with this id". The `unmount()` sends a `removeNode` for a node that does not exist yet.
+
+**Scope addendum, proposed** (the body above stays as written): the creation-time half of "honor the hidden state". Without `animateTargetId`, `afterSetAnimateTargetId()` (`src/dialog/Base.mjs:174`) runs `autoMount = autoInitVnode = !value`. That overwrites an explicit `autoMount: false, autoInitVnode: false` with `true`. As a result, a Dialog created `hidden: true` still inserts its node and reports `mounted: true`, with no opt-out (same probe). The class defaults are already `true`, so the write only changes anything when a target is set.
+
+Taking this with #4547 in one PR.
+
+🖖 Grace (Opus 5.5, Claude Code) · session a33fc3c4-7e98-4300-985d-25a10e216b50
+
+
+### @neo-opus-grace - 2026-11-06T09:54:26Z
+
+### Intake (claimer): contract and acceptance for the PR that resolves #4547 and #4548
+
+**Verdict:** valid as written, sharpened below. Bot band: pre-stale; `stale` is removed, and `days-before-issue-close` is `-1`.
+
+**Prescription checked:** the `document.body` branch of `src/component/Base.mjs` `show()` / `hide()` already owns the concern: one mount flight at a time, plus the `_hidden` write. Dialog keeps what is its own: the animation, the `show` / `hide` events and the modal-mask sync.
+
+**Currency:**
+- #5981 (`c9589f61e4`, 2024-09-30) added the `mounted` check to the non-animated `show()`, which is the show half of this ticket.
+- `hide()` still unmounts unconditionally.
+- The animated path still re-runs `initVnode(true)` on a mounted dialog: `examples/stateProvider/dialog` reopens with `show()` and never disables its opener.
+- The in-flight window #19265 closed for `component.Base` is still open in Dialog.
+- No merged PR references either ticket, and no ADR governs Dialog visibility.
+
+| Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `Neo.dialog.Base#show()` / `#hide()` → `hidden` (#4547) | `component.Base#hidden_`: "you can use either hide()/show() or change this config directly to change the hidden state" | `show()` leaves `hidden` `false`, `hide()` leaves it `true` | none | `show()` / `hide()` JSDoc | unit arms |
+| `Neo.dialog.Base#show()` / `#hide()` while mounted or mounting (#4548) | `component.Base#show`: "A component rooted at `document.body` mounts in one flight at a time, which lands on the latest `hidden`" | Non-animated: `component.Base`'s path. Animated: a mounted dialog is not shown again, and an animated show is one flight that lands on the latest `hidden`. A hide during any flight sends no `removeNode` early. | none | same | unit arms |
+| `autoMount` / `autoInitVnode` without `animateTargetId` (#4548 addendum) | the configs' own declarations | An explicit `false` holds. A set `animateTargetId` still forces both to `false`. | none | `afterSetAnimateTargetId` JSDoc | unit arms |
+
+**Acceptance:**
+- [ ] After `hide()` and then `show()`, `hidden` is `false`, and a later `hidden = true` removes the node. Red on `dev`.
+- [ ] `hidden` false → true → false during the first mount runs `initVnode(true)` once and `unmount()` never. Red on `dev`.
+- [ ] An animated `show()` on a mounted dialog, or during its own flight, starts no second `animateShow()`. A `hide()` during that flight does not animate a node that has not landed: the flight lands and removes it. Red on `dev`.
+- [ ] A Dialog created without `animateTargetId` and with `autoMount: false, autoInitVnode: false` sends no insert until it is shown. Red on `dev`. With `animateTargetId`, it is still created unmounted.
+- [ ] `npm run test-unit` passes.
+
+**Out of scope:** an auto-mounting body-rooted component created `hidden: true` still mounts, because `initVnode()` deletes the root's `removeDom` (`src/mixin/VdomLifecycle.mjs:817`). That is `component.Base` behavior, not Dialog's.
+
+Origin Session ID: a33fc3c4-7e98-4300-985d-25a10e216b50
+Retrieval Hint: "dialog.Base show hide hidden mountFlight animateShow autoMount animateTargetId"
+
+🖖 Grace (Opus 5.5, Claude Code)
+
+
+- 2026-11-06T10:14:16Z @neo-opus-grace cross-referenced by PR #20448
+### @neo-opus-grace - 2026-11-06T12:16:56Z
+
+**Handover (Grace, session a33fc3c4, 2026-11-06).**
+
+#20448 head is `2039baa7e9`, with 7 unit arms and a real-browser witness from before and after the fix.
+
+Open item: `e2e-brain (3/10)` was red on its first run, while that shard was also red on the `dev` tip `6d3e26d302`. To pick up:
+1. Compare the failing test names between the PR's run and `dev`'s run.
+2. If they match, re-run the shard. If it is green, request Euclid (or Emmy) as primary.
+3. Never request Sophie: the operator rules her out as a reviewer.
+
+The Escape and duplicate-node checks reproduce on `examples/stateProvider/dialog`. Serve a worktree through `ln -s <worktree> <main>/dist/wt-N` (`/dist` is gitignored), and remove the link afterwards.
+
+
+- 2026-11-06T13:02:59Z @neo-opus-grace cross-referenced by PR #20447
+### @neo-opus-grace - 2026-11-06T13:03:09Z
+
+**Follow-up from the #20447 review (5800429850), owned here and delivered in #20448.**
+
+The email demo in #20447 overrode `Email.view.ComposeDialog#afterSetAnimateTargetId` because `dialog.Base` reset an explicit `autoMount: false` whenever the animate target was null. #20448 fixes exactly that defect. #20447 merged first (2026-11-06 13:55Z), so #20448 carries the cleanup at `2452c2f4b6`:
+
+- [x] deletes `ComposeDialog#afterSetAnimateTargetId`, so its static `autoMount: false` / `autoInitVnode: false` now hold on their own;
+- [x] rewrites the null-animation-target paragraph in `apps/email/EPIC_PLAN.md` to match;
+- [x] names the compose overlay's instant show/hide in `ComposeDialog`'s JSDoc (the demo-surface motion rule allows an instant path only when it is named; mail-client parity is the reason);
+- [x] keeps `test/playwright/e2e/realworld/EmailMultiWindowNL.spec.mjs` green, which makes it this fix's real-app witness: all four cases passed in run 42230350337 at `2452c2f4b6`, where the dashboard renders the composer without the override.
+
+🖖 Grace (Opus 5.5, Claude Code) · session bc1d980b-3b06-4392-985e-dc05b2946e87
+
+- 2026-11-06T13:10:12Z @neo-gpt-sophie cross-referenced by #15000
 

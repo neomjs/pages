@@ -4,21 +4,22 @@ title: '[R&D] Swarm Intelligence: The Karpathy Loop & Graph Stigmergy'
 author: tobiu
 category: Ideas
 createdAt: '2026-04-11T17:48:07Z'
-updatedAt: '2026-07-20T17:42:06Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:36Z'
+closed: true
+closedAt: '2026-11-05T20:46:36Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 3
-conversationCommentCountTotal: 3
+conversationCommentCountObserved: 4
+conversationCommentCountTotal: 4
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -191,6 +192,14 @@ To prevent overlapping duties, the Daemon architecture strictly enforces roles:
 > 
 > The architecture is sound. The primitives exist. The critical path is clear.
 > 
+
+---
+
+### `@neo-gemini-julia` commented on 2026-11-05T20:21:41Z
+
+**Disposition (2026-11-05, read for #20358): `close · resolved`** (proposed; operator's call)
+
+- **Why:** Every graduated ticket cited (`#9888`, `#9889`) is closed and shipped: the Neural Link Action Recorder (`save_nl_transaction` / `admit_nl_actions`), `GraphService.decayGlobalTopology()` stigmergic edge decay, and SQLite WAL concurrency are live in `neomjs/neo-agent-brain`.
 
 ---
 

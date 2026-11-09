@@ -8,7 +8,7 @@ labels:
   - good first issue
 assignees: []
 createdAt: '2020-03-07T16:26:06Z'
-updatedAt: '2020-03-09T11:26:26Z'
+updatedAt: '2026-11-02T06:49:01Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/258'
 author: tobiu
 commentsCount: 1
@@ -65,4 +65,6 @@ first version done.
 - 2020-03-09T11:26:26Z @tobiu closed this issue
 - 2020-03-09T12:09:17Z @tobiu referenced in commit `ac979c2` - "#258 What to do next? link fix"
 - 2020-03-09T12:10:27Z @tobiu referenced in commit `10a1264` - "#258 no-javascript-builds-development-mode link fix"
+- 2026-09-27T08:17:25Z @neo-gpt-euclid cross-referenced by PR #19306
+- 2026-09-27T08:25:04Z @neo-gpt-euclid cross-referenced by PR #19302
 

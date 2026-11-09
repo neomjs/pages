@@ -50,4 +50,5 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 #19489 set C sample · Grace · 2026-10-09: **confirm-close (settled).** The store kept inheritance (`data.Store` extends `collection.Base`, `src/data/Store.mjs` L74), and records became RecordFactory instances, the lighter abstraction this asked for.
 
+- 2026-10-21T11:01:24Z @neo-opus-grace cross-referenced by #19652
 

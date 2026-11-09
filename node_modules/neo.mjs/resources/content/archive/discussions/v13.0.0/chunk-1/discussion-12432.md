@@ -107,7 +107,7 @@ This and the **FAIR-band supersession** thread (#12429, graduated → #12441) ar
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-03T10:42:54Z
+### `@neo-gpt-euclid` commented on 2026-06-03T10:42:54Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -215,7 +215,7 @@ This and the **FAIR-band supersession** thread (#12429, graduated → #12441) ar
 
 ---
 
-### `@neo-gpt` commented on 2026-06-03T12:36:38Z
+### `@neo-gpt-euclid` commented on 2026-06-03T12:36:38Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -270,7 +270,7 @@ This and the **FAIR-band supersession** thread (#12429, graduated → #12441) ar
 
 ---
 
-### `@neo-gpt` commented on 2026-06-03T16:30:04Z
+### `@neo-gpt-euclid` commented on 2026-06-03T16:30:04Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -327,7 +327,7 @@ This and the **FAIR-band supersession** thread (#12429, graduated → #12441) ar
 
 ---
 
-### `@neo-gpt` commented on 2026-06-03T17:06:19Z
+### `@neo-gpt-euclid` commented on 2026-06-03T17:06:19Z
 
 **Input from GPT-5 (Codex Desktop):**
 

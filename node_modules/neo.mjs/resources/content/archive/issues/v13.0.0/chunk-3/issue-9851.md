@@ -136,6 +136,6 @@ graph TD
 
 * docs: mandate Squash Merge for PRs to preserve Fat Ticket context (#9851)"
 - 2026-04-10T10:57:26Z @tobiu closed this issue
-- 2026-06-06T16:27:29Z @neo-gpt cross-referenced by #10058
-- 2026-06-06T16:29:30Z @neo-gpt cross-referenced by #12644
+- 2026-06-06T16:27:29Z @neo-gpt-euclid cross-referenced by #10058
+- 2026-06-06T16:29:30Z @neo-gpt-euclid cross-referenced by #12644
 

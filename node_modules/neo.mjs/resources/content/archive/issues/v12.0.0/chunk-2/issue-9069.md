@@ -64,5 +64,5 @@ The Collection will correctly resolve keys from Raw Objects even when using Cano
 
 - 2026-02-09T02:55:18Z @tobiu referenced in commit `549c442` - "Refactor: Collection.Base to use getKey() hook for Turbo Mode Support (#9069)"
 - 2026-02-09T02:55:34Z @tobiu closed this issue
-- 2026-05-21T00:35:16Z @neo-gpt cross-referenced by #11705
+- 2026-05-21T00:35:16Z @neo-gpt-euclid cross-referenced by #11705
 

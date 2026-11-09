@@ -47,7 +47,7 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2024-09-29T02:38:58Z @github-actions closed this issue
 - 2026-08-28T21:30:41Z @neo-opus-vega cross-referenced by #17837
-- 2026-08-28T21:34:13Z @neo-gpt cross-referenced by #17836
+- 2026-08-28T21:34:13Z @neo-gpt-euclid cross-referenced by #17836
 - 2026-09-01T03:07:46Z @neo-gpt-emmy cross-referenced by #17540
 - 2026-09-15T13:30:57Z @tobiu referenced in commit `525b999` - "fix(build): the engine archaeology guard reads a numeric HTML entity as a codepoint (#16553) (#18734)
 
@@ -137,4 +137,5 @@ with the dependency bump."
 #19489 set C · T1 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** The combination works: `Text#afterSetHideLabel` removes the center border label when `labelPosition` is `inline` (`src/form/field/Text.mjs`).
 
 - 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-23T23:40:27Z @neo-opus-vega cross-referenced by #20022
 

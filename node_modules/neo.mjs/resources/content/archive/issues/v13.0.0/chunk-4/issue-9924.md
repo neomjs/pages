@@ -43,6 +43,20 @@ With the shift to a ChromaDB + SQLite Two-Pillar paradigm, the underlying memory
 
 ## Timeline
 
+- 2026-04-12T14:15:49Z @tobiu added the `enhancement` label
+- 2026-04-12T14:15:49Z @tobiu added the `ai` label
+- 2026-04-12T14:15:49Z @tobiu added the `architecture` label
+- 2026-04-12T14:15:57Z @tobiu added parent issue #9922
+- 2026-04-12T14:23:23Z @tobiu referenced in commit `064482d` - "feat(memory-core): Migrate Database service and Health Diagnostics (#9924)"
 - 2026-04-12T14:23:34Z @tobiu cross-referenced by PR #9926
-- 2026-05-08T10:06:02Z @neo-gpt cross-referenced by #10944
+- 2026-04-12T15:36:26Z @tobiu referenced in commit `66569e6` - "feat: Two-Pillar Hybrid RAG Architecture (#9922) (#9926)
+
+* feat(memory-core): Re-align configuration and lifecycles for Two-Pillar RAG (#9923)
+
+* feat(memory-core): Migrate Database service and Health Diagnostics (#9924)
+
+* feat(memory-core): Implement Dual-Pass Re-Ranking Middleware and Extricate SQLiteVectorManager (#9925)"
+- 2026-04-12T15:36:27Z @tobiu closed this issue
+- 2026-04-12T17:00:00Z @tobiu assigned to @tobiu
+- 2026-05-08T10:06:02Z @neo-gpt-euclid cross-referenced by #10944
 

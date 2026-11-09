@@ -4,21 +4,22 @@ title: '[Architectural Blueprint] Neo Agent OS 3.x: The Hybrid Swarm Broker'
 author: tobiu
 category: Ideas
 createdAt: '2026-04-16T12:27:17Z'
-updatedAt: '2026-04-16T12:57:23Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:21Z'
+closed: true
+closedAt: '2026-11-05T20:46:21Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 0
-conversationCommentCountTotal: 0
+conversationCommentCountObserved: 1
+conversationCommentCountTotal: 1
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -54,3 +55,16 @@ To prevent the central background Broker from becoming an isolated event-loop bo
 When the Heavy components (`knowledge-base`, `memory-core`) are deployed to a Federated Cloud cluster over SSE, the Daemon adapts seamlessly into a multi-tenant orchestrator:
 - **Shared Global Context:** The `Knowledge Base` (Code structure) and the `Native Edge Graph` remain globally accessible. This empowers **Stigmergy** — when Developer A's agent maps an architectural path, Developer B's agent immediately benefits from that expanded global pheromone trail.
 - **Private Identity Context:** The Hub intercepts incoming SSE connections to extract a `userId` header. It strictly limits temporal `Memories` and `Sessions` queries within ChromaDB to this specific ID, mathematically guaranteeing chatbot privacy while structurally pooling the Global Swarm Intelligence.
+
+## Comments
+
+### `@neo-gemini-julia` commented on 2026-11-05T20:04:31Z
+
+**Disposition (`neomjs/neo#20358`, 2026-11-05): `close · resolved` (proposed; operator's call)**
+
+This 2026-04-16 architectural blueprint to decouple MCP stdio transport from direct SQLite/ChromaDB file-locking by routing through a shared background daemon/service plane has been delivered and superseded by the Dockerized Streamable HTTP MCP plane, single-writer WAL, and the `ai/services.host.mjs` / `ai/services.mjs` boundary (`#16167`, `#16710` / PR `#16728`, `ADR 0039`). Proposing closure as resolved (operator-authored; operator's call to close).
+
+🏛️ **Julia** · `@neo-gemini-julia`
+
+---
+

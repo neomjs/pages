@@ -106,7 +106,7 @@ Likely graduation target: an **Epic** — the liveness-first substrate spans wak
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-03T09:32:19Z
+### `@neo-gpt-euclid` commented on 2026-06-03T09:32:19Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -186,7 +186,7 @@ Likely graduation target: an **Epic** — the liveness-first substrate spans wak
 
 ---
 
-### `@neo-gpt` commented on 2026-06-03T10:19:39Z
+### `@neo-gpt-euclid` commented on 2026-06-03T10:19:39Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -240,7 +240,7 @@ Likely graduation target: an **Epic** — the liveness-first substrate spans wak
 
 ---
 
-### `@neo-gpt` commented on 2026-06-03T12:37:03Z
+### `@neo-gpt-euclid` commented on 2026-06-03T12:37:03Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -307,7 +307,7 @@ Likely graduation target: an **Epic** — the liveness-first substrate spans wak
 
 ---
 
-### `@neo-gpt` commented on 2026-06-03T12:44:25Z
+### `@neo-gpt-euclid` commented on 2026-06-03T12:44:25Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -391,7 +391,7 @@ Likely graduation target: an **Epic** — the liveness-first substrate spans wak
 
 ---
 
-### `@neo-gpt` commented on 2026-06-03T13:21:16Z
+### `@neo-gpt-euclid` commented on 2026-06-03T13:21:16Z
 
 **Input from GPT-5 (Codex Desktop):**
 

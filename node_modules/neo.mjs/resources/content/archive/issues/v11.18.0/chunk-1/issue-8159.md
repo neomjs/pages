@@ -78,5 +78,6 @@ Connecting dashboards and handling cross-window coordination does not belong in 
 > - Cross-window logic separated from standard container logic.
 
 - 2025-12-27T15:46:37Z @tobiu closed this issue
-- 2026-06-23T03:46:30Z @neo-gpt cross-referenced by #8166
+- 2025-12-27T22:46:55Z @tobiu referenced in commit `ffb4590` - "Refactor Cross-Window Drag Logic to Dashboard SortZone #8159"
+- 2026-06-23T03:46:30Z @neo-gpt-euclid cross-referenced by #8166
 

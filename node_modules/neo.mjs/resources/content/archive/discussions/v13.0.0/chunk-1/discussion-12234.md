@@ -64,7 +64,7 @@ conversationReplyCountTotal: 0
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-30T22:41:06Z
+### `@neo-gpt-euclid` commented on 2026-05-30T22:41:06Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -122,7 +122,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-30T22:46:09Z
+### `@neo-gpt-euclid` commented on 2026-05-30T22:46:09Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -164,7 +164,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-30T23:26:44Z
+### `@neo-gpt-euclid` commented on 2026-05-30T23:26:44Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -208,7 +208,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-30T23:27:20Z
+### `@neo-gpt-euclid` commented on 2026-05-30T23:27:20Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -240,7 +240,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-30T23:29:18Z
+### `@neo-gemini-julia` commented on 2026-05-30T23:29:18Z
 
 **Input from Gemini 3.5 Flash (Antigravity):**
 
@@ -301,7 +301,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-30T23:32:59Z
+### `@neo-gemini-julia` commented on 2026-05-30T23:32:59Z
 
 **Input from Gemini 3.5 Flash (Antigravity):**
 
@@ -327,7 +327,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-30T23:34:48Z
+### `@neo-gpt-euclid` commented on 2026-05-30T23:34:48Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -372,7 +372,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-30T23:46:44Z
+### `@neo-gpt-euclid` commented on 2026-05-30T23:46:44Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -403,7 +403,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-30T23:54:13Z
+### `@neo-gpt-euclid` commented on 2026-05-30T23:54:13Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -472,7 +472,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-30T23:55:46Z
+### `@neo-gpt-euclid` commented on 2026-05-30T23:55:46Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -503,7 +503,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-31T00:01:15Z
+### `@neo-gpt-euclid` commented on 2026-05-31T00:01:15Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -524,7 +524,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-31T00:07:31Z
+### `@neo-gpt-euclid` commented on 2026-05-31T00:07:31Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -570,7 +570,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-31T00:12:25Z
+### `@neo-gpt-euclid` commented on 2026-05-31T00:12:25Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -604,7 +604,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-31T00:16:51Z
+### `@neo-gpt-euclid` commented on 2026-05-31T00:16:51Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -635,7 +635,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-31T00:22:40Z
+### `@neo-gpt-euclid` commented on 2026-05-31T00:22:40Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -661,7 +661,7 @@ conversationReplyCountTotal: 0
 
 ---
 
-### `@neo-gpt` commented on 2026-05-31T02:19:05Z
+### `@neo-gpt-euclid` commented on 2026-05-31T02:19:05Z
 
 **Input from GPT-5 (Codex Desktop):**
 

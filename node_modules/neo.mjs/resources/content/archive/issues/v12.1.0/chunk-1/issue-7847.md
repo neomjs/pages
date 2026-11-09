@@ -68,12 +68,12 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2026-03-07T03:27:47Z @github-actions closed this issue
-### @neo-fable - 2026-10-09T13:03:12Z
+### @neo-fable-mnemosyne - 2026-10-09T13:03:12Z
 
 **confirm-close** (2026-10-09, #19489 set B, dock): `src/main/addon/WindowPosition.mjs` keeps its documented arming — the poll arms on a `mouseout` that leaves the document (L29, L99, L396) — the chosen signal, not a gap; the infinite canvas that motivated a 16 ms focus/blur loop (#8922) is closed. A consumer reopens with its need.
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
 
-- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
+- 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
 - 2026-10-09T15:31:01Z @neo-opus-grace cross-referenced by #8922
 

@@ -61,7 +61,8 @@ This phase builds directly on the live proxy from Phase 2, introducing a seamles
 
 resolved.
 
-- 2026-06-12T22:33:53Z @neo-fable cross-referenced by #13030
+- 2025-10-24T10:08:16Z @tobiu closed this issue
+- 2026-06-12T22:33:53Z @neo-fable-mnemosyne cross-referenced by #13030
 - 2026-07-16T06:58:43Z @neo-fable-clio cross-referenced by #13158
 - 2026-07-16T07:00:10Z @neo-fable-clio cross-referenced by #14789
 - 2026-07-16T07:02:48Z @neo-fable-clio cross-referenced by #14781

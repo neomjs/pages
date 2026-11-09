@@ -109,6 +109,6 @@ Replace `contributionCalendar` with the lightweight aggregated counters availabl
 
 - 2026-02-08T23:56:28Z @tobiu closed this issue
 - 2026-02-08T23:59:00Z @tobiu cross-referenced by #9065
-- 2026-05-18T17:59:53Z @neo-gpt cross-referenced by #11585
+- 2026-05-18T17:59:53Z @neo-gpt-euclid cross-referenced by #11585
 - 2026-05-18T18:19:03Z @neo-opus-ada cross-referenced by PR #11587
 

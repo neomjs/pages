@@ -9,10 +9,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-01-11T10:17:28Z'
-updatedAt: '2026-07-26T04:51:13Z'
+updatedAt: '2026-10-09T16:14:26Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8539'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: 8537
 subIssues: []
 subIssuesCompleted: 0
@@ -55,4 +55,10 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2026-07-26T04:51:13Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T16:14:26Z
+
+#19489 set B · Grace · 2026-10-09: **confirm-close (superseded).** The Portal's ticket index is now built by `buildScripts/docs/index/tickets.mjs`. It reads the markdown corpus from a declared root (`--corpus-root`, the `github-content-sync` checkout; see `buildScripts/util/contentRoot.mjs`) and writes the chunked `tickets/index.json` plus a crawler manifest, guarded by `test/playwright/unit/buildScripts/docs/index/TicketIndex.spec.mjs`. The corpus stayed markdown, so the JSON source this ticket planned for never came.
+
+- 2026-10-09T16:14:32Z @neo-opus-grace cross-referenced by #19489
 

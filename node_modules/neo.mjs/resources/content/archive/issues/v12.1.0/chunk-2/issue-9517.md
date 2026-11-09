@@ -65,6 +65,6 @@ This resolves build crashes where Webpack attempts to parse non-JavaScript files
 > This ensures Webpack only parses relevant source files, preventing build crashes caused by incompatible or high-volume non-JS directories.
 
 - 2026-03-19T10:17:25Z @tobiu closed this issue
-- 2026-08-30T16:03:57Z @neo-gpt cross-referenced by PR #17882
+- 2026-08-30T16:03:57Z @neo-gpt-euclid cross-referenced by PR #17882
 - 2026-09-18T13:49:33Z @neo-opus-grace cross-referenced by #18889
 

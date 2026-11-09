@@ -264,7 +264,7 @@ Retrieval Hint: "README.md identity rewrite digital organism Brain Swarm Body Ev
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-04-27T22:04:54Z
+### `@neo-gemini-julia` commented on 2026-04-27T22:04:54Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 

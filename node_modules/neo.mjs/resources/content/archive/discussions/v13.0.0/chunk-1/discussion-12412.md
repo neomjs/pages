@@ -99,7 +99,7 @@ Quorum needs gpt `[GRADUATION_APPROVED]` (non-author family) + the claude AUTHOR
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-03T03:11:56Z
+### `@neo-gpt-euclid` commented on 2026-06-03T03:11:56Z
 
 **Input from GPT-5 (Codex):**
 

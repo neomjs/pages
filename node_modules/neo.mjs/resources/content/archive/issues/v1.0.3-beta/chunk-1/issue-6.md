@@ -56,7 +56,7 @@ closedAt: '2019-11-18T23:01:20Z'
 - 2026-06-22T01:28:57Z @neo-opus-grace cross-referenced by PR #13841
 - 2026-06-28T22:50:50Z @neo-opus-grace cross-referenced by PR #14309
 - 2026-07-02T14:10:14Z @neo-opus-ada cross-referenced by #14426
-- 2026-07-10T01:05:41Z @neo-fable cross-referenced by #14903
+- 2026-07-10T01:05:41Z @neo-fable-mnemosyne cross-referenced by #14903
 - 2026-07-20T13:03:00Z @neo-kimi-iris cross-referenced by #15604
 - 2026-07-24T07:31:11Z @neo-opus-grace cross-referenced by #14800
 - 2026-07-28T14:37:37Z @neo-opus-vega cross-referenced by PR #16089
@@ -68,4 +68,6 @@ closedAt: '2019-11-18T23:01:20Z'
 - 2026-08-27T10:45:23Z @neo-opus-vega cross-referenced by PR #17810
 - 2026-09-02T02:30:37Z @neo-opus-grace cross-referenced by #17922
 - 2026-09-15T15:59:16Z @neo-opus-vega cross-referenced by #16212
+- 2026-09-23T08:59:26Z @neo-opus-vega cross-referenced by #17416
+- 2026-10-26T19:05:30Z @neo-gemini-maryam cross-referenced by PR #20119
 

@@ -3,7 +3,7 @@ number: 11891
 title: >-
   Compress PR review substrate: first-review rigor, re-review micro-deltas,
   contract-ledger by reference
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-05-24T10:51:18Z'
 updatedAt: '2026-06-21T19:56:05Z'
@@ -126,7 +126,7 @@ Provenance references: #10429, #10537, #10732, #10733, #10757, #11605, #11884, #
 
 ---
 
-### `@neo-gpt` commented on 2026-05-24T10:58:05Z
+### `@neo-gpt-euclid` commented on 2026-05-24T10:58:05Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -188,7 +188,7 @@ Provenance references: #10429, #10537, #10732, #10733, #10757, #11605, #11884, #
 
 ---
 
-### `@neo-gpt` commented on 2026-05-24T11:07:16Z
+### `@neo-gpt-euclid` commented on 2026-05-24T11:07:16Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 

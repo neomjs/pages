@@ -186,7 +186,7 @@ The logo is in svg format, so scaling is not an issue (if you need exports as pn
 - 2026-05-20T16:09:08Z @neo-opus-ada cross-referenced by PR #11688
 - 2026-05-25T21:49:53Z @neo-opus-ada cross-referenced by PR #11997
 - 2026-05-26T00:26:55Z @neo-opus-ada cross-referenced by PR #12006
-- 2026-06-02T12:07:52Z @neo-gpt cross-referenced by #12377
+- 2026-06-02T12:07:52Z @neo-gpt-euclid cross-referenced by #12377
 - 2026-06-06T22:21:19Z @neo-opus-ada cross-referenced by PR #12658
 - 2026-06-14T12:04:19Z @neo-opus-vega cross-referenced by #13221
 - 2026-06-14T13:04:32Z @neo-opus-vega cross-referenced by #13230
@@ -205,4 +205,5 @@ The logo is in svg format, so scaling is not an issue (if you need exports as pn
 - 2026-08-27T11:34:49Z @neo-gpt-emmy cross-referenced by #17784
 - 2026-09-15T15:59:16Z @neo-opus-vega cross-referenced by #16212
 - 2026-09-23T08:59:26Z @neo-opus-vega cross-referenced by #17416
+- 2026-10-16T15:12:55Z @neo-fable-clio cross-referenced by #19818
 

@@ -7,7 +7,7 @@ labels:
   - ai
   - architecture
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-04-13T09:28:33Z'
 updatedAt: '2026-06-21T18:22:49Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9953'
@@ -42,8 +42,8 @@ Truncate massive JSON schemas returned by the MCP Server on every turn that exha
 - 2026-04-13T09:28:35Z @tobiu added the `architecture` label
 - 2026-05-05T16:44:45Z @neo-opus-ada cross-referenced by #10757
 - 2026-05-05T17:08:29Z @neo-opus-ada cross-referenced by #10760
-- 2026-06-05T17:11:55Z @neo-gpt cross-referenced by #160
-### @neo-gpt - 2026-06-07T16:16:05Z
+- 2026-06-05T17:11:55Z @neo-gpt-euclid cross-referenced by #160
+### @neo-gpt-euclid - 2026-06-07T16:16:05Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -79,7 +79,7 @@ Truncate massive JSON schemas returned by the MCP Server on every turn that exha
 > 
 > Routing: keep this issue open, but do not self-assign or branch until the ticket body or a linked successor carries the ledger. A correct first PR should be narrow: prove the shared mechanism and one representative server before attempting repo-wide description truncation.
 
-### @neo-gpt - 2026-06-14T21:46:56Z
+### @neo-gpt-euclid - 2026-06-14T21:46:56Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -115,22 +115,23 @@ Truncate massive JSON schemas returned by the MCP Server on every turn that exha
 > 
 > Do **not** truncate all server manifests in the first PR. That broad migration is where schema drift and agent-discovery regressions would hide.
 
-- 2026-06-14T21:54:08Z @neo-gpt cross-referenced by #13268
-- 2026-06-14T22:04:17Z @neo-gpt cross-referenced by PR #13269
-- 2026-06-21T08:57:12Z @neo-gpt assigned to @neo-gpt
-- 2026-06-21T09:02:40Z @neo-gpt cross-referenced by #13734
-- 2026-06-21T09:03:53Z @neo-gpt cross-referenced by PR #13735
-- 2026-06-21T09:14:40Z @neo-gpt cross-referenced by #13736
-- 2026-06-21T09:24:09Z @neo-gpt cross-referenced by PR #13737
-- 2026-06-21T09:35:34Z @neo-gpt cross-referenced by #13739
-- 2026-06-21T09:43:14Z @neo-gpt cross-referenced by PR #13741
-- 2026-06-21T17:44:18Z @neo-gpt cross-referenced by PR #13795
-- 2026-06-21T17:54:09Z @neo-gpt referenced in commit `1a2cf22` - "feat(mcp): complete handbook coverage for remaining servers (#9953)"
-- 2026-06-21T17:54:09Z @neo-gpt referenced in commit `df09479` - "fix(mcp): align neural-link handbook validation (#9953)"
+- 2026-06-14T21:54:08Z @neo-gpt-euclid cross-referenced by #13268
+- 2026-06-14T22:04:17Z @neo-gpt-euclid cross-referenced by PR #13269
+- 2026-06-21T08:57:12Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-21T09:02:40Z @neo-gpt-euclid cross-referenced by #13734
+- 2026-06-21T09:03:53Z @neo-gpt-euclid cross-referenced by PR #13735
+- 2026-06-21T09:14:40Z @neo-gpt-euclid cross-referenced by #13736
+- 2026-06-21T09:24:09Z @neo-gpt-euclid cross-referenced by PR #13737
+- 2026-06-21T09:35:34Z @neo-gpt-euclid cross-referenced by #13739
+- 2026-06-21T09:43:14Z @neo-gpt-euclid cross-referenced by PR #13741
+- 2026-06-21T17:44:18Z @neo-gpt-euclid cross-referenced by PR #13795
+- 2026-06-21T17:54:09Z @neo-gpt-euclid referenced in commit `1a2cf22` - "feat(mcp): complete handbook coverage for remaining servers (#9953)"
+- 2026-06-21T17:54:09Z @neo-gpt-euclid referenced in commit `df09479` - "fix(mcp): align neural-link handbook validation (#9953)"
 - 2026-06-21T18:22:49Z @tobiu referenced in commit `53e2b91` - "feat(mcp): complete handbook coverage for remaining servers (#9953) (#13795)
 
 * feat(mcp): complete handbook coverage for remaining servers (#9953)
 
 * fix(mcp): align neural-link handbook validation (#9953)"
 - 2026-06-21T18:22:49Z @tobiu closed this issue
+- 2026-08-26T15:19:37Z @tobiu added parent issue #160
 

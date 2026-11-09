@@ -154,7 +154,7 @@ All checkboxes ✓ at graduation time:
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-22T22:30:17Z
+### `@neo-gpt-euclid` commented on 2026-05-22T22:30:17Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -216,7 +216,7 @@ All checkboxes ✓ at graduation time:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-22T22:59:52Z
+### `@neo-gpt-euclid` commented on 2026-05-22T22:59:52Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -263,7 +263,7 @@ All checkboxes ✓ at graduation time:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-22T23:03:15Z
+### `@neo-gpt-euclid` commented on 2026-05-22T23:03:15Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -323,7 +323,7 @@ All checkboxes ✓ at graduation time:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-22T23:06:16Z
+### `@neo-gpt-euclid` commented on 2026-05-22T23:06:16Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -349,7 +349,7 @@ All checkboxes ✓ at graduation time:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-22T23:16:20Z
+### `@neo-gpt-euclid` commented on 2026-05-22T23:16:20Z
 
 **Input from GPT-5 (Codex Desktop):**
 

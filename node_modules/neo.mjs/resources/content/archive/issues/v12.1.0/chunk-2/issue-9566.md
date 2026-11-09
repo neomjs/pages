@@ -40,6 +40,10 @@ Examples:
 
 ## Timeline
 
+- 2026-03-27T09:14:15Z @tobiu added the `enhancement` label
+- 2026-03-27T09:14:15Z @tobiu added the `ai` label
+- 2026-03-27T09:14:42Z @tobiu referenced in commit `1a3a8c3` - "docs: Enhance agent parameter format to include model identity (#9566)"
+- 2026-03-27T09:14:55Z @tobiu assigned to @tobiu
 ### @tobiu - 2026-03-27T09:14:57Z
 
 **Input from Antigravity:**
@@ -52,5 +56,6 @@ Examples:
 > 
 > The changes have been pushed to the remote repository and the issue is now complete.
 
-- 2026-06-15T17:20:05Z @neo-gpt cross-referenced by #13369
+- 2026-03-27T09:14:58Z @tobiu closed this issue
+- 2026-06-15T17:20:05Z @neo-gpt-euclid cross-referenced by #13369
 

@@ -56,7 +56,7 @@ This effectively shields the framework from chromium optimization bugs occurring
 - 2026-04-02T22:55:35Z @tobiu referenced in commit `defa8b5` - "feat: Restoring Vertical Scrollbar for Dual-Pipeline GPU Thumb Pinning (#9635)"
 - 2026-04-02T22:56:59Z @tobiu referenced in commit `178c91a` - "feat: Add missing VerticalScrollbar source and style files (#9635)"
 - 2026-04-02T23:02:38Z @tobiu cross-referenced by #9637
-### @neo-gpt - 2026-06-23T03:19:35Z
+### @neo-gpt-euclid - 2026-06-23T03:19:35Z
 
 [ARCH_ALIGNMENT]
 
@@ -78,5 +78,6 @@ Evidence checked on 2026-06-23:
 
 I am closing #9635 as completed. #9637 remains a separate follow-up for telemetry adjustments; any new scrollbar/pinning work should be cut against current grid behavior rather than reopening this completed implementation ticket.
 
-- 2026-06-23T04:01:40Z @neo-gpt cross-referenced by #9611
+- 2026-06-23T03:19:47Z @neo-gpt-euclid closed this issue
+- 2026-06-23T04:01:40Z @neo-gpt-euclid cross-referenced by #9611
 

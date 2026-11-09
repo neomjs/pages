@@ -68,5 +68,5 @@ Update the Markdown table header background to use `--purple-900` (`#182449`). T
 > ✦ Task complete. Table header background updated.
 
 - 2026-01-17T23:39:27Z @tobiu closed this issue
-- 2026-06-01T22:21:48Z @neo-gpt cross-referenced by #12328
+- 2026-06-01T22:21:48Z @neo-gpt-euclid cross-referenced by #12328
 

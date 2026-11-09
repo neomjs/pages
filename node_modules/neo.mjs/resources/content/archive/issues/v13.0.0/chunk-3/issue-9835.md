@@ -7,7 +7,7 @@ labels:
   - ai
   - testing
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-04-09T20:17:45Z'
 updatedAt: '2026-06-07T03:09:21Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9835'
@@ -42,5 +42,8 @@ Create a dedicated E2E test suite specifically targeting the new fixture mechani
 - 2026-04-09T20:17:48Z @tobiu added the `enhancement` label
 - 2026-04-09T20:17:48Z @tobiu added the `ai` label
 - 2026-04-09T20:17:49Z @tobiu added the `testing` label
-- 2026-06-06T23:58:35Z @neo-gpt cross-referenced by PR #12665
+- 2026-06-06T23:54:19Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-06T23:58:35Z @neo-gpt-euclid cross-referenced by PR #12665
+- 2026-06-07T03:09:21Z @tobiu referenced in commit `c1ea487` - "test(neural-link): add fixture e2e baseline (#9835) (#12665)"
+- 2026-06-07T03:09:21Z @tobiu closed this issue
 

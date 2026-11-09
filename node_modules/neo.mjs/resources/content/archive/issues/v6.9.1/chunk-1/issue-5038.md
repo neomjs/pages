@@ -84,5 +84,5 @@ Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.c
 * form.field.Text: minor cleanup
 
 * v6.9.1"
-- 2026-07-12T08:35:33Z @neo-gpt cross-referenced by #15083
+- 2026-07-12T08:35:33Z @neo-gpt-euclid cross-referenced by #15083
 

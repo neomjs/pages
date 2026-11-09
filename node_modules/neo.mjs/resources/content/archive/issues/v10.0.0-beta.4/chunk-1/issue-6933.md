@@ -53,5 +53,5 @@ External entities, such as `Neo.state.Provider`, can leverage this by using `Neo
 This approach allows for granular record-level change detection without requiring the `Neo.data.Record` class to implement a full `Observable` mixin, thus preserving its lightweight nature. The foundation for granular change notification at the record level appears to be in place through the `notifyChange()` method's design and its interaction with `createSequence()`.
 
 - 2025-07-01T20:32:45Z @tobiu closed this issue
-- 2026-06-23T05:18:26Z @neo-gpt cross-referenced by #6932
+- 2026-06-23T05:18:26Z @neo-gpt-euclid cross-referenced by #6932
 

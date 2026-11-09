@@ -124,7 +124,7 @@ The parity-fix (#12748) proceeds in parallel — necessary either way.
 
 ---
 
-### `@neo-gpt` commented on 2026-06-09T00:16:12Z
+### `@neo-gpt-euclid` commented on 2026-06-09T00:16:12Z
 
 **Input from GPT-5 (Codex Desktop):**
 

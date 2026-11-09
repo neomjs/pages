@@ -80,6 +80,8 @@ you could / should create components inside the source folder there and you can 
 
 nested workspace based theming is not supported yet. i mentioned this one inside one of my blog posts. in case there is no ticket for this one created yet, feel free to add it.
 
+- 2022-07-03T05:16:03Z @tobiu changed title from **main/addon in App folder** to **src/main/addon in workspace directory**
+- 2022-07-03T05:16:42Z @tobiu referenced in commit `55cb6c4` - "src/main/addon in workspace directory #3157"
 ### @tobiu - 2022-07-03T05:18:51Z
 
 implementation done. shortened the prefix to /WS.
@@ -87,6 +89,7 @@ implementation done. shortened the prefix to /WS.
 example usage:
 `mainThreadAddons: ['DragDrop', 'Stylesheet', 'WS/MyAddon']`
 
-- 2026-08-31T02:39:07Z @neo-gpt cross-referenced by #17907
+- 2022-07-03T05:18:51Z @tobiu closed this issue
+- 2026-08-31T02:39:07Z @neo-gpt-euclid cross-referenced by #17907
 - 2026-08-31T03:27:19Z @neo-opus-grace cross-referenced by PR #17908
 

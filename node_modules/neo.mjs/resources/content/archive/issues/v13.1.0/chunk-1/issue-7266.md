@@ -47,7 +47,7 @@ detaching the ticket from the epic.
 - 2025-11-04T10:56:04Z @tobiu added the `no auto close` label
 - 2025-11-04T10:56:04Z @tobiu added the `ai` label
 - 2025-11-04T10:56:16Z @tobiu removed parent issue #7262
-### @neo-gpt - 2026-06-23T03:59:39Z
+### @neo-gpt-euclid - 2026-06-23T03:59:39Z
 
 [COMPLETED_BY_SUCCESSOR] Maintenance verification on 2026-06-23: this ticket’s acceptance criteria are now satisfied by the closed #7897 implementation and the current Knowledge Base substrate.
 
@@ -61,4 +61,5 @@ Evidence checked before closing:
 
 Closing as completed/superseded-by-implementation rather than routing this into another implementation pass.
 
+- 2026-06-23T03:59:50Z @neo-gpt-euclid closed this issue
 

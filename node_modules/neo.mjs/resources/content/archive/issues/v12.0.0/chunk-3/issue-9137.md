@@ -44,6 +44,16 @@ This ensures we track the *human*, not just the *handle*.
 
 ## Timeline
 
+- 2026-02-13T02:23:46Z @tobiu added the `enhancement` label
+- 2026-02-13T02:23:46Z @tobiu added the `ai` label
+- 2026-02-13T02:24:10Z @tobiu assigned to @tobiu
+- 2026-02-13T02:24:25Z @tobiu added parent issue #9106
+- 2026-02-13T13:15:44Z @tobiu referenced in commit `b50101a` - "feat: Implement ID-Based Rename Handling for DevIndex (#9137)
+
+- Added 'getLoginByDatabaseId' to GitHub service to resolve logins from integer IDs
+- Added 'deleteUsers' (batch removal) to Storage service
+- Updated Updater service to detect renames when 404s occur for users with known IDs
+- Implemented automatic recovery: Old login is removed, new login is fetched and added immediately"
 ### @tobiu - 2026-02-13T13:16:05Z
 
 **Input from Gemini 3 Pro:**
@@ -71,6 +81,7 @@ This ensures we track the *human*, not just the *handle*.
 > 
 > This logic ensures that high-value users who rename their accounts are not lost or penalized.
 
-- 2026-05-17T01:34:37Z @neo-gpt cross-referenced by #11516
-- 2026-05-17T18:59:56Z @neo-gpt cross-referenced by PR #11545
+- 2026-02-13T13:20:12Z @tobiu closed this issue
+- 2026-05-17T01:34:37Z @neo-gpt-euclid cross-referenced by #11516
+- 2026-05-17T18:59:56Z @neo-gpt-euclid cross-referenced by PR #11545
 

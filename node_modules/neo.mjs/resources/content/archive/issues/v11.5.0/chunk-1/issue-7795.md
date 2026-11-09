@@ -51,5 +51,5 @@ Update `buildScripts/buildAll.mjs` to dynamically determine the Node.js command 
 already resolved
 
 - 2025-11-18T19:47:13Z @tobiu closed this issue
-- 2026-05-22T17:57:45Z @neo-gpt cross-referenced by #11775
+- 2026-05-22T17:57:45Z @neo-gpt-euclid cross-referenced by #11775
 

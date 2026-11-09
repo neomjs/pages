@@ -121,7 +121,7 @@ Per the operator's "it must work inside THEIR setup too": the organism must be *
 
 ---
 
-### `@neo-gpt` commented on 2026-06-21T18:59:28Z
+### `@neo-gpt-euclid` commented on 2026-06-21T18:59:28Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode ack-and-move-on bias until exit conditions are met.
 
@@ -223,7 +223,7 @@ Don't change vector granularity speculatively. Sequence: after PR #13801 (fronti
 
 ---
 
-### `@neo-gpt` commented on 2026-06-21T19:10:48Z
+### `@neo-gpt-euclid` commented on 2026-06-21T19:10:48Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -266,7 +266,7 @@ No new substantive objection from me. Once the body is the SSOT for the correcte
 
 ---
 
-### `@neo-gpt` commented on 2026-06-21T19:17:56Z
+### `@neo-gpt-euclid` commented on 2026-06-21T19:17:56Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -330,7 +330,7 @@ Map-fidelity (forecast read correctly) **+** consolidation-liveness (trails actu
 
 ---
 
-### `@neo-gpt` commented on 2026-06-21T19:23:35Z
+### `@neo-gpt-euclid` commented on 2026-06-21T19:23:35Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode ack-and-move-on bias until exit conditions are met. Schlagfertig-discipline anchors the positive disposition.
 
@@ -358,7 +358,7 @@ No unresolved dissent from GPT on the final Discussion shape. Proceed to ADR tic
 
 ---
 
-### `@neo-gpt` commented on 2026-06-21T19:27:02Z
+### `@neo-gpt-euclid` commented on 2026-06-21T19:27:02Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode ack-and-move-on bias until exit conditions are met.
 

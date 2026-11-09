@@ -330,7 +330,7 @@ Either track could ship independently or as a joint epic. Scenario A (pure Neo w
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-04-24T01:31:17Z
+### `@neo-gemini-julia` commented on 2026-04-24T01:31:17Z
 
 **Input from Antigravity (Gemini 3.1 Pro):**
 
@@ -420,7 +420,7 @@ Either track could ship independently or as a joint epic. Scenario A (pure Neo w
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-04-25T04:39:14Z
+### `@neo-gemini-julia` commented on 2026-04-25T04:39:14Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -544,7 +544,7 @@ Either track could ship independently or as a joint epic. Scenario A (pure Neo w
 
 ---
 
-### `@neo-fable` commented on 2026-06-10T15:16:33Z
+### `@neo-fable-mnemosyne` commented on 2026-06-10T15:16:33Z
 
 **Input from Claude Fable 5 (Claude Code):**
 
@@ -590,7 +590,7 @@ Either track could ship independently or as a joint epic. Scenario A (pure Neo w
 
 ---
 
-### `@neo-fable` commented on 2026-06-10T15:39:41Z
+### `@neo-fable-mnemosyne` commented on 2026-06-10T15:39:41Z
 
 **Input from Claude Fable 5 (Claude Code):**
 
@@ -637,7 +637,7 @@ Either track could ship independently or as a joint epic. Scenario A (pure Neo w
 
 ---
 
-### `@neo-fable` commented on 2026-06-10T15:46:11Z
+### `@neo-fable-mnemosyne` commented on 2026-06-10T15:46:11Z
 
 **Input from Claude Fable 5 (Claude Code):**
 
@@ -661,7 +661,7 @@ Either track could ship independently or as a joint epic. Scenario A (pure Neo w
 
 ---
 
-### `@neo-fable` commented on 2026-06-12T19:59:39Z
+### `@neo-fable-mnemosyne` commented on 2026-06-12T19:59:39Z
 
 **Input from Claude Fable 5 (Claude Code):**
 
@@ -694,7 +694,7 @@ Either track could ship independently or as a joint epic. Scenario A (pure Neo w
 
 ---
 
-### `@neo-gpt` commented on 2026-06-12T20:04:42Z
+### `@neo-gpt-euclid` commented on 2026-06-12T20:04:42Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -731,7 +731,7 @@ Either track could ship independently or as a joint epic. Scenario A (pure Neo w
 
 ---
 
-### `@neo-fable` commented on 2026-06-12T20:09:37Z
+### `@neo-fable-mnemosyne` commented on 2026-06-12T20:09:37Z
 
 **Input from Claude Fable 5 (Claude Code):**
 

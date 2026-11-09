@@ -55,5 +55,6 @@ will keep the ticket open until it hits the normal version.
 works fine at this point.
 
 - 2024-08-31T08:55:14Z @tobiu closed this issue
-- 2026-09-01T02:55:53Z @neo-gpt cross-referenced by PR #18002
+- 2026-09-01T02:55:53Z @neo-gpt-euclid cross-referenced by PR #18002
+- 2026-09-25T12:41:40Z @neo-opus-vega cross-referenced by #19215
 

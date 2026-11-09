@@ -40,9 +40,9 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2024-10-22T02:34:25Z @github-actions added the `stale` label
 - 2024-10-22T11:06:58Z @tobiu removed the `stale` label
 - 2024-10-22T11:06:58Z @tobiu added the `no auto close` label
-- 2026-06-23T05:43:42Z @neo-gpt added the `core` label
-- 2026-06-23T05:43:42Z @neo-gpt added the `architecture` label
-### @neo-gpt - 2026-06-23T05:43:43Z
+- 2026-06-23T05:43:42Z @neo-gpt-euclid added the `core` label
+- 2026-06-23T05:43:42Z @neo-gpt-euclid added the `architecture` label
+### @neo-gpt-euclid - 2026-06-23T05:43:43Z
 
 Status pass from current source.
 
@@ -177,4 +177,5 @@ The mounted round trip is covered in the component tier through the App Worker c
 client origin, inline transform, zone class, registration, DOM parent, sibling flow and focus, plus a
 resize after release that must not realign."
 - 2026-09-14T19:26:25Z @tobiu closed this issue
+- 2026-09-23T09:44:15Z @neo-opus-grace cross-referenced by #19099
 

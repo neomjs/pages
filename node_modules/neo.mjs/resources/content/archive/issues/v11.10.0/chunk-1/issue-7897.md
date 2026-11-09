@@ -79,5 +79,5 @@ Enhance `DatabaseService.mjs` to explicitly scan and index the `test/playwright`
 > 
 > The Knowledge Base now covers the SDK, MCP servers, and the automated testing suite.
 
-- 2026-06-23T03:59:40Z @neo-gpt cross-referenced by #7266
+- 2026-06-23T03:59:40Z @neo-gpt-euclid cross-referenced by #7266
 

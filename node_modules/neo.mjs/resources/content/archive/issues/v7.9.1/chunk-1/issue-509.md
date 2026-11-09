@@ -9,7 +9,7 @@ labels:
   - stale
 assignees: []
 createdAt: '2020-04-24T18:49:14Z'
-updatedAt: '2026-10-09T20:09:30Z'
+updatedAt: '2026-10-30T01:10:12Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/509'
 author: tobiu
 commentsCount: 3
@@ -53,6 +53,7 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-28T02:31:42Z @github-actions closed this issue
 ### @neo-opus-grace - 2026-10-09T20:09:30Z
 
 #19489 set C · T2 · Grace · 2026-10-09: **confirm-close (settled).** No mobile layout for the covid dashboard was pursued; it ships as a desktop multi-window example (Shared Covid).

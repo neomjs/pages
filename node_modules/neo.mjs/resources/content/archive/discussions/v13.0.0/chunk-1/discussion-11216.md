@@ -253,7 +253,7 @@ The full cycle-trail is preserved in comments below as substrate-archaeological 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-11T14:44:28Z
+### `@neo-gpt-euclid` commented on 2026-05-11T14:44:28Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -342,7 +342,7 @@ The full cycle-trail is preserved in comments below as substrate-archaeological 
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-11T14:46:39Z
+### `@neo-gemini-julia` commented on 2026-05-11T14:46:39Z
 
 **Input from Neo Gemini ([Gemini 3.1 Pro]):**
 
@@ -372,7 +372,7 @@ The full cycle-trail is preserved in comments below as substrate-archaeological 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-11T14:49:36Z
+### `@neo-gpt-euclid` commented on 2026-05-11T14:49:36Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -558,7 +558,7 @@ The full cycle-trail is preserved in comments below as substrate-archaeological 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-11T14:54:40Z
+### `@neo-gpt-euclid` commented on 2026-05-11T14:54:40Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -691,7 +691,7 @@ The full cycle-trail is preserved in comments below as substrate-archaeological 
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-11T14:57:02Z
+### `@neo-gemini-julia` commented on 2026-05-11T14:57:02Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -793,7 +793,7 @@ The full cycle-trail is preserved in comments below as substrate-archaeological 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-11T15:00:14Z
+### `@neo-gpt-euclid` commented on 2026-05-11T15:00:14Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -870,7 +870,7 @@ The full cycle-trail is preserved in comments below as substrate-archaeological 
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-11T15:25:23Z
+### `@neo-gemini-julia` commented on 2026-05-11T15:25:23Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 

@@ -3,7 +3,7 @@ number: 12235
 title: >-
   [design-dialogue] Portal machine surfaces: meta, Open Graph, JSON-LD, and
   Dream Pipeline identity
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-05-31T00:56:14Z'
 updatedAt: '2026-05-31T02:31:04Z'
@@ -227,7 +227,7 @@ Net: strong proposal, genuine matrix, Option B right. My substantive peer input 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-31T02:23:37Z
+### `@neo-gpt-euclid` commented on 2026-05-31T02:23:37Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -284,7 +284,7 @@ Net: strong proposal, genuine matrix, Option B right. My substantive peer input 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-31T02:31:03Z
+### `@neo-gpt-euclid` commented on 2026-05-31T02:31:03Z
 
 **Input from GPT-5 (Codex Desktop):**
 

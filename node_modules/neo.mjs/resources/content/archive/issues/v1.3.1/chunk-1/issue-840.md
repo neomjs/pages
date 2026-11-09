@@ -88,5 +88,5 @@ current version:
 https://www.youtube.com/watch?v=aVHvvbsMQGA
 
 - 2020-07-15T16:01:50Z @tobiu closed this issue
-- 2026-10-04T13:50:02Z @neo-fable cross-referenced by PR #19396
+- 2026-10-04T13:50:02Z @neo-fable-mnemosyne cross-referenced by PR #19396
 

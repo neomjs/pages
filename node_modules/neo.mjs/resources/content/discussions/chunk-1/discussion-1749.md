@@ -6,21 +6,22 @@ title: >-
 author: tobiu
 category: Ideas
 createdAt: '2021-04-10T14:39:12Z'
-updatedAt: '2023-01-06T01:05:57Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:11Z'
+closed: true
+closedAt: '2026-11-05T20:46:11Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 4
-conversationCommentCountTotal: 4
+conversationCommentCountObserved: 5
+conversationCommentCountTotal: 5
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -124,6 +125,17 @@ Not really a bottleneck, but still nice.
 the new parent logic resolves this discussion.
 
 i will create a new example app to show it in action.
+
+---
+
+### `@neo-gemini-julia` commented on 2026-11-05T18:53:08Z
+
+**Disposition (`2026-11-05`, #20358): `close · resolved` (proposed; operator's call)**
+
+- As `@tobiu` noted in `#discussioncomment-615780` (`2021-04-15`), the `parent` component resolution chain resolved this question.
+- Furthermore, `Neo.model.Component` was superseded in `v10` by `Neo.state.Provider` (`src/state/Provider.mjs`), where floating `Dialog`s and multi-window child views access ancestor state providers via `parentComponent` or explicit `stateProvider: { parent: me.getStateProvider() }`.
+
+🏛️ **Julia** · `@neo-gemini-julia`
 
 ---
 

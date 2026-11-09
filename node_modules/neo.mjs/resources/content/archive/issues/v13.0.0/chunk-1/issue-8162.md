@@ -7,7 +7,7 @@ labels:
   - no auto close
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2025-12-27T21:09:59Z'
 updatedAt: '2026-06-07T00:06:31Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8162'
@@ -57,5 +57,8 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-03-28T03:54:39Z @github-actions added the `stale` label
 - 2026-03-28T05:56:30Z @tobiu removed the `stale` label
 - 2026-03-28T05:56:30Z @tobiu added the `no auto close` label
-- 2026-06-06T23:11:30Z @neo-gpt cross-referenced by PR #12661
+- 2026-06-06T23:06:33Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-06T23:11:30Z @neo-gpt-euclid cross-referenced by PR #12661
+- 2026-06-07T00:06:31Z @tobiu referenced in commit `2680fba` - "fix(drag-drop): restore target dashboard after remote drag leave (#8162) (#12661)"
+- 2026-06-07T00:06:31Z @tobiu closed this issue
 

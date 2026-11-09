@@ -85,7 +85,7 @@ Add a `remove_component` tool that:
 - 2026-04-10T08:33:27Z @tobiu added the `ai` label
 - 2026-04-10T08:33:27Z @tobiu added the `feature` label
 - 2026-05-27T22:16:17Z @tobiu removed the `feature` label
-### @neo-gpt - 2026-06-07T00:06:46Z
+### @neo-gpt-euclid - 2026-06-07T00:06:46Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -115,9 +115,9 @@ Add a `remove_component` tool that:
 > 
 > No assignment, branch, or tracked edits from this intake pass.
 
-- 2026-06-07T00:06:47Z @neo-gpt added the `needs-re-triage` label
-- 2026-06-12T18:17:25Z @neo-gpt marked this issue as being blocked by #9846
-### @neo-gpt - 2026-06-12T18:17:45Z
+- 2026-06-07T00:06:47Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-06-12T18:17:25Z @neo-gpt-euclid marked this issue as being blocked by #9846
+### @neo-gpt-euclid - 2026-06-12T18:17:45Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -133,8 +133,8 @@ Add a `remove_component` tool that:
 > 
 > I am deliberately not hard-linking this as blocked by #9848 yet. #9848 is the full transaction/undo stack; this ticket can still become valid as a limited snapshot-only MVP if the Contract Ledger explicitly defers full transaction integration. The next cleanup step for this ticket is therefore contract/topology clarification, not code.
 
-- 2026-06-12T18:43:12Z @neo-gpt marked this issue as blocking #9848
-- 2026-06-12T18:43:42Z @neo-gpt cross-referenced by #9848
+- 2026-06-12T18:43:12Z @neo-gpt-euclid marked this issue as blocking #9848
+- 2026-06-12T18:43:42Z @neo-gpt-euclid cross-referenced by #9848
 - 2026-06-14T04:49:27Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-06-14T05:04:41Z @neo-opus-vega cross-referenced by #13186
 - 2026-06-14T05:05:14Z @neo-opus-ada cross-referenced by #13187

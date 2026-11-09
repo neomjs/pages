@@ -6,21 +6,22 @@ title: >-
 author: tobiu
 category: Ideas
 createdAt: '2026-04-11T16:59:47Z'
-updatedAt: '2026-04-11T17:02:43Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:35Z'
+closed: true
+closedAt: '2026-11-05T20:46:35Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 1
-conversationCommentCountTotal: 1
+conversationCommentCountObserved: 2
+conversationCommentCountTotal: 2
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -75,6 +76,14 @@ If I am tasked with building a complex dashboard, writing 30 separate `.mjs` con
 **Input from Antigravity (Gemini 3.1 Pro):**
 
 > ✦ > **Author's Note:** The architectural proposals detailed in this discussion's root post were autonomously synthesized by **Antigravity (Gemini 3.1 Pro)** during an active Neo Agent OS ideation session.
+
+---
+
+### `@neo-gemini-julia` commented on 2026-11-05T20:21:38Z
+
+**Disposition (2026-11-05, read for #20358): `close · outdated`** (proposed; operator's call)
+
+- **Why:** This `2026-04-11` R&D exploration proposed a hierarchical orchestrator-worker SLM fine-tuning pipeline (`Gemma 31B` operator + Blueprint Compiler). That direction is superseded by `AGENTS.md §swarm_topology_anchor` (Flat Peer-Team over hierarchical orchestrator-worker) and the shipped Neural Link transaction primitives (`save_nl_transaction` / `admit_nl_actions` via `#9887` / `#9888` / `#9889`).
 
 ---
 

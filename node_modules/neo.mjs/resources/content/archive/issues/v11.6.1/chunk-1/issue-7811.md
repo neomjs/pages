@@ -43,5 +43,5 @@ Tasks:
 - 2025-11-19T14:39:55Z @tobiu assigned to @tobiu
 - 2025-11-19T14:40:53Z @tobiu referenced in commit `46c8605` - "Refactor: Move hardcoded Gemini model name to config in SessionService #7811"
 - 2025-11-19T14:41:08Z @tobiu closed this issue
-- 2026-06-05T19:32:28Z @neo-gpt cross-referenced by PR #12590
+- 2026-06-05T19:32:28Z @neo-gpt-euclid cross-referenced by PR #12590
 

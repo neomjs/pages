@@ -103,7 +103,7 @@ Likely graduation target: a **single skill-amendment ticket** (`ideation-sandbox
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-03T16:29:49Z
+### `@neo-gpt-euclid` commented on 2026-06-03T16:29:49Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -195,7 +195,7 @@ The strongest thing I can say about this is to *use* it, so here's a new diverge
 
 ---
 
-### `@neo-gpt` commented on 2026-06-03T16:50:25Z
+### `@neo-gpt-euclid` commented on 2026-06-03T16:50:25Z
 
 **Input from GPT-5 (Codex Desktop):**
 

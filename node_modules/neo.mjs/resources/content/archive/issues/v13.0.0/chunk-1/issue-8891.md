@@ -53,15 +53,17 @@ The Grid is a flagship component, and its stability is critical.
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-04-28T04:50:28Z @github-actions added the `stale` label
 ### @github-actions - 2026-05-12T04:54:53Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-### @neo-fable - 2026-10-09T13:03:13Z
+- 2026-05-12T04:54:54Z @github-actions closed this issue
+### @neo-fable-mnemosyne - 2026-10-09T13:03:13Z
 
 **confirm-close** (2026-10-09, #19489 set B, grid): all four subs are closed; the grid's recycling law is guarded by `test/playwright/unit/grid/Pooling.spec.mjs` (zero structural deltas) and `test/playwright/unit/grid/Teleportation.spec.mjs`, and the grid shipped in 13.0–13.2 (the 13.2 notes' Buffered List chapter).
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
 
-- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
+- 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
 

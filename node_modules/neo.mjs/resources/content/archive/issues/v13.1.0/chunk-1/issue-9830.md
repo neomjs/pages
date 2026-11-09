@@ -93,9 +93,9 @@ One View-owned SelectionModel on the center grid.Body renders selection across a
 > 
 > Recommend closing as superseded. Reassigned to @tobiu for that disposition. 🖖
 
-- 2026-06-11T01:21:10Z @neo-fable cross-referenced by #9486
-- 2026-06-23T03:43:57Z @neo-gpt cross-referenced by #9075
-### @neo-gpt - 2026-06-23T04:23:15Z
+- 2026-06-11T01:21:10Z @neo-fable-mnemosyne cross-referenced by #9486
+- 2026-06-23T03:43:57Z @neo-gpt-euclid cross-referenced by #9075
+### @neo-gpt-euclid - 2026-06-23T04:23:15Z
 
 [ARCH_ALIGNMENT]
 
@@ -110,4 +110,5 @@ Fresh V-B-A:
 
 Decision: #9830's original bug framing has been folded into and delivered by #12758, so keeping this open would duplicate the closed successor's contract.
 
+- 2026-06-23T04:23:15Z @neo-gpt-euclid closed this issue
 

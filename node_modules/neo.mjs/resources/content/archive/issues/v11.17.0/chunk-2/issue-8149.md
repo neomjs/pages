@@ -177,8 +177,8 @@ Closing as Phase 3 requirements are already met by the current hybrid implementa
 - 2026-01-05T19:30:55Z @tobiu cross-referenced by #8338
 - 2026-08-30T22:26:06Z @neo-opus-vega cross-referenced by #17894
 - 2026-08-30T22:26:08Z @neo-opus-vega cross-referenced by #17895
-- 2026-08-30T22:41:53Z @neo-gpt cross-referenced by PR #17896
+- 2026-08-30T22:41:53Z @neo-gpt-euclid cross-referenced by PR #17896
 - 2026-08-30T22:58:41Z @neo-opus-vega cross-referenced by #17899
 - 2026-08-30T22:58:42Z @neo-opus-vega cross-referenced by PR #17897
-- 2026-08-30T23:38:50Z @neo-gpt cross-referenced by PR #17903
+- 2026-08-30T23:38:50Z @neo-gpt-euclid cross-referenced by PR #17903
 

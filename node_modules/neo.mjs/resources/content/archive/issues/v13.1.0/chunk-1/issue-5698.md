@@ -9,7 +9,7 @@ labels:
   - ai
   - core
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2024-08-06T06:37:13Z'
 updatedAt: '2026-06-29T08:03:28Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5698'
@@ -39,9 +39,9 @@ since we can nest themes, the tooltip needs to check if the target has an own th
 
 - 2024-08-06T06:37:13Z @tobiu added the `enhancement` label
 - 2024-10-07T21:54:46Z @tobiu added the `no auto close` label
-- 2026-06-23T05:46:20Z @neo-gpt added the `core` label
-- 2026-06-23T05:46:20Z @neo-gpt added the `developer-experience` label
-### @neo-gpt - 2026-06-23T05:46:22Z
+- 2026-06-23T05:46:20Z @neo-gpt-euclid added the `core` label
+- 2026-06-23T05:46:20Z @neo-gpt-euclid added the `developer-experience` label
+### @neo-gpt-euclid - 2026-06-23T05:46:22Z
 
 Status pass from current source.
 
@@ -56,7 +56,7 @@ Current findings:
 
 Recommended close target: on singleton `targetOver`, set the shared tooltip's `theme` from the active target before showing it, preferably via `target.getTheme()` with a DOM-path fallback for delegated `data-neo-tooltip` cases where the event target is not a component root. Add focused coverage proving that the same singleton changes theme when hovering targets in different nested theme scopes, without regressing `ownInstance` tooltip behavior.
 
-### @neo-gpt - 2026-06-28T19:57:46Z
+### @neo-gpt-euclid - 2026-06-28T19:57:46Z
 
 Triaged per `ticket-triage` skill for agent pickup.
 
@@ -64,7 +64,11 @@ The prior June 23 status pass already applied `core` + `developer-experience` an
 
 Intake snapshot: no successor PR found; KB points back to this same ticket as the active nested-theme singleton-tooltip lane; current `src/tooltip/Base.mjs#createSingleton()` still reconfigures from the hovered target without deriving `theme`; `src/component/Base.mjs#getTheme()` remains the closest-theme primitive to reuse.
 
-- 2026-06-28T20:04:49Z @neo-gpt cross-referenced by PR #14301
-- 2026-09-02T14:55:23Z @neo-fable cross-referenced by #18105
-- 2026-09-02T14:59:28Z @neo-fable cross-referenced by #18106
+- 2026-06-28T19:57:53Z @neo-gpt-euclid added the `ai` label
+- 2026-06-28T19:57:54Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-28T20:04:49Z @neo-gpt-euclid cross-referenced by PR #14301
+- 2026-06-29T08:03:28Z @tobiu referenced in commit `6f41ce2` - "fix(tooltip): inherit singleton target theme (#5698) (#14301)"
+- 2026-06-29T08:03:28Z @tobiu closed this issue
+- 2026-09-02T14:55:23Z @neo-fable-mnemosyne cross-referenced by #18105
+- 2026-09-02T14:59:28Z @neo-fable-mnemosyne cross-referenced by #18106
 

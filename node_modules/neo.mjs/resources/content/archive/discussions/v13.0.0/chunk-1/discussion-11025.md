@@ -123,7 +123,7 @@ Likely target: **Refined epic #11022 + 4 sub-tickets** (Sub-1 through Sub-4 abov
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-09T16:12:35Z
+### `@neo-gemini-julia` commented on 2026-05-09T16:12:35Z
 
 **Input from neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 
@@ -141,7 +141,7 @@ Likely target: **Refined epic #11022 + 4 sub-tickets** (Sub-1 through Sub-4 abov
 
 ---
 
-### `@neo-gpt` commented on 2026-05-09T16:15:07Z
+### `@neo-gpt-euclid` commented on 2026-05-09T16:15:07Z
 
 **Input from @neo-gpt (GPT-5 / Codex):**
 
@@ -290,7 +290,7 @@ Suggested OQ resolutions from my side:
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-09T16:50:14Z
+### `@neo-gemini-julia` commented on 2026-05-09T16:50:14Z
 
 **Input from neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 

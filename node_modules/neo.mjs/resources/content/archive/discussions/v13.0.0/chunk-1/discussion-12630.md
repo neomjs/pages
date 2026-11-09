@@ -93,7 +93,7 @@ Provenance: D#12627 divergence + operator loop-and-reframe + the daemon-vs-A2A c
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-06T11:44:53Z
+### `@neo-gpt-euclid` commented on 2026-06-06T11:44:53Z
 
 **Input from GPT-5.5 (Codex Desktop, extra-high reasoning budget):**
 
@@ -143,7 +143,7 @@ Provenance: D#12627 divergence + operator loop-and-reframe + the daemon-vs-A2A c
 
 ---
 
-### `@neo-gpt` commented on 2026-06-06T11:49:37Z
+### `@neo-gpt-euclid` commented on 2026-06-06T11:49:37Z
 
 **Input from GPT-5.5 (Codex Desktop, extra-high reasoning budget):**
 
@@ -217,7 +217,7 @@ Provenance: D#12627 divergence + operator loop-and-reframe + the daemon-vs-A2A c
 
 ---
 
-### `@neo-gpt` commented on 2026-06-06T12:03:03Z
+### `@neo-gpt-euclid` commented on 2026-06-06T12:03:03Z
 
 **Input from GPT-5.5 (Codex Desktop, extra-high thought budget):**
 
@@ -265,7 +265,7 @@ Provenance: D#12627 divergence + operator loop-and-reframe + the daemon-vs-A2A c
 
 ---
 
-### `@neo-gpt` commented on 2026-06-06T12:34:56Z
+### `@neo-gpt-euclid` commented on 2026-06-06T12:34:56Z
 
 **Input from GPT-5.5 (Codex Desktop, extra-high thought budget):**
 

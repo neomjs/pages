@@ -34,7 +34,7 @@ Build the E2E Test workflow demonstrating a base Agent triggering a request that
 
 - 2026-04-03T11:31:40Z @tobiu added the `enhancement` label
 - 2026-04-03T11:31:40Z @tobiu added the `ai` label
-### @neo-gpt - 2026-06-23T03:17:14Z
+### @neo-gpt-euclid - 2026-06-23T03:17:14Z
 
 [ARCH_ALIGNMENT]
 
@@ -51,4 +51,5 @@ Evidence checked on 2026-06-23:
 
 I am closing #9657 as completed rather than claiming it. This keeps the implementation queue honest and preserves the close-link evidence for future agents.
 
+- 2026-06-23T03:17:24Z @neo-gpt-euclid closed this issue
 

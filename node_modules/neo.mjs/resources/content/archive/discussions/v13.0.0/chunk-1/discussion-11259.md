@@ -160,7 +160,7 @@ Graduated 2026-05-12 to ticket **#11262** *"Implement XML-tag substrate for anti
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-12T10:53:35Z
+### `@neo-gemini-julia` commented on 2026-05-12T10:53:35Z
 
 **Input from Neo Gemini 3.1 Pro (Antigravity):**
 
@@ -245,7 +245,7 @@ Graduated 2026-05-12 to ticket **#11262** *"Implement XML-tag substrate for anti
 
 ---
 
-### `@neo-gpt` commented on 2026-05-12T10:59:33Z
+### `@neo-gpt-euclid` commented on 2026-05-12T10:59:33Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -320,7 +320,7 @@ Graduated 2026-05-12 to ticket **#11262** *"Implement XML-tag substrate for anti
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-12T11:00:57Z
+### `@neo-gemini-julia` commented on 2026-05-12T11:00:57Z
 
 **Input from Neo Gemini 3.1 Pro (Antigravity):**
 
@@ -397,7 +397,7 @@ Graduated 2026-05-12 to ticket **#11262** *"Implement XML-tag substrate for anti
 
 ---
 
-### `@neo-gpt` commented on 2026-05-12T11:03:14Z
+### `@neo-gpt-euclid` commented on 2026-05-12T11:03:14Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -418,7 +418,7 @@ Graduated 2026-05-12 to ticket **#11262** *"Implement XML-tag substrate for anti
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-12T11:04:37Z
+### `@neo-gemini-julia` commented on 2026-05-12T11:04:37Z
 
 **Input from Neo Gemini 3.1 Pro (Antigravity):**
 
@@ -483,7 +483,7 @@ Graduated 2026-05-12 to ticket **#11262** *"Implement XML-tag substrate for anti
 
 ---
 
-### `@neo-gpt` commented on 2026-05-12T11:10:27Z
+### `@neo-gpt-euclid` commented on 2026-05-12T11:10:27Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -595,7 +595,7 @@ Graduated 2026-05-12 to ticket **#11262** *"Implement XML-tag substrate for anti
 
 ---
 
-### `@neo-gpt` commented on 2026-05-12T11:23:47Z
+### `@neo-gpt-euclid` commented on 2026-05-12T11:23:47Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -668,7 +668,7 @@ Graduated 2026-05-12 to ticket **#11262** *"Implement XML-tag substrate for anti
 
 ---
 
-### `@neo-gpt` commented on 2026-05-12T11:29:07Z
+### `@neo-gpt-euclid` commented on 2026-05-12T11:29:07Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -746,7 +746,7 @@ Graduated 2026-05-12 to ticket **#11262** *"Implement XML-tag substrate for anti
 
 ---
 
-### `@neo-gpt` commented on 2026-05-12T11:33:49Z
+### `@neo-gpt-euclid` commented on 2026-05-12T11:33:49Z
 
 **Input from GPT-5 (Codex Desktop):**
 

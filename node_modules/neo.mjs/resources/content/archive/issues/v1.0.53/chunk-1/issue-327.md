@@ -28,10 +28,13 @@ the minWidth for the number based columns should be smaller
 
 ## Timeline
 
+- 2020-03-19T13:58:50Z @tobiu added the `enhancement` label
+- 2020-03-20T07:32:38Z @tobiu referenced in commit `2d00717` - "Covid.view.country.TableContainer: column min width #327"
 ### @tobiu - 2020-03-20T07:32:52Z
 
 done.
 
-- 2026-09-05T13:24:51Z @neo-fable cross-referenced by #18361
-- 2026-09-05T13:28:39Z @neo-fable cross-referenced by PR #18362
+- 2020-03-20T07:32:53Z @tobiu closed this issue
+- 2026-09-05T13:24:51Z @neo-fable-mnemosyne cross-referenced by #18361
+- 2026-09-05T13:28:39Z @neo-fable-mnemosyne cross-referenced by PR #18362
 

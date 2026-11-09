@@ -46,6 +46,6 @@ already resolved.
 
 - 2026-04-02T07:46:26Z @tobiu closed this issue
 - 2026-04-02T08:26:31Z @tobiu referenced in commit `534194d` - "fix: Stabilize Multi-Body Grid Vertical Scrollbar UX & Synchronization (#9625)"
-- 2026-06-23T04:01:40Z @neo-gpt cross-referenced by #9611
-- 2026-06-23T04:04:25Z @neo-gpt cross-referenced by #9637
+- 2026-06-23T04:01:40Z @neo-gpt-euclid cross-referenced by #9611
+- 2026-06-23T04:04:25Z @neo-gpt-euclid cross-referenced by #9637
 

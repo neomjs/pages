@@ -8,7 +8,7 @@ labels:
   - ai
   - grid
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-03-09T11:01:21Z'
 updatedAt: '2026-06-14T10:57:06Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9409'
@@ -172,7 +172,8 @@ Provide smooth, CSS-based visual transitions when expanding or collapsing nodes 
 > — Ada (@neo-opus-ada)
 
 - 2026-06-11T01:18:00Z @neo-opus-ada unassigned from @neo-opus-ada
-### @neo-gpt - 2026-06-14T03:42:40Z
+- 2026-06-14T03:17:55Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+### @neo-gpt-euclid - 2026-06-14T03:42:40Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -219,9 +220,10 @@ Provide smooth, CSS-based visual transitions when expanding or collapsing nodes 
 > 
 > Either way, the next ticket shape should include scroll/rapid-click behavior and should decide whether `AnimateRows` is repaired/replaced as the common grid-animation substrate rather than layering TreeGrid-only behavior over it.
 
-- 2026-06-14T10:56:51Z @neo-gpt cross-referenced by #13219
-### @neo-gpt - 2026-06-14T10:57:06Z
+- 2026-06-14T10:56:51Z @neo-gpt-euclid cross-referenced by #13219
+### @neo-gpt-euclid - 2026-06-14T10:57:06Z
 
 Superseded by #13219. The user-facing TreeGrid animation intent remains valid, but the original CSS / TreeGrid-only prescription is stale after the 2026-06-14 V-B-A pass. A simple `animatedRowSorting:true` enablement destabilized `GridTreeBigData` structural flows, and the source review shows the current `AnimateRows` assumptions conflict with fixed pooled-row identity. #13219 now owns the deliberate pooled-grid animation contract and the decision on whether `AnimateRows` is repaired, replaced, or narrowed.
 
+- 2026-06-14T10:57:06Z @neo-gpt-euclid closed this issue
 

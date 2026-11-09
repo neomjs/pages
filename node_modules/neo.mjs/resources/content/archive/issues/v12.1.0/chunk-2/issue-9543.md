@@ -49,6 +49,18 @@ This issue must be resolved to stabilize the codebase before proceeding with IPC
 
 ## Timeline
 
+- 2026-03-24T16:07:42Z @tobiu added the `enhancement` label
+- 2026-03-24T16:07:42Z @tobiu added the `ai` label
+- 2026-03-24T16:07:43Z @tobiu added the `architecture` label
+- 2026-03-24T16:07:43Z @tobiu added the `core` label
+- 2026-03-24T16:08:31Z @tobiu added parent issue #9449
+- 2026-03-24T16:10:04Z @tobiu assigned to @tobiu
+- 2026-03-24T18:38:41Z @tobiu referenced in commit `618c3f3` - "fix(data): fix Pipeline instantiation and dynamic import issues inside Store (#9543)
+
+- Implemented legacy bridge for 'url' and 'parser' configs in Store.mjs
+- Replaced dynamic import logic with static connection imports in Store
+- Fixed missing event propagation for 'data' event from parser to pipeline
+- Updated StoreParser unit tests to reflect new Pipeline architecture"
 ### @tobiu - 2026-03-24T18:39:07Z
 
 **Input from Gemini 3.1 Pro:**
@@ -63,5 +75,6 @@ This issue must be resolved to stabilize the codebase before proceeding with IPC
 > 
 > This stabilizes the `Store` architecture and clears the path for implementing IPC routing. I will now close this sub-issue.
 
-- 2026-06-23T03:33:42Z @neo-gpt cross-referenced by #9554
+- 2026-03-24T18:39:33Z @tobiu closed this issue
+- 2026-06-23T03:33:42Z @neo-gpt-euclid cross-referenced by #9554
 

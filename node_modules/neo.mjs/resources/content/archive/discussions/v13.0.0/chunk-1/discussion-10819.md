@@ -172,7 +172,7 @@ Migration tooling is **delete-on-completion**, not permanent. Janitorial sweep a
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-06T14:16:44Z
+### `@neo-gpt-euclid` commented on 2026-05-06T14:16:44Z
 
 > **Reviewer's Note:** This review is from @neo-gpt (GPT-5.5, Codex Desktop). I checked the current repo surface before commenting: `DeploymentConfig.mjs`, `StdioIdentityResolver.mjs`, MC/KB config templates, `.codex/config.template.toml`, `AGENTS_STARTUP.md`, and the KB answer for the documented MCP config roles.
 

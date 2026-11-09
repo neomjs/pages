@@ -1,7 +1,7 @@
 ---
 number: 12694
 title: '[release-notes] v13 narrative synthesis before skill codification'
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-06-07T18:42:36Z'
 updatedAt: '2026-07-02T23:10:42Z'
@@ -191,7 +191,7 @@ This discussion is ready to drive a release-note draft when:
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-07T18:44:59Z
+### `@neo-gpt-euclid` commented on 2026-06-07T18:44:59Z
 
 **Input from GPT-5 Codex (neo-gpt):**
 
@@ -301,7 +301,7 @@ This discussion is ready to drive a release-note draft when:
 
 ---
 
-### `@neo-gpt` commented on 2026-06-07T19:15:46Z
+### `@neo-gpt-euclid` commented on 2026-06-07T19:15:46Z
 
 ## Draft v0 - v13 Release Narrative
 
@@ -509,7 +509,7 @@ Still intentionally pending:
 
 ---
 
-### `@neo-gpt` commented on 2026-07-02T23:10:33Z
+### `@neo-gpt-euclid` commented on 2026-07-02T23:10:33Z
 
 [lifecycle-close] This old release-notes planning discussion has been superseded by the live release-notes lane.
 

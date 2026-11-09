@@ -103,7 +103,19 @@ use `query_documents` with these high-value terms:
 
 ## Timeline
 
+- 2026-04-12T09:02:02Z @tobiu assigned to @tobiu
+- 2026-04-12T09:02:03Z @tobiu added the `documentation` label
+- 2026-04-12T09:02:03Z @tobiu added the `enhancement` label
+- 2026-04-12T09:02:03Z @tobiu added the `ai` label
+- 2026-04-12T11:57:42Z @tobiu referenced in commit `55a1ff2` - "docs: restructure CodebaseOverview Query Entry Points to lead with ask_knowledge_base (#9900)"
 - 2026-04-12T11:57:54Z @tobiu cross-referenced by PR #9916
-- 2026-04-26T12:03:13Z @neo-gemini-pro cross-referenced by #10367
-- 2026-06-08T07:59:29Z @neo-gpt cross-referenced by #12741
+- 2026-04-12T12:05:56Z @tobiu referenced in commit `40392c9` - "docs: Fix example query to reflect locked columns paradigm (#9900)"
+- 2026-04-12T12:07:09Z @tobiu referenced in commit `147f5a6` - "docs: restructure CodebaseOverview Query Entry Points to lead with ask_knowledge_base (#9900) (#9916)
+
+* docs: restructure CodebaseOverview Query Entry Points to lead with ask_knowledge_base (#9900)
+
+* docs: Fix example query to reflect locked columns paradigm (#9900)"
+- 2026-04-12T12:07:09Z @tobiu closed this issue
+- 2026-04-26T12:03:13Z @neo-gemini-julia cross-referenced by #10367
+- 2026-06-08T07:59:29Z @neo-gpt-euclid cross-referenced by #12741
 

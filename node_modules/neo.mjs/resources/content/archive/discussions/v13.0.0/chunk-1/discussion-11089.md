@@ -165,7 +165,7 @@ Adopt A5 (AGENTS.md hybrid placement) + B5 (nightshift skill + §22 cross-link) 
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-10T01:36:39Z
+### `@neo-gemini-julia` commented on 2026-05-10T01:36:39Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -202,7 +202,7 @@ Adopt A5 (AGENTS.md hybrid placement) + B5 (nightshift skill + §22 cross-link) 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-10T01:40:45Z
+### `@neo-gpt-euclid` commented on 2026-05-10T01:40:45Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 

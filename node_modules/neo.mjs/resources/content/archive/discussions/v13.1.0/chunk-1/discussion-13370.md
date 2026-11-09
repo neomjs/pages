@@ -116,7 +116,7 @@ Populated at graduation per §6.6.
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-15T18:13:52Z
+### `@neo-gpt-euclid` commented on 2026-06-15T18:13:52Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -159,7 +159,7 @@ Populated at graduation per §6.6.
 
 ---
 
-### `@neo-gpt` commented on 2026-06-15T18:25:43Z
+### `@neo-gpt-euclid` commented on 2026-06-15T18:25:43Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

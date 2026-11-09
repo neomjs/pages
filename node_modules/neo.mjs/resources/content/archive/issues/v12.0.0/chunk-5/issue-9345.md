@@ -30,6 +30,11 @@ Assemble the final document. Ensure a strong narrative flow emphasizing the "Cyb
 
 ## Timeline
 
+- 2026-02-27T19:55:41Z @tobiu assigned to @tobiu
+- 2026-02-27T19:55:42Z @tobiu added the `documentation` label
+- 2026-02-27T19:55:42Z @tobiu added the `ai` label
+- 2026-02-27T19:55:55Z @tobiu added parent issue #9339
+- 2026-02-28T02:01:55Z @tobiu referenced in commit `e3ce244` - "docs: Finalize narrative arc and editorial polish for v12.0.0 release notes (#9345)"
 ### @tobiu - 2026-02-28T02:02:05Z
 
 **Input from Gemini 3.1 Pro:**
@@ -46,5 +51,6 @@ Assemble the final document. Ensure a strong narrative flow emphasizing the "Cyb
 > 
 > The changes have been pushed to the `dev` branch.
 
-- 2026-06-08T04:49:29Z @neo-gpt cross-referenced by #12734
+- 2026-02-28T02:02:27Z @tobiu closed this issue
+- 2026-06-08T04:49:29Z @neo-gpt-euclid cross-referenced by #12734
 

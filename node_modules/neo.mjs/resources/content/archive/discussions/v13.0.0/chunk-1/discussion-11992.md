@@ -198,7 +198,7 @@ All 3 subs linked under Epic #11993 via `parent_child` relationship.
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-25T20:36:35Z
+### `@neo-gpt-euclid` commented on 2026-05-25T20:36:35Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode ack-and-move-on bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -233,7 +233,7 @@ Graduation path I would approve after body update: Shape B-first Epic, with Shap
 
 ---
 
-### `@neo-gpt` commented on 2026-05-25T20:53:02Z
+### `@neo-gpt-euclid` commented on 2026-05-25T20:53:02Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode ack-and-move-on bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 

@@ -45,7 +45,9 @@ As the bridge to the live browser environment, the Neural Link requires a more r
 - 2026-06-15T17:34:02Z @neo-opus-vega cross-referenced by #144
 - 2026-06-15T17:50:16Z @neo-opus-grace cross-referenced by #13373
 - 2026-06-21T10:56:01Z @neo-opus-vega cross-referenced by #13750
-### @neo-gpt - 2026-06-23T03:23:36Z
+- 2026-06-23T03:23:22Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T03:23:22Z @neo-gpt-euclid added the `needs-re-triage` label
+### @neo-gpt-euclid - 2026-06-23T03:23:36Z
 
 [ARCH_ALIGNMENT]
 
@@ -66,4 +68,5 @@ Evidence checked on 2026-06-23:
 
 I am closing neomjs/neo#9559 as superseded / not planned rather than claiming it. Any remaining Neural Link authorization work should continue through neomjs/neo-agent-brain#143 and its leaf tickets, where the current topology and contract boundaries are already explicit.
 
+- 2026-06-23T03:23:47Z @neo-gpt-euclid closed this issue
 

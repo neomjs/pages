@@ -10,7 +10,7 @@ labels:
   - performance
   - model-experience
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-04-13T10:25:29Z'
 updatedAt: '2026-07-06T13:18:56Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9959'
@@ -141,7 +141,11 @@ Origin Session IDs:
 - Add 7 new Playwright tests in QueryReRanker.spec.mjs covering both
   bugs plus ChromaDB timestamp filtering validation"
 - 2026-04-13T11:13:37Z @tobiu marked this issue as blocking #9961
-### @neo-gpt - 2026-05-27T01:51:57Z
+- 2026-05-27T01:51:02Z @neo-gpt-euclid added the `regression` label
+- 2026-05-27T01:51:02Z @neo-gpt-euclid added the `architecture` label
+- 2026-05-27T01:51:02Z @neo-gpt-euclid added the `performance` label
+- 2026-05-27T01:51:02Z @neo-gpt-euclid added the `model-experience` label
+### @neo-gpt-euclid - 2026-05-27T01:51:57Z
 
 ## 2026-05-27 revalidation note
 
@@ -178,9 +182,35 @@ Origin Session ID: `6ca1b510-51c3-4fac-aa39-a0fd6941318c`
 
 Retrieval Hint: `periodic-sweep 600000 running sessions re-summarized every new turn currentSessionId spawned summarize-sessions child #9959 #11676`
 
-- 2026-05-27T02:06:11Z @neo-gpt cross-referenced by #12065
-- 2026-06-05T23:51:25Z @neo-gpt cross-referenced by PR #12605
+- 2026-05-27T02:06:11Z @neo-gpt-euclid cross-referenced by #12065
+- 2026-06-05T23:26:10Z @tobiu unassigned from @tobiu
+- 2026-06-05T23:34:13Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-06-05T23:37:49Z @neo-gpt-euclid changed title from **fix: Memory Core semantic search crash & active session summarization leak** to **fix(memory): periodic summarization must skip externally active sessions**
+- 2026-06-05T23:37:56Z @neo-gpt-euclid removed the `needs-re-triage` label
+- 2026-06-05T23:44:51Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-05T23:51:25Z @neo-gpt-euclid cross-referenced by PR #12605
+- 2026-06-06T00:01:33Z @neo-gpt-euclid referenced in commit `b889ff5` - "fix(memory): skip externally active drift summaries (#9959)"
+- 2026-06-06T00:01:33Z @neo-gpt-euclid referenced in commit `4bcea2e` - "test(memory): cover explicit active session summaries (#9959)"
+- 2026-06-06T00:15:49Z @neo-gpt-euclid referenced in commit `4589e22` - "fix(memory): protect parallel active sessions (#9959)"
+- 2026-06-06T00:33:30Z @neo-gpt-euclid referenced in commit `0ab38aa` - "fix(memory): align active-session config (#9959)"
 - 2026-06-06T10:17:03Z @neo-opus-grace cross-referenced by #12628
-- 2026-06-06T10:57:57Z @neo-gpt cross-referenced by PR #12629
-- 2026-06-20T01:42:19Z @neo-gpt cross-referenced by PR #13579
+- 2026-06-06T10:57:57Z @neo-gpt-euclid cross-referenced by PR #12629
+- 2026-06-06T15:23:38Z @neo-gpt-euclid referenced in commit `f78d0ac` - "fix(memory): skip externally active drift summaries (#9959)"
+- 2026-06-06T15:23:38Z @neo-gpt-euclid referenced in commit `b33a9c3` - "test(memory): cover explicit active session summaries (#9959)"
+- 2026-06-06T15:23:38Z @neo-gpt-euclid referenced in commit `2bc91b9` - "fix(memory): protect parallel active sessions (#9959)"
+- 2026-06-06T15:23:38Z @neo-gpt-euclid referenced in commit `6833822` - "fix(memory): align active-session config (#9959)"
+- 2026-06-06T15:23:38Z @neo-gpt-euclid referenced in commit `6f415db` - "fix(memory): reuse swarm idle threshold (#9959)"
+- 2026-06-06T17:01:18Z @tobiu referenced in commit `9b4feff` - "fix(memory): skip externally active drift summaries (#9959) (#12605)
+
+* fix(memory): skip externally active drift summaries (#9959)
+
+* test(memory): cover explicit active session summaries (#9959)
+
+* fix(memory): protect parallel active sessions (#9959)
+
+* fix(memory): align active-session config (#9959)
+
+* fix(memory): reuse swarm idle threshold (#9959)"
+- 2026-06-06T17:01:18Z @tobiu closed this issue
+- 2026-06-20T01:42:19Z @neo-gpt-euclid cross-referenced by PR #13579
 

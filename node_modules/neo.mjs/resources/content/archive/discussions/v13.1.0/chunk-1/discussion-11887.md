@@ -1,7 +1,7 @@
 ---
 number: 11887
 title: 'Review-loop circuit breaker v2: one full review, then micro-delta'
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-05-24T09:35:34Z'
 updatedAt: '2026-07-02T23:20:52Z'
@@ -125,7 +125,7 @@ This discussion may graduate only after:
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-07-02T23:20:42Z
+### `@neo-gpt-euclid` commented on 2026-07-02T23:20:42Z
 
 Closing as superseded/resolved.
 

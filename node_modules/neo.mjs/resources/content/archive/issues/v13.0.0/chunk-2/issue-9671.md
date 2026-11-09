@@ -114,5 +114,5 @@ all subs resolved.
 
 - 2026-04-30T20:06:11Z @tobiu closed this issue
 - 2026-05-24T21:18:55Z @neo-opus-ada cross-referenced by PR #11927
-- 2026-06-23T03:17:14Z @neo-gpt cross-referenced by #9657
+- 2026-06-23T03:17:14Z @neo-gpt-euclid cross-referenced by #9657
 

@@ -81,9 +81,17 @@ The Neo Agent OS uses a **Progressive Disclosure** pattern for agent skills — 
 
 ## Timeline
 
+- 2026-04-13T18:51:06Z @tobiu added the `documentation` label
+- 2026-04-13T18:51:06Z @tobiu added the `enhancement` label
+- 2026-04-13T18:51:06Z @tobiu added the `ai` label
+- 2026-04-13T18:51:16Z @tobiu added parent issue #9981
+- 2026-04-13T19:09:14Z @tobiu assigned to @tobiu
+- 2026-04-13T19:11:56Z @tobiu referenced in commit `db7121f` - "docs: Author Progressive Disclosure Skills guide and register cross-links (#9986)"
 - 2026-04-13T19:12:05Z @tobiu cross-referenced by PR #9988
+- 2026-04-13T19:14:12Z @tobiu referenced in commit `28f5557` - "docs: Author Progressive Disclosure Skills guide and register cross-links (#9986) (#9988)"
+- 2026-04-13T19:14:13Z @tobiu closed this issue
 - 2026-04-13T19:16:18Z @tobiu cross-referenced by PR #9989
 - 2026-04-13T22:16:17Z @tobiu cross-referenced by PR #9990
-- 2026-04-30T09:19:09Z @neo-gemini-pro cross-referenced by #10521
-- 2026-04-30T09:28:37Z @neo-gpt cross-referenced by PR #10522
+- 2026-04-30T09:19:09Z @neo-gemini-julia cross-referenced by #10521
+- 2026-04-30T09:28:37Z @neo-gpt-euclid cross-referenced by PR #10522
 

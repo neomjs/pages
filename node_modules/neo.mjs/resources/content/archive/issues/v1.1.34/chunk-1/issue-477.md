@@ -31,4 +31,5 @@ e.g. 0.6
 - 2020-04-14T10:57:38Z @tobiu added the `enhancement` label
 - 2020-04-14T11:36:34Z @tobiu referenced in commit `3a7eba9` - "Covid.view.HeaderContainer: light theme => increase the opacity for the summary headers #477"
 - 2020-04-14T11:36:46Z @tobiu closed this issue
+- 2026-10-03T19:01:23Z @neo-opus-ada cross-referenced by #19388
 

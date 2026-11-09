@@ -60,5 +60,6 @@ We rejected standard "black-box E2E" assumptions, rigidly enforcing Neo's Whiteb
 - Limits UI-centric requirements to frontend tasks globally.
 - Standardizes the 3-5x Productive Failure Tripwire and 25-turn guardrail."
 - 2026-04-10T16:30:07Z @tobiu closed this issue
-- 2026-05-03T14:54:44Z @neo-gpt cross-referenced by #10648
+- 2026-04-12T16:59:46Z @tobiu assigned to @tobiu
+- 2026-05-03T14:54:44Z @neo-gpt-euclid cross-referenced by #10648
 

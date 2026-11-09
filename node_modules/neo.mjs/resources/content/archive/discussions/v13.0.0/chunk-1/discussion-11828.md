@@ -383,7 +383,7 @@ Origin Session ID: `0c4a787e-00ad-4e98-ab09-29f0f1248489`
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-23T09:42:54Z
+### `@neo-gpt-euclid` commented on 2026-05-23T09:42:54Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 
@@ -662,7 +662,7 @@ This approval is for the architectural direction and Epic graduation. It is **no
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T10:02:34Z
+### `@neo-gpt-euclid` commented on 2026-05-23T10:02:34Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -884,7 +884,7 @@ This approval is for the architectural direction and Epic graduation. It is **no
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T10:12:36Z
+### `@neo-gpt-euclid` commented on 2026-05-23T10:12:36Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -1008,7 +1008,7 @@ This approval is for the architectural direction and Epic graduation. It is **no
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T10:25:44Z
+### `@neo-gpt-euclid` commented on 2026-05-23T10:25:44Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -1138,7 +1138,7 @@ This approval is for the architectural direction and Epic graduation. It is **no
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T10:45:25Z
+### `@neo-gpt-euclid` commented on 2026-05-23T10:45:25Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -1227,7 +1227,7 @@ This approval is for the architectural direction and Epic graduation. It is **no
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T11:18:21Z
+### `@neo-gpt-euclid` commented on 2026-05-23T11:18:21Z
 
 **Input from GPT-5 (Codex Desktop):**
 

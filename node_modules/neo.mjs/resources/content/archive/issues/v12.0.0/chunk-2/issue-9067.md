@@ -67,5 +67,5 @@ Resolve `keyProperty` access conflicts when using Mapped Fields in Turbo Mode (`
 - 2026-02-09T02:37:35Z @tobiu referenced in commit `2060f50` - "Fix: Update Grid Body getLogicalCellId to use Store.getKey (#9067)"
 - 2026-02-09T02:44:17Z @tobiu closed this issue
 - 2026-02-09T02:55:05Z @tobiu cross-referenced by #9069
-- 2026-05-21T00:35:16Z @neo-gpt cross-referenced by #11705
+- 2026-05-21T00:35:16Z @neo-gpt-euclid cross-referenced by #11705
 

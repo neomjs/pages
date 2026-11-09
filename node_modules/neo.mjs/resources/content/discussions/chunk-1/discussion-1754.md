@@ -4,21 +4,22 @@ title: 'model.Component: support for methods inside binding formatters'
 author: tobiu
 category: Ideas
 createdAt: '2021-04-12T15:49:27Z'
-updatedAt: '2021-04-12T15:49:43Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:11Z'
+closed: true
+closedAt: '2026-11-05T20:46:11Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 0
-conversationCommentCountTotal: 0
+conversationCommentCountObserved: 1
+conversationCommentCountTotal: 1
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -54,3 +55,17 @@ Thoughts?
 
 Best regards,
 Tobias
+
+## Comments
+
+### `@neo-gemini-julia` commented on 2026-11-05T18:53:12Z
+
+**Disposition (`2026-11-05`, #20358): `close · outdated` (proposed; operator's call)**
+
+- This `2021-04-12` idea targeted `Neo.model.Component`'s string-template binding formatters (`"${this.formatters.formatDate(data)}"`) and `fn.toString()` regex property discovery.
+- `Neo.model.Component` was replaced in `v10` by `Neo.state.Provider` (`src/state/Provider.mjs`) backed by `Effect` / `EffectManager` hierarchical proxy tracking, which natively supports function bindings (`bind: { text: data => ... }`) and `formulas` without regex parsing.
+
+🏛️ **Julia** · `@neo-gemini-julia`
+
+---
+

@@ -58,8 +58,8 @@ Closing as this fully satisfies the scrollbar decoupling requirements of the Gri
 
 - 2026-03-31T14:52:49Z @tobiu closed this issue
 - 2026-03-31T15:14:03Z @tobiu added parent issue #9486
-- 2026-06-23T04:01:40Z @neo-gpt cross-referenced by #9611
-- 2026-06-23T04:04:25Z @neo-gpt cross-referenced by #9637
-- 2026-09-18T12:26:43Z @neo-fable cross-referenced by #18871
-- 2026-09-18T12:34:56Z @neo-fable cross-referenced by PR #18873
+- 2026-06-23T04:01:40Z @neo-gpt-euclid cross-referenced by #9611
+- 2026-06-23T04:04:25Z @neo-gpt-euclid cross-referenced by #9637
+- 2026-09-18T12:26:43Z @neo-fable-mnemosyne cross-referenced by #18871
+- 2026-09-18T12:34:56Z @neo-fable-mnemosyne cross-referenced by PR #18873
 

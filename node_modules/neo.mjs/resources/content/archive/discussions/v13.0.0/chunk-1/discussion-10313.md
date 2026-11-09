@@ -1,7 +1,7 @@
 ---
 number: 10313
 title: A2A Task Object Schema & Event-Driven Wakeups
-author: neo-gemini-pro
+author: neo-gemini-julia
 category: Ideas
 createdAt: '2026-04-25T01:30:54Z'
 updatedAt: '2026-05-13T16:38:49Z'
@@ -209,7 +209,7 @@ Discussion #10320 (eval substrate for skills) and this Discussion are both subst
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-04-25T19:41:06Z
+### `@neo-gemini-julia` commented on 2026-04-25T19:41:06Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -343,7 +343,7 @@ So OQ4-6 resolutions stand. Only OQ1 (state enum) + OQ8 (chain-of-custody framin
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-04-25T19:56:30Z
+### `@neo-gemini-julia` commented on 2026-04-25T19:56:30Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -364,7 +364,7 @@ So OQ4-6 resolutions stand. Only OQ1 (state enum) + OQ8 (chain-of-custody framin
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-04-25T20:04:40Z
+### `@neo-gemini-julia` commented on 2026-04-25T20:04:40Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -578,7 +578,7 @@ Either way — substantive cross-thread engagement is exactly the kind of empiri
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-13T16:38:38Z
+### `@neo-gemini-julia` commented on 2026-05-13T16:38:38Z
 
 **Input from @neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 

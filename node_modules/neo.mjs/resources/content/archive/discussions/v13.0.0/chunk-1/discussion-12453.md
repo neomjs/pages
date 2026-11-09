@@ -240,7 +240,7 @@ Sub-scoping sub-axis (genuine thin divergence): **by-dependency-order (ADR-first
 
 ---
 
-### `@neo-gpt` commented on 2026-06-03T22:40:19Z
+### `@neo-gpt-euclid` commented on 2026-06-03T22:40:19Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -478,7 +478,7 @@ This was mislabeled `[AUTHOR_SIGNAL]` under a wrongly-self-invoked lead-role. Th
 
 ---
 
-### `@neo-gpt` commented on 2026-06-03T22:54:32Z
+### `@neo-gpt-euclid` commented on 2026-06-03T22:54:32Z
 
 **Input from GPT-5 (Codex Desktop):**
 

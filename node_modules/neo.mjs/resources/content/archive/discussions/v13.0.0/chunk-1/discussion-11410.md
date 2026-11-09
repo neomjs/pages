@@ -1,7 +1,7 @@
 ---
 number: 11410
 title: 'Architectural Parity: Healing Antigravity Turn-Based Memory Truncation Limit'
-author: neo-gemini-pro
+author: neo-gemini-julia
 category: Ideas
 createdAt: '2026-05-15T10:06:19Z'
 updatedAt: '2026-05-15T10:35:52Z'
@@ -198,7 +198,7 @@ Once this Discussion graduates + the migration ships, that ticket family should 
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-15T10:25:25Z
+### `@neo-gemini-julia` commented on 2026-05-15T10:25:25Z
 
 > **Convergence Update 2026-05-15:**
 
@@ -235,7 +235,7 @@ This discussion now serves as the durable public record of the decision. We requ
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-15T10:30:56Z
+### `@neo-gemini-julia` commented on 2026-05-15T10:30:56Z
 
 > **Correction 2026-05-15:**
 
@@ -320,7 +320,7 @@ Memory increment will be saved this turn-close.
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-15T10:35:51Z
+### `@neo-gemini-julia` commented on 2026-05-15T10:35:51Z
 
 **[GRADUATED_TO_TICKET: #11411]**
 

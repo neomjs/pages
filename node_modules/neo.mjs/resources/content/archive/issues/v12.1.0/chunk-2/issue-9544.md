@@ -46,6 +46,16 @@ Instead of hardcoding domain-specific routers (like an `onPipelineExecute` handl
 
 ## Timeline
 
+- 2026-03-24T19:31:37Z @tobiu added the `enhancement` label
+- 2026-03-24T19:31:37Z @tobiu added the `ai` label
+- 2026-03-24T19:31:37Z @tobiu added the `architecture` label
+- 2026-03-24T19:31:37Z @tobiu added the `core` label
+- 2026-03-24T19:31:49Z @tobiu added parent issue #9449
+- 2026-03-24T19:43:42Z @tobiu referenced in commit `4e0d3ef` - "feat(worker): Enhance RemoteMethodAccess to support instance-to-instance routing (#9544)
+
+- Modified generateRemote to include an optional 'id' in the message payload.
+- Modified onRemoteMethod to resolve the target instance via Neo.manager.Instance if 'remoteId' is present, falling back to static namespace resolution.
+- Added comprehensive unit tests for the new RMA routing capabilities."
 ### @tobiu - 2026-03-24T19:43:55Z
 
 **Input from Gemini 3.1 Pro:**
@@ -77,6 +87,18 @@ Instead of hardcoding domain-specific routers (like an `onPipelineExecute` handl
 > **Summary**
 > By adding `msg.remoteId` to the RMA mixin, we have created a decoupled, bidirectional IPC layer for instances. The RMA mixin does not care *how* you acquired the ID; it trusts that if you provide a `destination` worker and a `remoteId`, it will route the method call directly to that instance within the target worker's isolated registry. This elegant mechanism powers the entire cross-worker Unified Data Pipeline.
 
+- 2026-03-24T19:44:23Z @tobiu closed this issue
+- 2026-03-24T19:49:12Z @tobiu referenced in commit `962da05` - "feat(worker): Enhance RemoteMethodAccess to support instance-to-instance routing (#9544)
+
+- Modified generateRemote to include an optional 'id' in the message payload.
+- Modified onRemoteMethod to resolve the target instance via Neo.manager.Instance if 'remoteId' is present, falling back to static namespace resolution.
+- Added comprehensive unit tests for the new RMA routing capabilities."
+- 2026-03-24T19:51:09Z @tobiu referenced in commit `3c8640f` - "feat(worker): Enhance RemoteMethodAccess to support instance-to-instance routing (#9544)
+
+- Modified generateRemote to include an optional 'id' in the message payload.
+- Modified onRemoteMethod to resolve the target instance via Neo.manager.Instance if 'remoteId' is present, falling back to static namespace resolution.
+- Added comprehensive unit tests for the new RMA routing capabilities."
 - 2026-03-24T20:09:51Z @tobiu cross-referenced by #9453
-- 2026-08-31T03:51:07Z @neo-gpt cross-referenced by #17909
+- 2026-03-25T08:38:02Z @tobiu assigned to @tobiu
+- 2026-08-31T03:51:07Z @neo-gpt-euclid cross-referenced by #17909
 

@@ -141,7 +141,7 @@ Cycle-1 body preserved via GitHub edit history; cycle-1 OQs 1-8 + matrix preserv
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-23T22:37:33Z
+### `@neo-gpt-euclid` commented on 2026-05-23T22:37:33Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -194,7 +194,7 @@ This supersedes my prior `[GRADUATION_DEFERRED]` signal in this same comment.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T23:19:19Z
+### `@neo-gpt-euclid` commented on 2026-05-23T23:19:19Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -247,7 +247,7 @@ This supersedes my prior `[GRADUATION_DEFERRED]` signal in this same comment.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T23:53:48Z
+### `@neo-gpt-euclid` commented on 2026-05-23T23:53:48Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -310,7 +310,7 @@ This supersedes my prior `[GRADUATION_DEFERRED]` signal in this same comment.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-24T00:19:27Z
+### `@neo-gpt-euclid` commented on 2026-05-24T00:19:27Z
 
 **Input from GPT-5 (Codex Desktop):**
 

@@ -33,4 +33,5 @@ closedAt: '2020-06-27T15:25:06Z'
 - 2020-06-27T15:18:47Z @tobiu assigned to @tobiu
 - 2020-06-27T15:25:01Z @tobiu referenced in commit `107b0eb` - "neo website: store.BlogPosts base class #791"
 - 2020-06-27T15:25:06Z @tobiu closed this issue
+- 2026-10-24T01:24:31Z @neo-opus-ada cross-referenced by #20091
 

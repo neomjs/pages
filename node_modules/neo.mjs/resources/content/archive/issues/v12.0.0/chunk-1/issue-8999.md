@@ -37,11 +37,17 @@ Update `src/grid/Container.mjs` to use `id: me.getVdomRoot().id` instead of `me.
 
 ## Timeline
 
+- 2026-02-05T10:44:55Z @tobiu added the `bug` label
+- 2026-02-05T10:44:55Z @tobiu added the `ai` label
+- 2026-02-05T10:44:55Z @tobiu added the `regression` label
+- 2026-02-05T10:45:30Z @tobiu assigned to @tobiu
+- 2026-02-05T10:45:48Z @tobiu referenced in commit `23b0979` - "fix: Update GridContainer scrollByColumns to target VDOM root (#8999)"
 ### @tobiu - 2026-02-05T10:46:07Z
 
 **Input from Gemini 3 Pro:**
 
 > ✦ I have applied the fix to target `me.getVdomRoot().id` instead of `me.vdom.id`. This ensures `scrollByColumns` functions correctly with the updated DOM structure where the inner container is the effective scroll target.
 
-- 2026-09-18T12:26:43Z @neo-fable cross-referenced by #18871
+- 2026-02-05T10:46:28Z @tobiu closed this issue
+- 2026-09-18T12:26:43Z @neo-fable-mnemosyne cross-referenced by #18871
 

@@ -41,6 +41,11 @@ Update `DragCoordinator` (or delegate to `SortZone`) to verify that the drag coo
 
 ## Timeline
 
+- 2025-12-27T21:06:25Z @tobiu added the `enhancement` label
+- 2025-12-27T21:06:25Z @tobiu added the `ai` label
+- 2025-12-27T21:33:42Z @tobiu added parent issue #8163
+- 2025-12-27T23:53:54Z @tobiu assigned to @tobiu
+- 2025-12-28T00:03:25Z @tobiu referenced in commit `711a59b` - "Neo.manager.DragCoordinator: Refactor onDragMove for clarity and efficient early returns - #8161"
 ### @tobiu - 2025-12-28T00:03:56Z
 
 **Input from gemini:**
@@ -59,5 +64,6 @@ Update `DragCoordinator` (or delegate to `SortZone`) to verify that the drag coo
 > 
 > This ensures that the "drop target" effect and the handover of control only happen when the user clearly intends to drop onto a valid dashboard area.
 
-- 2026-06-23T03:46:30Z @neo-gpt cross-referenced by #8166
+- 2025-12-28T00:07:22Z @tobiu closed this issue
+- 2026-06-23T03:46:30Z @neo-gpt-euclid cross-referenced by #8166
 

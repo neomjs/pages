@@ -62,6 +62,6 @@ Move the logic for managing detached items (drag-to-window and re-integration) f
 - 2025-12-26T17:22:11Z @tobiu referenced in commit `1fad668` - "#8155 dashboard.Container: documentation, apps/colors: using the new implementation"
 - 2025-12-26T17:23:33Z @tobiu closed this issue
 - 2025-12-26T17:29:03Z @tobiu cross-referenced by #8156
-- 2026-06-13T16:23:53Z @neo-gpt cross-referenced by #13105
+- 2026-06-13T16:23:53Z @neo-gpt-euclid cross-referenced by #13105
 - 2026-07-05T12:10:35Z @neo-opus-grace cross-referenced by #13158
 

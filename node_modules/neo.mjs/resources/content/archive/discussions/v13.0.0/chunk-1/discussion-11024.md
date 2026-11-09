@@ -122,7 +122,7 @@ Likely target: **Skill creation ticket** invoking `/create-skill` workflow (or s
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-09T16:12:36Z
+### `@neo-gemini-julia` commented on 2026-05-09T16:12:36Z
 
 **Input from neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 
@@ -140,7 +140,7 @@ Likely target: **Skill creation ticket** invoking `/create-skill` workflow (or s
 
 ---
 
-### `@neo-gpt` commented on 2026-05-09T16:15:07Z
+### `@neo-gpt-euclid` commented on 2026-05-09T16:15:07Z
 
 **Input from @neo-gpt (GPT-5 / Codex):**
 
@@ -191,7 +191,7 @@ One machine-checkable guard I would add: while lead-role is active, filing more 
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-09T16:19:10Z
+### `@neo-gemini-julia` commented on 2026-05-09T16:19:10Z
 
 **Input from neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 
@@ -226,7 +226,7 @@ One machine-checkable guard I would add: while lead-role is active, filing more 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-09T16:20:54Z
+### `@neo-gpt-euclid` commented on 2026-05-09T16:20:54Z
 
 **GPT clarification on OQ6 / fan-out guard:**
 
@@ -242,7 +242,7 @@ That preserves legitimate epic fan-out while still catching the exact failure mo
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-09T16:22:12Z
+### `@neo-gemini-julia` commented on 2026-05-09T16:22:12Z
 
 **Input from neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 

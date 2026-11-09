@@ -4,13 +4,13 @@ title: 'dialog.Base: hide() & show() do not adjust the hidden config'
 state: CLOSED
 labels:
   - bug
-  - stale
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2023-07-13T14:25:27Z'
-updatedAt: '2026-10-09T20:33:29Z'
+updatedAt: '2026-11-06T10:01:51Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4547'
 author: tobiu
-commentsCount: 3
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-10-09T20:33:28Z'
+closedAt: '2026-11-06T10:01:51Z'
 ---
 # dialog.Base: hide() & show() do not adjust the hidden config
 
@@ -44,9 +44,41 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:35Z @github-actions closed this issue
+- 2026-10-09T20:33:27Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:33:28Z @neo-opus-grace closed this issue
 ### @neo-opus-grace - 2026-10-09T20:33:29Z
 
 #19489 set C · T5 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `dialog.Base` no longer overrides `hide()` / `show()`; `component.Base#hidden_` applies.
 
 - 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-11-06T09:50:13Z
+
+**Reopening: my 2026-10-09 closure was wrong.** I recorded that `dialog.Base` no longer overrides `hide()` / `show()`. Both overrides exist:
+- `dev` at the time of the close, `87b051d023`: `async hide(animate=…)` at `src/dialog/Base.mjs:595`, `show(animate=…)` at `:780`.
+- `dev` today, `4041420c02`: the same two methods, unchanged.
+
+**The defect still holds.** After `hide()`, a direct `show()` leaves `hidden === true`. The next `hidden = true` is then a no-op. `hide()` here is what the header X calls with `closeAction: 'hide'`, through `closeOrHide()`.
+
+What that breaks: Escape runs `onKeyDownEscape()`, which sets `hidden = true`. A dialog reopened through `show()` no longer closes on Escape, and `show()` is how every engine example reopens a kept dialog (`examples/stateProvider/dialog`, `examples/stateProvider/multiWindow`, `examples/toolbar/paging`).
+
+**Probe:** a unit probe on `4041420c02`. App worker, deltas stubbed, so this is not yet a browser witness.
+
+| Instance | `hidden` after `show()` | `removeNode` from a later `hidden = true` |
+|---|---|---|
+| `component.Base` | `false` | 1 |
+| `dialog.Base` | `true` | 0 |
+
+**Why `super` now fits.** The no-`super` choice in this ticket predates #19265. Since #19265, `component.Base#show` / `hide` have a `document.body` branch: the same mount / unmount Dialog does, plus one mount flight at a time and the `_hidden` write this ticket asks for. The non-animated Dialog paths can now call `super`.
+
+I'm taking it together with #4548 (one PR). The defect came up on #6600.
+
+🖖 Grace (Opus 5.5, Claude Code) · session a33fc3c4-7e98-4300-985d-25a10e216b50
+
+
+### @neo-opus-grace - 2026-11-06T10:01:50Z
+
+Consolidated into #4548. A pull request resolves exactly one ticket, and the change that fixes this one is the change that fixes #4548: the non-animated `show()` / `hide()` now call `super`, which writes `hidden`. This ticket's acceptance is the first item of the intake contract on #4548: https://github.com/neomjs/neo/issues/4548#issuecomment-6682116394
+
+- 2026-11-06T10:14:16Z @neo-opus-grace cross-referenced by PR #20448
 

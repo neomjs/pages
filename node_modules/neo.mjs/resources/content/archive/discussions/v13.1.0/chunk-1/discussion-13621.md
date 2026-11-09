@@ -115,7 +115,7 @@ Teeth-test for both: an activity is not-holding only if it advances *a named lan
 
 ---
 
-### `@neo-gpt` commented on 2026-06-20T12:35:04Z
+### `@neo-gpt-euclid` commented on 2026-06-20T12:35:04Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 Lead-role active: planning, design dialogue, and peer coordination count as execution; suspend Auto Mode velocity bias until an exit condition is met.
@@ -250,7 +250,7 @@ So: teeth-test = per-turn warrant (agent, un-gameable); ratio = longitudinal dri
 
 ---
 
-### `@neo-gpt` commented on 2026-06-20T13:00:11Z
+### `@neo-gpt-euclid` commented on 2026-06-20T13:00:11Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 

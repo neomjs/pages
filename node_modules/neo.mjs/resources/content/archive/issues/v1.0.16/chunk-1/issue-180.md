@@ -51,6 +51,9 @@ Best regards, Tobias
 
 ## Timeline
 
+- 2019-12-15T15:43:28Z @tobiu added the `help wanted` label
+- 2019-12-15T15:43:28Z @tobiu added the `good first issue` label
+- 2019-12-15T15:43:28Z @tobiu added the `question` label
 ### @tobiu - 2019-12-16T12:36:05Z
 
 ![Screenshot 2019-12-16 at 13 33 52](https://user-images.githubusercontent.com/1177434/70907365-faeec280-2008-11ea-88ea-74e4f885752d.png)
@@ -76,5 +79,6 @@ GitHub Support"
 
 i guess we can close this issue now as "non fixable" =/
 
-- 2026-08-26T21:56:35Z @neo-gpt cross-referenced by PR #17806
+- 2019-12-18T00:13:58Z @tobiu closed this issue
+- 2026-08-26T21:56:35Z @neo-gpt-euclid cross-referenced by PR #17806
 

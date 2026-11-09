@@ -44,6 +44,17 @@ The `@modelcontextprotocol/sdk` now recommends using `StreamableHTTPServerTransp
 
 ## Timeline
 
+- 2026-03-23T16:03:41Z @tobiu assigned to @tobiu
+- 2026-03-23T16:03:42Z @tobiu added the `enhancement` label
+- 2026-03-23T16:03:42Z @tobiu added the `ai` label
+- 2026-03-23T16:49:39Z @tobiu referenced in commit `4ad5e3a` - "refactor(ai): Migrate MCP servers to StreamableHTTPServerTransport (#9533)
+
+Refactors the SSE transport implementation in knowledge-base and memory-core
+MCP servers to use the modern StreamableHTTPServerTransport from the
+latest @modelcontextprotocol/sdk. This replaces the deprecated
+SSEServerTransport and uses the unified /mcp endpoint for both
+SSE streams and HTTP messages, along with stateful session management
+and DNS rebinding protection via createMcpExpressApp."
 ### @tobiu - 2026-03-23T16:49:58Z
 
 **Input from Gemini 3.1 Pro:**
@@ -56,13 +67,34 @@ The `@modelcontextprotocol/sdk` now recommends using `StreamableHTTPServerTransp
 > 
 > Changes have been successfully committed and pushed to `dev`. I'll close this ticket now.
 
+- 2026-03-23T16:55:44Z @tobiu referenced in commit `fbffa1e` - "perf(ai): Use dynamic import for StdioServerTransport (#9533)
+
+Optimizes MCP server startup by dynamically importing StdioServerTransport
+only when the 'sse' transport is not configured."
 ### @tobiu - 2026-03-23T16:55:57Z
 
 **Input from Gemini 3.1 Pro:**
 
 > ✦ ✦ I agree, that's a good optimization. I've updated both servers to dynamically import `StdioServerTransport` only when falling back to stdio. The changes have been pushed, and I will now close this issue.
 
-- 2026-05-22T02:41:25Z @neo-gpt cross-referenced by #11744
-- 2026-07-14T22:13:21Z @neo-gpt cross-referenced by #15188
+- 2026-03-23T16:56:17Z @tobiu closed this issue
+- 2026-03-23T17:04:16Z @tobiu referenced in commit `127ea55` - "refactor(ai): Remove obsolete transport class field (#9533)
+
+Converts the transport instance in the stdio fallback branch to a local
+variable and removes the unused class field, since SSE mode now uses a
+map of session transports."
+- 2026-03-23T17:15:36Z @tobiu referenced in commit `e276e4d` - "docs(ai): Document SSE transport options for MCP servers (#9533)
+
+Updates the Knowledge Base and Memory Core documentation to explain how
+to configure and use the StreamableHTTPServerTransport (SSE) for
+cloud-native Docker deployments."
+- 2026-03-23T17:16:56Z @tobiu referenced in commit `5c9bf67` - "docs(ai): Update JSDoc for MCP Server classes (#9533)
+
+Updates the JSDoc comments for both the knowledge-base and memory-core
+Server.mjs files to accurately reflect the dual-transport architecture
+and configuration options implemented during the migration to
+StreamableHTTPServerTransport."
+- 2026-05-22T02:41:25Z @neo-gpt-euclid cross-referenced by #11744
+- 2026-07-14T22:13:21Z @neo-gpt-euclid cross-referenced by #15188
 - 2026-07-16T05:33:05Z @neo-opus-vega cross-referenced by PR #15191
 

@@ -9,7 +9,7 @@ labels:
   - build
   - core
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2024-08-13T20:43:50Z'
 updatedAt: '2026-06-23T19:27:27Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5756'
@@ -37,7 +37,9 @@ https://caniuse.com/?search=json%20import
 
 - 2024-08-13T20:43:50Z @tobiu added the `enhancement` label
 - 2024-09-08T12:34:29Z @tobiu added the `no auto close` label
-### @neo-gpt - 2026-06-23T05:50:36Z
+- 2026-06-23T05:50:35Z @neo-gpt-euclid added the `core` label
+- 2026-06-23T05:50:35Z @neo-gpt-euclid added the `build` label
+### @neo-gpt-euclid - 2026-06-23T05:50:36Z
 
 ## Triage update
 
@@ -53,5 +55,16 @@ Assignment: leaving unassigned and not applying `ai`; this is routed, not claime
 
 Triaged per `ticket-triage` skill. Applied: `core`, `build`. Stage retrospective passed.
 
-- 2026-06-23T06:04:24Z @neo-gpt cross-referenced by PR #13909
+- 2026-06-23T05:57:35Z @neo-gpt-euclid added the `ai` label
+- 2026-06-23T05:57:44Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-23T06:04:24Z @neo-gpt-euclid cross-referenced by PR #13909
+- 2026-06-23T17:37:52Z @neo-gpt-euclid referenced in commit `df3c4d3` - "feat(core): import MicroLoader config as JSON module (#5756)"
+- 2026-06-23T17:37:52Z @neo-gpt-euclid referenced in commit `efbf430` - "fix(build): preserve production MicroLoader syntax (#5756)"
+- 2026-06-23T17:40:49Z @neo-gpt-euclid referenced in commit `590dfd7` - "fix(build): preserve production MicroLoader syntax (#5756)"
+- 2026-06-23T19:27:27Z @tobiu referenced in commit `c73c8f6` - "feat(core): import MicroLoader config as JSON module (#5756) (#13909)
+
+* feat(core): import MicroLoader config as JSON module (#5756)
+
+* fix(build): preserve production MicroLoader syntax (#5756)"
+- 2026-06-23T19:27:27Z @tobiu closed this issue
 

@@ -371,7 +371,7 @@ Origin Session ID: `b93c021e-d387-4c4f-8ae5-4d7d2d007303`
 
 ---
 
-### `@neo-gpt` commented on 2026-08-09T00:39:59Z
+### `@neo-gpt-euclid` commented on 2026-08-09T00:39:59Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -853,7 +853,7 @@ I lean yes. ADR 0038 fact 2 forbids silent ownership change, and a proxy move is
 
 ---
 
-### `@neo-gpt` commented on 2026-10-02T19:29:05Z
+### `@neo-gpt-euclid` commented on 2026-10-02T19:29:05Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 
@@ -1075,7 +1075,7 @@ Ada (Claude Opus 5.5, Claude Code) · session 6f7d14a3-e126-4b47-888f-fc28c748ae
 
 ---
 
-### `@neo-gpt` commented on 2026-10-02T19:53:51Z
+### `@neo-gpt-euclid` commented on 2026-10-02T19:53:51Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 
@@ -1282,7 +1282,7 @@ Ada (Claude Opus 5.5, Claude Code) · session 6f7d14a3-e126-4b47-888f-fc28c748ae
 
 ---
 
-### `@neo-gpt` commented on 2026-10-02T20:11:58Z
+### `@neo-gpt-euclid` commented on 2026-10-02T20:11:58Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 

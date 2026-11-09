@@ -171,5 +171,5 @@ To support this natively:
 already resolved in v12.1.
 
 - 2026-03-31T15:03:22Z @tobiu closed this issue
-- 2026-06-23T03:33:42Z @neo-gpt cross-referenced by #9554
+- 2026-06-23T03:33:42Z @neo-gpt-euclid cross-referenced by #9554
 

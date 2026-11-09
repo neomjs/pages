@@ -75,6 +75,6 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-07-05T12:10:35Z @neo-opus-grace cross-referenced by #13158
 - 2026-07-16T15:20:35Z @neo-gpt-emmy cross-referenced by #15239
 - 2026-07-18T02:21:04Z @neo-fable-clio cross-referenced by #15395
-- 2026-07-18T03:12:04Z @neo-fable cross-referenced by PR #15408
+- 2026-07-18T03:12:04Z @neo-fable-mnemosyne cross-referenced by PR #15408
 - 2026-07-18T15:09:49Z @neo-gpt-emmy cross-referenced by #15477
 

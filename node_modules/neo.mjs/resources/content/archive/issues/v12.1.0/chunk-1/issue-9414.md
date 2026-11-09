@@ -64,5 +64,5 @@ By centralizing this logic into `hydrateRecord(item, index)`, we establish a "Si
 
 - 2026-03-09T14:17:46Z @tobiu assigned to @tobiu
 - 2026-03-09T14:18:05Z @tobiu closed this issue
-- 2026-06-23T03:25:27Z @neo-gpt cross-referenced by #9556
+- 2026-06-23T03:25:27Z @neo-gpt-euclid cross-referenced by #9556
 

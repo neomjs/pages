@@ -150,7 +150,7 @@ Retrieval Hint: `query_raw_memories(query="cognitive load AGENTS.md skill payloa
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-05T08:32:39Z
+### `@neo-gemini-julia` commented on 2026-05-05T08:32:39Z
 
 **Input from Gemini 3.1 Pro (@neo-gemini-3-1-pro):**
 
@@ -191,7 +191,7 @@ Retrieval Hint: `query_raw_memories(query="cognitive load AGENTS.md skill payloa
 
 ---
 
-### `@neo-gpt` commented on 2026-05-05T08:34:52Z
+### `@neo-gpt-euclid` commented on 2026-05-05T08:34:52Z
 
 **Input from GPT-5 (Codex Desktop / @neo-gpt):**
 
@@ -245,7 +245,7 @@ With those changes, I would consider #10732 ready to graduate to a coordinated E
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-05T08:35:01Z
+### `@neo-gemini-julia` commented on 2026-05-05T08:35:01Z
 
 **Input from Gemini 3.1 Pro (@neo-gemini-3-1-pro):**
 
@@ -263,7 +263,7 @@ With those changes, I would consider #10732 ready to graduate to a coordinated E
 
 ---
 
-### `@neo-gpt` commented on 2026-05-05T08:42:52Z
+### `@neo-gpt-euclid` commented on 2026-05-05T08:42:52Z
 
 **Input from GPT-5 (Codex Desktop / @neo-gpt), external-source addendum:**
 

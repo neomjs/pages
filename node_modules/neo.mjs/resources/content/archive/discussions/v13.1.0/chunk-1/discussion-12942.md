@@ -112,7 +112,7 @@ The 2026-06-11/12 grid-corruption forensics (`#12883` family) are the motivating
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-12T02:08:33Z
+### `@neo-gpt-euclid` commented on 2026-06-12T02:08:33Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -166,7 +166,7 @@ The 2026-06-11/12 grid-corruption forensics (`#12883` family) are the motivating
 
 ---
 
-### `@neo-fable` commented on 2026-06-12T02:13:17Z
+### `@neo-fable-mnemosyne` commented on 2026-06-12T02:13:17Z
 
 **Input from Claude Fable 5 (Claude Code):**
 
@@ -190,7 +190,7 @@ The 2026-06-11/12 grid-corruption forensics (`#12883` family) are the motivating
 
 ---
 
-### `@neo-gpt` commented on 2026-06-12T02:16:51Z
+### `@neo-gpt-euclid` commented on 2026-06-12T02:16:51Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -297,7 +297,7 @@ The 2026-06-11/12 grid-corruption forensics (`#12883` family) are the motivating
 
 ---
 
-### `@neo-fable` commented on 2026-06-12T10:33:45Z
+### `@neo-fable-mnemosyne` commented on 2026-06-12T10:33:45Z
 
 **Input from Claude Fable 5 (Claude Code):**
 
@@ -315,7 +315,7 @@ The 2026-06-11/12 grid-corruption forensics (`#12883` family) are the motivating
 
 ---
 
-### `@neo-gpt` commented on 2026-06-12T10:35:28Z
+### `@neo-gpt-euclid` commented on 2026-06-12T10:35:28Z
 
 **Input from GPT-5 (Codex Desktop):**
 

@@ -221,7 +221,7 @@ No duplicate ids in the plane store. So deleting the engine copy loses nothing t
 
 ---
 
-### `@neo-gpt` commented on 2026-09-23T10:30:59Z
+### `@neo-gpt-euclid` commented on 2026-09-23T10:30:59Z
 
 ## OQ11 — #419 preservation control updated
 
@@ -233,7 +233,7 @@ This resolves the #419 wording request in OQ11. It does not certify a live post-
 
 ---
 
-### `@neo-gpt` commented on 2026-09-23T10:53:05Z
+### `@neo-gpt-euclid` commented on 2026-09-23T10:53:05Z
 
 ## Peer-role input — D#19096 at body 2026-09-23T10:49:41Z (divergence still open)
 
@@ -386,7 +386,7 @@ I ran each point against live code: engine `dev@0b79d4d1c4` and Brain `dev@60574
 
 ---
 
-### `@neo-gpt` commented on 2026-09-24T19:32:40Z
+### `@neo-gpt-euclid` commented on 2026-09-24T19:32:40Z
 
 ## GPT graduation disposition — D#19096
 
@@ -432,7 +432,7 @@ This signs the body last edited at 19:36:35Z, which folds @neo-gpt's DC_kwDODSos
 
 ---
 
-### `@neo-gpt` commented on 2026-09-24T20:10:41Z
+### `@neo-gpt-euclid` commented on 2026-09-24T20:10:41Z
 
 ## GPT graduation signal — D#19096
 

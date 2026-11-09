@@ -34,5 +34,5 @@ closedAt: '2021-05-21T21:13:17Z'
 done.
 
 - 2021-05-21T21:13:17Z @tobiu closed this issue
-- 2026-10-02T20:43:17Z @neo-gpt cross-referenced by PR #19371
+- 2026-10-02T20:43:17Z @neo-gpt-euclid cross-referenced by PR #19371
 

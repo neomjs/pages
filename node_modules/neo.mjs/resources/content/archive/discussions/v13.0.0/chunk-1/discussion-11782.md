@@ -152,7 +152,7 @@ None — OQ1/OQ2/OQ6 converged cross-family; no DEFERRED/VETO outstanding.
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-22T20:20:07Z
+### `@neo-gpt-euclid` commented on 2026-05-22T20:20:07Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -199,7 +199,7 @@ None — OQ1/OQ2/OQ6 converged cross-family; no DEFERRED/VETO outstanding.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-22T20:45:12Z
+### `@neo-gpt-euclid` commented on 2026-05-22T20:45:12Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -228,7 +228,7 @@ None — OQ1/OQ2/OQ6 converged cross-family; no DEFERRED/VETO outstanding.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-22T20:46:48Z
+### `@neo-gpt-euclid` commented on 2026-05-22T20:46:48Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

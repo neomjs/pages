@@ -36,6 +36,9 @@ and add content.
 done.
 
 - 2019-11-21T09:53:31Z @tobiu closed this issue
+- 2022-12-31T15:48:49Z @Dinkh referenced in commit `da19c7e` - "Merge pull request #1 from Dinkh/Dinkh-patch-GoogleMaps
+
+missing classname and ntype"
 - 2026-01-28T15:29:32Z @tobiu cross-referenced by #8899
 - 2026-02-21T16:15:33Z @tobiu cross-referenced by #9233
 - 2026-04-11T19:23:00Z @tobiu cross-referenced by #165
@@ -44,6 +47,7 @@ done.
 - 2026-04-18T18:42:38Z @tobiu cross-referenced by PR #10066
 - 2026-04-19T17:53:00Z @tobiu cross-referenced by #10030
 - 2026-04-20T15:26:36Z @tobiu cross-referenced by PR #10130
+- 2026-04-20T15:42:51Z @tobiu referenced in commit `0ae3046` - "docs: refresh v12.2 goal #1 state to reflect merged sub-tickets (#9748) (#10130)"
 - 2026-04-21T14:36:20Z @tobiu cross-referenced by PR #10161
 - 2026-04-21T14:54:08Z @tobiu cross-referenced by PR #10160
 - 2026-04-21T17:03:02Z @tobiu cross-referenced by #9999
@@ -61,7 +65,7 @@ done.
 - 2026-04-25T01:56:06Z @neo-opus-ada cross-referenced by PR #10308
 - 2026-04-25T02:55:41Z @neo-opus-ada cross-referenced by PR #10317
 - 2026-04-25T04:55:11Z @neo-opus-ada cross-referenced by PR #10328
-- 2026-04-26T12:03:13Z @neo-gemini-pro cross-referenced by #10367
+- 2026-04-26T12:03:13Z @neo-gemini-julia cross-referenced by #10367
 - 2026-04-26T15:51:32Z @neo-opus-ada cross-referenced by PR #10379
 - 2026-04-26T16:26:23Z @neo-opus-ada cross-referenced by PR #10381
 - 2026-04-26T18:42:40Z @neo-opus-ada cross-referenced by PR #10386
@@ -74,12 +78,133 @@ done.
 - 2026-04-27T10:49:24Z @neo-opus-ada cross-referenced by PR #10411
 - 2026-04-27T11:18:14Z @neo-opus-ada cross-referenced by PR #10416
 - 2026-04-27T12:09:08Z @neo-opus-ada cross-referenced by PR #10423
-- 2026-04-28T00:00:39Z @neo-gemini-pro cross-referenced by PR #10455
+- 2026-04-28T00:00:39Z @neo-gemini-julia cross-referenced by PR #10455
 - 2026-04-28T10:41:52Z @neo-opus-ada cross-referenced by #10469
 - 2026-04-30T20:47:08Z @neo-opus-ada cross-referenced by PR #10536
 - 2026-05-01T09:27:08Z @neo-opus-ada cross-referenced by #10564
 - 2026-05-01T11:42:29Z @neo-opus-ada cross-referenced by #10572
 - 2026-05-01T11:53:08Z @neo-opus-ada cross-referenced by PR #10573
+- 2026-05-01T13:15:55Z @tobiu referenced in commit `b8a4fc9` - "feat(knowledge-base): work-volume-aware gate on manage_knowledge_base sync (#10572) (#10573)
+
+* feat(knowledge-base): work-volume-aware gate on manage_knowledge_base sync (#10572)
+
+Adds a post-delta-pre-embed work-volume gate to VectorService.embed() that
+refuses MCP-callable invocations when chunksToProcess.length exceeds a
+configurable threshold (aiConfig.mcpSyncMaxChunks, default 50 — aligned
+with batchSize). CLI invocations (via npm run ai:sync-kb) pass viaMcp:false
+and bypass the gate.
+
+Addresses the empirical anchor 2026-05-01: Gemini's manage_knowledge_base
+sync ran 10+ minutes after #10003/#10558 KB embedding-provider migration,
+locking the harness because the MCP execution shape was uniform regardless
+of post-delta work-volume.
+
+Files:
+- ai/mcp/server/knowledge-base/services/VectorService.mjs:
+  embed() now accepts {viaMcp} opts; threshold check fires immediately after
+  the existing fast-path-exit at line 177; returns {error, code:
+  'KB_SYNC_VOLUME_EXCEEDED', chunksToProcess, threshold, message} on gate fire.
+  KB Server.mjs's existing 'error' in result contract converts to isError:true.
+- ai/mcp/server/knowledge-base/services/DatabaseService.mjs:
+  manageKnowledgeBase + syncDatabase + embedKnowledgeBase thread the viaMcp
+  flag through the call chain.
+- ai/mcp/server/knowledge-base/services/toolService.mjs:
+  manage_knowledge_base dispatch wrapper marks viaMcp:true; CLI invocations
+  via syncKnowledgeBase.mjs call DatabaseService.syncDatabase() directly
+  without the wrapper, naturally bypassing.
+- ai/mcp/server/knowledge-base/config.template.mjs:
+  mcpSyncMaxChunks: 50 added with rationale comment (aligns with batchSize;
+  empirically tunable per provider/tier; not timing-derived).
+- ai/mcp/server/knowledge-base/openapi.yaml:
+  manage_knowledge_base description updates the operator-facing semantics —
+  documents the gate condition + CLI bypass for bulk work.
+
+Test: VectorService.WorkVolumeBranching.spec.mjs covers the four
+acceptance criteria branches:
+1. Zero-changes fast-path unchanged (existing chunks dedup to empty queue)
+2. Below-threshold MCP succeeds (synchronous embedding path)
+3. Above-threshold MCP returns KB_SYNC_VOLUME_EXCEEDED — caller observes failure
+4. Above-threshold CLI bypasses gate (explicit opt-in to long work)
+
+Spy-collection pattern stubs ChromaDB get/upsert; TextEmbeddingService.embedTexts
+stubbed to verify the BRANCH decision rather than real API timing
+(per @neo-gpt's threshold-rationale guardrail #1: timing-math is wrong-by-
+construction; ACs assert branch behavior).
+
+Avoided traps captured in #10572 ticket body:
+- mode=delta/mode=full input-shape disambiguation: rejected (delta logic
+  already exists; gap is execution-shape, not input-shape).
+- Daemonize KB sync entirely: rejected (delta resyncs ARE small + agent-callable).
+- Hardcode threshold: rejected (config-tunable per deployment).
+- Justify threshold via timing math: rejected per @neo-gpt's guardrail #1.
+- Throw vs return: chose return-shape per established MCP-server convention
+  (Server.mjs:'error' in result → isError:true is the existing contract;
+  matches SummaryService/HealthService catch patterns).
+
+Co-Authored-By: Claude Opus 4.7 (Claude Code) <claude@anthropic.com>
+
+* fix(knowledge-base): address PR #10573 cycle 1 review (#10572)
+
+Two RAs from @neo-gpt's cycle 1 review:
+
+RA1 (MCP-Tool-Description Budget Audit per pr-review-guide.md §5.3):
+The `manage_knowledge_base` OpenAPI description had imported internal
+ticket refs (#10572), date-specific incident narrative (2026-05-01), and
+approximate duration claims (~1hr) — all violations of the runtime
+tool-description budget. OpenAPI descriptions are runtime payload, not
+source documentation.
+
+Fix: tightened the description to a terse "Volume gate" call-site clause:
+
+  Volume gate: when the post-delta diff exceeds `mcpSyncMaxChunks`
+  (default 50), this tool returns `KB_SYNC_VOLUME_EXCEEDED` instead of
+  executing synchronously. Use `npm run ai:sync-kb` for bulk re-embedding
+  work.
+
+Removes ticket ref / incident narrative / duration claim. Keeps gate
+condition + return code + remediation. Source-documentation context
+remains in the PR body, ticket #10572, and JSDoc on `embed()`.
+
+RA2 (AC4 wire-format boundary verification):
+The previous test verified `VectorService.embed()` returns the {error}
+payload but stopped one layer short of the actual MCP-caller wire
+contract. The wire-format guarantee is that the MCP caller observes
+`isError: true` per Server.mjs:140-145's `isError = 'error' in result`
+conversion. Without testing through the dispatch path, the AC4 claim
+that "MCP caller observes failure" was unverified.
+
+Fix: added a 5th test that exercises the toolService.callTool dispatch
+end-to-end (the same entry point Server.mjs calls), then applies the
+inline Server.mjs adapter conversion and asserts on the resulting
+MCP-response-shape `isError: true`. This verifies the wire-format
+boundary, not just the service-layer return shape. Stubs
+`KB_DatabaseService.createKnowledgeBase` to skip JSONL regeneration so
+the fixture controls the sync path deterministically.
+
+Both RAs verified locally via `node --check` + targeted spec run.
+
+Co-Authored-By: Claude Opus 4.7 (Claude Code) <claude@anthropic.com>
+
+* test(kb): inline wire-format adapter assertion, drop SDK-poisoned dispatch test (#10572)
+
+Cycle 2 RA2: the 5th test (callTool dispatch end-to-end) failed because the
+Playwright spec imports ai/services.mjs, which runs makeSafe() and Zod-wraps
+the singleton's manageKnowledgeBase. The wrapper Zod-parses without
+.passthrough(), stripping the closure-injected `viaMcp: true` before it
+reaches the gate — a test-env artifact (production MCP server and CLI scripts
+both bypass services.mjs, so makeSafe never wraps in production).
+
+Fix: drop the brittle dispatch-path test, inline the Server.mjs:202 adapter
+expression (`Neo.isObject(result) && 'error' in result`) into test 3. Same
+wire-format contract is now empirically verified without the SDK-coupling
+flakiness.
+
+4/4 tests pass.
+
+---------
+
+Co-authored-by: tobiu <tobiasuhlig78@gmail.com>
+Co-authored-by: Claude Opus 4.7 (Claude Code) <claude@anthropic.com>"
 - 2026-05-01T22:36:28Z @neo-opus-ada cross-referenced by PR #10607
 - 2026-05-03T10:34:09Z @neo-opus-ada cross-referenced by #10624
 - 2026-05-03T10:35:00Z @neo-opus-ada cross-referenced by #10625
@@ -273,8 +398,8 @@ separately as project-management events when their last subs close."
 - 2026-05-10T23:53:23Z @neo-opus-ada cross-referenced by PR #11164
 - 2026-05-10T23:55:27Z @neo-opus-ada cross-referenced by #11165
 - 2026-05-11T00:18:24Z @neo-opus-ada cross-referenced by PR #11167
-- 2026-05-11T00:40:11Z @neo-gemini-pro cross-referenced by PR #11172
-- 2026-05-11T00:52:15Z @neo-gemini-pro cross-referenced by PR #11176
+- 2026-05-11T00:40:11Z @neo-gemini-julia cross-referenced by PR #11172
+- 2026-05-11T00:52:15Z @neo-gemini-julia cross-referenced by PR #11176
 - 2026-05-11T00:58:57Z @neo-opus-ada cross-referenced by #11177
 - 2026-05-11T01:16:53Z @neo-opus-ada cross-referenced by PR #11178
 - 2026-05-11T05:09:04Z @neo-opus-ada cross-referenced by #11182
@@ -291,14 +416,14 @@ separately as project-management events when their last subs close."
 - 2026-05-13T11:41:19Z @neo-opus-ada cross-referenced by PR #11302
 - 2026-05-13T11:52:18Z @neo-opus-ada cross-referenced by PR #11303
 - 2026-05-13T19:09:02Z @neo-opus-ada cross-referenced by #11319
-- 2026-05-15T17:47:43Z @neo-gpt cross-referenced by #11430
+- 2026-05-15T17:47:43Z @neo-gpt-euclid cross-referenced by #11430
 - 2026-05-15T18:04:28Z @neo-opus-ada cross-referenced by PR #11432
 - 2026-05-15T18:26:43Z @neo-opus-ada cross-referenced by PR #11434
 - 2026-05-15T18:59:33Z @neo-opus-ada cross-referenced by PR #11436
 - 2026-05-16T14:21:54Z @neo-opus-ada cross-referenced by PR #11462
 - 2026-05-16T14:30:15Z @neo-opus-ada cross-referenced by PR #11461
 - 2026-05-16T21:09:47Z @neo-opus-ada cross-referenced by PR #11497
-- 2026-05-17T19:16:36Z @neo-gpt cross-referenced by PR #11526
+- 2026-05-17T19:16:36Z @neo-gpt-euclid cross-referenced by PR #11526
 - 2026-05-19T02:33:07Z @tobiu referenced in commit `398fdce` - "feat(agentos): Model-Stats Framework ADR + IdentitySchema capability extension + ModelStats registry (#11601) (#11606)
 
 * feat(agentos): Model-Stats Framework ADR + IdentitySchema capability extension + ModelStats registry (#11601)
@@ -576,7 +701,7 @@ Co-authored-by: Claude Opus 4.7 <neo-opus-4-7@neomjs.com>"
 - 2026-06-11T01:19:37Z @neo-opus-vega cross-referenced by #12879
 - 2026-06-12T02:57:56Z @neo-opus-grace cross-referenced by #12946
 - 2026-06-12T09:59:03Z @neo-fable-clio cross-referenced by #12981
-- 2026-06-13T01:53:41Z @neo-fable cross-referenced by #143
+- 2026-06-13T01:53:41Z @neo-fable-mnemosyne cross-referenced by #143
 - 2026-06-13T19:26:34Z @neo-opus-ada cross-referenced by #13125
 - 2026-06-13T19:59:21Z @neo-opus-grace cross-referenced by PR #13126
 - 2026-06-13T21:12:35Z @neo-opus-ada cross-referenced by #13134
@@ -601,7 +726,7 @@ Co-authored-by: Claude Opus 4.7 <neo-opus-4-7@neomjs.com>"
 - 2026-06-20T21:36:19Z @neo-opus-vega cross-referenced by #13674
 - 2026-06-20T22:03:27Z @neo-opus-grace cross-referenced by #13626
 - 2026-06-20T22:49:03Z @neo-opus-vega cross-referenced by PR #13608
-- 2026-06-20T23:58:02Z @neo-gpt cross-referenced by PR #13684
+- 2026-06-20T23:58:02Z @neo-gpt-euclid cross-referenced by PR #13684
 - 2026-06-21T01:05:54Z @neo-opus-ada cross-referenced by #142
 - 2026-06-21T02:38:49Z @neo-opus-vega cross-referenced by #13697
 - 2026-06-21T10:56:01Z @neo-opus-vega cross-referenced by #13750
@@ -772,17 +897,17 @@ The CI ticket-archaeology lint (boy-scout — whole touched-file vs base) flags 
 - 2026-07-01T17:08:55Z @neo-opus-grace cross-referenced by PR #14401
 - 2026-07-01T17:19:14Z @neo-opus-grace cross-referenced by PR #14403
 - 2026-07-01T21:49:49Z @neo-opus-grace cross-referenced by PR #14405
-- 2026-07-02T02:20:49Z @neo-fable cross-referenced by #124
+- 2026-07-02T02:20:49Z @neo-fable-mnemosyne cross-referenced by #124
 - 2026-07-02T05:36:49Z @neo-opus-grace cross-referenced by #126
 - 2026-07-02T06:27:04Z @neo-opus-grace cross-referenced by PR #14384
-- 2026-07-02T09:44:09Z @neo-fable cross-referenced by PR #14458
+- 2026-07-02T09:44:09Z @neo-fable-mnemosyne cross-referenced by PR #14458
 - 2026-07-02T14:51:04Z @neo-opus-grace cross-referenced by PR #14480
 - 2026-07-02T15:37:24Z @neo-fable-clio cross-referenced by #14433
 - 2026-07-02T16:32:11Z @neo-opus-grace cross-referenced by #14486
 - 2026-07-03T05:09:38Z @neo-opus-grace cross-referenced by PR #14527
 - 2026-07-03T05:22:40Z @neo-opus-ada cross-referenced by PR #14528
-- 2026-07-04T02:22:50Z @neo-fable cross-referenced by #14603
-- 2026-07-04T07:21:47Z @neo-fable cross-referenced by PR #14696
+- 2026-07-04T02:22:50Z @neo-fable-mnemosyne cross-referenced by #14603
+- 2026-07-04T07:21:47Z @neo-fable-mnemosyne cross-referenced by PR #14696
 - 2026-07-04T07:39:54Z @neo-opus-grace cross-referenced by PR #14692
 - 2026-07-04T09:05:56Z @neo-fable-clio cross-referenced by PR #14717
 - 2026-07-04T09:55:18Z @neo-opus-grace cross-referenced by PR #14729
@@ -792,14 +917,14 @@ The withhold-render test asserted .not.toContain('1'), a blunt proxy for 'no nak
 
 The render is correct (the withhold path omits all counts/refs). Fix is test-only: pin capturedAt to the spec's fixed NOW (deterministic render, no new Date() dependency) and replace the bare-digit assertion with contract-precise ones (no 'Merged PRs:' count line, no 'PR #1' ref). 6/6 green, verified inside the previously-failing 10:xx UTC window."
 - 2026-07-04T12:21:42Z @neo-opus-ada cross-referenced by PR #14732
-- 2026-07-04T12:33:43Z @neo-fable cross-referenced by #8
+- 2026-07-04T12:33:43Z @neo-fable-mnemosyne cross-referenced by #8
 - 2026-07-04T12:51:47Z @neo-opus-grace cross-referenced by PR #14730
 - 2026-07-04T15:06:47Z @neo-opus-ada cross-referenced by PR #14804
-- 2026-07-09T23:01:59Z @neo-fable cross-referenced by PR #14904
-- 2026-07-10T00:35:03Z @neo-fable cross-referenced by #14908
+- 2026-07-09T23:01:59Z @neo-fable-mnemosyne cross-referenced by PR #14904
+- 2026-07-10T00:35:03Z @neo-fable-mnemosyne cross-referenced by #14908
 - 2026-07-10T02:59:08Z @neo-opus-grace cross-referenced by #14911
-- 2026-07-10T03:28:16Z @neo-fable cross-referenced by PR #14922
-- 2026-07-10T23:19:36Z @neo-fable cross-referenced by PR #14997
+- 2026-07-10T03:28:16Z @neo-fable-mnemosyne cross-referenced by PR #14922
+- 2026-07-10T23:19:36Z @neo-fable-mnemosyne cross-referenced by PR #14997
 - 2026-07-12T09:15:31Z @neo-opus-ada cross-referenced by PR #15085
 - 2026-07-12T10:39:31Z @neo-opus-grace cross-referenced by #15087
 - 2026-07-12T11:01:36Z @neo-opus-vega cross-referenced by PR #15071
@@ -845,7 +970,7 @@ The render is correct (the withhold path omits all counts/refs). Fix is test-onl
 - 2026-08-02T20:01:26Z @neo-opus-ada cross-referenced by PR #16396
 - 2026-08-02T21:48:31Z @neo-opus-vega cross-referenced by #16411
 - 2026-08-03T00:51:54Z @neo-opus-vega cross-referenced by #16382
-- 2026-08-03T10:30:56Z @neo-fable cross-referenced by #16425
+- 2026-08-03T10:30:56Z @neo-fable-mnemosyne cross-referenced by #16425
 - 2026-08-03T10:43:19Z @neo-opus-vega cross-referenced by PR #16433
 - 2026-08-03T11:56:48Z @tobiu referenced in commit `e629404` - "fix(hooks): let the your-call citation exemption name the authority it cites (#16411) (#16433)
 
@@ -1191,7 +1316,7 @@ spec: 19 passed
 
 Refs #16443"
 - 2026-08-04T20:58:43Z @neo-opus-vega cross-referenced by #16206
-- 2026-08-08T12:26:22Z @neo-fable cross-referenced by #16682
+- 2026-08-08T12:26:22Z @neo-fable-mnemosyne cross-referenced by #16682
 - 2026-08-08T13:05:21Z @neo-opus-vega cross-referenced by PR #16663
 - 2026-08-10T09:47:55Z @neo-opus-vega cross-referenced by PR #16864
 - 2026-08-10T10:13:18Z @neo-opus-vega cross-referenced by PR #16873
@@ -1654,7 +1779,7 @@ Worst case across all six is now 0.69, was 0.23. No parse errors, no clipping,
 `lint-guides` clean on this file.
 
 Co-Authored-By: Vega <neo-opus-vega@neomjs.com>"
-- 2026-08-21T23:22:36Z @neo-fable cross-referenced by PR #17519
+- 2026-08-21T23:22:36Z @neo-fable-mnemosyne cross-referenced by PR #17519
 - 2026-08-22T23:56:06Z @neo-opus-grace cross-referenced by #137
 - 2026-08-23T23:19:39Z @neo-opus-grace cross-referenced by #17661
 - 2026-08-25T15:40:57Z @dawesi referenced in commit `e023935` - "fix(hooks): let the your-call citation exemption name the authority it cites (#16411) (#16433)
@@ -2345,7 +2470,7 @@ selects it, and reports "No tests found". The corrected line says why.
 - 2026-09-01T06:10:25Z @neo-opus-grace cross-referenced by #17920
 - 2026-09-03T20:57:15Z @neo-opus-grace cross-referenced by #18216
 - 2026-09-04T00:33:16Z @neo-opus-grace cross-referenced by PR #18245
-- 2026-09-04T19:10:17Z @neo-gpt cross-referenced by PR #18323
+- 2026-09-04T19:10:17Z @neo-gpt-euclid cross-referenced by PR #18323
 - 2026-09-08T23:19:01Z @neo-opus-grace cross-referenced by PR #18509
 - 2026-09-09T11:24:25Z @neo-opus-vega cross-referenced by PR #18534
 - 2026-09-13T15:00:53Z @neo-opus-grace cross-referenced by #18666
@@ -2583,4 +2708,22 @@ still holds.
 Also moves Pull.mjs's marker outside the quoted title sample, so the example stays a
 verbatim PR title rather than one with an annotation inside the quotes."
 - 2026-09-19T13:17:18Z @neo-opus-vega cross-referenced by #18961
+- 2026-09-20T15:37:57Z @sloemo01 cross-referenced by #19006
+- 2026-09-27T14:18:10Z @neo-preview cross-referenced by PR #19310
+- 2026-10-05T14:18:11Z @github-actions cross-referenced by #19230
+- 2026-10-05T14:24:45Z @neo-opus-grace cross-referenced by #19413
+- 2026-10-06T11:08:15Z @tobiu referenced in commit `6f657db` - "fix(ci): the claim responder counts only pull requests into this repository as holds (#19413) (#19414)
+
+A pull request inside a contributor's fork can reference an issue here, and
+the responder counted it as taken: on #19230 it told a first-time claimant
+that "#1 is open for it", a draft whose base was the fork. The workflow now
+reads each closing pull request's base repository, and holders counts one
+only when that base is this repository. A pull request from a fork into this
+repository still counts, because its base is this repository."
+- 2026-10-16T12:20:38Z @neo-gpt-emmy cross-referenced by PR #19804
+- 2026-10-18T01:52:18Z @neo-gemini-julia cross-referenced by PR #19852
+- 2026-10-22T16:10:48Z @neo-gemini-maryam cross-referenced by PR #20008
+- 2026-10-23T00:03:23Z @neo-opus-grace cross-referenced by #20017
+- 2026-10-23T07:40:00Z @neo-opus-grace cross-referenced by #20018
+- 2026-10-26T01:02:58Z @neo-gemini-julia cross-referenced by #20115
 

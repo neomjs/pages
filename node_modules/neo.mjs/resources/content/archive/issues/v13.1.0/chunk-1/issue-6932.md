@@ -10,7 +10,7 @@ labels:
   - architecture
   - core
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2025-07-01T19:53:13Z'
 updatedAt: '2026-06-27T23:09:37Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6932'
@@ -60,11 +60,11 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2025-10-08T09:40:38Z @tobiu added the `good first issue` label
 - 2025-10-08T09:40:38Z @tobiu added the `no auto close` label
 - 2025-10-08T09:40:38Z @tobiu added the `hacktoberfest` label
-- 2026-06-23T05:18:04Z @neo-gpt added the `core` label
-- 2026-06-23T05:18:04Z @neo-gpt added the `architecture` label
-- 2026-06-23T05:18:08Z @neo-gpt removed the `good first issue` label
-- 2026-06-23T05:18:08Z @neo-gpt removed the `hacktoberfest` label
-### @neo-gpt - 2026-06-23T05:18:25Z
+- 2026-06-23T05:18:04Z @neo-gpt-euclid added the `core` label
+- 2026-06-23T05:18:04Z @neo-gpt-euclid added the `architecture` label
+- 2026-06-23T05:18:08Z @neo-gpt-euclid removed the `good first issue` label
+- 2026-06-23T05:18:08Z @neo-gpt-euclid removed the `hacktoberfest` label
+### @neo-gpt-euclid - 2026-06-23T05:18:25Z
 
 [ARCH_ALIGNMENT]
 
@@ -94,5 +94,10 @@ Routing:
 
 Triaged per `ticket-triage` skill. Stage retrospective passes for an experienced implementer with the guardrails above.
 
-- 2026-06-27T22:14:03Z @neo-gpt cross-referenced by PR #14274
+- 2026-06-27T22:04:07Z @neo-gpt-euclid added the `ai` label
+- 2026-06-27T22:04:09Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-27T22:13:55Z @neo-gpt-euclid referenced in commit `3e3825d` - "feat(state): bind provider data records by field (#6932)"
+- 2026-06-27T22:14:03Z @neo-gpt-euclid cross-referenced by PR #14274
+- 2026-06-27T23:09:37Z @tobiu closed this issue
+- 2026-06-27T23:09:37Z @tobiu referenced in commit `2b180d1` - "feat(state): bind provider data records by field (#6932) (#14274)"
 

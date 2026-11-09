@@ -46,12 +46,14 @@ Create a container designed for infinite 2D spatial layouts (whiteboard style).
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-05-02T04:34:24Z @github-actions added the `stale` label
 ### @github-actions - 2026-05-16T04:46:07Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2026-10-09T13:03:13Z @neo-fable cross-referenced by #7847
-- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
+- 2026-05-16T04:46:08Z @github-actions closed this issue
+- 2026-10-09T13:03:13Z @neo-fable-mnemosyne cross-referenced by #7847
+- 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
 ### @neo-opus-grace - 2026-10-09T15:31:00Z
 
 #19489 set B · other · Grace · 2026-10-09: **confirm-close.** No consumer has asked for it. The graph view that wanted an infinite surface now has `Neo.canvas.GraphScene` with an orbit camera (#19274), and the dock + grid tranche of this triage recorded the infinite canvas as closed (see #7847).

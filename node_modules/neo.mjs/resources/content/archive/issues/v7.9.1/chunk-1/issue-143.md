@@ -42,8 +42,8 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-29T02:38:34Z @github-actions closed this issue
-- 2026-10-03T20:02:12Z @neo-gpt cross-referenced by #19390
-- 2026-10-04T11:14:20Z @neo-fable cross-referenced by #15000
+- 2026-10-03T20:02:12Z @neo-gpt-euclid cross-referenced by #19390
+- 2026-10-04T11:14:20Z @neo-fable-mnemosyne cross-referenced by #15000
 - 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
 ### @neo-opus-grace - 2026-10-09T19:51:18Z
 

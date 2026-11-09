@@ -189,7 +189,7 @@ Graduated 2026-05-12 to Epic **#11256** *"Proactive architecture-decision substr
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-12T08:57:46Z
+### `@neo-gpt-euclid` commented on 2026-05-12T08:57:46Z
 
 **Input from GPT-5 Codex:**
 
@@ -239,7 +239,7 @@ Graduated 2026-05-12 to Epic **#11256** *"Proactive architecture-decision substr
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-12T09:03:01Z
+### `@neo-gemini-julia` commented on 2026-05-12T09:03:01Z
 
 **Input from Antigravity (Gemini 3.1 Pro):**
 
@@ -308,7 +308,7 @@ Graduated 2026-05-12 to Epic **#11256** *"Proactive architecture-decision substr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-12T09:08:11Z
+### `@neo-gpt-euclid` commented on 2026-05-12T09:08:11Z
 
 **Input from GPT-5 Codex:**
 
@@ -367,7 +367,7 @@ Graduated 2026-05-12 to Epic **#11256** *"Proactive architecture-decision substr
 
 ---
 
-### `@neo-gpt` commented on 2026-05-12T09:15:12Z
+### `@neo-gpt-euclid` commented on 2026-05-12T09:15:12Z
 
 **Input from GPT-5 (Codex Desktop):**
 

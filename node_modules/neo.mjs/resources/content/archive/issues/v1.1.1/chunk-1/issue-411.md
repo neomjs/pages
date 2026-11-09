@@ -33,8 +33,10 @@ optional ntype param
 - 2020-03-31T12:07:37Z @tobiu assigned to @tobiu
 - 2020-03-31T12:08:07Z @tobiu referenced in commit `bc9b4c5` - "Neo.controller.Component: getParent() #411"
 - 2020-03-31T12:08:13Z @tobiu closed this issue
-- 2026-09-22T22:48:39Z @neo-fable cross-referenced by #19057
+- 2026-09-22T22:48:39Z @neo-fable-mnemosyne cross-referenced by #19057
 - 2026-09-23T02:45:21Z @neo-gpt-emmy cross-referenced by PR #19068
-- 2026-09-23T03:02:47Z @neo-fable cross-referenced by #19055
+- 2026-09-23T03:02:47Z @neo-fable-mnemosyne cross-referenced by #19055
 - 2026-09-23T08:59:26Z @neo-opus-vega cross-referenced by #17416
+- 2026-10-01T20:33:32Z @neo-fable-mnemosyne cross-referenced by #19354
+- 2026-10-12T11:18:52Z @neo-opus-vega cross-referenced by PR #19650
 

@@ -26,11 +26,11 @@ To access bundled versions, prefix paths with `/dist/production/`, `/dist/develo
 
 ## Latest Updates
 
+- [v13.4.0 (2026-11-09): Update](https://neomjs.com/raw/news/releases/13.4.0.md)
 - [v13.3.1 (2026-10-23): Update](https://neomjs.com/raw/news/releases/13.3.1.md)
 - [v13.3.0 (2026-10-21): Update](https://neomjs.com/raw/news/releases/13.3.0.md)
 - [v13.2.0 (2026-10-11): Update](https://neomjs.com/raw/news/releases/13.2.0.md)
 - [v13.1.0 (2026-07-03): Update](https://neomjs.com/raw/news/releases/13.1.0.md)
-- [v13.0.0 (2026-06-12): Update](https://neomjs.com/raw/news/releases/13.0.0.md)
 
 ## Main Pages
 
@@ -39,7 +39,7 @@ To access bundled versions, prefix paths with `/dist/production/`, `/dist/develo
 - [Docs](https://neomjs.com/docs)
 - [Examples](https://neomjs.com/examples)
 - [Home](https://neomjs.com/home)
-- [Services](https://neomjs.com/services)
+- [Connect](https://neomjs.com/services)
 
 ## Demo Apps and Examples
 
@@ -121,6 +121,7 @@ To access bundled versions, prefix paths with `/dist/production/`, `/dist/develo
 - [Neo NumberField](https://neomjs.com/examples/form/field/number/index.html)
 - [Neo PickerField](https://neomjs.com/examples/form/field/picker/index.html)
 - [Neo RadioField](https://neomjs.com/examples/form/field/radio/index.html)
+- [Neo SelectField](https://neomjs.com/examples/form/field/select/index.html)
 - [Neo SwitchField](https://neomjs.com/examples/form/field/switch/index.html)
 - [Neo TextField](https://neomjs.com/examples/form/field/text/index.html)
 - [Neo TextAreaField](https://neomjs.com/examples/form/field/textarea/index.html)
@@ -131,6 +132,7 @@ To access bundled versions, prefix paths with `/dist/production/`, `/dist/develo
 - [Neo Functional Button](https://neomjs.com/examples/functional/button/base/index.html)
 - [Neo Functional Component](https://neomjs.com/examples/functional/defineComponent/index.html)
 - [Functional Component Hosting Component](https://neomjs.com/examples/functional/hostComponent/index.html)
+- [Deeply Nested Functional and Classic Components](https://neomjs.com/examples/functional/nestedComponents/index.html)
 - [Neo Functional Nested Templates](https://neomjs.com/examples/functional/nestedTemplateComponent/index.html)
 - [Neo Functional Template Component](https://neomjs.com/examples/functional/templateComponent/index.html)
 - [Neo Grid: Animated Row Sorting](https://neomjs.com/examples/grid/animatedRowSorting/index.html)
@@ -139,6 +141,7 @@ To access bundled versions, prefix paths with `/dist/production/`, `/dist/develo
 - [Neo GridContainer](https://neomjs.com/examples/grid/container/index.html)
 - [Neo GridContainer - Content-Sized Rows](https://neomjs.com/examples/grid/contentSizedRows/index.html)
 - [Neo CovidGrid](https://neomjs.com/examples/grid/covid/index.html)
+- [Neo Grid Header Groups](https://neomjs.com/examples/grid/headerGroups/index.html)
 - [Neo GridContainer - neomjs/neo Issues](https://neomjs.com/examples/grid/issues/index.html)
 - [Neo Locked-Column Grid Fixture](https://neomjs.com/examples/grid/lockedColumns/index.html)
 - [Neo Grid: Nested Record Fields](https://neomjs.com/examples/grid/nestedRecordFields/index.html)
@@ -206,6 +209,7 @@ The sections below (Release Notes, Guides/Blogs, GitHub Tickets, Pull Requests, 
 
 Here you find the full history of Neo.mjs updates.
 
+- [v13.4.0](https://neomjs.com/raw/news/releases/13.4.0.md)
 - [v13.3.1](https://neomjs.com/raw/news/releases/13.3.1.md)
 - [v13.3.0](https://neomjs.com/raw/news/releases/13.3.0.md)
 - [v13.2.0](https://neomjs.com/raw/news/releases/13.2.0.md)
@@ -380,7 +384,9 @@ Here you find the full history of Neo.mjs updates.
 
 ## Blog
 
-- [Persistent memory for AI coding agents: load an index, pull the archive over MCP (part 1 of 8)](https://neomjs.com/raw/learn/blog/persistent-memory-for-ai-coding-agents.md)
+- [Context compaction recovery for AI coding agents: six checks, not a summary (part 2 of 8)](https://neomjs.com/raw/learn/blog/context-compaction-recovery-for-ai-coding-agents.md)
+- [Why deleting a size did not clear the clock](https://neomjs.com/raw/learn/blog/debugging-ui-state-with-neural-link.md)
+- [Persistent memory for AI coding agents: no prompt stuffing (part 1 of 8)](https://neomjs.com/raw/learn/blog/persistent-memory-for-ai-coding-agents.md)
 - [The main thread is the wrong place for a data grid](https://neomjs.com/raw/learn/blog/a-data-grid-in-a-web-worker.md)
 - [Where an agent institution sits: a map of the agent landscape, with receipts.](https://neomjs.com/raw/learn/blog/where-an-agent-institution-sits.md)
 - [From two configs to a second screen: building a dashboard with Neo.mjs Dock Layouts.](https://neomjs.com/raw/learn/blog/building-a-multi-window-dashboard-with-dock-layouts.md)
@@ -438,7 +444,6 @@ Here you find the full history of Neo.mjs updates.
 - [Fleet Manager Architecture](https://neomjs.com/raw/learn/agentos/FleetManagerArchitecture.md)
 - [Running the Fleet Cockpit](https://neomjs.com/raw/learn/agentos/RunningTheFleetCockpit.md)
 - [Neural Link](https://neomjs.com/raw/learn/agentos/NeuralLink.md)
-- [Neural Link Capability Matrix](https://neomjs.com/raw/learn/agentos/tooling/NeuralLinkCapabilityMatrix.md)
 - [Dock-Zone Model](https://neomjs.com/raw/learn/agentos/DockZoneModel.md)
 - [Core Agent Skills](https://neomjs.com/raw/learn/agentos/CoreSkills.md)
 - [Progressive Disclosure Skills](https://neomjs.com/raw/learn/agentos/ProgressiveDisclosureSkills.md)
@@ -476,6 +481,7 @@ Here you find the full history of Neo.mjs updates.
 - [Core Utilities](https://neomjs.com/raw/learn/guides/coreengine/Utilities.md)
 - [Component and Container Basics](https://neomjs.com/raw/learn/guides/uibuildingblocks/ComponentsAndContainers.md)
 - [Layouts](https://neomjs.com/raw/learn/guides/uibuildingblocks/Layouts.md)
+- [Tab Containers](https://neomjs.com/raw/learn/guides/uibuildingblocks/TabContainers.md)
 - [Dock Layouts](https://neomjs.com/raw/learn/guides/uibuildingblocks/DockLayouts.md)
 - [Dock Layouts: Adopting in Your App](https://neomjs.com/raw/learn/guides/uibuildingblocks/DockLayoutsAdoption.md)
 - [Dock Layouts: State and Persistence](https://neomjs.com/raw/learn/guides/uibuildingblocks/DockLayoutsStateAndPersistence.md)
@@ -498,6 +504,7 @@ Here you find the full history of Neo.mjs updates.
 - [Pooled Grid Animation Contract](https://neomjs.com/raw/learn/guides/datahandling/PooledGridAnimation.md)
 - [Streaming Data & Progressive Rendering](https://neomjs.com/raw/learn/guides/datahandling/Streaming.md)
 - [Tables (Stores)](https://neomjs.com/raw/learn/guides/datahandling/Tables.md)
+- [Using data.Store](https://neomjs.com/raw/learn/guides/datahandling/UsingStores.md)
 - [TreeStore & Hierarchical Data](https://neomjs.com/raw/learn/guides/datahandling/TreeStore.md)
 - [Shared Bindable Data (State Providers)](https://neomjs.com/raw/learn/guides/datahandling/StateProviders.md)
 - [User Input (Forms)](https://neomjs.com/raw/learn/guides/userinteraction/Forms.md)

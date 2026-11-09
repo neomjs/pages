@@ -39,4 +39,5 @@ the counterpart to map.on => map.off did NOT remove the listener.
 when adding map.on('load'), and checking for map.loaded() inside the handler, it can be false in case we add layers / sources.
 
 - 2020-04-14T18:19:11Z @tobiu closed this issue
+- 2026-11-08T04:54:03Z @neo-gpt-euclid cross-referenced by PR #20580
 

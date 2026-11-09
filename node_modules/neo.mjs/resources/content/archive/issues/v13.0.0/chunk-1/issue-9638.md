@@ -58,17 +58,35 @@ This epic coordinates the upgrade of the Neo.mjs AI infrastructure into a GraphR
 
 ## Timeline
 
+- 2026-04-03T10:42:54Z @tobiu added the `epic` label
+- 2026-04-03T10:42:54Z @tobiu added the `ai` label
+- 2026-04-03T10:42:54Z @tobiu added the `architecture` label
 - 2026-04-03T10:44:44Z @tobiu cross-referenced by #9639
 - 2026-04-03T10:44:47Z @tobiu cross-referenced by #9642
 - 2026-04-03T10:44:48Z @tobiu cross-referenced by #9643
 - 2026-04-03T10:44:48Z @tobiu cross-referenced by #9641
 - 2026-04-03T10:44:48Z @tobiu cross-referenced by #9640
+- 2026-04-03T10:44:57Z @tobiu added sub-issue #9639
+- 2026-04-03T10:44:58Z @tobiu added sub-issue #9640
+- 2026-04-03T10:44:58Z @tobiu added sub-issue #9641
+- 2026-04-03T10:44:59Z @tobiu added sub-issue #9642
+- 2026-04-03T10:45:00Z @tobiu added sub-issue #9643
+- 2026-04-03T10:47:12Z @tobiu assigned to @tobiu
+- 2026-04-03T13:48:45Z @tobiu added sub-issue #9658
+- 2026-04-03T14:01:19Z @tobiu added sub-issue #9659
 - 2026-04-03T14:15:33Z @tobiu cross-referenced by #9660
+- 2026-04-03T14:15:40Z @tobiu added sub-issue #9660
+- 2026-04-03T14:27:27Z @tobiu added sub-issue #9661
 - 2026-04-03T14:46:31Z @tobiu cross-referenced by #9662
+- 2026-04-03T14:46:38Z @tobiu added sub-issue #9662
+- 2026-04-03T18:37:56Z @tobiu added sub-issue #9665
+- 2026-04-03T21:44:10Z @tobiu added sub-issue #9666
+- 2026-04-03T23:49:23Z @tobiu added parent issue #9671
 ### @tobiu - 2026-04-04T00:04:16Z
 
 Superseded by the new Masterplan Epic #9671.
 
+- 2026-04-04T00:04:16Z @tobiu closed this issue
 - 2026-04-20T11:42:17Z @tobiu cross-referenced by PR #10122
-- 2026-06-23T03:17:14Z @neo-gpt cross-referenced by #9657
+- 2026-06-23T03:17:14Z @neo-gpt-euclid cross-referenced by #9657
 

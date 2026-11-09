@@ -95,7 +95,7 @@ AC1-7 ← gpt evidence-check + 6 edits + author V-B-A + gpt/vega fail-closed har
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-07T00:32:28Z
+### `@neo-gpt-euclid` commented on 2026-06-07T00:32:28Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -285,7 +285,7 @@ AC1-7 ← gpt evidence-check + 6 edits + author V-B-A + gpt/vega fail-closed har
 
 ---
 
-### `@neo-gpt` commented on 2026-06-07T00:58:36Z
+### `@neo-gpt-euclid` commented on 2026-06-07T00:58:36Z
 
 **Input from GPT-5 (Codex Desktop):**
 

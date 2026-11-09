@@ -160,6 +160,12 @@ Enable seamless drag-and-drop operations between different browser windows (e.g.
 > **Result:**
 > This architecture allows standard containers to remain simple while giving Dashboards the specialized ability to handle window detachment and cross-application coordination. The `DragCoordinator` now interacts exclusively with the `DashboardSortZone`.
 
+- 2025-12-27T16:52:19Z @tobiu referenced in commit `0cd5e77` - "#8156 wip"
+- 2025-12-27T17:13:50Z @tobiu referenced in commit `ae2aa68` - "#8156 wip"
+- 2025-12-27T17:22:57Z @tobiu referenced in commit `3ab07c0` - "#8156 testing logs"
+- 2025-12-27T19:11:24Z @tobiu referenced in commit `340cc5f` - "#8156 wip"
+- 2025-12-27T20:01:01Z @tobiu referenced in commit `4d1cc24` - "#8156 wip"
+- 2025-12-27T20:49:11Z @tobiu referenced in commit `da447c9` - "#8156 wip"
 ### @tobiu - 2025-12-27T20:50:25Z
 
 **Input from Gemini 2.5:**
@@ -195,11 +201,25 @@ Enable seamless drag-and-drop operations between different browser windows (e.g.
 > *   Updates position smoothly during the drag.
 > *   Triggers sorting re-orders at the expected visual thresholds.
 
+- 2025-12-27T22:45:56Z @tobiu referenced in commit `26c1f84` - "#8156 cleanup"
+- 2025-12-27T22:46:54Z @tobiu referenced in commit `d0c916d` - "#8156 work in progress"
+- 2025-12-27T22:46:54Z @tobiu referenced in commit `7de06ab` - "#8156 restored onDragStart() to the working version"
+- 2025-12-27T22:46:55Z @tobiu referenced in commit `5053551` - "#8156 Neo.manager.DragCoordinator: cleanup"
+- 2025-12-27T22:46:55Z @tobiu referenced in commit `6c4e9e9` - "#8156 wip"
+- 2025-12-27T22:46:55Z @tobiu referenced in commit `001b84f` - "#8156 wip"
+- 2025-12-27T22:46:55Z @tobiu referenced in commit `8b907fa` - "#8156 wip"
+- 2025-12-27T22:46:55Z @tobiu referenced in commit `8816181` - "#8156 wip"
+- 2025-12-27T22:46:55Z @tobiu referenced in commit `546e620` - "#8156 testing logs"
+- 2025-12-27T22:46:55Z @tobiu referenced in commit `a174715` - "#8156 wip"
+- 2025-12-27T22:46:55Z @tobiu referenced in commit `000d4cf` - "#8156 wip"
+- 2025-12-27T22:46:56Z @tobiu referenced in commit `41d1e59` - "#8156 wip"
+- 2025-12-27T22:46:56Z @tobiu referenced in commit `8f52386` - "#8156 cleanup"
 ### @tobiu - 2025-12-27T22:53:35Z
 
 closing the ticket, since we reached the poc state.
 
-- 2026-06-23T03:46:30Z @neo-gpt cross-referenced by #8166
+- 2025-12-27T22:53:35Z @tobiu closed this issue
+- 2026-06-23T03:46:30Z @neo-gpt-euclid cross-referenced by #8166
 - 2026-07-05T12:10:35Z @neo-opus-grace cross-referenced by #13158
 - 2026-09-01T13:57:10Z @neo-opus-vega cross-referenced by #18025
 - 2026-09-01T16:30:17Z @neo-opus-vega cross-referenced by PR #18026

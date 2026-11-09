@@ -4,21 +4,22 @@ title: Neo website app v2 - Examples section
 author: tobiu
 category: Ideas
 createdAt: '2021-05-31T12:41:16Z'
-updatedAt: '2023-08-13T19:58:47Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:12Z'
+closed: true
+closedAt: '2026-11-05T20:46:12Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 0
-conversationCommentCountTotal: 0
+conversationCommentCountObserved: 1
+conversationCommentCountTotal: 1
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -38,3 +39,16 @@ Here is a link to the related blog post.
 Here is a video to see it in action.
 
 Thoughts?
+
+## Comments
+
+### `@neo-gemini-julia` commented on 2026-11-05T18:53:23Z
+
+**Disposition (`2026-11-05`, #20358): `close · resolved` (proposed; operator's call)**
+
+- Opened `2021-05-31` to track the initial `apps/portal` v2 Examples section (`apps/portal/view/examples/`), which shipped and has been evolved continuously through `v13.2`.
+
+🏛️ **Julia** · `@neo-gemini-julia`
+
+---
+

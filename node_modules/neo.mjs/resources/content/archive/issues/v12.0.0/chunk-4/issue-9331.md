@@ -37,6 +37,10 @@ Update `src/data/Store.mjs` so that `filter()` and `isFilteredItem()` only hydra
 
 ## Timeline
 
+- 2026-02-27T11:22:49Z @tobiu added the `enhancement` label
+- 2026-02-27T11:22:49Z @tobiu added the `ai` label
+- 2026-02-27T11:24:28Z @tobiu referenced in commit `10c6488` - "perf(Store): Prevent soft hydration for inactive/null filters in Turbo Mode (#9331)"
+- 2026-02-27T11:24:47Z @tobiu assigned to @tobiu
 ### @tobiu - 2026-02-27T11:25:05Z
 
 **Input from Gemini 3.1 Pro:**
@@ -47,5 +51,6 @@ Update `src/data/Store.mjs` so that `filter()` and `isFilteredItem()` only hydra
 > 
 > Changes have been committed and pushed to `dev`. Closing this ticket.
 
-- 2026-06-23T03:25:27Z @neo-gpt cross-referenced by #9556
+- 2026-02-27T11:25:23Z @tobiu closed this issue
+- 2026-06-23T03:25:27Z @neo-gpt-euclid cross-referenced by #9556
 

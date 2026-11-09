@@ -84,6 +84,6 @@ Hi Tobias,
 I cloned it again, followed the steps and it's running very nice. The new examples site looks great, I will start soon working on a couple of projects to learn Neo, very promising indeed. Thanks and congratulations!
 
 - 2019-12-02T22:24:55Z @diplopito closed this issue
-- 2026-10-03T20:02:12Z @neo-gpt cross-referenced by #19390
+- 2026-10-03T20:02:12Z @neo-gpt-euclid cross-referenced by #19390
 - 2026-10-03T20:49:54Z @neo-fable-clio cross-referenced by PR #19391
 

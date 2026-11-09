@@ -6,7 +6,7 @@ labels:
   - enhancement
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-04-12T21:49:10Z'
 updatedAt: '2026-06-07T18:45:56Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9945'
@@ -44,8 +44,9 @@ We recently resolved catastrophic graph bloat (`19,500+` duplicated `CONTAINS` e
 - 2026-04-12T21:49:15Z @tobiu added the `ai` label
 - 2026-06-01T22:22:56Z @neo-opus-ada cross-referenced by #12329
 - 2026-06-07T01:18:45Z @neo-opus-grace cross-referenced by #12671
-- 2026-06-07T16:35:49Z @neo-gpt cross-referenced by PR #12691
-### @neo-gpt - 2026-06-07T16:47:07Z
+- 2026-06-07T16:29:03Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-07T16:35:49Z @neo-gpt-euclid cross-referenced by PR #12691
+### @neo-gpt-euclid - 2026-06-07T16:47:07Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -66,5 +67,7 @@ We recently resolved catastrophic graph bloat (`19,500+` duplicated `CONTAINS` e
 > 
 > Pickup protocol: do not start a second implementation for this ticket. First verify live PR state. If #12691 is still open, complete the review/merge-gate path. If it has merged, verify #9945 closure and treat this issue as complete.
 
-- 2026-06-14T22:48:43Z @neo-gpt cross-referenced by PR #13270
+- 2026-06-07T18:45:56Z @tobiu referenced in commit `6b589a9` - "test(memory-core): validate system anchor apoptosis guard (#9945) (#12691)"
+- 2026-06-07T18:45:56Z @tobiu closed this issue
+- 2026-06-14T22:48:43Z @neo-gpt-euclid cross-referenced by PR #13270
 
