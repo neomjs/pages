@@ -74,9 +74,10 @@ jobs:
             exit 0
           fi
 
-          if git diff --cached --name-only | grep --invert-match --quiet '^badges/'; then
-            echo "::error::The run changed files outside badges/:"
-            git diff --cached --name-only | grep --invert-match '^badges/'
+          outside=$(git diff --cached --name-only | grep --invert-match '^badges/' || true)
+
+          if [ -n "$outside" ]; then
+            echo "::error::The run changed files outside badges/: $outside"
             exit 1
           fi
 
