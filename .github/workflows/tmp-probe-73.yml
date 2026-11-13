@@ -1,0 +1,91 @@
+# TEMPORARY (neomjs/pages#73), removed in the next commit. The badge workflow runs on a schedule, so it cannot be tried
+# off the default branch. This probe tries what it depends on: the two sparse checkouts, the generator on a runner
+# with this repository's token, and the Pages build request.
+name: tmp probe (pages 73)
+
+on:
+  push:
+    branches: ['mnemosyne/73-contributor-badges']
+    paths: ['.github/workflows/tmp-probe-73.yml']
+
+permissions:
+  contents: read
+  pages: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out badges/
+        uses: actions/checkout@v7
+        with:
+          path: site
+          sparse-checkout: badges/
+          sparse-checkout-cone-mode: false
+
+      - name: Check out the standing module
+        uses: actions/checkout@v7
+        with:
+          repository: neomjs/neo
+          ref: dev
+          path: neo
+          persist-credentials: false
+          sparse-checkout: |
+            buildScripts/util/claimResponse.mjs
+            buildScripts/util/contributorStanding.mjs
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: What the checkouts hold
+        run: |
+          echo "PROBE site: $(ls -A site | tr '\n' ' ')"
+          echo "PROBE site/badges: $(ls site/badges | tr '\n' ' ')"
+          echo "PROBE neo: $(find neo -type f -not -path '*/.git/*' | tr '\n' ' ')"
+          echo "PROBE node: $(node --version)"
+
+      - name: The generator on a runner, as a rehearsal that writes nothing under badges/
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          # The module of neomjs/neo#20893 is not on dev yet, so the probe supplies its listed exports.
+          if [ ! -f neo/buildScripts/util/contributorStanding.mjs ]; then
+          cat > neo/buildScripts/util/contributorStanding.mjs <<'EOF'
+          export const RUNGS = Object.freeze([
+              {slug: 'contributor', merges: 1,   name: 'Contributor'},
+              {slug: 'returning',   merges: 5,   name: 'Returning Contributor'},
+              {slug: 'bronze',      merges: 10,  name: 'Bronze Contributor'},
+              {slug: 'silver',      merges: 25,  name: 'Silver Contributor'},
+              {slug: 'gold',        merges: 50,  name: 'Gold Contributor'},
+              {slug: 'diamond',     merges: 100, name: 'Diamond Contributor'},
+              {slug: 'core',        merges: 250, name: 'Core Contributor'}
+          ]);
+          export const BADGES_SINCE = null;
+          export function standing(count) {
+              let rung = null, next = null;
+              for (const candidate of RUNGS) {
+                  if (count >= candidate.merges) { rung = candidate } else { next = candidate; break }
+              }
+              return {rung, next, remaining: next ? next.merges - count : 0}
+          }
+          export const badgeFolder = (login, id) => `${String(login).toLowerCase()}-${id}`;
+          export const badgeLine = (login, id, form = 'card') =>
+              `<a href="https://neomjs.com/badges/${badgeFolder(login, id)}/"><img src="https://neomjs.com/badges/${badgeFolder(login, id)}/${form}.svg" alt="Neo.mjs contributor"></a>`;
+          EOF
+          fi
+
+          echo "PROBE launch time unset: $(node site/badges/generate.mjs --neo neo)"
+          started=$(date +%s)
+          echo "PROBE rehearsal: $(node site/badges/generate.mjs --neo neo --dry --since 2026-11-12T00:00:00Z --out "$RUNNER_TEMP/out" | head -1)"
+          echo "PROBE rehearsal took $(( $(date +%s) - started )) s, wrote $(find "$RUNNER_TEMP/out" -mindepth 1 -maxdepth 1 -type d | wc -l) folders"
+          echo "PROBE badges/ untouched: $(git -C site status --porcelain | wc -l) changed paths"
+
+      - name: The Pages build, read and requested
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/pages/builds/latest" --jq '"PROBE latest build: \(.status) \(.commit) by \(.pusher.login)"' || echo "PROBE latest build: REFUSED"
+          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --jq '"PROBE build request: \(.status)"' || echo "PROBE build request: REFUSED"
