@@ -1,197 +1,317 @@
 /**
- * @summary Generates the three badge forms of the Neo.mjs contributor ladder, seven rungs each.
+ * @summary Writes one folder per outside contributor, badges/<login>-<id>/, from GitHub's public merge record.
  *
- * It lives in the folder it writes: ./<form>/<rung>.svg, served as https://neomjs.com/badges/<form>/<rung>.svg.
- * A published file name is never renamed, removed or repurposed; refining the art rewrites the same files.
- * `node generate.mjs --sheet` also writes ./sheet.html, which shows every badge the way a profile README does:
- * as an image on GitHub's light and dark backgrounds. The sheet is a review aid and is not committed.
+ * A folder holds the account's record (index.html) and its badge in three forms. The address names the account by
+ * GitHub's numeric id, so a badge cannot be shown at a rung its account does not hold, and a freed login cannot
+ * inherit one. The rungs, the outside test, the folder name, the pasted line and the launch time (BADGES_SINCE)
+ * come from neomjs/neo's buildScripts/util, never from a copy here.
+ *
+ *     node badges/generate.mjs --neo <engine checkout> [--full]
+ *         The scheduled run. It reads GitHub (GITHUB_TOKEN raises the limits) and rewrites every folder under
+ *         badges/ and the ledger. --full recounts every account, not only those with a new merge.
+ *
+ *     node badges/generate.mjs --neo <engine checkout> --dry --fixture badges/fixture.json [--out <dir>] [--sheet]
+ *         Renders a fixture without the network into <dir>, a temporary folder by default. badges/ is not touched.
+ *
+ *     node badges/generate.mjs --neo <engine checkout> --dry --since <ISO time>
+ *         A rehearsal against GitHub: what a run would write if BADGES_SINCE were that time.
  */
-import fs                from 'node:fs';
-import path              from 'node:path';
-import {fileURLToPath}   from 'node:url';
+import crypto                         from 'node:crypto';
+import fs                             from 'node:fs';
+import os                             from 'node:os';
+import path                           from 'node:path';
+import {fileURLToPath, pathToFileURL} from 'node:url';
+import {FORMS, renderBadge, renderRecord, renderSheet} from './art.mjs';
 
-const here = path.dirname(fileURLToPath(import.meta.url)),
-      out  = here,
-      FONT = `-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif`,
-      // The mark of resources/images/logo/neo_logo_primary.svg, viewBox 0 0 157 157
-      P1   = 'M8.841,127.508L33.676,144.928L33.675,105.744L33.675,94.343L43.023,100.871L112.335,149.272L135.026,135.569L8.841,46.576L8.841,127.508Z',
-      P2   = 'M144.867,30.661L120.032,13.241L120.033,52.425L120.034,63.826L110.686,57.298L41.374,8.897L18.682,22.6L144.867,111.593L144.867,30.661Z';
+const here          = path.dirname(fileURLToPath(import.meta.url)),
+      args          = process.argv.slice(2),
+      flag          = name => args.includes(name),
+      option        = name => args.includes(name) ? args[args.indexOf(name) + 1] : undefined,
+      RECORD        = 'org:neomjs is:public is:pr is:merged',
+      SEARCH_GAP_MS = 2100,     // the search API allows 30 queries a minute
+      OVERLAP_MS    = 3600000,  // search indexes a merge late, so a run re-reads the hour before the newest it knows
+      LOGIN         = /^[a-z\d][a-z\d-]{0,38}$/i,
+      FOLDER        = /^[a-z\d][a-z\d-]{0,38}-\d+$/,
+      stamp         = time => `${new Date(time).toISOString().slice(0, 19)}Z`,
+      warn          = text => console.warn(`${process.env.GITHUB_ACTIONS ? '::warning::' : 'warning: '}${text}`);
 
-fs.mkdirSync(out, {recursive: true});
+/**
+ * @summary GitHub's public record. Searches are spaced so that a run stays under the search limit.
+ * @param {String} [token] Raises the rate limits; the record itself is public
+ * @returns {Object} `{account, mergedSince, mergesOf}`
+ */
+function githubSource(token) {
+    const headers = {
+        Accept                : 'application/vnd.github+json',
+        'User-Agent'          : 'neomjs-contributor-badges',
+        'X-GitHub-Api-Version': '2022-11-28',
+        ...(token && {Authorization: `Bearer ${token}`})
+    };
 
-const TIERS = [
-    {id: 'contributor', merges: 1,   short: 'CONTRIBUTOR', name: 'Contributor',           g: ['#6F8FF5', '#3E63DD', '#2B49B8'], light: '#9DB1FF', ink: '#FFFFFF'},
-    {id: 'returning',   merges: 5,   short: 'RETURNING',   name: 'Returning Contributor', g: ['#9A8CFA', '#6E56CF', '#4F3BA8'], light: '#C4B8FF', ink: '#FFFFFF'},
-    {id: 'bronze',      merges: 10,  short: 'BRONZE',      name: 'Bronze Contributor',    g: ['#E7B286', '#B9783F', '#84502C'], light: '#EDBA91', ink: '#FFFFFF'},
-    {id: 'silver',      merges: 25,  short: 'SILVER',      name: 'Silver Contributor',    g: ['#F4F6F8', '#C5CCD3', '#8E979F'], light: '#DEE4E9', ink: '#1B2330'},
-    {id: 'gold',        merges: 50,  short: 'GOLD',        name: 'Gold Contributor',      g: ['#FFE994', '#F2C230', '#BF8A0C'], light: '#FFDB63', ink: '#3A2A00'},
-    {id: 'diamond',     merges: 100, short: 'DIAMOND',     name: 'Diamond Contributor',   g: ['#F2FDFF', '#93E3FF', '#6A8DF5'], light: '#A9EEFF', ink: '#0B2540'},
-    {id: 'core',        merges: 250, short: 'CORE',        name: 'Core Contributor',      g: ['#2C3760', '#151C36', '#0A0F1F'], light: '#FFDB63', ink: '#FFDB63', core: true}
-];
+    let lastSearch = 0;
 
-const GOLD = ['#FFE994', '#F2C230', '#BF8A0C'];
+    async function get(url) {
+        const response = await fetch(`https://api.github.com${url}`, {headers});
 
-const mark  = (x, y, size, color, weight = 12) =>
-          `<g transform="translate(${x} ${y}) scale(${(size / 157).toFixed(4)})" fill="none" stroke="${color}" stroke-width="${weight}"><path d="${P1}"/><path d="${P2}"/></g>`,
-      stops = g => `<stop offset="0" stop-color="${g[0]}"/><stop offset=".55" stop-color="${g[1]}"/><stop offset="1" stop-color="${g[2]}"/>`,
-      capW  = (text, size, spacing) => Math.round(text.length * size * 0.66 + (text.length - 1) * spacing),
-      head  = (w, h, t) => `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Neo.mjs ${t.name}"><title>Neo.mjs ${t.name}</title>`;
+        if (response.status === 404) {
+            return null
+        }
 
-/** A: the plate. 28 px high, sits in a row of ordinary README badges. */
-function plate(t) {
-    const h      = 28,
-          nameW  = capW('NEO.MJS', 11, 1.2),
-          leftW  = 10 + 16 + 7 + nameW + 10,
-          tierW  = capW(t.short, 11, 1.2),
-          rightW = tierW + 22,
-          w      = leftW + rightW;
+        if (!response.ok) {
+            throw new Error(`GitHub answered ${response.status} to ${url}`)
+        }
 
-    return `${head(w, h, t)}
-<defs>
-<linearGradient id="d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#202C4E"/><stop offset="1" stop-color="#0E1528"/></linearGradient>
-<linearGradient id="t" x1="0" y1="0" x2="0" y2="1">${stops(t.g)}</linearGradient>
-<clipPath id="r"><rect width="${w}" height="${h}" rx="6"/></clipPath>
-</defs>
-<g clip-path="url(#r)">
-<rect width="${leftW}" height="${h}" fill="url(#d)"/>
-<rect x="${leftW}" width="${rightW}" height="${h}" fill="url(#t)"/>
-<rect width="${w}" height="1" fill="#FFFFFF" fill-opacity=".16"/>
-</g>
-<rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" rx="5.5" fill="none" stroke="${t.core ? '#F2C230' : '#000000'}" stroke-opacity="${t.core ? '.95' : '.2'}"/>
-${mark(10, 6, 16, '#FFFFFF', 14)}
-<g font-family="${FONT}" font-size="11" font-weight="700" letter-spacing="1.2">
-<text x="33" y="18" fill="#FFFFFF" textLength="${nameW}">NEO.MJS</text>
-<text x="${leftW + 11}" y="18" fill="${t.ink}" textLength="${tierW}">${t.short}</text>
-</g>
-</svg>`
+        return response.json()
+    }
+
+    async function search(query, extra = {}) {
+        const wait = lastSearch + SEARCH_GAP_MS - Date.now();
+
+        if (wait > 0) {
+            await new Promise(resolve => setTimeout(resolve, wait))
+        }
+
+        lastSearch = Date.now();
+
+        const result = await get(`/search/issues?${new URLSearchParams({q: query, per_page: '100', ...extra})}`);
+
+        if (!result || result.incomplete_results) {
+            throw new Error(`GitHub's search gave no complete answer to "${query}"`)
+        }
+
+        return result
+    }
+
+    // A search answers at most 1,000 results, so a window that holds more is read in two halves.
+    async function mergedSince(from, to) {
+        const query = `${RECORD} merged:${from}..${to}`,
+              first = await search(query);
+
+        if (first.total_count > 1000) {
+            const middle = stamp((Date.parse(from) + Date.parse(to)) / 2);
+
+            if (middle === from || middle === to) {
+                throw new Error(`More than 1,000 merges between ${from} and ${to}`)
+            }
+
+            return [...await mergedSince(from, middle), ...await mergedSince(middle, to)]
+        }
+
+        const items = first.items;
+
+        for (let page = 2; items.length < first.total_count; page++) {
+            items.push(...(await search(query, {page: String(page)})).items)
+        }
+
+        return items
+    }
+
+    return {
+        account    : id => get(`/user/${id}`),
+        mergedSince,
+        mergesOf   : async login => {
+            const {total_count: total, items} = await search(`${RECORD} author:${login}`, {order: 'asc', sort: 'created'});
+
+            return {items, total}
+        }
+    }
 }
 
-/** B: the medal. Reads like an achievement; the rung stands on a plate under the mark. */
-function medal(t) {
-    const w     = 96,
-          h     = 90,
-          cx    = 48,
-          cy    = 38,
-          r     = 33,
-          ring  = t.core ? GOLD : t.g,
-          size  = t.short.length > 9 ? 7.6 : 8.4,
-          textW = capW(t.short, size, 0.9),
-          pillW = textW + 18,
-          pillX = cx - pillW / 2;
+/**
+ * @summary The same three reads from a fixture file, for a run without the network.
+ * @param {Object[]} accounts `{id, login, type, association, merges: {count, first, last}}`
+ * @returns {Object} `{account, mergedSince, mergesOf}`
+ */
+function fixtureSource(accounts) {
+    const item = (account, mergedAt) => ({
+        author_association: account.association ?? 'CONTRIBUTOR',
+        pull_request      : {merged_at: mergedAt},
+        user              : {id: account.id, login: account.login, type: account.type ?? 'User'}
+    });
 
-    return `${head(w, h, t)}
-<defs>
-<linearGradient id="t" x1="0" y1="0" x2="1" y2="1">${stops(ring)}</linearGradient>
-<linearGradient id="p" x1="0" y1="0" x2="0" y2="1">${stops(t.g)}</linearGradient>
-<radialGradient id="c" cx=".5" cy=".3" r=".85"><stop offset="0" stop-color="#27376A"/><stop offset="1" stop-color="#0A0F1F"/></radialGradient>
-</defs>
-<circle cx="${cx}" cy="${cy}" r="${r + 3}" fill="url(#t)"/>
-<circle cx="${cx}" cy="${cy}" r="${r + 2.5}" fill="none" stroke="#000000" stroke-opacity=".18"/>
-<circle cx="${cx}" cy="${cy}" r="${r - 2}" fill="url(#c)"/>
-<circle cx="${cx}" cy="${cy}" r="${r - 2.5}" fill="none" stroke="#FFFFFF" stroke-opacity=".14"/>
-${mark(cx - 17, cy - 19, 34, t.core ? '#FFDB63' : '#FFFFFF', 12)}
-<rect x="${pillX}" y="${h - 24}" width="${pillW}" height="19" rx="9.5" fill="url(#p)" stroke="${t.core ? '#F2C230' : '#0A0F1F'}" stroke-width="${t.core ? 1.5 : 2.5}"/>
-<text x="${cx}" y="${h - 11}" text-anchor="middle" font-family="${FONT}" font-size="${size}" font-weight="800" letter-spacing=".9" fill="${t.ink}" textLength="${textW}">${t.short}</text>
-</svg>`
+    return {
+        account    : async id => accounts.find(account => account.id === id) ?? null,
+        mergedSince: async (from, to) => accounts
+            .filter(account => account.merges.last >= from && account.merges.last <= to)
+            .map(account => item(account, account.merges.last)),
+        mergesOf   : async login => {
+            const account = accounts.find(candidate => candidate.login.toLowerCase() === login.toLowerCase());
+
+            return account
+                ? {items: [item(account, account.merges.first), item(account, account.merges.last)], total: account.merges.count}
+                : {items: [], total: 0}
+        }
+    }
 }
 
-/** C: the card. Says the project's name and the rung in words, and shows the ladder as seven pips. */
-function card(t, index) {
-    const w    = 244,
-          h    = 60,
-          dark = ['silver', 'gold', 'diamond'].includes(t.id),
-          pips = TIERS.map((tier, k) =>
-              `<circle cx="${w - 17 - (6 - k) * 9}" cy="19" r="3" fill="${k <= index ? t.light : '#2B3659'}"/>`).join('');
+const tidy = ({id, logins = [], count, firstMerge, team}) => ({id, logins, count, firstMerge, ...(team && {team: true})}),
+      seal = ({cursor, accounts}) => crypto.createHash('sha256').update(JSON.stringify({cursor, accounts})).digest('hex');
 
-    return `${head(w, h, t)}
-<defs>
-<linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#18233F"/><stop offset="1" stop-color="#0A0F1F"/></linearGradient>
-<linearGradient id="t" x1="0" y1="0" x2="1" y2="1">${stops(t.g)}</linearGradient>
-<radialGradient id="g" cx=".12" cy=".5" r=".6"><stop offset="0" stop-color="${t.light}" stop-opacity=".22"/><stop offset="1" stop-color="${t.light}" stop-opacity="0"/></radialGradient>
-<clipPath id="r"><rect width="${w}" height="${h}" rx="12"/></clipPath>
-</defs>
-<g clip-path="url(#r)">
-<rect width="${w}" height="${h}" fill="url(#b)"/>
-<rect width="${w}" height="${h}" fill="url(#g)"/>
-</g>
-<rect x=".75" y=".75" width="${w - 1.5}" height="${h - 1.5}" rx="11.25" fill="none" stroke="${t.light}" stroke-opacity=".5" stroke-width="1.5"/>
-<rect x="10" y="10" width="40" height="40" rx="10" fill="url(#t)"/>
-<rect x="10.5" y="10.5" width="39" height="39" rx="9.5" fill="none" stroke="${t.core ? '#F2C230' : '#FFFFFF'}" stroke-opacity="${t.core ? '.95' : '.3'}"/>
-${mark(18, 18, 24, t.core ? '#FFDB63' : dark ? '#16203A' : '#FFFFFF', 13)}
-<g font-family="${FONT}">
-<text x="62" y="27" font-size="15" font-weight="700" fill="#FFFFFF">Neo.mjs</text>
-<text x="62" y="45" font-size="12" font-weight="600" fill="${t.light}">${t.name}</text>
-</g>
-${pips}
-</svg>`
+/**
+ * @summary Brings a ledger into its written shape: accounts by id, fields in one order.
+ * @param {Object} ledger `{cursor, accounts}`
+ * @returns {Object}
+ */
+function shape({cursor = null, accounts = []}) {
+    return {cursor, accounts: [...accounts].map(tidy).sort((a, b) => a.id - b.id)}
 }
 
-const options = [
-    {key: 'card',  title: 'Card',  build: card,  note: '244 × 60 px. It writes the project\'s name and the rung in words, and the seven pips show how far the ladder goes. The merge comment hands this one over.'},
-    {key: 'plate', title: 'Plate', build: plate, note: '28 px high. It sits in a row of ordinary README badges and reads as label and value: the project, then the rung.'},
-    {key: 'medal', title: 'Medal', build: medal, note: '96 × 90 px. It reads like an achievement, the form GitHub\'s own profile badges use. The project name is not written on it.'}
-];
+async function main() {
+    const dry         = flag('--dry'),
+          fixtureFile = option('--fixture'),
+          neo         = path.resolve(option('--neo') ?? path.join(here, '../../neo')),
+          util        = file => import(pathToFileURL(path.join(neo, 'buildScripts/util', file)).href);
 
-options.forEach(option => {
-    fs.mkdirSync(path.join(out, option.key), {recursive: true});
-    TIERS.forEach((t, index) => fs.writeFileSync(path.join(out, option.key, `${t.id}.svg`), option.build(t, index)))
+    if ((fixtureFile || option('--since')) && !dry) {
+        throw new Error('--fixture and --since write nothing under badges/: add --dry.')
+    }
+
+    const [{isOutsideHuman}, {BADGES_SINCE, RUNGS, badgeFolder, badgeLine, standing}] =
+              await Promise.all([util('claimResponse.mjs'), util('contributorStanding.mjs')]).catch(error => {
+                  throw new Error(`The standing module of neomjs/neo did not load from ${neo}: ${error.message}`)
+              }),
+          fixture = fixtureFile && JSON.parse(fs.readFileSync(fixtureFile, 'utf8')),
+          since   = option('--since') ?? fixture?.badgesSince ?? BADGES_SINCE;
+
+    if (!since) {
+        console.log('BADGES_SINCE is unset: no folder is written and none is removed.');
+        return
+    }
+
+    const stored = fixture ? fixture.ledger : JSON.parse(fs.readFileSync(path.join(here, 'ledger.json'), 'utf8')),
+          ledger = shape(stored),
+          // The run seals the ledger it writes. A ledger whose seal does not match was edited by hand, and nothing
+          // in it is carried over unchecked: not a count, not the cursor, not an account that no longer answers.
+          sealed = Boolean(fixture) || stored.digest === seal(ledger),
+          optout = new Set(fixture ? fixture.optout : JSON.parse(fs.readFileSync(path.join(here, 'optout.json'), 'utf8'))),
+          source = fixture ? fixtureSource(fixture.accounts) : githubSource(process.env.GITHUB_TOKEN),
+          now    = stamp(fixture?.now ?? Date.now()),
+          byId   = new Map(ledger.accounts.map(account => [account.id, account])),
+          due    = new Set();
+
+    if (!sealed) {
+        warn('badges/ledger.json was changed by hand: every account is counted again from GitHub.');
+        ledger.cursor = null
+    }
+
+    const from = stamp(Math.max(Date.parse(since), ledger.cursor ? Date.parse(ledger.cursor) - OVERLAP_MS : 0));
+
+    // 1. Who merged since the last run. An account enters the ledger only here, so only after the launch.
+    for (const merge of await source.mergedSince(from, now)) {
+        const {id} = merge.user;
+
+        if (isOutsideHuman(merge) && !optout.has(id)) {
+            byId.has(id) || byId.set(id, tidy({id}));
+            due.add(id);
+
+            if (!ledger.cursor || merge.pull_request.merged_at > ledger.cursor) {
+                ledger.cursor = merge.pull_request.merged_at
+            }
+        }
+    }
+
+    for (const id of optout) {
+        byId.delete(id)
+    }
+
+    if (!sealed) {
+        byId.forEach(account => due.add(account.id))
+    } else if (flag('--full')) {
+        // An account that joined the team keeps its last outside standing and is not counted again
+        byId.forEach(account => account.team || due.add(account.id))
+    }
+
+    // 2. One search per account that is due
+    for (const id of due) {
+        const account = byId.get(id),
+              user    = await source.account(id);
+
+        if (!user || !LOGIN.test(user.login)) {
+            warn(`Account ${id} ${user ? `has a login this generator does not write (${JSON.stringify(user.login)})` : 'no longer answers'}: ${sealed ? 'left as it was' : 'dropped'}.`);
+            sealed || byId.delete(id);
+            continue
+        }
+
+        const {items, total} = await source.mergesOf(user.login),
+              first          = items.map(merge => merge.pull_request.merged_at).sort()[0],
+              known          = sealed ? account : {};
+
+        account.logins = [...account.logins.filter(login => login.toLowerCase() !== user.login.toLowerCase()), user.login];
+
+        if (items.length > 0 && !items.some(isOutsideHuman)) {
+            account.team = true;
+            continue
+        }
+
+        if (total < (known.count ?? 0)) {
+            // Search sometimes answers low for a while; a count that is right never goes down by itself
+            warn(`${user.login} has ${total} merged pull requests on record, fewer than the ${known.count} counted before: the count stays.`)
+        }
+
+        account.count      = Math.max(known.count ?? 0, total);
+        account.firstMerge = [known.firstMerge, first].filter(Boolean).sort()[0];
+        delete account.team
+    }
+
+    // 3. Every folder again, from the ledger alone
+    const folders = new Map();
+
+    for (const account of byId.values()) {
+        const login                   = account.logins.at(-1),
+              {rung, next, remaining} = standing(account.count ?? 0);
+
+        if (!rung || !login || !account.firstMerge) {
+            continue
+        }
+
+        const current = badgeFolder(login, account.id),
+              lines   = Object.fromEntries(FORMS.map(form => [form.key, badgeLine(login, account.id, form.key)])),
+              badges  = FORMS.map(form => [`${form.key}.svg`, renderBadge(form.key, {login, rung, rungs: RUNGS})]);
+
+        for (const name of account.logins) {
+            const folder = badgeFolder(name, account.id);
+
+            if (!FOLDER.test(folder)) {
+                throw new Error(`"${folder}" is no folder name for a badge.`)
+            }
+
+            folders.set(folder, Object.fromEntries([...badges, ['index.html', renderRecord({
+                ...account, folder: current, formerLogin: folder === current ? null : name, lines, login, next, remaining, rung
+            })]]))
+        }
+    }
+
+    const written = shape({accounts: [...byId.values()], cursor: ledger.cursor}),
+          root    = !dry ? here : option('--out') ? path.resolve(option('--out')) : fs.mkdtempSync(path.join(os.tmpdir(), 'neo-badges-'));
+
+    if (dry) {
+        fs.mkdirSync(root, {recursive: true});
+
+        if (fs.readdirSync(root).length > 0) {
+            throw new Error(`${root} is not empty.`)
+        }
+    } else {
+        // A folder nobody would write again goes: a hand-made one, or that of an account that asked to be left out
+        fs.readdirSync(root, {withFileTypes: true})
+            .filter(entry => entry.isDirectory())
+            .forEach(entry => fs.rmSync(path.join(root, entry.name), {force: true, recursive: true}))
+    }
+
+    for (const [folder, files] of folders) {
+        fs.mkdirSync(path.join(root, folder));
+        Object.entries(files).forEach(([name, content]) => fs.writeFileSync(path.join(root, folder, name), content))
+    }
+
+    fs.writeFileSync(path.join(root, 'ledger.json'), `${JSON.stringify({...written, digest: seal(written)}, null, 2)}\n`);
+
+    if (dry && flag('--sheet')) {
+        fs.writeFileSync(path.join(root, 'sheet.html'), renderSheet([...folders.keys()]))
+    }
+
+    console.log(`${folders.size} folders for ${written.accounts.length} accounts in the ledger, ${due.size} recounted, merges read from ${from}${dry ? `\n${root}` : ''}`)
+}
+
+main().catch(error => {
+    console.error(process.env.GITHUB_ACTIONS ? `::error::${error.message}` : error.message);
+    process.exit(1)
 });
-
-const row = (option, theme) => `<div class="panel ${theme}">${TIERS.map(t =>
-    `<figure><img src="${option.key}/${t.id}.svg" alt="Neo.mjs ${t.name}"><figcaption>${t.merges} ${t.merges === 1 ? 'merge' : 'merges'}</figcaption></figure>`).join('')}</div>`;
-
-const line = form => `&lt;a href="https://neomjs.com"&gt;&lt;img src="https://neomjs.com/badges/${form}/bronze.svg" alt="Neo.mjs contributor"&gt;&lt;/a&gt;`;
-
-const html = `<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Neo.mjs contributor badges</title>
-<style>
-:root{--bg:#f4f6f9;--ink:#1c2230;--muted:#5b6475;--line:#d9dee7}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ${FONT}}
-main{max-width:1120px;margin:0 auto;padding:32px 16px 64px}
-h1{font-size:24px;margin:0 0 4px}
-.lede{color:var(--muted);margin:0 0 28px;max-width:72ch}
-section{margin:0 0 36px}
-h2{font-size:17px;margin:0 0 2px}
-.note{color:var(--muted);margin:0 0 12px;font-size:14px;max-width:84ch}
-.panel{border:1px solid var(--line);border-radius:10px;padding:18px 16px;display:flex;flex-wrap:wrap;gap:14px 16px;align-items:flex-end}
-.panel + .panel{margin-top:10px}
-.light{background:#ffffff}
-.dark{background:#0d1117;border-color:#30363d}
-figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
-figcaption{font-size:11px;color:#6b7385}
-.dark figcaption{color:#8b949e}
-pre{margin:0;padding:14px 16px;background:#ffffff;border:1px solid var(--line);border-radius:10px;overflow-x:auto;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace}
-</style>
-</head>
-<body>
-<main>
-<h1>Neo.mjs contributor badges</h1>
-<p class="lede">Three forms, all offered, each at its seven rungs. They are shown as images on GitHub's light and dark backgrounds, which is how a profile README shows them. One file per form and rung, so an address never changes while the art behind it can still be refined.</p>
-${options.map(option => `<section>
-<h2>${option.title}</h2>
-<p class="note">${option.note}</p>
-${row(option, 'light')}
-${row(option, 'dark')}
-</section>`).join('\n')}
-<section>
-<h2>The line a contributor pastes</h2>
-<p class="note">The merge comment hands over the card's line with the rung filled in; the guide shows the other two. Every link goes to the home page.</p>
-<pre>${options.map(option => line(option.key)).join('\n')}</pre>
-</section>
-</main>
-</body>
-</html>
-`;
-
-const sheet = process.argv.includes('--sheet');
-
-if (sheet) {
-    fs.writeFileSync(path.join(here, 'sheet.html'), html)
-}
-
-console.log(`wrote ${options.length * TIERS.length} badges${sheet ? ' and ./sheet.html' : ''}`);

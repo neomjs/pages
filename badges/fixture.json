@@ -1,0 +1,26 @@
+{
+  "now": "2026-12-01T12:00:00Z",
+  "badgesSince": "2026-11-20T00:00:00Z",
+  "optout": [990000004],
+  "ledger": {
+    "cursor": "2026-11-20T09:00:00Z",
+    "accounts": [
+      {"id": 990000002, "logins": ["fixture-before-rename"], "count": 11, "firstMerge": "2026-07-02T10:00:00Z"},
+      {"id": 990000007, "logins": ["fixture-joined-the-team"], "count": 7, "firstMerge": "2026-08-03T10:00:00Z"}
+    ]
+  },
+  "accounts": [
+    {"id": 990000001, "login": "fixture-newcomer", "merges": {"count": 1, "first": "2026-11-21T08:30:00Z", "last": "2026-11-21T08:30:00Z"}},
+    {"id": 990000002, "login": "Fixture-Renamed", "merges": {"count": 12, "first": "2026-07-02T10:00:00Z", "last": "2026-11-22T14:00:00Z"}},
+    {"id": 990000003, "login": "fixture-with-the-longest-handle-allowed", "merges": {"count": 60, "first": "2026-03-09T10:00:00Z", "last": "2026-11-23T10:00:00Z"}},
+    {"id": 990000004, "login": "fixture-left-out", "merges": {"count": 4, "first": "2026-10-01T10:00:00Z", "last": "2026-11-24T10:00:00Z"}},
+    {"id": 990000005, "login": "fixture-bot[bot]", "type": "Bot", "merges": {"count": 90, "first": "2026-01-05T10:00:00Z", "last": "2026-11-25T10:00:00Z"}},
+    {"id": 990000006, "login": "fixture-maintainer", "association": "MEMBER", "merges": {"count": 400, "first": "2025-02-01T10:00:00Z", "last": "2026-11-26T10:00:00Z"}},
+    {"id": 990000007, "login": "fixture-joined-the-team", "association": "MEMBER", "merges": {"count": 30, "first": "2026-08-03T10:00:00Z", "last": "2026-11-27T10:00:00Z"}},
+    {"id": 990000008, "login": "fixture-before-launch", "merges": {"count": 3, "first": "2026-09-01T10:00:00Z", "last": "2026-11-10T10:00:00Z"}},
+    {"id": 990000009, "login": "fixture-core", "merges": {"count": 251, "first": "2025-06-01T10:00:00Z", "last": "2026-11-28T10:00:00Z"}},
+    {"id": 990000010, "login": "fixture-silver", "merges": {"count": 25, "first": "2026-04-11T10:00:00Z", "last": "2026-11-29T10:00:00Z"}},
+    {"id": 990000011, "login": "fixture-diamond", "merges": {"count": 100, "first": "2025-09-12T10:00:00Z", "last": "2026-11-30T10:00:00Z"}},
+    {"id": 990000012, "login": "fixture-five", "merges": {"count": 5, "first": "2026-10-20T10:00:00Z", "last": "2026-11-30T11:00:00Z"}}
+  ]
+}
