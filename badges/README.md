@@ -29,7 +29,7 @@ One folder per outside contributor, served under `https://neomjs.com/badges/`. I
 | `generate.mjs` | the run: who merged since the last run, one search per account that is due, every folder again |
 | `art.mjs` | the three forms and the record page |
 | `ledger.json` | per account the id, the logins it has had, the count and the first merge; `cursor` is the newest outside merge a run has seen |
-| `optout.json` | the account ids that asked to be left out |
+| `optout.json` | the account ids that asked to be left out, as a JSON array of numbers. The merge comment in neomjs/neo reads this file at this path on `main` and offers no badge to a listed account, so the path and the shape change only together with that reader |
 | `fixture.json` | an invented record for a run without the network |
 | `.github/workflows/contributor-badges.yml` | runs the generator twice an hour, commits under `badges/` only, and makes sure the site is built |
 
