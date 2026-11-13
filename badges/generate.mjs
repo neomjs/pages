@@ -156,6 +156,28 @@ function shape({cursor = null, accounts = []}) {
     return {cursor, accounts: [...accounts].map(tidy).sort((a, b) => a.id - b.id)}
 }
 
+/**
+ * @summary Admits the opt-out list: a JSON array of numeric account ids and nothing else. A string such as "4242"
+ * equals no account's id, so a list that held one would skip nobody and its holder would keep a folder.
+ * @param {Function} read Answers the parsed list; a throw counts as unreadable
+ * @returns {Set<Number>}
+ */
+function admitOptout(read) {
+    let list;
+
+    try {
+        list = read()
+    } catch {
+        // refused below, with the same sentence
+    }
+
+    if (!Array.isArray(list) || !list.every(id => Number.isSafeInteger(id) && id > 0)) {
+        throw new Error('badges/optout.json is not a JSON array of numeric account ids such as [4242]: nothing is written.')
+    }
+
+    return new Set(list)
+}
+
 async function main() {
     const dry         = flag('--dry'),
           fixtureFile = option('--fixture'),
@@ -183,7 +205,7 @@ async function main() {
           // The run seals the ledger it writes. A ledger whose seal does not match was edited by hand, and nothing
           // in it is carried over unchecked: not a count, not the cursor, not an account that no longer answers.
           sealed = Boolean(fixture) || stored.digest === seal(ledger),
-          optout = new Set(fixture ? fixture.optout : JSON.parse(fs.readFileSync(path.join(here, 'optout.json'), 'utf8'))),
+          optout = admitOptout(() => fixture ? fixture.optout : JSON.parse(fs.readFileSync(path.join(here, 'optout.json'), 'utf8'))),
           source = fixture ? fixtureSource(fixture.accounts) : githubSource(process.env.GITHUB_TOKEN),
           now    = stamp(fixture?.now ?? Date.now()),
           byId   = new Map(ledger.accounts.map(account => [account.id, account])),
