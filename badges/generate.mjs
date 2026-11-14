@@ -307,14 +307,16 @@ async function main() {
 
         account.logins = [...account.logins.filter(login => login.toLowerCase() !== user.login.toLowerCase()), user.login];
 
-        if (merges.length > 0 && outside.length === 0) {
-            // The account joined the team: it keeps the standing it holds, and without one it is not written
-            if (account.count > 0) {
-                account.team = true
-            } else {
-                byId.delete(id)
-            }
+        if (outside.length === 0 && !(account.count > 0)) {
+            // Nothing from outside and no standing to keep: the account joined the team before a run saw it, or
+            // search lists nothing for it, as for GitHub's placeholder of a deleted account. It is not written
+            byId.delete(id);
+            continue
+        }
 
+        if (merges.length > 0 && outside.length === 0) {
+            // The account joined the team: it keeps the standing it holds
+            account.team = true;
             continue
         }
 
