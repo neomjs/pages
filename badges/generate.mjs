@@ -4,7 +4,8 @@
  * A folder holds the account's record (index.html) and its badge in three forms. The address names the account by
  * GitHub's numeric id, so a badge cannot be shown at a rung its account does not hold, and a freed login cannot
  * inherit one. The rungs, the outside test, the folder name, the pasted line and the launch time (BADGES_SINCE)
- * come from neomjs/neo's buildScripts/util, never from a copy here.
+ * come from neomjs/neo's buildScripts/util, never from a copy here. The team is whoever can write to this
+ * repository: a run's token is no member of the organisation, so it reads a member's pull request as a contributor's.
  *
  *     node badges/generate.mjs --neo <engine checkout> [--full]
  *         The scheduled run. It reads GitHub (GITHUB_TOKEN raises the limits) and rewrites every folder under
@@ -28,6 +29,7 @@ const here          = path.dirname(fileURLToPath(import.meta.url)),
       flag          = name => args.includes(name),
       option        = name => args.includes(name) ? args[args.indexOf(name) + 1] : undefined,
       RECORD        = 'org:neomjs is:public is:pr is:merged',
+      REPOSITORY    = process.env.GITHUB_REPOSITORY || 'neomjs/pages',
       SEARCH_GAP_MS = 2100,     // the search API allows 30 queries a minute
       OVERLAP_MS    = 3600000,  // search indexes a merge late, so a run re-reads the hour before the newest it knows
       FOLDER        = /^[a-z\d][a-z\d-]{0,38}-\d+$/,
@@ -36,8 +38,9 @@ const here          = path.dirname(fileURLToPath(import.meta.url)),
 
 /**
  * @summary GitHub's public record. Searches are spaced so that a run stays under the search limit.
- * @param {String} [token] Raises the rate limits; the record itself is public
- * @returns {Object} `{account, mergedSince, mergesOf}`
+ * @param {String} [token] Raises the rate limits; the record itself is public. `canWrite` needs one that may write to
+ * this repository
+ * @returns {Object} `{account, canWrite, mergedSince, mergesOf}`
  */
 function githubSource(token) {
     const headers = {
@@ -119,6 +122,9 @@ function githubSource(token) {
 
     return {
         account    : id => get(`/user/${id}`),
+        // Who may write to this repository. Anything but an answer ends the run: a team that cannot be told apart
+        // would be written as contributors.
+        canWrite   : async login => ['admin', 'write'].includes((await get(`/repos/${REPOSITORY}/collaborators/${login}/permission`))?.permission),
         mergedSince,
         // Every merge of one account, oldest first: an association belongs to the repository of a pull request, so
         // only the whole list says which merges came from outside. null stands for an account search cannot list:
@@ -143,11 +149,11 @@ function githubSource(token) {
 }
 
 /**
- * @summary The same three reads from a fixture file, for a run without the network.
- * @param {Object[]} accounts `{id, login, type, association, unsearchable, merges: {count, first, last, team}}`:
+ * @summary The same reads from a fixture file, for a run without the network.
+ * @param {Object[]} accounts `{id, login, type, association, unsearchable, writer, merges: {count, first, last, team}}`:
  * `count` merges under the account's own association, the first at `first` and the others at `last`, and `team` more
- * as a collaborator of another repository
- * @returns {Object} `{account, mergedSince, mergesOf}`
+ * as a collaborator of another repository; `writer` marks an account that may write to this repository
+ * @returns {Object} `{account, canWrite, mergedSince, mergesOf}`
  */
 function fixtureSource(accounts) {
     const item = (account, mergedAt, association = account.association ?? 'CONTRIBUTOR') => ({
@@ -158,6 +164,7 @@ function fixtureSource(accounts) {
 
     return {
         account    : async id => accounts.find(account => account.id === id) ?? null,
+        canWrite   : async login => Boolean(accounts.find(candidate => candidate.login.toLowerCase() === login.toLowerCase())?.writer),
         mergedSince: async (from, to) => accounts
             .filter(account => account.merges.last >= from && account.merges.last <= to)
             .map(account => item(account, account.merges.last)),
@@ -290,7 +297,11 @@ async function main() {
         const account = byId.get(id),
               user    = await source.account(id),
               named   = user && user.type !== 'Bot' && folderOf(user.login, id),
-              merges  = named ? await source.mergesOf(user.login) : null;
+              // GitHub answers a pull request's association for whoever asks, and this run is no member of the
+              // organisation: a member's merge reads as a contributor's. So the team is asked for first, and none of
+              // its merges counts as outside
+              team    = Boolean(named) && await source.canWrite(user.login),
+              merges  = !named ? null : team ? [] : await source.mergesOf(user.login);
 
         if (!merges) {
             // An account that holds a standing keeps it; one that was about to enter is not written
@@ -314,7 +325,7 @@ async function main() {
             continue
         }
 
-        if (merges.length > 0 && outside.length === 0) {
+        if (team || (merges.length > 0 && outside.length === 0)) {
             // The account joined the team: it keeps the standing it holds
             account.team = true;
             continue
