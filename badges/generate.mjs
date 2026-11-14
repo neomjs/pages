@@ -30,7 +30,6 @@ const here          = path.dirname(fileURLToPath(import.meta.url)),
       RECORD        = 'org:neomjs is:public is:pr is:merged',
       SEARCH_GAP_MS = 2100,     // the search API allows 30 queries a minute
       OVERLAP_MS    = 3600000,  // search indexes a merge late, so a run re-reads the hour before the newest it knows
-      LOGIN         = /^[a-z\d][a-z\d-]{0,38}$/i,
       FOLDER        = /^[a-z\d][a-z\d-]{0,38}-\d+$/,
       stamp         = time => `${new Date(time).toISOString().slice(0, 19)}Z`,
       warn          = text => console.warn(`${process.env.GITHUB_ACTIONS ? '::warning::' : 'warning: '}${text}`);
@@ -58,7 +57,7 @@ function githubSource(token) {
         }
 
         if (!response.ok) {
-            throw new Error(`GitHub answered ${response.status} to ${url}`)
+            throw Object.assign(new Error(`GitHub answered ${response.status} to ${url}`), {status: response.status})
         }
 
         return response.json()
@@ -82,6 +81,24 @@ function githubSource(token) {
         return result
     }
 
+    // The pages after the first. A page without results ends the run: the count would be short, and nothing is
+    // written from a short count.
+    async function rest(query, first, extra = {}) {
+        const items = first.items;
+
+        for (let page = 2; items.length < first.total_count; page++) {
+            const more = (await search(query, {...extra, page: String(page)})).items;
+
+            if (more.length === 0) {
+                throw new Error(`GitHub's search listed ${items.length} of ${first.total_count} results for "${query}"`)
+            }
+
+            items.push(...more)
+        }
+
+        return items
+    }
+
     // A search answers at most 1,000 results, so a window that holds more is read in two halves.
     async function mergedSince(from, to) {
         const query = `${RECORD} merged:${from}..${to}`,
@@ -97,34 +114,44 @@ function githubSource(token) {
             return [...await mergedSince(from, middle), ...await mergedSince(middle, to)]
         }
 
-        const items = first.items;
-
-        for (let page = 2; items.length < first.total_count; page++) {
-            items.push(...(await search(query, {page: String(page)})).items)
-        }
-
-        return items
+        return rest(query, first)
     }
 
     return {
         account    : id => get(`/user/${id}`),
         mergedSince,
+        // Every merge of one account, oldest first: an association belongs to the repository of a pull request, so
+        // only the whole list says which merges came from outside. null stands for an account search cannot list:
+        // it answers 422 for a login it may not show, and it lists no more than 1,000 results.
         mergesOf   : async login => {
-            const {total_count: total, items} = await search(`${RECORD} author:${login}`, {order: 'asc', sort: 'created'});
+            const query = `${RECORD} author:${login}`,
+                  extra = {order: 'asc', sort: 'created'};
 
-            return {items, total}
+            try {
+                const first = await search(query, extra);
+
+                return first.total_count > 1000 ? null : await rest(query, first, extra)
+            } catch (error) {
+                if (error.status === 422) {
+                    return null
+                }
+
+                throw error
+            }
         }
     }
 }
 
 /**
  * @summary The same three reads from a fixture file, for a run without the network.
- * @param {Object[]} accounts `{id, login, type, association, merges: {count, first, last}}`
+ * @param {Object[]} accounts `{id, login, type, association, unsearchable, merges: {count, first, last, team}}`:
+ * `count` merges under the account's own association, the first at `first` and the others at `last`, and `team` more
+ * as a collaborator of another repository
  * @returns {Object} `{account, mergedSince, mergesOf}`
  */
 function fixtureSource(accounts) {
-    const item = (account, mergedAt) => ({
-        author_association: account.association ?? 'CONTRIBUTOR',
+    const item = (account, mergedAt, association = account.association ?? 'CONTRIBUTOR') => ({
+        author_association: association,
         pull_request      : {merged_at: mergedAt},
         user              : {id: account.id, login: account.login, type: account.type ?? 'User'}
     });
@@ -137,9 +164,14 @@ function fixtureSource(accounts) {
         mergesOf   : async login => {
             const account = accounts.find(candidate => candidate.login.toLowerCase() === login.toLowerCase());
 
-            return account
-                ? {items: [item(account, account.merges.first), item(account, account.merges.last)], total: account.merges.count}
-                : {items: [], total: 0}
+            if (!account) {
+                return []
+            }
+
+            return account.unsearchable ? null : [
+                ...Array.from({length: account.merges.count}, (_, index) => item(account, index ? account.merges.last : account.merges.first)),
+                ...Array.from({length: account.merges.team ?? 0}, () => item(account, account.merges.first, 'COLLABORATOR'))
+            ]
         }
     }
 }
@@ -202,17 +234,29 @@ async function main() {
 
     const stored = fixture ? fixture.ledger : JSON.parse(fs.readFileSync(path.join(here, 'ledger.json'), 'utf8')),
           ledger = shape(stored),
-          // The run seals the ledger it writes. A ledger whose seal does not match was edited by hand, and nothing
-          // in it is carried over unchecked: not a count, not the cursor, not an account that no longer answers.
-          sealed = Boolean(fixture) || stored.digest === seal(ledger),
+          // The run seals the ledger it writes. A ledger whose seal does not match was edited by hand, and nothing of
+          // it is used: which accounts hold a badge, their counts, their logins and the cursor all come from GitHub
+          // again. What GitHub cannot give back goes with it: an earlier login, and the standing an account held
+          // before it joined the team. A fixture is sealed unless it says `sealed: false`.
+          sealed = fixture ? fixture.sealed !== false : stored.digest === seal(ledger),
           optout = admitOptout(() => fixture ? fixture.optout : JSON.parse(fs.readFileSync(path.join(here, 'optout.json'), 'utf8'))),
           source = fixture ? fixtureSource(fixture.accounts) : githubSource(process.env.GITHUB_TOKEN),
           now    = stamp(fixture?.now ?? Date.now()),
-          byId   = new Map(ledger.accounts.map(account => [account.id, account])),
-          due    = new Set();
+          byId   = new Map(sealed ? ledger.accounts.map(account => [account.id, account]) : []),
+          due    = new Set(),
+          // The engine names the folder and refuses a login GitHub would not issue; no other folder is written
+          folderOf = (login, id) => {
+              try {
+                  const folder = badgeFolder(login, id);
+
+                  return FOLDER.test(folder) ? folder : null
+              } catch {
+                  return null
+              }
+          };
 
     if (!sealed) {
-        warn('badges/ledger.json was changed by hand: every account is counted again from GitHub.');
+        warn(`badges/ledger.json was changed by hand: its ${ledger.accounts.length} accounts are set aside, and every account is read again from GitHub.`);
         ledger.cursor = null
     }
 
@@ -236,42 +280,51 @@ async function main() {
         byId.delete(id)
     }
 
-    if (!sealed) {
-        byId.forEach(account => due.add(account.id))
-    } else if (flag('--full')) {
+    if (sealed && flag('--full')) {
         // An account that joined the team keeps its last outside standing and is not counted again
         byId.forEach(account => account.team || due.add(account.id))
     }
 
-    // 2. One search per account that is due
+    // 2. The whole record of each account that is due
     for (const id of due) {
         const account = byId.get(id),
-              user    = await source.account(id);
+              user    = await source.account(id),
+              named   = user && user.type !== 'Bot' && folderOf(user.login, id),
+              merges  = named ? await source.mergesOf(user.login) : null;
 
-        if (!user || !LOGIN.test(user.login)) {
-            warn(`Account ${id} ${user ? `has a login this generator does not write (${JSON.stringify(user.login)})` : 'no longer answers'}: ${sealed ? 'left as it was' : 'dropped'}.`);
-            sealed || byId.delete(id);
+        if (!merges) {
+            // An account that holds a standing keeps it; one that was about to enter is not written
+            const kept = account.count > 0,
+                  why  = !user ? 'no longer answers' : !named ? `has no badge folder (${JSON.stringify(user.login)})` : `(${user.login}) cannot be searched`;
+
+            warn(`Account ${id} ${why}: ${kept ? 'left as it was' : 'not written'}.`);
+            kept || byId.delete(id);
             continue
         }
 
-        const {items, total} = await source.mergesOf(user.login),
-              first          = items.map(merge => merge.pull_request.merged_at).sort()[0],
-              known          = sealed ? account : {};
+        const outside = merges.filter(isOutsideHuman),
+              first   = outside.map(merge => merge.pull_request.merged_at).sort()[0];
 
         account.logins = [...account.logins.filter(login => login.toLowerCase() !== user.login.toLowerCase()), user.login];
 
-        if (items.length > 0 && !items.some(isOutsideHuman)) {
-            account.team = true;
+        if (merges.length > 0 && outside.length === 0) {
+            // The account joined the team: it keeps the standing it holds, and without one it is not written
+            if (account.count > 0) {
+                account.team = true
+            } else {
+                byId.delete(id)
+            }
+
             continue
         }
 
-        if (total < (known.count ?? 0)) {
+        if (outside.length < (account.count ?? 0)) {
             // Search sometimes answers low for a while; a count that is right never goes down by itself
-            warn(`${user.login} has ${total} merged pull requests on record, fewer than the ${known.count} counted before: the count stays.`)
+            warn(`${user.login} has ${outside.length} outside merges on record, fewer than the ${account.count} counted before: the count stays.`)
         }
 
-        account.count      = Math.max(known.count ?? 0, total);
-        account.firstMerge = [known.firstMerge, first].filter(Boolean).sort()[0];
+        account.count      = Math.max(account.count ?? 0, outside.length);
+        account.firstMerge = [account.firstMerge, first].filter(Boolean).sort()[0];
         delete account.team
     }
 
@@ -286,20 +339,25 @@ async function main() {
             continue
         }
 
-        const current = badgeFolder(login, account.id),
-              lines   = Object.fromEntries(FORMS.map(form => [form.key, badgeLine(login, account.id, form.key)])),
-              badges  = FORMS.map(form => [`${form.key}.svg`, renderBadge(form.key, {login, rung, rungs: RUNGS})]);
+        const current = folderOf(login, account.id);
+
+        if (!current) {
+            warn(`Account ${account.id} has no badge folder (${JSON.stringify(login)}): not written.`);
+            continue
+        }
+
+        const lines  = Object.fromEntries(FORMS.map(form => [form.key, badgeLine(login, account.id, form.key)])),
+              badges = FORMS.map(form => [`${form.key}.svg`, renderBadge(form.key, {login, rung, rungs: RUNGS})]);
 
         for (const name of account.logins) {
-            const folder = badgeFolder(name, account.id);
+            const folder = folderOf(name, account.id);
 
-            if (!FOLDER.test(folder)) {
-                throw new Error(`"${folder}" is no folder name for a badge.`)
+            // An earlier login without a folder is passed over; the current one is written
+            if (folder) {
+                folders.set(folder, Object.fromEntries([...badges, ['index.html', renderRecord({
+                    ...account, folder: current, formerLogin: folder === current ? null : name, lines, login, next, remaining, rung
+                })]]))
             }
-
-            folders.set(folder, Object.fromEntries([...badges, ['index.html', renderRecord({
-                ...account, folder: current, formerLogin: folder === current ? null : name, lines, login, next, remaining, rung
-            })]]))
         }
     }
 
