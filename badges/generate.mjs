@@ -122,9 +122,17 @@ function githubSource(token) {
 
     return {
         account    : id => get(`/user/${id}`),
-        // Who may write to this repository. Anything but an answer ends the run: a team that cannot be told apart
-        // would be written as contributors.
-        canWrite   : async login => ['admin', 'write'].includes((await get(`/repos/${REPOSITORY}/collaborators/${login}/permission`))?.permission),
+        // Who may write to this repository. Anything but a permission GitHub names ends the run, a 404 included: a
+        // team that cannot be told apart would be written as contributors.
+        canWrite   : async login => {
+            const permission = (await get(`/repos/${REPOSITORY}/collaborators/${login}/permission`))?.permission;
+
+            if (!['admin', 'maintain', 'write', 'triage', 'read', 'none'].includes(permission)) {
+                throw new Error(`GitHub named no permission for ${login} on ${REPOSITORY}: nothing is written.`)
+            }
+
+            return ['admin', 'maintain', 'write'].includes(permission)
+        },
         mergedSince,
         // Every merge of one account, oldest first: an association belongs to the repository of a pull request, so
         // only the whole list says which merges came from outside. null stands for an account search cannot list:
