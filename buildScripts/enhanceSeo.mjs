@@ -1,8 +1,8 @@
 /**
  * @module buildScripts.enhanceSeo
- * @summary Copies production Portal entry, sitemap (`sitemap.xml`, `sitemap-core.xml`, `sitemap-archive.xml`),
- * and LLM context (`llms.txt`, `llms-full.txt`, `llms-all.txt`) artifacts to the site root and injects the
- * GitHub Pages `<base>` tag into the root `index.html`.
+ * @summary Copies production Portal entry, sitemap (`sitemap.xml`, `sitemap-core.xml`, `sitemap-discussions.xml`,
+ * `sitemap-archive.xml`), and LLM context (`llms.txt`, `llms-full.txt`, `llms-all.txt`) artifacts to the site root
+ * and injects the GitHub Pages `<base>` tag into the root `index.html`.
  */
 import { spawnSync } from 'child_process';
 import { existsSync } from 'fs';
@@ -25,6 +25,7 @@ const optionalFilesToCopy = [
     'llms-full.txt',
     'llms-all.txt',
     'sitemap-core.xml',
+    'sitemap-discussions.xml',
     'sitemap-archive.xml'
 ];
 
