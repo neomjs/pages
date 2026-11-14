@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-14T17:53:05Z",
+  "cursor": "2026-11-14T18:35:47Z",
   "accounts": [
     {
       "id": 6301,
@@ -24,14 +24,6 @@
       ],
       "count": 1,
       "firstMerge": "2024-07-11T14:52:30Z"
-    },
-    {
-      "id": 200516,
-      "logins": [
-        "ExtAnimal"
-      ],
-      "count": 37,
-      "firstMerge": "2023-08-18T05:20:04Z"
     },
     {
       "id": 213924,
@@ -954,76 +946,12 @@
       "firstMerge": "2026-09-25T10:09:52Z"
     },
     {
-      "id": 278226569,
-      "logins": [
-        "neo-gemini-julia"
-      ],
-      "count": 431,
-      "firstMerge": "2026-04-22T14:46:06Z"
-    },
-    {
       "id": 284591907,
       "logins": [
         "TanNghiB2303833"
       ],
       "count": 1,
       "firstMerge": "2026-11-13T13:55:44Z"
-    },
-    {
-      "id": 290164619,
-      "logins": [
-        "neo-opus-grace"
-      ],
-      "count": 988,
-      "firstMerge": "2026-06-03T13:30:08Z"
-    },
-    {
-      "id": 290777852,
-      "logins": [
-        "neo-opus-vega"
-      ],
-      "count": 760,
-      "firstMerge": "2026-06-05T18:18:49Z"
-    },
-    {
-      "id": 292401317,
-      "logins": [
-        "neo-fable-mnemosyne"
-      ],
-      "count": 271,
-      "firstMerge": "2026-06-10T16:26:41Z"
-    },
-    {
-      "id": 292899928,
-      "logins": [
-        "neo-fable-clio"
-      ],
-      "count": 272,
-      "firstMerge": "2026-06-11T22:01:44Z"
-    },
-    {
-      "id": 302592265,
-      "logins": [
-        "neo-gpt-emmy"
-      ],
-      "count": 350,
-      "firstMerge": "2026-07-12T01:41:13Z"
-    },
-    {
-      "id": 306316406,
-      "logins": [
-        "neo-kimi-phoebe"
-      ],
-      "count": 69,
-      "firstMerge": "2026-07-18T02:12:50Z"
-    },
-    {
-      "id": 306736890,
-      "logins": [
-        "neo-kimi-iris"
-      ],
-      "count": 66,
-      "firstMerge": "2026-07-19T19:15:34Z"
     },
     {
       "id": 310443301,
@@ -1034,37 +962,13 @@
       "firstMerge": "2026-11-13T14:48:01Z"
     },
     {
-      "id": 319961410,
-      "logins": [
-        "neo-preview"
-      ],
-      "count": 26,
-      "firstMerge": "2026-08-23T00:06:09Z"
-    },
-    {
       "id": 328244157,
       "logins": [
         "drakeo338"
       ],
       "count": 1,
       "firstMerge": "2026-09-24T12:44:22Z"
-    },
-    {
-      "id": 336021083,
-      "logins": [
-        "neo-gpt-sophie"
-      ],
-      "count": 99,
-      "firstMerge": "2026-10-01T14:47:45Z"
-    },
-    {
-      "id": 344052742,
-      "logins": [
-        "neo-gemini-maryam"
-      ],
-      "count": 181,
-      "firstMerge": "2026-10-17T21:33:03Z"
     }
   ],
-  "digest": "8265ab7d5091d42a11f68532f9be3602f771c65afca5087fc97eaade6621a07f"
+  "digest": "64f8a1e3d4f2fe8379041e47c8d6b9278f111f4c6f9c56be0825e9a5202ab744"
 }
