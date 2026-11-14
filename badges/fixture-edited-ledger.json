@@ -1,0 +1,21 @@
+{
+  "now": "2026-12-01T12:00:00Z",
+  "badgesSince": "2026-11-20T00:00:00Z",
+  "sealed": false,
+  "optout": [],
+  "ledger": {
+    "cursor": "2026-11-30T00:00:00Z",
+    "accounts": [
+      {"id": 990000001, "logins": ["fixture-someone-else", "fixture-newcomer"], "count": 99, "firstMerge": "2026-01-01T00:00:00Z"},
+      {"id": 990000006, "logins": ["fixture-maintainer"], "count": 250, "firstMerge": "2026-11-21T00:00:00Z", "team": true},
+      {"id": 990000007, "logins": ["fixture-joined-the-team"], "count": 7, "firstMerge": "2026-08-03T10:00:00Z", "team": true},
+      {"id": 990000008, "logins": ["fixture-before-launch"], "count": 3, "firstMerge": "2026-09-01T10:00:00Z"}
+    ]
+  },
+  "accounts": [
+    {"id": 990000001, "login": "fixture-newcomer", "merges": {"count": 1, "first": "2026-11-21T08:30:00Z", "last": "2026-11-21T08:30:00Z"}},
+    {"id": 990000006, "login": "fixture-maintainer", "association": "MEMBER", "merges": {"count": 400, "first": "2025-02-01T10:00:00Z", "last": "2026-11-26T10:00:00Z"}},
+    {"id": 990000007, "login": "fixture-joined-the-team", "association": "MEMBER", "merges": {"count": 30, "first": "2026-08-03T10:00:00Z", "last": "2026-11-27T10:00:00Z"}},
+    {"id": 990000008, "login": "fixture-before-launch", "merges": {"count": 3, "first": "2026-09-01T10:00:00Z", "last": "2026-11-10T10:00:00Z"}}
+  ]
+}

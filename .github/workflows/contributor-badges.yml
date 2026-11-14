@@ -1,0 +1,113 @@
+# Writes each outside contributor's badge folder, badges/<login>-<id>/, from GitHub's public merge record
+# (neomjs/pages#73). The rules are in badges/README.md and the work is in badges/generate.mjs; this file checks out,
+# runs, commits and makes sure the site is built.
+#
+# It reads no pull request title or body and checks out no contributor's code: the only checkouts are badges/ of this
+# repository and two modules of neomjs/neo, which define the rungs and who counts as outside. It writes under badges/
+# only and stops before the commit when anything else changed.
+name: Contributor badges
+
+on:
+  schedule:
+    # Twice an hour and off the hour, when scheduled runs are delayed least. The run at 03:17 UTC recounts everyone.
+    - cron: '47 * * * *'
+    - cron: '17 0-2,4-23 * * *'
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+    inputs:
+      full:
+        description: Recount every account, not only those with a new merge
+        type: boolean
+        default: false
+
+permissions:
+  contents: write  # the commit under badges/
+  pages: write     # the build request, when the push started no build
+
+concurrency:
+  group: contributor-badges
+  cancel-in-progress: false
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out badges/
+        uses: actions/checkout@v7
+        with:
+          path: site
+          sparse-checkout: badges/
+          sparse-checkout-cone-mode: false
+
+      - name: Check out the standing module
+        uses: actions/checkout@v7
+        with:
+          repository: neomjs/neo
+          ref: dev
+          path: neo
+          persist-credentials: false
+          sparse-checkout: |
+            buildScripts/util/claimResponse.mjs
+            buildScripts/util/contributorStanding.mjs
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Write the folders
+        working-directory: site
+        env:
+          FULL: ${{ inputs.full == true || github.event.schedule == '17 3 * * *' }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node badges/generate.mjs --neo ../neo $([ "$FULL" = true ] && echo --full)
+
+      - name: Commit what changed
+        id: commit
+        working-directory: site
+        run: |
+          git add --all
+
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+
+          outside=$(git diff --cached --name-only | grep --invert-match '^badges/' || true)
+
+          if [ -n "$outside" ]; then
+            echo "::error::The run changed files outside badges/: $outside"
+            exit 1
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit --quiet --message 'chore(badges): write the contributor badges from the merge record (#73)'
+          git pull --quiet --rebase
+          git push --quiet
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # GitHub's docs say a commit pushed with GITHUB_TOKEN starts no Pages build. So the run looks for the build of
+      # its own commit and asks for one when none appeared.
+      - name: Make sure the site is built
+        if: steps.commit.outputs.sha
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ steps.commit.outputs.sha }}
+        run: |
+          for attempt in 1 2 3 4 5 6; do
+            sleep 10
+
+            if [ "$(gh api "repos/$GITHUB_REPOSITORY/pages/builds/latest" --jq .commit)" = "$SHA" ]; then
+              echo "The push started the Pages build." >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+          done
+
+          if ! gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent; then
+            echo "::error::GitHub refused the build request: the badges are committed and not served (badges/README.md)."
+            exit 1
+          fi
+
+          echo "The push started no Pages build within a minute, so one was requested." >> "$GITHUB_STEP_SUMMARY"
