@@ -20,6 +20,6 @@ A deploy serves one `neo.mjs` release and one revision of the conversation corpu
 
    When the installed `neo.mjs` is already the latest release, the script stops at step 1 ("neo.mjs is up to date") and never reads the pin. To redeploy with only a moved pin, run `node buildScripts/updateNeoVersion.mjs --force`.
 
-3. **Review, commit and push.** Run `git status`, then commit and push to `main`.
+3. **Review, commit and push.** Run `git status`, then commit, `git pull --rebase` and push to `main`. The pull is needed because the contributor-badge workflow commits to `main` between deploys, under `badges/` only ([badges/README.md](badges/README.md)).
 
 **Rehearsal before a release tag exists:** install the candidate first. For example, run `npm pack` in an engine checkout and point the `neo.mjs` dependency in `package.json` at the tarball with `file:<path>.tgz`. Then run `node buildScripts/updateNeoVersion.mjs --force --engine-ref=<full engine commit SHA>`. `--engine-ref` only chooses where the release notes and the lockfile come from; the engine code that builds is the installed package, so pack the candidate from that same commit. Commit nothing from a rehearsal.
