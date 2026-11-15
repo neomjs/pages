@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-15T15:08:23Z",
+  "cursor": "2026-11-15T20:00:18Z",
   "accounts": [
     {
       "id": 6301,
@@ -674,6 +674,14 @@
       "firstMerge": "2025-10-13T08:39:31Z"
     },
     {
+      "id": 169705535,
+      "logins": [
+        "mrdeyroy"
+      ],
+      "count": 1,
+      "firstMerge": "2026-11-15T17:10:49Z"
+    },
+    {
       "id": 169967362,
       "logins": [
         "Bortlesboat"
@@ -782,8 +790,16 @@
       "logins": [
         "iruzen-dono"
       ],
-      "count": 4,
+      "count": 5,
       "firstMerge": "2026-11-12T19:02:10Z"
+    },
+    {
+      "id": 188414140,
+      "logins": [
+        "tridev-tej"
+      ],
+      "count": 1,
+      "firstMerge": "2026-11-15T20:00:18Z"
     },
     {
       "id": 191920548,
@@ -1002,5 +1018,5 @@
       "firstMerge": "2026-09-24T12:44:22Z"
     }
   ],
-  "digest": "13df279f9b691ca16e30f150d98f40f0fb3841287461429e8f528ea8855d6c65"
+  "digest": "87f9026146655cef9ea148f51cedf0232649b54ed8826e4a9e1d5d3538172bc7"
 }
