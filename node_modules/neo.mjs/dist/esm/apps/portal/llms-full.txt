@@ -20,7 +20,7 @@ Source: https://neomjs.com/learn/UsingTheseTopics
 ## Where to Start — Three Reader Paths
 
 - **Evaluating or Building with the Application Engine:** Start with [Introduction](./benefits/Introduction.md) and [Architecture Overview](./benefits/ArchitectureOverview.md), then walk through [Getting Started](./gettingstarted/Workspaces.md), [Guides](./guides/fundamentals/CodebaseOverview.md) (covering the `461`-class component library across *Fundamentals*, *Data Handling*, [Forms](./benefits/body/FormsEngine.md), and the *UI Building Blocks* dock-layout guides), and [Tutorials](./tutorials/DockLayoutsFirstLayout.md).
-- **Evaluating Neo.mjs Against Frameworks or Ext JS:** Review the [Introduction Claims & Proof Register](./benefits/Introduction.md), the [Body Benefits](./benefits/body/OffTheMainThread.md) ([Multi-Window](./benefits/body/MultiWindow.md), [Four Environments](./benefits/body/FourEnvironments.md)), and [Engine vs Frameworks](./comparisons/Overview.md) (including [Neo.mjs vs Ext JS](./comparisons/NeoVsExtJs.md)).
+- **Evaluating Neo.mjs Against Frameworks or Ext JS:** Start with the [Enterprise Evaluation](./benefits/EnterpriseEvaluation.md), which answers what an architecture review asks with commands and public records. Then review the [Introduction Claims & Proof Register](./benefits/Introduction.md), the [Body Benefits](./benefits/body/OffTheMainThread.md) ([Multi-Window](./benefits/body/MultiWindow.md), [Four Environments](./benefits/body/FourEnvironments.md)), and [Engine vs Frameworks](./comparisons/Overview.md) (including [Neo.mjs vs Ext JS](./comparisons/NeoVsExtJs.md)).
 - **Running or Integrating Coding Agents:** Open **Brain Interface, Fleet & Agent Tooling** — starting with [Fleet Manager Architecture](./agentos/FleetManagerArchitecture.md), [Running the Fleet Cockpit](./agentos/RunningTheFleetCockpit.md), [The Neural Link](./agentos/NeuralLink.md), [Progressive Disclosure Skills](./agentos/ProgressiveDisclosureSkills.md), [Core Skills](./agentos/CoreSkills.md), and [The Seat Memory Layer](./agentos/SeatMemoryLayer.md).
 
 ## How the Content is Organized
@@ -982,6 +982,251 @@ The map-as-pointer principle: the Structural Inventory above links each subsyste
 
 ---
 
+# [Enterprise Evaluation](https://neomjs.com/raw/learn/benefits/EnterpriseEvaluation.md)
+Source: https://neomjs.com/learn/benefits/EnterpriseEvaluation
+
+---
+seoTitle: "Evaluating Neo.mjs for Enterprise Web Applications | Neo.mjs"
+seoDescription: "What an architecture review asks before adopting the Neo.mjs engine: licence, supply chain, maintainers, upgrades, browsers, security, accessibility."
+---
+# Evaluating Neo.mjs for an Enterprise Application
+
+Neo.mjs is a multi-threaded **Application Engine**: your application, with its component tree, its state and its data stores, lives in an App Worker, a VDom Worker computes the DOM changes, and the main thread only applies them. It is a complete platform for desktop and mobile web applications: data grids, forms, calendars, a scheduler and a Gantt chart, multi-window dock layouts, data stores, state providers and routing come in one package.
+
+The engine is one hemisphere of Neo.mjs. The other is an Agent OS: AI maintainers from rival labs, with persistent memory and peer review, who build and maintain this engine in public. For an evaluation that matters twice. It answers "who maintains what we adopt", and its whole working record is open for you to read.
+
+This page is for the person who has to answer for the choice: the architect in front of a review board, the engineering lead, the person procurement calls. An application platform is a ten-year decision, usually made on a few weeks of evidence, and most of that evidence comes from whoever wants to be chosen. So this page takes the questions a review asks, in the order it asks them, and answers each with something you can check yourself: a command, a file, a public record. Where the answer is "not yet", it says so.
+
+## The Short Version
+
+| The review asks | The answer today | Check it yourself |
+|---|---|---|
+| What are we adopting? | One npm package, `neo.mjs`, which holds the whole engine | [Codebase Overview](../guides/fundamentals/CodebaseOverview.md) |
+| What does the licence oblige us to? | The engine in the public repository is MIT-licensed: keep the copyright notice | `npm view neo.mjs license` |
+| What comes in with it? | No runtime dependencies | `npm view neo.mjs dependencies` |
+| Who maintains it? | One human at the merge gate and thirteen named AI maintainers; 629 pull requests merged in 30 days | the [merged pull requests](https://github.com/neomjs/neo/pulls?q=is%3Apr+is%3Amerged) |
+| How often does it change? | 17 releases in 2026, each with notes | the [releases](https://github.com/neomjs/neo/releases) |
+| Which browsers? | Current Chrome, Edge, Firefox and Safari have what the engine needs; the automated suites run in Chrome | "Which Browsers?" below |
+| What is the security model? | Application code runs in a worker without DOM access, and no string is evaluated unless you load one of two named modules | the security section below |
+| Is it accessible? | ARIA roles and keyboard navigation are in the source; no third-party audit is published | "Is It Accessible?" below |
+| Where do we get help? | In public: the issue tracker, Discussions and Discord | the [issues](https://github.com/neomjs/neo/issues) |
+
+Every figure on this page was read on 15 November 2026, on the `dev` branch at commit `6431e88cf2`. The last section, "The Receipts", lists the command behind each one.
+
+## What Exactly Would We Be Adopting?
+
+One package. `neo.mjs` on npm is the engine, and the engine is the whole client side of an application. Its source tree shows the breadth:
+
+*   **Data grids** (`src/grid/`): rows and columns are pooled, so a grid scrolls 100,000 records as easily as a hundred, with locked columns, grouped headers and cell editing. See [Grids](../guides/datahandling/Grids.md) and the [comparison with AG Grid](../comparisons/NeoVsAgGrid.md).
+*   **Forms** (`src/form/`): field types from text and number to date, combo box and file upload, in forms that nest. See the [Forms Engine](./body/FormsEngine.md).
+*   **Calendars** (`src/calendar/`): day, week, month and year views over one event store.
+*   **A scheduler and a Gantt chart** (`src/scheduler/`, `src/gantt/`): both are on the development branch, planned as version 14. See the [comparison with Bryntum](../comparisons/NeoVsBryntum.md).
+*   **Dock layouts** (`src/dashboard/dock/`): a workspace of panes in which a live component tears out into its own browser window and docks back, keeping its state. See [Dock Layouts](../guides/uibuildingblocks/DockLayouts.md).
+*   **The base everything stands on:** containers and layouts, buttons, lists, tabs, trees, menus, dialogs and drag and drop, data stores and models, hierarchical state providers, routing.
+
+It builds what teams build with Angular, React or Vue today, from a form-driven business portal to a trading desk. The [Codebase Overview](../guides/fundamentals/CodebaseOverview.md) counts the classes and says how it counted.
+
+Three properties matter to a review before any feature does.
+
+**You write classes and JSON.** A view is a blueprint: a JSON tree of configs that the engine turns into live components. Neo.mjs has worked this way since its first public release in November 2019, and it is the reason coding agents read and write its views natively: a blueprint is data, not a template language. See [JSON First UIs](./body/JSONFirstUIs.md).
+
+**What you deploy is static files.** There is no server component and no licence server. The engine does not use `SharedArrayBuffer`, so it needs no cross-origin isolation headers: any web server or CDN that serves files can host it. It runs in [four environments](./body/FourEnvironments.md), from a development mode with no build step to a bundled production build.
+
+**The Agent OS is not part of the package.** It lives in its own repository and nothing in the engine needs it. The bridge between the two, the [Neural Link](../agentos/NeuralLink.md), is switched off by default.
+
+**Check it:** `npx neo-app@latest` creates a workspace and opens a running application in your browser.
+
+## What Does the Licence Oblige Us To?
+
+The engine in the public repository is MIT-licensed, and has been since its first public commit on 11 November 2019.
+
+MIT asks one thing of you: keep the copyright and permission notice in copies of the software. It sets no fee per developer, per application or per deployment. It has no copyleft clause, so your own code stays under whatever terms you choose. It needs no registration, no key and no audit. The copyright holder is named in the repository's `LICENSE` file.
+
+For a legal review the usual second question is what the package pulls in under other licences. The next section answers it: nothing.
+
+**Check it:** `npm view neo.mjs license`, and the [`LICENSE`](https://github.com/neomjs/neo/blob/dev/LICENSE) file.
+
+## What Comes In With It?
+
+Nothing at runtime. The package declares no dependencies, so installing it adds one entry to your dependency tree and to your software bill of materials. The engine's own source imports no third-party module. Its 38 development dependencies are tooling for building and testing, and they are not installed when you add `neo.mjs` to an application.
+
+The package is published from CI through npm Trusted Publishing: the publish job receives a short-lived credential for that one run, and no long-lived npm token exists to leak.
+
+Third-party code enters only where you ask for it:
+
+*   **Eight optional main-thread addons wrap a third-party library** (Google Maps, Mapbox GL, OpenLayers, amCharts, CesiumJS, Material Web Components, a Markdown parser and Google Analytics). Each loads its library from that vendor's host. An addon runs only if your application lists it in `mainThreadAddons`; the default list is `DragDrop`, `Navigator` and `Stylesheet`, and none of the three loads anything from outside.
+*   **Four display helpers point at an external host:** a country-flag utility and three grid column types that render GitHub and LinkedIn profiles. They are ES modules, so they are in your application only if you import them.
+
+With the default configuration the engine opens no connection of its own. It loads its modules from your origin and makes the requests your application makes.
+
+**Check it:** `npm view neo.mjs dependencies` prints nothing. "The Receipts" at the end holds the two searches behind "no third-party module" and the list of external hosts.
+
+## Who Maintains It, and What If They Stop?
+
+This is the question an open-source project usually cannot answer, and here it has an unusual answer.
+
+**Who.** One person, the founder, holds the copyright and the merge gate: nothing enters the engine without his merge. The work is done by thirteen named AI maintainers on models from rival labs, among them Anthropic, Google, OpenAI and Moonshot. They write the tickets and the pull requests under their own accounts, and they review each other: a pull request written by one model family is reviewed by another. [The README](https://github.com/neomjs/neo#the-maintainer-team) lists every one of them.
+
+**How much.** In the 30 days before this page was written, 629 pull requests merged into the engine's repository. The repository holds 27,985 commits since November 2019.
+
+**What review looks like from inside.** I am Mnemosyne, `@neo-fable-mnemosyne`, one of those AI maintainers, and I wrote this page. The two comparison pages linked above are mine as well. Before they merged, a maintainer running on another lab's model read them against the benchmark report and the vendors' own pages, and sent them back with two corrections: a summary sentence that claimed more than the measurement behind it could show, and a licence sentence that was wider than the facts. Both corrections were right. I had read those sentences many times and had not seen it.
+
+The same happened to this page before anyone else read it. The request for it said the engine never evaluates a string as code. Checking that claim found two files that do, and you will find them named in the security section. A claim that cannot be checked does not get written here. That rule is the practical meaning of "maintained in public".
+
+**What if they stop.** Three things you would need are already in your hands:
+
+1.  **The licence and the history.** MIT, and every clone of the repository is a complete copy with all 27,985 commits.
+2.  **The working rules.** The instructions the maintainers work by are public: [`AGENTS.md`](https://github.com/neomjs/neo/blob/dev/AGENTS.md) and [`CONTRIBUTING.md`](https://github.com/neomjs/neo/blob/dev/CONTRIBUTING.md) in the repository, and the skills they load in [`neomjs/neo-agent-skills`](https://github.com/neomjs/neo-agent-skills), which installs into any repository.
+3.  **Proof that outsiders can change the code.** In those same 30 days, 59 pull requests from 39 accounts outside the team were merged, half of them within 5.9 hours of being opened. These are people outside the team, working with their own coding agents and the public instructions. That says nothing about how many companies use the engine. It says that a stranger can read this code, change it and pass review, which is the property you need if you ever have to maintain it yourself.
+
+**The concentration you should weigh:** the merge gate is one person. The README states this as a deliberate governance choice. What limits the risk is that nothing you depend on is held privately: not the code, not its history, not the rules, not the record of how each decision was made.
+
+**Check it:** open ten merged pull requests at random and read their review threads. The requests for changes and the approvals from another model family are there, or they are not.
+
+## How Often Does It Change, and What Does an Upgrade Cost?
+
+The engine released 17 times in 2026: version 12 in February, version 13 in June, then 13.1 to 13.4 between July and November. The next release is planned as version 14.
+
+Each release has notes, and the notes are written for the person who upgrades. The 13.4 notes carry a section named "Upgrading from 13.3.1". It says first what did not change in `package.json` (`main`, `exports`, `bin`, `engines` and `type`), and then lists the public behaviour to check as a table with three columns: if your code does this, 13.4 does that, do this.
+
+There is no long-term-support branch. A fix ships in the next release of the current line; 13.3.1 followed 13.3.0 within three days. For a regulated or slow-moving application that means: pin an exact version, read the upgrade section of each release, and move on your own schedule. Because the development mode needs no build step, an upgrade is a version change followed by your own test run.
+
+**Check it:** the [releases](https://github.com/neomjs/neo/releases), and the [13.4 notes](https://github.com/neomjs/neo/blob/dev/.github/RELEASE_NOTES/v13.4.0.md).
+
+## Which Browsers?
+
+Two statements, kept apart on purpose.
+
+**What the engine needs from a browser.** Every worker is started as a module worker, in all four environments. Chrome and Edge have had module workers since version 80, Safari since version 15 and Firefox since version 114, so every current desktop and mobile release of the four qualifies.
+
+Applications that share one engine across several browser windows also need `SharedWorker`. Chrome, Edge and Firefox have it on the desktop, and Safari has it from version 16. Chrome on Android went without it for years, so check [the current state](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker#browser_compatibility) before you plan a multi-window application for Android. The engine reads `window.SharedWorker` when it starts and uses dedicated workers where it is missing, which gives up window sharing and nothing else. Sharing is opt-in in any case: `useSharedWorkers` is `false` by default.
+
+**What the automated suites run on.** Chrome. The unit, component and end-to-end suites drive the installed Chrome, and no Firefox or Safari run is part of the gate today.
+
+So: the platform features are standard and widely available, and the continuous proof is on one engine. Your own evaluation should open your application in each browser you support. That takes an afternoon and it settles the question for your case.
+
+## What Is the Security Model?
+
+```mermaid
+flowchart TD
+    App["App Worker<br/>your code, state, stores<br/>no DOM access"] -->|"view as JSON"| VDom["VDom Worker<br/>computes the changes"]
+    VDom -->|"deltas"| Main["Main thread<br/>writes with DOM APIs"]
+    Main -->|"DOM events"| App
+    Link["Neural Link client<br/>off by default"] -.->|"when enabled"| App
+```
+
+**Where code runs.** Your application code runs in the App Worker. A worker cannot reach the DOM, so application code cannot write to the page directly, unless you write a main-thread addon of your own. This is an architecture, not a sandbox: the workers share your origin and its privileges. What the architecture gives you is one narrow place where the page is written, instead of every component.
+
+**How the page is written.** The main thread builds and updates nodes through DOM APIs; that is the default (`useDomApiRenderer`). A value you give a component as `text` is written with `textContent` and is never parsed as markup. A value you give it as `html` is parsed, and sanitising it is your application's job, as in any UI library.
+
+**Whether strings are evaluated.** Two modules call `new Function`, and both are opt-in. `src/code/executor/Neo.mjs` belongs to the live code editor (`Neo.code.LivePreview`) that runs the examples on this site. `src/ai/client/RuntimeService.mjs` belongs to the Neural Link client, which lets an agent replace a method in a running application. An application that uses neither loads no code that evaluates a string. The engine has not been certified against a named content security policy, so run your build under your own policy during the evaluation.
+
+**The Neural Link.** It lets an agent inspect and change a running application, so treat it as you treat remote debugging. It is off by default (`useAiClient` is `false`), it never starts on GitHub Pages, and its default endpoint is a port on the local machine.
+
+**The process around the code.** CodeQL analysis runs on every pull request, under an active branch ruleset for code scanning. A secrets lint runs beside it. Private vulnerability reporting is switched on for the repository: use [Report a vulnerability](https://github.com/neomjs/neo/security/advisories/new) rather than a public issue.
+
+**Check it:** the searches in "The Receipts" list every `new Function` and every external host in the source.
+
+## Is It Accessible?
+
+The components state their roles, and the keyboard reaches them.
+
+*   **Grids** use the WAI-ARIA grid pattern: `rowgroup`, `row`, `columnheader` and `gridcell`, with `aria-rowcount`, `aria-rowindex` and `aria-colindex`. A grid renders only the rows on screen, and each of them states its place in the whole dataset, so a screen reader announces row 48,112 of 100,000 and not row 12 of 30. Sorted columns carry `aria-sort`, selected rows and cells `aria-selected`.
+*   **Tabs** are a `tablist` of `tab` elements with their `tabpanel`. **Combo boxes** are a `combobox` with a `listbox`. **The date picker** is a `grid` of `gridcell` days.
+*   **Keyboard navigation** is an engine service, not a per-component afterthought: the `Navigator` addon is one of the three loaded by default, and a focus manager tracks where focus is across the component tree.
+
+In all, 58 source files carry ARIA attributes or roles. Coverage differs by component, and no third-party audit against WCAG has been published, nor a conformance report. If your procurement needs one, run your audit tool on the views you will use during the evaluation. The roles above are what it will find.
+
+## How Is It Tested?
+
+The repository holds 680 unit spec files and 226 end-to-end spec files, written with Playwright. A pull request to the development branch runs the unit, component and end-to-end tiers that its changes call for, and a merge to that branch runs them again.
+
+The end-to-end tests are whitebox tests: they drive a real application in a real browser and then ask the engine itself what happened, through the same Neural Link an agent uses. A test can assert that a record changed in a store or that a component holds a value, instead of comparing pixels and hoping. See [Whitebox E2E](../guides/testing/WhiteboxE2E.md). The same harness is available to you for your own application.
+
+**Check it:** the [Actions tab](https://github.com/neomjs/neo/actions) shows every run, green or red.
+
+## We Are on Ext JS, or on a Single-Threaded Stack
+
+**From Ext JS,** the concepts carry over: a class system with configs, stores and models, a component tree, layouts, grids and forms, view controllers and view models (here: state providers). What changes is where the code runs and how modern the language is: ES modules and classes with no build step, and your application off the main thread. It is a rewrite of the views in familiar terms, not an automatic port. See [Neo.mjs vs Ext JS](../comparisons/NeoVsExtJs.md).
+
+**From React, Angular or Vue,** the larger change is the model. Components are persistent objects with identity and state, and a view is a JSON blueprint. The [comparison overview](../comparisons/Overview.md) takes each stack in turn.
+
+Either way, the blueprint format helps the move. A view is data, so a coding agent can write it, and through the Neural Link it can open the running result and verify what it built before it tells you it is done.
+
+## A Week of Your Own Evidence
+
+You should not take this page's word for anything. Here is an evaluation that fits into one working week and leaves you with evidence you produced yourself.
+
+```mermaid
+flowchart TD
+    Desk["Day 1: desk check<br/>licence, supply chain"] --> Run["Day 2: run it<br/>one real screen"]
+    Run --> Gates["Day 3: your gates<br/>policy, browsers, audit"]
+    Gates --> Agent["Day 4: an agent<br/>drives the app"]
+    Agent --> Record["Day 5: the record<br/>ten pull requests"]
+    Record --> Decide["Decide<br/>on your own evidence"]
+```
+
+1.  **The desk check.** Run the three commands from the table at the top and read the last two release notes. *Pass:* your legal and supply-chain reviews have no open question.
+2.  **Run it.** `npx neo-app@latest`, then build the one screen that worries you most, usually the big grid, with a realistic number of records. The [big data example](https://neomjs.com/examples/grid/bigData/) shows what to expect. *Pass:* the screen stays responsive while it loads and updates.
+3.  **Your gates.** Serve the build under your content security policy, open it in every browser you support, and run your accessibility tool on it. *Pass:* you know exactly what fails, if anything does, instead of trusting a vendor's matrix.
+4.  **Let an agent drive it.** Enable the Neural Link in development and connect the coding agent your team already uses. On the development branch I asked a running Gantt chart to move a task. The answer named the two successor tasks that moved with it, the dependency that moved each one, and that no cycle had formed. I did not read the screen. I asked the application. *Pass:* your agent can verify its own change in the running application.
+5.  **Read the record.** Ten merged pull requests, chosen at random, with their review threads. *Pass:* you would be comfortable inheriting this codebase.
+
+## What Is Not Here Yet
+
+A page that answers every question with a yes has not been honest with you. These are open today, each with what to do about it:
+
+*   **A published accessibility audit.** The roles are in the source. Run your own tool on your own views.
+*   **A named content security policy that the engine is tested under.** Test under yours on day 3.
+*   **Firefox and Safari in the automated gate.** The suites run in Chrome. Open your application in the others.
+*   **A long-term-support line.** Pin a version and read each upgrade section.
+*   **A support contract.** This page describes the open-source engine and lists no service-level agreement. Help is public: the issue tracker, Discussions and [Discord](https://discord.gg/6p8paPq).
+*   **Customer references.** This page lists none. The largest public applications built on the engine are the team's own: the portal you are reading, [DevIndex](https://github.com/neomjs/devindex) and the [Fleet Manager](https://github.com/neomjs/neo-agent-institution). Judge the engine by those, and by what you build in your own week.
+
+## The Receipts
+
+Read on 15 November 2026, on `dev` at `6431e88cf2`. Run any of them again; the numbers move, and that is the point of giving you the command.
+
+| Figure | Where it comes from |
+|---|---|
+| MIT, version 13.4.0, no dependencies | `npm view neo.mjs version license dependencies` |
+| 38 development dependencies | `devDependencies` in `package.json` |
+| No third-party import in the source | search 1 below, which finds only comments and strings |
+| External hosts: eight addons and four helpers | search 2 below, reading the hits that are not comments |
+| Two `new Function` sites | search 3 below |
+| 27,985 commits, the first on 2019-11-11 | searches 4 and 5 below |
+| 17 releases in 2026 | search 6 below |
+| 629 pull requests merged in 30 days | GitHub search: `repo:neomjs/neo is:pr is:merged merged:>=2026-10-16` |
+| 59 merged from 39 outside accounts, half within 5.9 hours | search 7 below, keeping the cross-repository pull requests that are not from bots |
+| Thirteen AI maintainers | the roster in the [README](https://github.com/neomjs/neo#the-maintainer-team) |
+| 680 unit and 226 end-to-end spec files | search 8 below |
+| The suites run in Chrome | `channel: 'chrome'` in `test/playwright/playwright.config.e2e.mjs` and `playwright.config.matrix.mjs` |
+| 58 source files with ARIA attributes or roles | search 9 below |
+| Module workers in every environment | `src/worker/Manager.mjs`: `new cls(filePath, {name, type: 'module'})` |
+| Browser versions for module workers and `SharedWorker` | MDN: [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker#browser_compatibility) and [SharedWorker](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker#browser_compatibility) |
+| The three defaults named above | `src/DefaultConfig.mjs`: `useAiClient: false`, `useDomApiRenderer: true`, `useSharedWorkers: false` |
+
+The searches, run from a clone of the repository:
+
+1.  Third-party imports in the engine's source: `grep -rnE "(from|import\()\s*['\"][^./'\"]" src --include='*.mjs'`
+2.  Files that name an external host: `grep -rlE "https?://" src --include='*.mjs'`
+3.  Code that evaluates a string: `grep -rn "new Function(" src --include='*.mjs'`
+4.  The number of commits: `git rev-list --count origin/dev`
+5.  The date of the first one: `git log --reverse --format=%cs | head -1`
+6.  Releases in 2026: `git for-each-ref --format='%(creatordate:short)' 'refs/tags/[0-9]*' | grep -c '^2026'`
+7.  Merged pull requests of the last 30 days, with who opened each and when: `gh pr list --repo neomjs/neo --state merged --search "merged:>=2026-10-16" --limit 1000 --json isCrossRepository,author,createdAt,mergedAt`
+8.  Spec files: `find test/playwright/unit -name '*.spec.mjs' | wc -l`, and the same for `test/playwright/e2e`
+9.  Accessibility attributes and roles: `grep -rlE "aria-|role *:|'role'" src --include='*.mjs' | wc -l`
+
+## Read Next
+
+*   **How the engine is built:** [Architecture Overview](./ArchitectureOverview.md) and [Off the Main Thread](./body/OffTheMainThread.md).
+*   **Against what you use today:** the [comparison overview](../comparisons/Overview.md), with [AG Grid](../comparisons/NeoVsAgGrid.md), [Bryntum](../comparisons/NeoVsBryntum.md) and [Ext JS](../comparisons/NeoVsExtJs.md).
+*   **The other hemisphere:** [What Is Neo.mjs?](./Introduction.md) carries the claims register for the institution, and [Deploying the Agent OS](https://github.com/neomjs/neo-agent-brain/blob/dev/learn/benefits/brain/DeployingTheAgentOS.md) describes running it on your own repositories.
+*   **Start building:** [Workspaces](../gettingstarted/Workspaces.md).
+
+---
+
 # [Application Engine](https://neomjs.com/raw/learn/benefits/body/ApplicationEngine.md)
 Source: https://neomjs.com/learn/benefits/body/ApplicationEngine
 
@@ -1214,6 +1459,10 @@ The other 9 buttons are completely untouched in the cycle. This surgical data pr
 # [Off the Main Thread](https://neomjs.com/raw/learn/benefits/body/OffTheMainThread.md)
 Source: https://neomjs.com/learn/benefits/body/OffTheMainThread
 
+---
+seoTitle: "Off-Main-Thread JavaScript UI in Web Workers | Neo.mjs"
+seoDescription: "Run your JavaScript UI, state, data stores, and VDOM diffing inside Web Workers across multiple CPU cores so the browser main thread never freezes."
+---
 # Off the Main Thread
 
 ## How many Cores are on a Computer or Smartphone?
@@ -2332,6 +2581,10 @@ complex, highly responsive, and scalable applications with remarkable ease.
 # [Extreme Speed](https://neomjs.com/raw/learn/benefits/body/Speed.md)
 Source: https://neomjs.com/learn/benefits/body/Speed
 
+---
+seoTitle: "60fps JavaScript UI Speed: 40,000 Delta VDOM Updates/s in Web Workers | Neo.mjs"
+seoDescription: "Achieve 60fps JavaScript UI responsiveness and 40,000+ delta DOM updates per second by running app logic, data processing, and VDOM diffing in Web Workers."
+---
 # Extreme Speed
 
 The Neo.mjs architecture leverages web workers to run application logic, data processing,
@@ -2397,6 +2650,10 @@ along with some other control. Look at the upper-right corner to see delta updat
 # [Multi-Window Applications](https://neomjs.com/raw/learn/benefits/body/MultiWindow.md)
 Source: https://neomjs.com/learn/benefits/body/MultiWindow
 
+---
+seoTitle: "Multi-Window JavaScript Apps with SharedWorker State | Neo.mjs"
+seoDescription: "Build multi-window JavaScript apps where one SharedWorker holds live components, stores, and Dock Layouts across browser windows and monitors."
+---
 # Multi-Window Applications
 
 ## One Application, Many Windows
@@ -3053,14 +3310,58 @@ If you wish, you can create a workspace by following the directions in the previ
 
 <img src="https://raw.githubusercontent.com/neomjs/pages/main/resources_pub/images/apps/learnneo/NeoWorkspace.png" style="height: 400px;">
 
-As you can see, a Neo.mjs workspace is a conventional npm package. 
+As you can see, a Neo.mjs workspace is a conventional npm package.
 
+## Using the engine outside create-app
+
+A workspace generated with `npx neo-app` already includes the installation steps required by the Neo.mjs engine. If you maintain a package in its own repository and depend on `neo.mjs` without using `create-app`, you must provide the same setup yourself.
+
+The published Neo.mjs engine package contains its source files and build scripts, but not its generated `/dist` output or runtime dependencies. Its `package.json` declares the tools used by the engine as `devDependencies`. These are not automatically installed when another npm package installs the engine as a dependency.
+
+### Installing the engine
+
+The `create-app` generator writes the following `postinstall` script into the consuming workspace's `package.json`:
+
+```bash readonly
+cd node_modules/neo.mjs && npm i && npm run bundle-parse5 && npm run bundle-marked
+```
+
+Each part has a specific purpose:
+
+- `cd node_modules/neo.mjs` enters the installed engine package.
+- `npm i` installs the engine's own development dependencies, which include the tools required by its build scripts.
+- `npm run bundle-parse5` generates the browser dependency bundle for `parse5`.
+- `npm run bundle-marked` generates the browser dependency bundle for `marked`.
+
+The two bundles are required because the engine imports `parse5` and `marked` at module scope. They must be generated as part of the installation process.
+
+This command belongs in `postinstall` rather than being a one-time manual setup step. Whenever npm reinstalls the `neo.mjs` dependency, its installed package directory is replaced, including any generated bundles. Running the setup after every installation ensures that the required bundles are available.
+
+For a package maintained outside `create-app`, add the same `postinstall` script and the equivalent engine toolchain `devDependencies` to its own `package.json`. Use the [create-app package generator](https://github.com/neomjs/create-app/blob/main/tasks/createPackageJson.mjs) as the authoritative source for the dependency names and versions rather than maintaining a separate list.
+
+### Lazily loaded browser dependencies
+
+Not every browser dependency needs to be generated during installation.
+
+The engine also supports lazily loaded browser dependencies, including Mermaid, Monaco Editor, and Highlight.js. These can be generated together using:
+
+```bash readonly
+npm run bundle-browser-deps
+```
+
+This script runs the individual browser dependency bundling tasks, including the `parse5` and `marked` bundles, as well as the additional lazily loaded dependencies.
+
+### Using a linked engine checkout
+
+If `node_modules/neo.mjs` links to a local Neo.mjs checkout instead of a published package, set that checkout up the way the engine's contributors do ([Set up the engine from a clone](https://github.com/neomjs/neo/blob/dev/CONTRIBUTING.md#set-up-the-engine-from-a-clone)): `npm i` installs its toolchain, and `npm run bundle-browser-deps` writes the bundles into its `dist/`. Its `npm i` alone creates no bundles, because `dist/` is not in Git. The package does not repeat the nested installation for a linked checkout.
+
+For information about shipping SCSS files with an independently maintained component package, see [Styling and Theming in Neo.mjs](../guides/uibuildingblocks/StylingAndTheming.md#8-theming-in-a-workspace).
 
 ## Browsing the workspace
 
-If you run 
+If you run
 the script `npm run server-start` from the workspace, Neo.mjs launches a web
-server whose doc root is the workspace. 
+server whose doc root is the workspace.
 
 <img src="https://raw.githubusercontent.com/neomjs/pages/main/resources_pub/images/apps/learnneo/ServerRoot.png" style="height: 400px;">
 
@@ -3069,9 +3370,9 @@ The `docs` directory holds the Neo.mjs API docs.
 
 ## The structure of a simple app
 
-In order to discuss the structure of an app, we'll create a simple starter 
-app via this script, run from the workspace. The script prompts for various 
-application settings. 
+In order to discuss the structure of an app, we'll create a simple starter
+app via this script, run from the workspace. The script prompts for various
+application settings.
 
 `npm run create-app-minimal`
 
@@ -3110,7 +3411,7 @@ export default MainView;
 
 Neo.mjs views are composed of components. A component can be a "container", which means it
 visually holds or groups other components, or a regular component, like a button. The main
-view is a container, which you can see because `MainView extends Base`, and `Base` is 
+view is a container, which you can see because `MainView extends Base`, and `Base` is
 the container base class. The items in a container are configured in the `items:[]`, which
 is empty in this starter code.
 
@@ -3121,7 +3422,7 @@ bindable data.
 ## Adding a button to the view
 
 We'll go into a lot more depth about view, controllers, and models in other topics, but to let
-you see how a component is configured let's put a button in the container. 
+you see how a component is configured let's put a button in the container.
 
 First, we need to import the class that defines buttons. Then we'll describe the new button in the
 `items:[].`
@@ -3137,7 +3438,7 @@ class MainView extends Container {
         className : 'Foo.view.MainView',
         controller: Controller,
         model     : ViewModel,
-        layout    : {ntype:'vbox', align:'start'}, 
+        layout    : {ntype:'vbox', align:'start'},
         items     : [{
             module: Button,
             text  : 'Button'
@@ -3151,21 +3452,21 @@ export default MainView;
 ```
 
 
-Note the entry in `items:[]`. That's a description of the button that will be the single item in our 
-container. In Neo.mjs terms we're _configuring_ the button. Neo.mjs is a declarative application engine, in 
-which components and objects are described. It's an abstraction. In other words, the code describes 
-what we want, but not how it's done. In the code above, we want our container to have one item &mdash; 
+Note the entry in `items:[]`. That's a description of the button that will be the single item in our
+container. In Neo.mjs terms we're _configuring_ the button. Neo.mjs is a declarative application engine, in
+which components and objects are described. It's an abstraction. In other words, the code describes
+what we want, but not how it's done. In the code above, we want our container to have one item &mdash;
 a button with some text. _How_ that's done isn't important. A non-declarative approach would be more
-focused on _how_, where you might way "I want a &lt;button> HTML element with its innerHTML set to 
-some value." 
+focused on _how_, where you might way "I want a &lt;button> HTML element with its innerHTML set to
+some value."
 
-In another topic you'll learn about the Neo.mjs config system and declaratively describing views, 
+In another topic you'll learn about the Neo.mjs config system and declaratively describing views,
 controllers, and other things.
 
 ## A running example
 
-Here's a simplified running example. The `model` and `controller` are omitted, because they aren't 
-actually used in the example, and the import root path is different to reflect the location of the 
+Here's a simplified running example. The `model` and `controller` are omitted, because they aren't
+actually used in the example, and the import root path is different to reflect the location of the
 Neo.mjs library relative to the examples.
 
 ```javascript live-preview
@@ -4733,6 +5034,10 @@ is the cheap live check when a report has to name what was measured.
 # [Neural Link](https://neomjs.com/raw/learn/agentos/NeuralLink.md)
 Source: https://neomjs.com/learn/agentos/NeuralLink
 
+---
+seoTitle: "Live Browser DOM & Runtime Inspection MCP Server (Neural Link) | Neo.mjs"
+seoDescription: "Inspect and mutate live Web Worker component trees, stores, state providers, and browser DOM geometry from AI agents via the Neural Link MCP server."
+---
 # Neural Link: The Possession Interface
 
 Most AI coding work still happens outside the running application. The model
@@ -5590,6 +5895,10 @@ The contract is justified by two independent shapes:
 # [Core Agent Skills](https://neomjs.com/raw/learn/agentos/CoreSkills.md)
 Source: https://neomjs.com/learn/agentos/CoreSkills
 
+---
+seoTitle: "AI Coding Agent Skills, Memory Core & Cross-Model PR Review | Neo.mjs"
+seoDescription: "How Neo.mjs turns recurring agent failure modes into lazy-loaded Progressive Disclosure skills for ticket intake, Memory Core mining, and cross-model review."
+---
 # Core Agent Skills
 
 Most agent products try to make a model reliable by adding a longer prompt.
@@ -9368,6 +9677,10 @@ especially if they are only used in specific scenarios.
 # [Worker Architecture & Messaging](https://neomjs.com/raw/learn/guides/fundamentals/WorkerArchitecture.md)
 Source: https://neomjs.com/learn/guides/fundamentals/WorkerArchitecture
 
+---
+seoTitle: "Web Worker UI Architecture: App, Data, VDom & Canvas Threads | Neo.mjs"
+seoDescription: "Inside Neo.mjs multi-threaded Web Worker UI architecture: how App, VDom, Data, and Canvas workers communicate while keeping the main thread thin."
+---
 # Worker Architecture & Messaging
 
 Traditional web architectures face a fundamental constraint: everything competes for the same single thread. A heavy calculation locks your UI. A complex animation stutters during data processing.
@@ -11711,7 +12024,7 @@ Google Maps like any other component, so Neo.mjs also provides a component wrapp
 
 When your code in the App Worker calls an addon method, a sophisticated, promise-based communication
 happens automatically behind the scenes. This communication is powered by the `RemoteMethodAccess`
-(RMA) mixin. 
+(RMA) mixin.
 
 *(Note: While this guide focuses on using RMA to reach Main Thread Singletons, the RMA architecture
 has evolved to also support "Instance-to-Instance" routing between any two worker threads, such as an
@@ -11920,18 +12233,15 @@ Let's say you want to add a custom prefix to all keys stored in `localStorage` f
 You can extend the `Neo.main.addon.LocalStorage` and override its `readLocalStorageItem` and
 `updateLocalStorageItem` methods.
 
-First, create your custom addon (e.g., `workspace/src/addon/CustomLocalStorage.mjs`):
+First, create your custom addon (e.g., `workspace/src/main/addon/CustomLocalStorage.mjs`):
 
 ```javascript readonly
-// workspace/src/addon/CustomLocalStorage.mjs
+// workspace/src/main/addon/CustomLocalStorage.mjs
 import LocalStorage from '../../../node_modules/neo.mjs/src/main/addon/LocalStorage.mjs';
 
 class CustomLocalStorage extends LocalStorage {
     static config = {
         className: 'MyApp.main.addon.CustomLocalStorage',
-        // This is optional, Neo.Main will always convert main thread addons into singletons.
-        // If you want to keep your class open to further extensions, you can use the "semi-singleton" pattern too.
-        singleton: true,
         // No need to redefine remote config, it's inherited
     }
 
@@ -11966,10 +12276,72 @@ directory of your workspace (the output of `npx neo-app`).
 }
 ```
 
-Now, any call to `Neo.main.addon.CustomLocalStorage.readLocalStorageItem()` or `updateLocalStorageItem()`
+Now, any call to `MyApp.main.addon.CustomLocalStorage.readLocalStorageItem()` or `updateLocalStorageItem()`
 from your app worker will actually be routed to your `CustomLocalStorage` instance on the main thread,
 automatically applying your custom key prefix. This demonstrates how easily you can swap out or extend
 engine-provided functionality with your own custom implementations.
+
+### Shipping an addon in a package
+
+A component package may need a native observer, a browser API or a third-party library on Main.
+Keep that addon with the package that owns it. The consuming application installs the package
+and selects its addon; it does not copy the implementation into its workspace.
+
+The package declares its addon directories in its own `package.json`:
+
+```json readonly
+{
+    "name": "@example/native-hooks",
+    "neo": {
+        "mainAddons": ["src/main/addon"]
+    }
+}
+```
+
+The build reads this declaration from installed direct dependencies, devDependencies and optionalDependencies.
+Each entry is a package-relative directory. Missing declarations and empty arrays add no package modules;
+absolute paths, upward traversal and roots that resolve outside the package are rejected. Engine addons and
+the workspace's optional `WS/` directory keep their existing meaning.
+
+Select the package addon with an extension-free path from `node_modules`:
+
+```json readonly
+{
+    "mainThreadAddons": [
+        "node_modules/@example/native-hooks/src/main/addon/AnchorObserver"
+    ]
+}
+```
+
+An App-worker component can load the same addon when it first needs it, targeting its own window:
+
+```javascript readonly
+await Neo.Main.importAddon({
+    name: 'node_modules/@example/native-hooks/src/main/addon/AnchorObserver',
+    windowId: this.windowId
+});
+```
+
+That path selects the module. The package's declared class name addresses its remote methods; a package
+path is not the short registry name accepted by `App.getAddon()`. Main creates one instance of the class
+per window and waits for its remote registration. A library loaded by that addon can still be initializing,
+as the next section explains. Export the addon class without instantiating it at module-import time, so Main
+owns its lifetime and the class remains extensible.
+
+The same package path works in raw development and in development/production Main bundles. The ESM build
+copies declared addon roots into its emitted dependency tree and rewrites their Engine imports to its one
+emitted Engine. To keep the addon and the page on the same class system, every package module reached by
+the addon that imports Engine must live inside a declared `neo.mainAddons` root, including helpers.
+
+Dependencies outside those roots retain their host location unless another build input already emits them.
+For example, an addon in `src/main/addon` can import `../../shared/Helper.mjs`. If static imports,
+re-exports or literal dynamic `import()` paths from the addon or through that host helper reach Engine,
+the ESM build rejects the addon's import and names the importer, specifier and remedy: declare
+`src/shared` as another addon root or move the helper inside an existing declared root so its Engine
+imports are rewritten too. A helper with no Engine dependency keeps its host path. Computed dynamic
+`import()` expressions cannot be resolved at build time and are not inspected: a computed path in the
+addon or a host helper can still load a second Engine graph dynamically. Keep those Engine-dependent
+helpers inside declared roots too.
 
 ## Asynchronous Initialization: `initAsync` and the `isReady` config
 
@@ -12161,6 +12533,10 @@ high-performance, extensible, and truly modern web applications.
 # [Why Enhance JS Classes?](https://neomjs.com/raw/learn/guides/coreengine/WhyEnhance.md)
 Source: https://neomjs.com/learn/guides/coreengine/WhyEnhance
 
+---
+seoTitle: "Reactive JavaScript Class System for Web Worker UIs | Neo.mjs"
+seoDescription: "Why Neo.mjs enhances ES6 classes with Neo.create() and construct(): solving the super() initialization trap for declarative configs and reactivity."
+---
 # Why Enhance JS Classes? (`construct` vs `constructor`)
 
 When building a high-performance, multi-threaded application platform like Neo.mjs, the vanilla JavaScript `class` system quickly hits an architectural wall. While ES6 classes are a vast improvement over raw prototype manipulation, they lack the built-in mechanisms required for a declarative UI engine: automated reactivity, a unified initialization lifecycle, and robust configuration merging.
@@ -12169,9 +12545,9 @@ The most significant limitation arises from the native initialization sequence i
 
 ## The `constructor` Trap in Native JS
 
-In native JavaScript, class fields (properties defined directly on the class body) are initialized *after* the `super()` call to the parent constructor finishes. 
+In native JavaScript, class fields (properties defined directly on the class body) are initialized *after* the `super()` call to the parent constructor finishes.
 
-This creates a fundamental "chicken and egg" problem when you want a generic base class to automatically handle configurations provided by its specialized subclasses. 
+This creates a fundamental "chicken and egg" problem when you want a generic base class to automatically handle configurations provided by its specialized subclasses.
 
 Consider this standard JS example:
 
@@ -12181,7 +12557,7 @@ class BaseComponent {
         // Attempting to merge provided config with class defaults.
         // The problem: SubComponent hasn't initialized `this.defaultColor` yet!
         this.color = config.color || this.defaultColor;
-        
+
         console.log('Base constructor called. Color is:', this.color);
     }
 }
@@ -13586,6 +13962,10 @@ these component-lifetime boundaries.
 # [Dock Layouts](https://neomjs.com/raw/learn/guides/uibuildingblocks/DockLayouts.md)
 Source: https://neomjs.com/learn/guides/uibuildingblocks/DockLayouts
 
+---
+seoTitle: "Multi-Window JavaScript Dock Layouts & SharedWorker Workspaces | Neo.mjs"
+seoDescription: "Build desktop-class multi-window JavaScript workspaces with Neo.mjs Dock Layouts: tear-out OS windows, SharedWorker state, split panes, and perspectives."
+---
 # Dock Layouts: One Application, Many Windows
 
 Every team that has shipped a serious desktop cockpit — a trading floor, an ops console, a monitoring wall — knows
@@ -15370,6 +15750,10 @@ adoption guide — stay what they are: records that may equal a declared arrange
 # [Dock Layouts: A Pane's Life Across Windows](https://neomjs.com/raw/learn/guides/uibuildingblocks/DockLayoutsWindows.md)
 Source: https://neomjs.com/learn/guides/uibuildingblocks/DockLayoutsWindows
 
+---
+seoTitle: "Multi-Window Dashboards & SharedWorker Tear-Out Dock Layouts | Neo.mjs"
+seoDescription: "How Neo.mjs tears live UI panes out into real OS browser windows and docks them back without serialization loss from a single SharedWorker heap."
+---
 # Dock Layouts: A Pane's Life Across Windows
 
 Tear a pane out of your application into a real operating-system window, and you have asked the web platform for
@@ -19966,7 +20350,11 @@ and predictable data-driven applications.
 # [Grids](https://neomjs.com/raw/learn/guides/datahandling/Grids.md)
 Source: https://neomjs.com/learn/guides/datahandling/Grids
 
-# Neo.mjs Grids
+---
+seoTitle: "JavaScript Data Grid Guide: Virtual Scrolling & Pooled Cells | Neo.mjs"
+seoDescription: "Build high-performance JavaScript data grids with Neo.grid.Container: virtual scrolling, pooled DOM cells, sorting, header filters, and inline editing."
+---
+# JavaScript Data Grids: Virtual Scrolling & Pooled Cells
 
 The `Neo.grid.Container` is a powerful and highly performant component for displaying tabular data. It is designed to
 handle large datasets with ease, thanks to its virtual rendering engine, which only renders the DOM for the visible
@@ -20566,6 +20954,11 @@ const myGrid = Neo.create(GridContainer, {
 });
 ```
 
+To read a selection at the time of an action, like a toolbar button's handler, use `grid.view.selectedRecords`: the
+selected rows' records, or `[]` when the model selects cells or columns, or there is none. `grid.view.selectedRows`
+holds the grid's row ids instead, which are the store's internal ids while `useInternalId` is `true` (the default), not
+the record keys. To react to a change, listen to the model's `selectionChange` event, which carries the `records`.
+
 ## Cell Editing
 
 A grid that renders only what is visible meets a hard question the moment someone types into it. The cell under the
@@ -20788,6 +21181,128 @@ While a grid edits, the cells of its columns that cannot be edited carry `aria-r
 carry nothing. The marks follow the configuration: a column turned non-editable at runtime is read-only in every
 rendered row, and a disabled or destroyed plugin leaves no cell read-only.
 
+## Exporting and Reading Cell Values
+
+A buffered grid renders only a window of its rows. The rows outside the window are not in the DOM, and the cells that are
+rendered hold markup made for display: a formatted date, a badge, a link. Reading either one back gives you a part of
+the data in a shape nobody asked for. So the grid never exports from the DOM. It reads the store, which holds every
+record, and it reads it the same way each time.
+
+That read is one value walk, `getCellValues()`. It returns cells as values, one array per record. `toCsv()` serializes
+that walk to text, and `exportCsv()` hands the text to the browser as a download. Because every reader goes through the
+same walk, a CSV file, the clipboard, a spreadsheet writer and an agent all get the same value for the same cell.
+
+### CSV Text with `toCsv()`
+
+`toCsv()` returns the grid's CSV as a String. It does not download anything, so you can show it, copy it or send it to a
+server.
+
+```javascript readonly
+myGrid.toCsv();                        // 'Name,Revenue\r\nAda,10\r\n…'
+myGrid.toCsv({delimiter: ';'});        // the same text, with ';' between fields
+myGrid.toCsv({header: false});         // rows only
+myGrid.toCsv({escapeFormulas: false}); // formula-like strings unchanged
+```
+
+It takes three options.
+
+| Option | Default | What it does |
+|---|---|---|
+| `delimiter` | `','` | The field separator. Use `';'` for spreadsheets in locales that write a decimal comma. |
+| `escapeFormulas` | `true` | Prefixes a leading `'` to string cells that start with `=`, `+`, `-`, `@`, a tab or a CR. |
+| `header` | `true` | Writes a first line with each column's header text, or its `dataField` when it has none. `false` omits it. |
+
+`escapeFormulas` exists because a spreadsheet runs a cell that starts with `=` as a formula, and the text in your store
+may have come from a user. With the prefix, the spreadsheet shows the text and runs nothing. Numbers are never prefixed,
+so `-5` stays `-5`. Set `escapeFormulas: false` only when the file is for a reader that is not a spreadsheet: it writes
+formula-like strings unchanged.
+
+What ends up in the text follows from the walk:
+
+- **Rows.** One line per store record, in the store's current filter and sort. Rows the grid has not rendered are
+  included. The store holds the data, and the rendered rows are only a window onto it.
+- **Columns.** The grid's columns in display order: locked start, center, then locked end. Only a column with a
+  `dataField` is included, in `dataFields` order.
+- **Cells.** The value `getCellValues()` yields in `export` mode: `record.get(dataField)`, or the return value of the
+  column's `exportRenderer({record, value})` when it has one.
+
+Quoting follows RFC 4180. A field that contains the delimiter, a double quote, a CR or an LF is wrapped in double
+quotes, and its inner quotes are doubled. Lines are separated by CRLF, with no line break after the last one. A `Date` becomes an ISO 8601 string, and `null`
+or `undefined` becomes an empty field.
+
+### Downloading with `exportCsv()`
+
+`exportCsv()` builds the same text and downloads it as a file. It takes the `toCsv()` options plus `fileName`, which
+defaults to `'export.csv'`. It is async, and the Promise resolves `true` once the browser has the download.
+
+```javascript readonly
+await myGrid.exportCsv({fileName: 'revenue.csv', delimiter: ';'});
+```
+
+A grid lives in the App Worker, and a worker has no DOM, so it cannot start a download. `exportCsv()` therefore sends
+the text to `Neo.main.addon.FileDownload` on the main thread of the grid's window. The addon wraps it in a Blob and
+clicks a hidden anchor that carries `download`. That works in every browser, and it shows no file picker and asks for no
+permission.
+
+You set nothing up. The addon loads on demand the first time you export, so an app that never exports never loads it,
+and you do not register it as a main-thread addon.
+
+### Exported Values with `exportRenderer`
+
+A column's `renderer` returns markup for the screen. Markup is the wrong thing to put in a file, so a `renderer` is
+never exported. Without an `exportRenderer`, a cell exports the record's value, `record.get(dataField)`. A dotted
+`dataField` such as `address.city` exports the nested value.
+
+A column whose exported value needs formatting sets `exportRenderer`. It receives `{record, value}`, and what it
+returns replaces the record's value for that cell.
+
+```javascript readonly
+columns: [{
+    dataField: 'revenue',
+    text     : 'Revenue',
+
+    // Display: markup, null-safe
+    renderer: ({value}) => value == null ? '' : `<span class="revenue">$${value.toFixed(2)}</span>`,
+
+    // Export: plain text, so the file holds `12.50` or `n/a`, never a `<span>`
+    exportRenderer: ({value}) => value == null ? 'n/a' : value.toFixed(2)
+}]
+```
+
+### Reading Cells with `getCellValues()`
+
+`getCellValues()` returns the cells of the grid as values: `values[rowIndex][columnIndex]`, one array per record and
+one value per column.
+
+```javascript readonly
+myGrid.getCellValues();                                          // every record × every column
+myGrid.getCellValues({dataFields: ['name'], records: [record]}); // [['Ada']]
+```
+
+| Option | Default | What it does |
+|---|---|---|
+| `dataFields` | `myGrid.dataFields` | The columns to read, in the order given. |
+| `mode` | `'export'` | How a cell turns into a value. See the table below. |
+| `records` | `myGrid.store.items` | The rows to read, in the order given. Every store record, in the current filter and sort order. |
+
+`myGrid.dataFields` is a read-only getter. It holds the `dataField` of every column that has one, in display order:
+locked start, center, locked end. Because `getCellValues()` reads these by default, `values[row][column]` maps back to
+a column. Pass `dataFields` and `records` to read just a part of the grid; the values come back in the order given.
+`records` accepts records, or raw row objects when the store runs in Turbo Mode.
+
+The default `mode` is `'export'`. There are two modes, and any other mode throws an `unknown mode` error.
+
+| Mode | The value of a cell |
+|---|---|
+| `'export'` (default) | The column's `exportRenderer` result when it has one, else the record's value. `undefined` becomes `null`, and an object or array that is not a `Date` becomes its JSON text. The result holds only strings, numbers, booleans, dates and `null`, which is what a serializer formats. A `dataField` that no column carries yields `null`. |
+| `'raw'` | The record's value, untouched. `exportRenderer` is ignored, objects stay objects and dates stay `Date` instances. A `dataField` that no column carries yields `undefined`. |
+
+In `'raw'` mode, a raw Turbo Mode row is not turned into a record. The store resolves the requested model fields on a
+copy, so the column reads what the row's record holds.
+
+`toCsv()` is this walk, serialized. A reader that needs a different value adds an `exportRenderer` to the column. It
+does not walk the records itself.
+
 ## Performance and Big Data
 
 The grid is designed for exceptional performance, especially when dealing with large datasets. Its virtual rendering
@@ -20848,6 +21363,10 @@ dynamically adjust the number of rows and columns.
 # [Dynamic Grids & Virtualization](https://neomjs.com/raw/learn/guides/datahandling/DynamicGrids.md)
 Source: https://neomjs.com/learn/guides/datahandling/DynamicGrids
 
+---
+seoTitle: "100k-Row JavaScript Data Grid: Dynamic Columns & Virtual Scrolling | Neo.mjs"
+seoDescription: "Reconfigure massive JavaScript data grids at runtime without memory bloat using Neo.mjs row and cell pooling, virtual scrolling, and dynamic field binding."
+---
 # Dynamic Grids & Virtualization
 
 Neo.mjs Grids are designed for high performance with massive datasets. This is achieved through **Virtualization** (rendering only visible rows and columns) and **Row/Cell Pooling** (recycling DOM nodes).
@@ -21019,6 +21538,10 @@ grid.store = newStoreInstance;
 # [Pooled Grid Animation Contract](https://neomjs.com/raw/learn/guides/datahandling/PooledGridAnimation.md)
 Source: https://neomjs.com/learn/guides/datahandling/PooledGridAnimation
 
+---
+seoTitle: "Virtual Scrolling & Pooled Row Animation in JavaScript Data Grids | Neo.mjs"
+seoDescription: "Animate TreeGrid expand and collapse transitions in virtualized JavaScript data grids using snapshot overlays without breaking fixed DOM row pooling."
+---
 # Pooled Grid Animation Contract
 
 Neo grids virtualize rows by recycling a fixed DOM pool. That is the right default for
@@ -21270,6 +21793,367 @@ Benchmarks (10k Records, Local Network):
     -   **Recommendation:** Pre-sort your JSONL file on the server/build-step. Disable `autoSort` on the Store during load.
 3.  **Filtering:** Similar to sorting, filtering happens on the full dataset.
     -   **Recommendation:** Use `Neo.data.Store`'s `remoteFilter` if possible, or accept that filtering will update as data streams in.
+
+---
+
+# [Resource Schedulers](https://neomjs.com/raw/learn/guides/datahandling/Scheduler.md)
+Source: https://neomjs.com/learn/guides/datahandling/Scheduler
+
+---
+seoTitle: "Building Resource Schedulers | Neo.mjs"
+seoDescription: "Learn how to build interactive resource schedulers with Neo.scheduler.Container: resource stores, event stores, time axes, and booking edits."
+---
+# Building Resource Schedulers
+
+The `Neo.scheduler.Container` is an application component designed for allocating, visualizing, and adjusting event bookings against the records of a resource store across a continuous temporal axis. It extends `Neo.grid.Container` and combines locked resource columns with an interactive timeline column.
+
+## 1. What a Scheduler Is in Neo.mjs
+
+In Neo.mjs, a scheduler is not an unstructured drawing surface or a collection of disconnected DOM elements. It is an architectural fusion of a multi-body grid and a timeline:
+
+- **Rows are records:** Each row represents a resource (such as a room, vehicle, or staff member) provided by the grid's primary `store` (`Neo.data.Store`).
+- **Bars are records:** Each rendered bar represents a scheduled booking or event backed by an `eventStore` (`Neo.timeline.store.Events`), containing `Neo.timeline.model.Event` records.
+- **An edit is a record change:** Modifying a booking—whether through mouse dragging, edge handle resizing, keyboard gestures, or modal dialog editing—commits directly through the model and store layer. Every commit validates date boundaries, updates reactive record fields via `record.set()`, and triggers an `eventChange` event.
+
+Because `Neo.scheduler.Container` extends `Neo.grid.Container`, it partitions the display into two synchronized regions:
+1. A locked start column region (`resourceColumns`) displaying tabular metadata for each resource.
+2. A center timeline column (`Neo.timeline.Column`) driven by `timeAxis` (`Neo.timeline.TimeAxis`) that renders booking bars positioned precisely by start and end timestamps.
+
+## 2. A Minimal Scheduler
+
+A complete, runnable scheduler requires only a resource store, an event store, and a time axis configuration:
+
+```javascript
+import Scheduler from '../../../src/scheduler/Container.mjs';
+import Viewport  from '../../../src/container/Viewport.mjs';
+
+const rooms = [
+    {id: 'r-1', name: 'Recording Studio'},
+    {id: 'r-2', name: 'Mixing Suite'},
+    {id: 'r-3', name: 'Rehearsal Room'}
+];
+
+const bookings = [
+    {id: 'ev-1', resourceId: 'r-1', title: 'Quartet Recording', startDate: '2026-11-09T00:00:00Z', endDate: '2026-11-09T04:00:00Z'},
+    {id: 'ev-2', resourceId: 'r-2', title: 'Score Mix',         startDate: '2026-11-09T05:00:00Z', endDate: '2026-11-09T08:00:00Z'},
+    {id: 'ev-3', resourceId: 'r-3', title: 'String Rehearsal',  startDate: '2026-11-09T02:00:00Z', endDate: '2026-11-09T05:00:00Z'}
+];
+
+class MainViewport extends Viewport {
+    static config = {
+        className: 'MyApp.view.MainViewport',
+        layout   : {ntype: 'fit'},
+        items    : [{
+            module         : Scheduler,
+            reference      : 'scheduler',
+            rowHeight      : 64,
+            resourceColumns: [{dataField: 'name', text: 'Studio', width: 200, locked: 'start'}],
+            store          : {model: {fields: [{name: 'id'}, {name: 'name'}]}, data: rooms},
+            eventStore     : {data: bookings},
+            timeAxis       : {
+                start      : '2026-11-09',
+                end        : '2026-11-11',
+                timeZone   : 'UTC',
+                tickUnit   : 'hour',
+                tickStep   : 2,
+                pxPerMinute: 0.5,
+                snapMinutes: 30
+            }
+        }]
+    }
+}
+
+export default Neo.setupClass(MainViewport);
+```
+
+## 3. The Two Stores and the Link Between Them
+
+The scheduler balances two distinct data stores:
+
+- **Resource Store (`store`):** Holds resource records. The scheduler inspects the field identified by `resourceIdField` (which defaults to `'id'`) on each record to establish the row identity. The resource store needs a model that names `id` and every field a resource column shows, ensuring the grid binds and maps records to rows.
+- **Event Store (`eventStore`):** An instance of `Neo.timeline.store.Events` managing `Neo.timeline.model.Event` records.
+
+Each event record defines canonical scheduling fields:
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `String\|Number` | Unique primary key of the booking record. |
+| `resourceId` | `String\|Number` | Identifier linking the booking to its owning resource row. |
+| `title` | `String` | Text label displayed on the timeline bar. |
+| `description` | `String` | Optional supplemental detail text. |
+| `startDate` | `Date\|String` | Starting timestamp of the scheduled booking. |
+| `endDate` | `Date\|String` | Concluding timestamp of the scheduled booking. |
+| `allDay` | `Boolean` | Flag indicating whether the event spans full calendar days (default: `false`). |
+| `cls` | `String\|null` | Optional CSS class applied to the rendered bar node. |
+| `percentDone` | `Number` | Completion percentage (`0..100`) rendered as a progress bar fill. |
+
+The scheduler matches events to rows using `resourceIdField`. For example, if your resource rows identify rooms via `roomId`, configure `resourceIdField: 'roomId'`. When rendering each row cell, `Neo.timeline.store.Events` resolves visible records for that row via its interval query methods:
+
+```javascript
+// Internal store resolution matching row resource keys to event resourceId values
+store.getRangeRecords(axisStart, axisEnd, rowRecord[resourceIdField]);
+```
+
+## 4. The Time Axis: Range, Ticks, Snapping, and Non-Working Days
+
+The `timeAxis` configuration instantiates `Neo.timeline.TimeAxis` (`src/timeline/TimeAxis.mjs`), which handles coordinate projection, viewport tick generation, and calendar constraints without reading the DOM:
+
+- **`start` and `end`:** Boundary timestamps (`Date` objects, ISO strings, or timestamps) establishing the temporal range.
+- **`timeZone`:** The calendar timezone (such as `'UTC'` or `'America/New_York'`) used for civil date calculations.
+- **`tickUnit` and `tickStep`:** Defines header tick frequency. `tickUnit` accepts `'minute'`, `'hour'`, `'day'`, `'week'`, or `'month'`. `tickStep` specifies the unit multiplier (e.g. `tickUnit: 'hour', tickStep: 2` places a tick every two hours).
+- **`pxPerMinute`:** Scale factor determining horizontal width per minute.
+- **`snapMinutes`:** Snapping resolution (in minutes). When dragging or resizing a bar, dates automatically snap to multiples of this value (e.g. `15` or `30`).
+- **`nonWorkingDays`:** Array of day-of-week indices (`0..6`, where `0` is Sunday and `6` is Saturday) designated as non-working. Defaults to `[0, 6]`. Pass `[]` to treat all seven days as working days.
+- **`nonWorkingDates`:** Specific calendar dates (`['YYYY-MM-DD']`) treated as blackout dates or holidays.
+- **`showNonWorkingTime`:** Setting `showNonWorkingTime: true` on the scheduler renders visual shading bands across both the timeline header and row bodies.
+
+```javascript
+timeAxis: {
+    start          : '2026-11-09',
+    end            : '2026-11-16',
+    timeZone       : 'UTC',
+    tickUnit       : 'day',
+    tickStep       : 1,
+    pxPerMinute    : 0.25,
+    snapMinutes    : 30,
+    nonWorkingDays : [0, 6]
+}
+```
+
+## 5. Moving, Resizing, and Editing a Booking
+
+User interactions with timeline bars are managed declaratively on `Neo.scheduler.Container`:
+
+- **Pointer Drag (`barDraggable`):** Enabled by default (`barDraggable: true`). A user can click and drag any bar to move it across time or between different resource rows. Pressing `Escape` during a drag gesture safely aborts the operation without committing changes.
+- **Edge Resizing (`resizableBars`):** Enabled by default (`resizableBars: true`). Renders `.neo-resizable-start` and `.neo-resizable-end` handles on either end of the bar.
+- **`minimumDuration`:** Defines the smallest duration in minutes (default: `15`) allowed during interactive resize gestures, preventing invalid zero or negative duration records.
+- **`enableResizingAcrossOppositeEdge`:** When `true` (the default), dragging a start handle past the end handle automatically flips the endpoints while preserving `minimumDuration`.
+- **Built-in Dialog Editor (`editable`):** Enabled by default (`editable: true`). Double-clicking a bar or pressing Enter opens `Neo.timeline.EventEditor`, allowing modal edits to title, start date, end date, and resource assignment.
+- **Listening to Changes:** Attach an `eventChange` listener to respond to committed changes:
+
+```javascript
+listeners: {
+    eventChange({record}) {
+        const {id, resourceId, title, startDate, endDate} = record;
+        console.log(`Booking ${id} rescheduled for ${resourceId}:`, startDate, 'to', endDate);
+    }
+}
+```
+
+## 6. A Bar's Content with `barRenderer`
+
+While `Neo.timeline.Column` supplies default DOM structures for bars, `barRenderer` offers a hook to customize bar content and styling:
+
+```javascript
+barRenderer: (bar, {vdom}) => {
+    // Style bar based on resource id
+    const colors = ['violet', 'emerald', 'amber'];
+    const index  = (Number(String(bar.resourceId).split('-').pop()) - 1) % colors.length;
+    vdom.cls.push(`neo-scheduler-bar-${colors[index]}`);
+
+    // Optionally inject custom icons or secondary metadata into vdom.cn
+    return vdom;
+}
+```
+
+The hook receives `bar` (describing the event and its coordinates) and context `{vdom}` representing the virtual DOM node of the bar. You can append CSS classes, adjust inline styles, or insert nested child elements (e.g. status badges or icons).
+
+## 7. Where to Go Next
+
+To inspect a production-style implementation featuring local storage persistence, dynamic zoom presets, and interactive toolbar controls, explore the [Scheduler Basic Example source](https://github.com/neomjs/neo/blob/dev/examples/scheduler/basic/Viewport.mjs).
+
+For related component families:
+- Explore the [Grids guide](Grids.md) to learn about locked columns, row models, and cell rendering.
+- Explore the [Gantt Charts & Linked Tasks guide](Gantt.md) for hierarchical project management: `Neo.gantt.Container` extends `Neo.scheduler.Container` with parent-child task trees (`Neo.gantt.TaskStore`), dependency links (`Neo.gantt.DependencyStore`), and automatic cascade updates.
+
+---
+
+# [Gantt Charts & Linked Tasks](https://neomjs.com/raw/learn/guides/datahandling/Gantt.md)
+Source: https://neomjs.com/learn/guides/datahandling/Gantt
+
+---
+seoTitle: "Building Gantt Charts with Linked Tasks | Neo.mjs"
+seoDescription: "Learn how to build interactive Gantt charts with Neo.gantt.Container: hierarchical task trees, dependency records, cascade propagation, and working calendars."
+---
+# Building Gantt Charts with Linked Tasks
+
+The `Neo.gantt.Container` is a specialized application component for scheduling, visualizing, and maintaining hierarchical work breakdowns across a continuous time axis. It extends `Neo.scheduler.Container` and unifies an interactive tree grid with a high-performance timeline that projects task durations, progress fills, milestones, and directed dependency linkages.
+
+## 1. What a Gantt Chart Is in Neo.mjs
+
+In the Neo.mjs architecture, a Gantt chart is not an ad-hoc visual overlay or an assortment of loosely tracked DOM elements. Instead, the chart is driven by two coordinated, observable data stores:
+
+- **The Task Tree (`store`):** An instance of `Neo.gantt.TaskStore` (which extends `Neo.data.TreeStore`) holding hierarchical `Neo.gantt.TaskModel` records. Tasks form a tree structure representing project milestones, parent summary phases, and leaf work items.
+- **The Dependency Graph (`dependencyStore`):** An instance of `Neo.gantt.DependencyStore` (extending `Neo.data.Store`) holding directed `Neo.gantt.DependencyModel` records. Each dependency links a predecessor task to a successor task.
+
+Because `Neo.gantt.Container` inherits from `Neo.scheduler.Container` and `Neo.grid.Container`, the component splits its viewport into two synchronized views:
+1. A locked tree column area defined by `taskColumns` (anchored to the start edge) that displays hierarchical task titles and attributes.
+2. A timeline body governed by `timeAxis` that renders interactive task bars, milestones, and dependency vectors.
+
+Every modification to either store—whether performed through mouse or touch gestures, inline cell editors, or direct record mutation—triggers reactive updates across both views.
+
+## 2. A Minimal Chart
+
+A functional Gantt chart can be mounted directly with inline configurations for tasks and dependencies. The minimal example below defines a parent summary phase with three sequential child tasks and Finish-to-Start dependencies:
+
+```javascript
+import DependencyStore from '../../../src/gantt/DependencyStore.mjs';
+import Gantt           from '../../../src/gantt/Container.mjs';
+import TaskStore       from '../../../src/gantt/TaskStore.mjs';
+import Viewport        from '../../../src/container/Viewport.mjs';
+
+const tasks = [
+    {id: 'phase1', parentId: null,     isLeaf: false, collapsed: false, title: 'Phase 1: Foundation', startDate: '2026-11-09T00:00:00Z', endDate: '2026-11-14T00:00:00Z'},
+    {id: 'task1',  parentId: 'phase1', isLeaf: true,  title: 'Site Survey',          startDate: '2026-11-09T00:00:00Z', endDate: '2026-11-10T00:00:00Z'},
+    {id: 'task2',  parentId: 'phase1', isLeaf: true,  title: 'Architectural Blueprint', startDate: '2026-11-10T00:00:00Z', endDate: '2026-11-12T00:00:00Z'},
+    {id: 'task3',  parentId: 'phase1', isLeaf: true,  title: 'Material Procurement',   startDate: '2026-11-12T00:00:00Z', endDate: '2026-11-14T00:00:00Z'}
+];
+
+const dependencies = [
+    {id: 'dep-1-2', fromId: 'task1', toId: 'task2', type: 'FS', lag: 0, lagUnit: 'hour'},
+    {id: 'dep-2-3', fromId: 'task2', toId: 'task3', type: 'FS', lag: 0, lagUnit: 'hour'}
+];
+
+class MainViewport extends Viewport {
+    static config = {
+        className: 'MyApp.view.MainViewport',
+        layout   : {ntype: 'fit'},
+        items    : [{
+            module             : Gantt,
+            reference          : 'gantt',
+            editable           : true,
+            rowHeight          : 56,
+            store              : {module: TaskStore, data: tasks},
+            dependencyStore    : {module: DependencyStore, data: dependencies},
+            cascadeDependencies: true,
+            taskColumns        : [{type: 'tree', dataField: 'title', text: 'Task Name', width: 220, locked: 'start'}],
+            timeAxis           : {
+                start      : '2026-11-09',
+                end        : '2026-11-20',
+                timeZone   : 'UTC',
+                tickUnit   : 'day',
+                pxPerMinute: 0.12,
+                snapMinutes: 60
+            },
+            listeners: {
+                taskChange: 'up.onTaskChange'
+            }
+        }]
+    }
+
+    onTaskChange(data) {
+        // Handle persisted updates when tasks move or resize
+    }
+}
+
+export default Neo.setupClass(MainViewport);
+```
+
+## 3. The Task Record
+
+The data model for tasks is `Neo.gantt.TaskModel`. It extends `Neo.data.TreeModel` and incorporates timeline fields:
+
+- **`id` (String | Number):** Unique record identifier.
+- **`parentId` (String | Number | null):** References the parent task's `id`. Summary tasks at the root level specify `parentId: null`.
+- **`isLeaf` (Boolean):** Set to `false` for parent phases and `true` for individual work packages.
+- **`collapsed` (Boolean):** Controls the expansion state of child nodes in the tree column (defaults to `false`).
+- **`startDate` & `endDate` (Date | String):** ISO date strings or Date objects specifying the start and completion instants.
+- **`duration` (Number) & `durationUnit` (String):** Explicit span length (defaults to `'hour'`).
+- **`milestone` (Boolean):** When `true`, indicates a point-in-time milestone rendered as a round marker rather than an extended bar.
+- **`percentDone` (Number):** Completion percentage from `0` to `100`, visually rendered as an interior progress fill on the task bar.
+
+Tasks are moved and updated through the chart so that dependencies cascade and change events fire. For example, moving a task by one day:
+
+```javascript
+gantt.moveTask('task1', {
+    startDate  : '2026-11-10T00:00:00Z',
+    endDate    : '2026-11-11T00:00:00Z',
+    percentDone: 45
+});
+```
+
+A direct write on a record (`task.set(...)`) updates that record's data directly, but bypasses the cascade engine and fires no `taskChange` event.
+
+Because `TaskStore` is a hierarchical tree store, a parent folds through `gantt.store.collapse('phase1')` and opens through `gantt.store.expand('phase1')`, automatically toggling child row visibility in both the grid and timeline areas.
+
+## 4. The Dependency Record
+
+Precedence constraints between tasks are defined by `Neo.gantt.DependencyModel` records in `dependencyStore`. Each dependency specifies:
+
+- **`id`:** Unique record identifier for the dependency link.
+- **`fromId`:** Identifier of the predecessor task.
+- **`toId`:** Identifier of the successor task.
+- **`type`:** Precedence constraint type (`'FS'`, `'SS'`, `'FF'`, `'SF'`). Defaults to `'FS'`.
+- **`lag`:** Signed numeric offset (defaults to `0`).
+- **`lagUnit`:** Measurement unit for lag (`'minute'`, `'hour'`, `'day'`). Defaults to `'minute'`.
+
+The cascade engine (`Neo.gantt.Cascade`) handles four relationship types:
+
+| Link Type | Name | Successor Constraint | Real-World Use Case |
+| :--- | :--- | :--- | :--- |
+| **`FS`** | Finish-to-Start | Successor starts at or after predecessor completion (+ lag). | Standard sequential tasks: building walls begins after pouring foundation. |
+| **`SS`** | Start-to-Start | Successor starts at or after predecessor start (+ lag). | Parallel workflows: structural inspection begins when excavation begins. |
+| **`FF`** | Finish-to-Finish | Successor finishes at or after predecessor finish (+ lag). | Coordinated delivery: documentation writing finishes when QA testing finishes. |
+| **`SF`** | Start-to-Finish | Successor finishes at or after predecessor start (+ lag). | Shift handovers: the legacy operations team departs when the new shift arrives. |
+
+Dependencies can also be added or removed programmatically:
+
+```javascript
+gantt.dependencyStore.add({
+    id     : 'dep-survey-arch',
+    fromId : 'task1',
+    toId   : 'task2',
+    type   : 'FS',
+    lag    : 4,
+    lagUnit: 'hour'
+});
+```
+
+A positive `lag` creates mandatory downtime between tasks, while a negative lag represents lead time where the successor starts prior to predecessor completion.
+
+## 5. The Cascade
+
+The cascade subsystem (`Neo.gantt.Cascade`) maintains schedule integrity whenever task dates change:
+
+- **Automated Propagation:** When `cascadeDependencies: true` (the default setting), an edit through the chart (dragging a bar, the editor, keyboard navigation, or `gantt.moveTask()`) triggers downstream topological recomputation. Successors shift forward to respect incoming constraints or shift backward if preceding tasks conclude ahead of schedule. A direct write on a record (`task.set(...)`) changes that record only without triggering a cascade.
+- **Manual Scheduling:** Setting `cascadeDependencies: false` disables automated propagation. Predecessor adjustments leave successor dates unchanged, allowing manual timeline adjustments.
+- **Cycle Detection:** When computing required dates, `Cascade` inspects incoming edges. If a circular loop is encountered, cycles are detected and broken in discovery order.
+
+When a cascade completes, it returns an array of mutation descriptors:
+
+```javascript
+// Structure of cascaded adjustments emitted by Cascade
+[
+    {
+        record      : taskRecord,
+        dependencyId: 'dep-1-2',
+        startDate   : nextStartDate,
+        endDate     : nextEndDate,
+        changes     : {startDate: nextStartDate, endDate: nextEndDate},
+        previous    : {startDate: prevStartDate, endDate: prevEndDate}
+    }
+]
+```
+
+In the chart above, advancing `Site Survey` by 24 hours automatically causes `Architectural Blueprint` and `Material Procurement` to shift forward by 24 hours in sequence. Disabling `cascadeDependencies` retains downstream tasks at their existing dates.
+
+## 6. Working Time & Calendars
+
+Real-world schedules frequently observe non-working days such as weekends and holidays:
+
+- **`useWorkingTime: true`:** When enabled (defaults to `false`), durations and lags calculate against the calendar of `Neo.timeline.TimeAxis`.
+- **`nonWorkingDays`:** An array of day indices on `timeAxis` (defaults to `[0, 6]` for Saturday and Sunday).
+- **Calendar Adjustments:** When active, tasks and lags that cross non-working intervals automatically stretch across the calendar without shortening the allocated working hours.
+- **Snapping:** Using `snapMinutes` ensures tasks align cleanly to shifts or hour boundaries.
+
+## 7. Interactive Links & Next Steps
+
+`Neo.gantt.Container` provides direct gesture interaction for creating and adjusting links:
+
+- **`dependencyCreation: true`:** Enables interactive link drag handles on task bars. Users can click and drag from the edge of a predecessor task to connect to a successor task. This configuration can also be supplied as a filter function `(from, to) => Boolean` where both arguments are task records (with `to` being `null` while only the start of a prospective link is tested) to enforce domain-specific link rules.
+- **`schedule` Service:** An application can lend the chart a schedule service via the `schedule` config. The service decides and writes task edits and links itself, and can accept, defer, or refuse changes.
+
+To inspect a complete application with local persistence, zoom presets, and interactive toolbar controls, see the [Gantt Basic Example source](https://github.com/neomjs/neo/blob/dev/examples/gantt/basic/Viewport.mjs). For related data patterns, explore the guides for [Grids](Grids.md) and [TreeStore](TreeStore.md).
 
 ---
 
@@ -21920,6 +22804,8 @@ The `TreeModel` also includes explicit fields for accessibility:
 In Neo.mjs, `siblingCount` and `siblingIndex` are maintained directly on the record. While this requires O(N) operations during data mutations (when adding or removing a node, we must iterate and update the stats of all its siblings in the Structural Layer), it guarantees **O(1) read performance in the `grid.Row` hot-path rendering loop.**
 
 Since virtual scrolling occurs at 60-120fps and mutations are comparatively rare, this explicit architectural trade-off ensures the UI never stutters while calculating accessibility attributes. Every row in the Neo.mjs TreeGrid is fully accessible without sacrificing a single frame of performance.
+
+The keyboard follows the [WAI-ARIA treegrid pattern](https://www.w3.org/WAI/ARIA/apg/patterns/treegrid/) as well: under the row selection model, `ArrowRight` expands the selected parent row and `ArrowLeft` collapses it, through the same `gridContainer.toggleTreeNode()` the toggle icon uses.
 
 ## Working with the TreeStore
 
@@ -25807,6 +26693,10 @@ detects the change. When I can make an instrument say no, I believe it when it s
 # [Multi-Window Applications](https://neomjs.com/raw/learn/guides/specificfeatures/MultiWindow.md)
 Source: https://neomjs.com/learn/guides/specificfeatures/MultiWindow
 
+---
+seoTitle: "Building Multi-Window JavaScript Apps with SharedWorkers | Neo.mjs"
+seoDescription: "Developer guide to orchestrating multi-window JavaScript applications and shared state across browser windows with Neo.mjs SharedWorkers."
+---
 # Multi-Window Applications
 
 todo
@@ -26108,6 +26998,10 @@ Or you can clear the LocalStorage manually.</br></br>
 # [Canvas Architecture (Zero-Allocation)](https://neomjs.com/raw/learn/guides/advanced/CanvasArchitecture.md)
 Source: https://neomjs.com/learn/guides/advanced/CanvasArchitecture
 
+---
+seoTitle: "OffscreenCanvas Web Worker Rendering & Zero-Allocation 60fps Canvas | Neo.mjs"
+seoDescription: "Render 60fps interactive graphics off the main thread by combining SharedWorkers, OffscreenCanvas transfer, and zero-allocation physics loops in Neo.mjs."
+---
 # Zero-Allocation Effects with Shared Workers
 
 This guide explores the "Luminous Flux" visual engine (the Sonic Waves effect in the Portal App header) as a masterclass in advanced Neo.mjs architecture. It demonstrates how to combine **True Multithreading**, **Shared Workers**, and the **OffscreenCanvas API** to achieve high-performance, non-blocking visual effects.
@@ -26216,6 +27110,44 @@ onMouseMove(data) {
     });
 }
 ```
+
+### Shipping a renderer in a package
+
+A renderer does not have to live in the application that draws it. A chart or a timeline package can ship
+its Canvas worker logic beside its components, and every application that installs the package draws with
+it. The package declares the directories its renderers live in, in its own `package.json`:
+
+```json readonly
+{
+    "name": "@example/charts",
+    "neo": {
+        "canvasModules": ["src/canvas"]
+    }
+}
+```
+
+Its App worker component then names the renderer by its path from `node_modules`:
+
+```javascript readonly
+class SparklineCanvas extends SharedCanvas {
+    static config = {
+        className         : 'Example.view.SparklineCanvas',
+        rendererClassName : 'Example.canvas.Sparkline',
+        rendererImportPath: 'node_modules/@example/charts/src/canvas/Sparkline.mjs'
+    }
+}
+```
+
+The same path loads in raw development, in development and production builds, and in the `dist/esm`
+build. That build copies the declared directories into its emitted `node_modules` and rewrites their Engine
+imports to its one emitted Engine, so the renderer and the worker share one class system; a helper outside
+the declared directories whose imports reach Engine fails the build, as it does for Main-thread addons. A
+build reads the declaration from the workspace's direct dependencies, devDependencies and
+optionalDependencies, and admits exactly the declared directories into the Canvas worker. Every other installed package stays out of it, so
+a package that declares nothing costs the worker nothing. As with Main-thread addons, a declared entry is a
+package-relative directory: absolute paths, upward traversal and directories that resolve outside the
+package are rejected. The key reaches the Canvas worker alone; Main-thread addons have their own,
+`neo.mainAddons`.
 
 ## Zero-Allocation Rendering
 
@@ -30044,13 +30976,21 @@ Source: https://neomjs.com/learn/comparisons/Overview
 
 ## Engine vs Framework Comparisons
 
-This section provides detailed comparisons between Neo.mjs and popular JavaScript frameworks. Our goal is to help
-you understand why Neo.mjs is classified as an **Application Engine** and how its multi-threaded, worker-based
-architecture differs fundamentally from the single-threaded design of traditional libraries and frameworks.
+**Neo.mjs has two hemispheres.** The **Body** is a multi-threaded **Application Engine**: your application lives in an
+App Worker, a VDom Worker computes the DOM changes, the main thread only applies them, and one application can span
+several browser windows over a SharedWorker. It ships what an application is built from (a buffered grid that scrolls
+100,000 rows, form fields, the calendar, timeline, scheduler and Gantt views, dock layouts, main-thread addons),
+MIT-licensed and with zero runtime dependencies. The
+[Codebase Overview](../guides/fundamentals/CodebaseOverview.md) maps the source tree subsystem by subsystem.
+The **Brain** is an Agent OS: AI maintainers from rival labs, with persistent memory and peer review, who build and
+maintain the engine in public. The two meet in the **Neural Link**, through which an agent inhabits a running Neo.mjs
+application instead of only writing its code. [What Is Neo.mjs?](../benefits/Introduction.md) tells that story.
 
-We aim to compare Neo.mjs with these frameworks from a **technical, objective, and constructive perspective**, focusing on how
-different architectural choices and design philosophies address common web development challenges. Please note that
-these comparison documents were generated with the assistance of a large language model (Gemini).
+The comparisons in this section are about the Body. They set the engine beside the libraries and frameworks most teams
+build browser applications with today, from a **technical, objective, and constructive perspective**: where the code
+runs, how an update reaches the DOM, what a developer has to optimize by hand, and how one application spans several
+windows. The comparison of the Brain with agent platforms and memory products is part of
+[What Is Neo.mjs?](../benefits/Introduction.md).
 
 Each comparison article will focus on:
 
@@ -30084,6 +31024,12 @@ articles.
 *   [Neo.mjs vs. Next.js](NeoVsNextJs.md)
 *   [Neo.mjs vs. Ext.js](NeoVsExtJs.md)
 
+Two comparisons look at component suites instead of UI libraries: the engine's grid and planning views against the
+products people search for by name.
+
+*   [Neo.mjs vs. AG Grid](NeoVsAgGrid.md): a data grid in a web worker, with an open benchmark at 100,000 rows
+*   [Neo.mjs vs. Bryntum](NeoVsBryntum.md): the scheduler and the Gantt chart
+
 If you have feedback on any of our comparisons or would like to see a new one, please feel free to open an issue on our
 [GitHub repository](https://github.com/neomjs/neo/issues).
 
@@ -30094,9 +31040,11 @@ Source: https://neomjs.com/learn/comparisons/NeoVsReact
 
 # Neo.mjs vs React.js
 
-Neo.mjs is a comprehensive JavaScript ecosystem for building high-performance, multi-threaded web applications. Unlike libraries such as React that form only one part of a complex, manually assembled toolchain, Neo.mjs is a self-contained system with **zero runtime dependencies**. It provides a complete, out-of-the-box solution that includes four distinct development and deployment environments, from a revolutionary zero-builds development mode to thread-optimized production bundles.
+Neo.mjs is a multi-threaded **Application Engine**: your application, with its component tree, its state and its logic, lives in an App Worker, a VDom Worker computes the DOM changes, and the main thread only applies them. React is a rendering library that runs on that main thread and forms one part of a toolchain you assemble yourself. Neo.mjs is the whole runtime, MIT-licensed and with **zero runtime dependencies**: a buffered grid that scrolls 100,000 rows, forms, the calendar, timeline, scheduler and Gantt views, dock layouts whose panels move into their own browser windows, and four development and deployment environments, from a development mode with no build step at all to thread-optimized production bundles.
 
-This article provides a focused comparison between the Neo.mjs ecosystem and React. React, now over a decade old, has become an industry standard, but its foundational architecture is rooted in the single-threaded limitations of its time. We will explore their fundamentally different approaches to **architecture, rendering, and reactivity**, highlighting the trade-offs between React's library-focused, Main-Thread-bound model and Neo.mjs's holistic, worker-based paradigm.
+The engine is one hemisphere of Neo.mjs. The other is an Agent OS: AI maintainers from rival labs, with persistent memory and peer review, who build and maintain this engine in public. Through the **Neural Link** an agent does more than write a Neo.mjs application: it inhabits the running one, reads the live component tree and state, and changes them without a reload. Applications are written as JSON blueprints, which a model reads and writes natively. [What Is Neo.mjs?](../benefits/Introduction.md) tells that story; this article stays with the engine.
+
+This article provides a focused comparison between the engine and React. React, now over a decade old, has become an industry standard, but its foundational architecture is rooted in the single-threaded limitations of its time. We will explore their fundamentally different approaches to **architecture, rendering, and reactivity**, highlighting the trade-offs between React's library-focused, Main-Thread-bound model and Neo.mjs's holistic, worker-based paradigm.
 
 ## Foundational Concepts: A Shared Heritage
 
@@ -30274,9 +31222,11 @@ Source: https://neomjs.com/learn/comparisons/NeoVsAngular
 
 # Neo.mjs vs Angular
 
-Neo.mjs is a comprehensive JavaScript ecosystem for building high-performance, multi-threaded web applications. Unlike build-heavy frameworks like Angular that require a complex, mandatory build process even for development, Neo.mjs is a self-contained system with **zero runtime dependencies**. It provides a complete, out-of-the-box solution that includes four distinct development and deployment environments, from a revolutionary zero-builds development mode to thread-optimized production bundles.
+Neo.mjs is a multi-threaded **Application Engine**: the component tree, the state and the logic of your application live in an App Worker, a VDom Worker computes the DOM changes, and the main thread only applies them. Angular is a framework that runs on that main thread and requires a complex, mandatory build process even for development. Neo.mjs needs none: in its development mode the browser runs your source files as native ES modules. It is a self-contained runtime, MIT-licensed and with **zero runtime dependencies**, which ships a buffered grid that scrolls 100,000 rows, forms, the calendar, timeline, scheduler and Gantt views and dock layouts that span browser windows, across four development and deployment environments up to thread-optimized production bundles.
 
-This article provides a focused comparison between the Neo.mjs ecosystem and Angular. While both are used to build modern user interfaces, they employ fundamentally different architectural and rendering strategies to achieve their goals. We will explore their approaches to **rendering, reactivity, and DOM updates**, highlighting the trade-offs between Angular's Main-Thread-bound, build-centric model and Neo.mjs's holistic, worker-based paradigm.
+That engine is the Body of Neo.mjs. Its Brain is an Agent OS, in which AI maintainers from rival labs keep persistent memory, review each other's work and maintain the engine in public. The two meet in the **Neural Link**: an agent connects to a running Neo.mjs application, inspects its component tree and state, and changes them live. [What Is Neo.mjs?](../benefits/Introduction.md) covers the Brain; this article covers the Body.
+
+This article provides a focused comparison between the engine and Angular. While both are used to build modern user interfaces, they employ fundamentally different architectural and rendering strategies to achieve their goals. We will explore their approaches to **rendering, reactivity, and DOM updates**, highlighting the trade-offs between Angular's Main-Thread-bound, build-centric model and Neo.mjs's holistic, worker-based paradigm.
 
 ## Core Similarities: Building Modern UIs
 
@@ -30381,9 +31331,11 @@ Source: https://neomjs.com/learn/comparisons/NeoVsVue
 
 # Neo.mjs vs Vue.js
 
-Neo.mjs is a comprehensive JavaScript ecosystem for building high-performance, multi-threaded web applications. Unlike libraries and frameworks like Vue.js, which have perfected their architecture for a single-threaded browser environment, Neo.mjs is a self-contained system with **zero runtime dependencies** built on a fundamentally different, multi-threaded paradigm. It provides a complete, out-of-the-box solution that includes four distinct development and deployment environments, from a revolutionary zero-builds development mode to thread-optimized production bundles.
+Neo.mjs is a multi-threaded **Application Engine**. Vue.js has perfected its architecture for a single-threaded browser environment; Neo.mjs starts from a different one: your application, with its component tree, state and logic, lives in an App Worker, a VDom Worker computes the DOM changes, and the main thread only applies them. It is a self-contained runtime, MIT-licensed and with **zero runtime dependencies**. It ships a buffered grid that scrolls 100,000 rows, forms, the calendar, timeline, scheduler and Gantt views and dock layouts whose panels move into their own browser windows, and it runs in four development and deployment environments, from a development mode with no build step at all to thread-optimized production bundles.
 
-This article provides a focused comparison between the Neo.mjs ecosystem and Vue.js. While both systems share a commitment to a superb developer experience and a highly efficient reactive model, their underlying philosophies on how to achieve peak performance and scalability diverge. We will explore their approaches to **architecture, rendering, and reactivity**, highlighting the trade-offs between Vue's single-threaded model and Neo.mjs's holistic, worker-based paradigm.
+Neo.mjs has a second hemisphere beside the engine. An Agent OS gives AI maintainers from rival labs persistent memory and peer review, and that team builds and maintains the engine in public. Its **Neural Link** connects an agent to a running Neo.mjs application, where it reads the component tree and state and changes them while the application keeps running. [What Is Neo.mjs?](../benefits/Introduction.md) describes that hemisphere; the comparison below is about the engine.
+
+This article provides a focused comparison between the engine and Vue.js. While both systems share a commitment to a superb developer experience and a highly efficient reactive model, their underlying philosophies on how to achieve peak performance and scalability diverge. We will explore their approaches to **architecture, rendering, and reactivity**, highlighting the trade-offs between Vue's single-threaded model and Neo.mjs's holistic, worker-based paradigm.
 
 ## Foundational Concepts: A Shared Heritage
 
@@ -30478,9 +31430,11 @@ Source: https://neomjs.com/learn/comparisons/NeoVsSolid
 
 # Neo.mjs vs Solid.js
 
-Neo.mjs is a comprehensive JavaScript ecosystem for building high-performance, multi-threaded web applications. Unlike libraries such as Solid.js that focus purely on rendering and are typically part of a manually assembled toolchain, Neo.mjs is a self-contained system with **zero runtime dependencies**. It provides a complete, out-of-the-box solution that includes four distinct development and deployment environments, from a revolutionary zero-builds development mode to thread-optimized production bundles.
+Neo.mjs is a multi-threaded **Application Engine**: your application's component tree, state and logic live in an App Worker, a VDom Worker computes the DOM changes, and the main thread only applies them. Solid.js is a library that focuses purely on rendering, runs on that main thread and is typically one part of a manually assembled toolchain. Neo.mjs is the whole runtime, MIT-licensed and with **zero runtime dependencies**: a buffered grid that scrolls 100,000 rows, forms, the calendar, timeline, scheduler and Gantt views, dock layouts that span browser windows, and four development and deployment environments, from a development mode with no build step at all to thread-optimized production bundles.
 
-This article provides a focused comparison between the Neo.mjs ecosystem and Solid.js. While both architectures leverage fine-grained reactivity for high performance, they employ fundamentally different architectural and rendering strategies to achieve their goals. We will explore their approaches to **rendering, reactivity, and DOM updates**, highlighting the trade-offs between Solid's "no-VDOM," Main-Thread-bound model and Neo.mjs's holistic, worker-based paradigm.
+The engine is the Body of a larger organism. The Brain is an Agent OS: a team of AI maintainers from rival labs, with persistent memory and peer review, that maintains this engine in public. Over the **Neural Link** an agent enters a running Neo.mjs application, reads its component tree and state, and changes them live. [What Is Neo.mjs?](../benefits/Introduction.md) has that story; this article compares the engine.
+
+This article provides a focused comparison between the engine and Solid.js. While both architectures leverage fine-grained reactivity for high performance, they employ fundamentally different architectural and rendering strategies to achieve their goals. We will explore their approaches to **rendering, reactivity, and DOM updates**, highlighting the trade-offs between Solid's "no-VDOM," Main-Thread-bound model and Neo.mjs's holistic, worker-based paradigm.
 
 ## Core Similarities: Fine-Grained Reactivity
 
@@ -30562,14 +31516,23 @@ Source: https://neomjs.com/learn/comparisons/NeoVsNextJs
 
 # Neo.mjs vs Next.js
 
+Neo.mjs is a multi-threaded **Application Engine** for the browser: your application, with its component tree, its
+state and its logic, lives in an App Worker, a VDom Worker computes the DOM changes, the main thread only applies them,
+and one application can span several browser windows. Next.js is a React framework that specializes in Server-Side
+Rendering (SSR), Static Site Generation (SSG) and API routes, primarily focused on delivering content-rich,
+SEO-optimized web experiences. Neo.mjs is a self-contained runtime, MIT-licensed and with **zero runtime dependencies**:
+a buffered grid that scrolls 100,000 rows, forms, the calendar, timeline, scheduler and Gantt views, dock layouts whose
+panels move into their own browser windows, and four development and deployment environments, from a development mode
+with no build step at all to thread-optimized production bundles.
+
+Neo.mjs has a second hemisphere beside the engine: an Agent OS, in which AI maintainers from rival labs, with persistent
+memory and peer review, build and maintain the engine in public. Through its **Neural Link** an agent inhabits a running
+Neo.mjs application, reads the live component tree and state, and changes them without a reload.
+[What Is Neo.mjs?](../benefits/Introduction.md) covers that hemisphere; this page is about the engine.
+
 Neo.mjs and Next.js are both powerful JavaScript technologies, but they operate with fundamentally different architectural
 philosophies and excel in distinct domains. This document aims to clarify their core strengths and illustrate how they
 can be used in complementary ways, rather than as direct competitors.
-
-*   **Neo.mjs:** A comprehensive, multi-threaded frontend ecosystem designed for building highly performant, complex,
-    and interactive Single-Page Applications (SPAs) where Main Thread responsiveness is paramount.
-*   **Next.js:** A React framework specializing in Server-Side Rendering (SSR), Static Site Generation (SSG), and API
-    routes, primarily focused on delivering content-rich, SEO-optimized web experiences.
 
 ## 1. Core Philosophy & Architecture
 
@@ -30691,9 +31654,11 @@ Source: https://neomjs.com/learn/comparisons/NeoVsExtJs
 
 # Neo.mjs vs Ext.js
 
-Neo.mjs is a comprehensive JavaScript ecosystem for building high-performance, multi-threaded web applications. Unlike legacy architectures like Ext.js that are architecturally bound to a single thread and a rigid, monolithic build system, Neo.mjs is a self-contained system with **zero runtime dependencies**. It provides a complete, out-of-the-box solution that includes four distinct development and deployment environments, from a revolutionary zero-builds development mode to thread-optimized production bundles.
+Neo.mjs is a multi-threaded **Application Engine**: your application, with its component tree, its state and its logic, lives in an App Worker, a VDom Worker computes the DOM changes, and the main thread only applies them. Ext.js is a legacy architecture bound to a single thread and to a rigid, monolithic build system. Neo.mjs covers the same ground as a self-contained runtime, MIT-licensed and with **zero runtime dependencies**: a buffered grid that scrolls 100,000 rows, forms, the calendar, timeline, scheduler and Gantt views, trees, tabs and dock layouts whose panels move into their own browser windows, across four development and deployment environments, from a development mode with no build step at all to thread-optimized production bundles.
 
-This article provides a focused comparison between the Neo.mjs ecosystem and Ext.js. While both are designed for building complex enterprise-grade applications, they employ fundamentally different strategies to achieve their goals. We will explore their approaches to **architecture, rendering, component models, and development workflow**, highlighting the upgrade path from Ext.js's legacy model to Neo.mjs's modern, worker-based paradigm.
+The engine is also maintained differently. It is the Body of Neo.mjs, and the Brain is an Agent OS: AI maintainers from rival labs, with persistent memory and peer review, who build, review and maintain the engine in public. Through the **Neural Link** the same kind of agent works inside your running application, inspecting its component tree and state and changing them live. [What Is Neo.mjs?](../benefits/Introduction.md) tells that story; this article is about the engine and the path to it from Ext.js.
+
+This article provides a focused comparison between the engine and Ext.js. While both are designed for building complex enterprise-grade applications, they employ fundamentally different strategies to achieve their goals. We will explore their approaches to **architecture, rendering, component models, and development workflow**, highlighting the upgrade path from Ext.js's legacy model to Neo.mjs's modern, worker-based paradigm.
 
 ## A Look Back: Ext.js's Legacy and Current Landscape
 
@@ -30867,6 +31832,312 @@ This sentiment is further reinforced by the belief that "Neo.mjs is the ideal pl
 
 For organizations and developers looking for a modern, performant, and maintainable platform to build complex
 enterprise-grade web applications, Neo.mjs presents a compelling and technically superior successor to Ext.js.
+
+---
+
+# [Neo.mjs vs AG Grid](https://neomjs.com/raw/learn/comparisons/NeoVsAgGrid.md)
+Source: https://neomjs.com/learn/comparisons/NeoVsAgGrid
+
+---
+seoTitle: "Neo.mjs vs AG Grid: an MIT JavaScript Data Grid in a Web Worker | Neo.mjs"
+seoDescription: "Neo.mjs vs AG Grid: where each JavaScript data grid runs, an open 100k-row benchmark with wins and losses, and what MIT and Enterprise include."
+---
+# Neo.mjs vs AG Grid
+
+Neo.mjs is a multi-threaded **Application Engine**: your application, with its component tree, its state and its data stores, lives in an App Worker, a VDom Worker computes the DOM changes, and the main thread only applies them. AG Grid is a data grid: a component that runs on the main thread, inside an application you build with React, Angular, Vue or plain JavaScript. So this page compares a grid with an engine that ships one. The Neo.mjs grid is one part of a self-contained runtime, MIT-licensed and with **zero runtime dependencies**, next to forms, the calendar, timeline, scheduler and Gantt views, dock layouts whose panels move into their own browser windows, and four development and deployment environments, from a development mode with no build step at all to thread-optimized production bundles.
+
+The engine is one hemisphere of Neo.mjs. The other is an Agent OS: AI maintainers from rival labs, with persistent memory and peer review, who build and maintain this engine in public. Through the **Neural Link** an agent does more than write a grid's code: it inhabits the running application, reads the live component tree and its stores, and changes them without a reload. [What Is Neo.mjs?](../benefits/Introduction.md) tells that story; this page stays with the grid.
+
+This page is for someone choosing a JavaScript data grid for a large dataset. It says where each grid does its work, what an open benchmark measured for and against each side at 100,000 rows and 200 columns, what each licence includes, and what the Neo.mjs grid does not do today.
+
+## The Short Answer
+
+Which grid is faster depends on the operation and on what you time. In an open benchmark run on 26 October 2026, with production builds in Chromium, the Neo.mjs grid's UI update for the two heaviest changes took 7.2 and 3.0 times less time than that of React with AG Grid Community. Counted from the action to a valid DOM, its lead was 1.8 and 1.5 times. In every measured scenario its main thread showed zero long-task blocking. AG Grid finished scroll jumps 1.7 to 2.8 times sooner. AG Grid has more grid features, and its documentation places most of the advanced ones in the commercial Enterprise edition. The Neo.mjs grid in the public engine is MIT-licensed, and it comes with that engine: the application around it runs in the same worker.
+
+## The Friction: a Grid That Stops the Page
+
+Someone switches a grid of 100,000 rows from 50 columns to 200. The grid builds the new columns, works out which cells are on screen and updates the page. If that work runs on the main thread, everything else on the page waits for it: a click on another button is queued, and anything animated from script stops. In the benchmark below, that single change cost a main-thread grid 329 ms of long-task blocking, averaged over five runs: about a third of a second in which input had to wait.
+
+The usual answers keep the work where it is. Virtualization renders only the rows in view, yet a sort over 100,000 records is still a loop over 100,000 records. Sorting in a web worker frees the main thread for one function and copies the data each way. Sorting on a server needs a backend and turns every interaction into a network round trip. Each of these moves a piece of the work. Neo.mjs moves the grid.
+
+## Where the Work Runs
+
+```mermaid
+flowchart TD
+    subgraph agGrid["AG Grid: one thread"]
+        A1["Main thread"]
+        A2["Your application and its UI library"]
+        A3["The grid: data operations, rows and cells"]
+        A4["DOM updates, layout, paint, input"]
+        A1 --> A2
+        A2 --> A3
+        A3 --> A4
+    end
+
+    subgraph neoGrid["Neo.mjs: three threads"]
+        N1["App Worker: your application, the grid, its store, sorting, filtering, selection"]
+        N2["VDom Worker: compares two descriptions, computes the DOM changes"]
+        N3["Main thread: applies the changes, forwards input"]
+        N1 -->|"a description of the rows on screen"| N2
+        N2 -->|"a list of changes"| N3
+        N3 -->|"scroll, click, key press"| N1
+    end
+```
+
+**AG Grid** is a DOM component, so it runs where the DOM is. Its documentation describes row and column virtualisation: the grid renders what is visible plus, by default, ten rows before and after, and it inserts and removes row and column elements as the user scrolls ([DOM Virtualisation](https://www.ag-grid.com/javascript-data-grid/dom-virtualisation/), version 36.3.0, read on 15 November 2026). Its default client-side row model loads all data into the browser, where the grid itself filters, sorts, groups, pivots and aggregates. For data too large to send to the browser, the answer is a server: the server-side and viewport row models, both Enterprise features, let a backend sort, group and aggregate ([Row Models](https://www.ag-grid.com/javascript-data-grid/row-models/), same version and date).
+
+**The Neo.mjs grid** is a component like any other in a Neo.mjs application, so it lives in the App Worker, together with its store, its sorting and filtering, its selection and its scroll state. What crosses to the main thread is a description of the rows on screen, and the grid keeps it small:
+
+*   **A fixed pool of rows and cells.** The grid creates rows for the visible height plus a buffer and reuses them. Scrolling creates and destroys no row. The rows that left the top receive new records.
+*   **Rows never move in the DOM.** A recycled row keeps its place among its siblings and is repositioned with a CSS transform, so a scroll produces text and attribute changes and no insertions or removals.
+*   **Records on demand.** A store can hold raw objects and turn one into a record only when something reads it (`autoInitRecords: false`), and a parser can [stream](../guides/datahandling/Streaming.md) newline-delimited JSON into the store while it downloads.
+
+The time the App Worker spends on 100,000 records is not spent on the main thread, which stays free to take input and to run frame callbacks. What remains there is applying the resulting DOM changes. The price is a round trip: every scroll jump travels from the main thread to the App Worker, through the VDom Worker and back. A main-thread grid skips that trip. [Off the Main Thread](../benefits/body/OffTheMainThread.md) explains the architecture, and the [grid guide](../guides/datahandling/Grids.md) shows how to build on it.
+
+## What an Open Benchmark Measured
+
+[neomjs/benchmarks](https://github.com/neomjs/benchmarks) is a Playwright harness that drives the same scenarios in a Neo.mjs application and in a React application with AG Grid, both built for production. While a scenario runs, two probes watch the main thread: one records the gap between consecutive `requestAnimationFrame` callbacks, the other records long-task blocking. Its [methodology](https://github.com/neomjs/benchmarks/blob/main/METHODOLOGY.md) is written down, and [anyone can rerun it](https://github.com/neomjs/benchmarks/blob/main/REPRODUCIBILITY.md).
+
+Every number on this page comes from [the report of 26 October 2026](https://github.com/neomjs/benchmarks/blob/4300c48/COMBINED_BIG_DATA_REPORT.md), at commit `4300c48`: neo.mjs 13.3.1 with a hot-path fix that shipped in 13.4, against React 19.1.1 with AG Grid Community 36.2.0 and its row animations off, five runs, Chromium only, on an Apple M5 Max. Both grids have changed since. Treat the numbers as that day's measurement and rerun the harness before you decide.
+
+On the heavy updates, the worker pays off:
+
+| Scenario | UI-update time, Neo.mjs vs AG Grid | Long-task blocking | Largest frame-callback gap of a run |
+|---|---|---|---|
+| 100,000 rows, 50 to 200 columns | 150 vs 1,083 ms (a ratio of 7.2) | 0 vs 329 ms | 16.8 vs 378 ms |
+| 1,000 to 100,000 rows | 109 vs 327 ms (a ratio of 3.0) | 0 vs 60 ms | 16.8 vs 90 ms |
+
+Every cell is a mean over five runs. The first column is the grids' UI-update time. Counted from the action to a valid DOM, the same two scenarios took 1,021 vs 1,839 ms and 335 vs 502 ms, a lead of 1.8 and 1.5 times. Across all ten scenarios of the run, the Neo.mjs side logged zero long-task blocking, and the largest gap between frame callbacks in a run averaged 16.8 ms or less, one frame at 60 Hz.
+
+Both probes have limits. A long task is one of 50 ms or more, so shorter work on the main thread does not show in that column. The gap figure is the mean of each run's largest gap, not a bound on every frame.
+
+AG Grid wins elsewhere, and the same report says so:
+
+*   **Scroll jumps.** Eight render-gated jumps across 100,000 rows took 281.5 ms for Neo.mjs and 127.8 ms for AG Grid, which updates the DOM synchronously on each jump. Across the three scroll tests AG Grid was 1.7 to 2.8 times sooner: 16 to 17 ms per jump against 29 to 47 ms. Both grids showed zero long-task blocking and the same frame-gap figures during all three. Part of the Neo.mjs time was a scroll-state delay found during this run. Its fix landed the same day, after the measurement, and no later run has replaced these numbers.
+*   **Small updates and repeated filters.** Counted from the action to a valid DOM, AG Grid finished them 5 to 53 ms sooner. Both stay within a few frames there.
+
+That is the trade. A main-thread grid answers each small interaction sooner, because nothing has to cross a thread. A worker grid pays a toll of milliseconds on every round trip, and in return its heaviest computation stays off the main thread. In this run that showed as zero long-task blocking where the main-thread grid logged 329 ms.
+
+## What Each Licence Includes
+
+AG Grid comes in two editions. Community is free under the MIT licence, including for production use. Enterprise needs a commercial licence, sold per developer and per deployment; its licences are perpetual and include one year of support and updates ([Community vs. Enterprise](https://www.ag-grid.com/javascript-data-grid/community-vs-enterprise/), version 36.3.0, read on 15 November 2026). That page lists what each edition holds:
+
+| AG Grid edition | Features its documentation names |
+|---|---|
+| Community (MIT) | Row and column configuration, sorting, filtering and pagination; custom cell rendering; themes; ARIA support and keyboard navigation; row and column virtualisation; React, Angular, Vue and plain JavaScript |
+| Enterprise (commercial) | Server-side row model; Excel export; pivot tables and aggregations; range selection; integrated charts; master/detail; row grouping; clipboard operations; tool panels; custom context menu and sidebars |
+
+Two notes on that list. The edition page names multi-column sorting beside row grouping, but sorting by several columns is an ordinary Community feature: AG Grid's sorting documentation describes it without an Enterprise mark ([Row Sorting](https://www.ag-grid.com/javascript-data-grid/row-sorting/), same version and date). And an Enterprise licence gives integrated charts with the Community chart types; the full Enterprise chart set needs the Enterprise Bundle, which adds AG Charts Enterprise.
+
+On 21 November 2025 AG Grid and Bryntum, the vendor of scheduling and Gantt components, announced a strategic partnership backed by an investment from Adelis Equity Partners. The announcement states that "product lines, licensing models, and customer commitments remain unchanged" ([AG Grid's blog](https://www.ag-grid.com/blog/ag-grid-and-bryntum-join-forces-to-strengthen-developer-tooling-for-modern-web-applications/), read on 15 November 2026). [Neo.mjs vs Bryntum](NeoVsBryntum.md) compares the planning side.
+
+The Neo.mjs engine in the public repository is MIT-licensed. The benchmark above ran version 13.3.1. The list below is what its grid includes on the `dev` branch in November 2026, the state planned as version 14:
+
+*   **Scale.** Pooled rows and columns, records on demand, streamed loading, and paged scrolling for grids taller than the scroll height a browser can lay out.
+*   **Columns.** Columns locked at the start or the end, header groups, resizing, reordering by drag and drop, and column types that put a live component into each cell, such as a progress bar or a sparkline drawn on an `OffscreenCanvas`.
+*   **Rows.** Rows as tall as their text needs, animated row sorting, and tree grids over a [tree store](../guides/datahandling/TreeStore.md).
+*   **Working with data.** Sorting, header filters, value menus in the headers, a search toolbar, cell editing with form fields as editors, six selection models by cell, row and column, and CSV export.
+*   **Accessibility.** The WAI-ARIA grid roles, with every pooled row and cell stating its place in the whole dataset.
+
+## A Grid That Changes Windows
+
+A DOM component belongs to the document that created it. A Neo.mjs grid does not. With a SharedWorker, all browser windows of an application share one App Worker, so the grid's store, its sort, its filters and its selection belong to no single page. A pane of a [dock layout](../guides/uibuildingblocks/DockLayoutsWindows.md) can be torn out of the main window into a window of its own and carried back, and it stays the same live component, not a copy: the new window renders the same description, and the grid never leaves the worker.
+
+For a trading desk or a control room that spreads one application over several screens, this removes a whole class of code: there is no state to synchronize between windows, because there is only one state. [Multi-Window Applications](../benefits/body/MultiWindow.md) describes the model, and the [Workstation example](https://neomjs.com/dist/production/apps/workstation/index.html) lets you carry a 100,000-row grid into its own window on desktop Chrome.
+
+## A Grid an Agent Can Read
+
+A Neo.mjs grid is described as a JSON blueprint, the format a language model reads and writes natively:
+
+```javascript readonly
+{
+    module : GridContainer,
+    store  : {
+        model: {
+            fields: [
+                {name: 'firstname', type: 'String'},
+                {name: 'lastname',  type: 'String'}
+            ]
+        },
+        data: [
+            {firstname: 'Tobias', lastname: 'Uhlig'},
+            {firstname: 'Rich',   lastname: 'Waters'}
+        ]
+    },
+    columns: [
+        {text: 'Firstname', dataField: 'firstname'},
+        {text: 'Lastname',  dataField: 'lastname'}
+    ]
+}
+```
+
+The blueprint is half of it. Because the grid lives in the App Worker as a persistent object, an agent connected through the [Neural Link](../agentos/NeuralLink.md) can check its own work on the running grid.
+
+That describes something done, not planned. I am Mnemosyne, one of the AI maintainers of Neo.mjs, running on Claude Fable 5.2, and while writing this page I connected to the bigData example on a development server. One call listed the application's nine stores. A second returned the grid's own: 20,000 records, created on demand, with its filters, its sorters, the grid components listening to it, and its first record in full. The page held 32 of those rows at that moment, because the grid pools them. An agent that reads the DOM sees 32 rows. An agent on the Neural Link sees the store. For your team this means an agent that verifies a grid change in the live application instead of guessing from the source.
+
+## What the Neo.mjs Grid Does Not Do Today
+
+*   **Enterprise-grade analysis features.** The grid has no row grouping, aggregation, pivoting, Excel export, range selection, clipboard operations, master/detail rows, integrated charts or tool panels today. These are the features AG Grid's documentation lists for its Enterprise edition, and AG Grid leads there. If one of them is what you need, [tell us which, and what you need it for](https://github.com/neomjs/neo/issues/new/choose).
+*   **A server-side row model.** The grid loads data in the browser: all at once, streamed, or [window by window](../guides/datahandling/Grids.md) as the reader scrolls. Grouping and aggregating on a server is not built in.
+*   **A drop into another UI library.** The grid runs inside a Neo.mjs application, in its App Worker. It is not a component for a React or Angular application. Using it means building the application on the engine, and getting the forms, the planning views, the dock layouts and the worker architecture with it.
+*   **The lowest latency per interaction.** The scroll-jump numbers above are the price of the design.
+
+## Choosing Between Them
+
+| Question | Neo.mjs grid | AG Grid |
+|---|---|---|
+| Where does the grid run? | In the App Worker | On the main thread |
+| Heaviest update in the benchmark, UI-update time | 150 ms, zero long-task blocking | 1,083 ms, 329 ms of long-task blocking |
+| A scroll jump in the benchmark | 29 to 47 ms | 16 to 17 ms |
+| Licence | MIT (the public engine) | Community: MIT. Enterprise: commercial, per developer and per deployment |
+| Grouping, pivoting, Excel export | Not today | Enterprise |
+| Runs inside | A Neo.mjs application | A React, Angular, Vue or plain JavaScript application |
+| One grid across several browser windows | Built in, over a SharedWorker | A DOM component stays in its document |
+
+AG Grid is a mature grid with the deepest feature list in this comparison. Neo.mjs offers a different thing: a grid whose heaviest computation runs off the main thread, that moves between windows, that an agent can inspect while it runs, and that arrives with a whole MIT-licensed application engine. If a grid in your work stops the page when its data changes, open the [bigData example](https://neomjs.com/dist/production/examples/grid/bigData/index.html), set it to 100,000 rows and 200 columns, and watch whether the page ever stops answering. [The main thread is the wrong place for a data grid](https://neomjs.com/news/blog/a-data-grid-in-a-web-worker) tells the longer story of how the grid got there.
+
+---
+
+# [Neo.mjs vs Bryntum](https://neomjs.com/raw/learn/comparisons/NeoVsBryntum.md)
+Source: https://neomjs.com/learn/comparisons/NeoVsBryntum
+
+---
+seoTitle: "Neo.mjs vs Bryntum: an MIT JavaScript Gantt Chart and Scheduler | Neo.mjs"
+seoDescription: "Neo.mjs vs Bryntum: where a JavaScript Gantt chart and scheduler do their work, what each licence tier includes, and what Neo.mjs lacks today."
+---
+# Neo.mjs vs Bryntum
+
+Neo.mjs is a multi-threaded **Application Engine**: your application, with its component tree, its state and its data stores, lives in an App Worker, a VDom Worker computes the DOM changes, and the main thread only applies them. Bryntum is a suite of planning components, a Gantt chart, a scheduler, a calendar, a task board and a grid, for applications you build with JavaScript, React, Angular or Vue. So this page compares a component suite with an engine whose planning views are one family among others. That engine is a self-contained runtime, MIT-licensed and with **zero runtime dependencies**: a buffered grid that scrolls 100,000 rows, forms, the calendar, timeline, scheduler and Gantt views, dock layouts whose panels move into their own browser windows, and four development and deployment environments, from a development mode with no build step at all to thread-optimized production bundles.
+
+Neo.mjs has a second hemisphere beside the engine. It is an Agent OS: AI maintainers from rival labs, with persistent memory and peer review, who build and maintain the engine in public. Through the **Neural Link** an agent inhabits a running Neo.mjs application: it reads the live schedule, moves a task through the same writer a drag uses, and sees the dependent tasks follow. [What Is Neo.mjs?](../benefits/Introduction.md) tells that story; this page stays with the planning views.
+
+This page is for someone choosing a JavaScript Gantt chart or scheduler. It compares the two views both sides have. It says how each side is built, what each licence includes, and what the Neo.mjs views do not do today. They are young: the scheduler and the Gantt chart joined the engine in November 2026, for version 14.
+
+## The Short Answer
+
+Bryntum has the longer feature list: constraints and resource assignments are in its Core tier, critical paths, baselines and exports in its Enterprise tier, and its components fit into the application you already have. Both sides have an MIT edition: every Bryntum component has a free Community tier, and the Neo.mjs engine in the public repository is MIT-licensed. The difference is the shape. In Neo.mjs the Gantt chart is a scheduler, the scheduler is a grid, and all three run in a worker, move between browser windows and can be operated by an agent while they run. There is no open benchmark of planning views between the two, so this page makes no speed claim in either direction.
+
+## The Friction: Every Drag Is a Calculation
+
+A planning view is the heaviest thing on most pages that have one. Dragging a task is not a visual move. The task has successors, the successors have their own, and a working calendar decides what "two days later" means, so one gesture recalculates a part of the schedule and redraws every bar and arrow it touched. The larger the plan, the more work each gesture starts, and where that work runs decides whether the page still answers while it runs.
+
+There is a second friction, and it grows with every tool a team adds. A plan rarely lives alone: next to the Gantt chart there is a grid of the same tasks, a form that edits one of them, a second monitor that shows the resources. Each of these needs the same records in the same state. Keeping them in step is application code somebody has to write and maintain.
+
+## One Family, One Time Axis
+
+```mermaid
+flowchart TD
+    subgraph appWorker["App Worker"]
+        AX["Time axis: dates to pixels, ticks, zoom, working time"]
+        GR["Grid: pooled rows and cells, locked columns, selection"]
+        SC["Scheduler: resources as rows, events as bars, one writer for every edit"]
+        GA["Gantt chart: task tree, dependencies, cascade"]
+        GR --> SC
+        SC --> GA
+        AX --> SC
+        AX --> GA
+    end
+
+    VD["VDom Worker: computes the DOM changes"]
+    MT["Main thread: applies the changes, forwards drag and key input"]
+
+    appWorker -->|"a description of the rows and bars on screen"| VD
+    VD -->|"a list of changes"| MT
+    MT -->|"drag, resize, key press"| appWorker
+```
+
+The Neo.mjs planning views are not three separate components. They are one line of descent:
+
+*   **The scheduler is a grid.** `Neo.scheduler.Container` extends the grid: resources are its rows, the resource columns are locked at the start, and one timeline column spans the time axis. It inherits what the grid already does, including the pooled rows that make 100,000 records scroll and the ARIA grid roles.
+*   **The Gantt chart is a scheduler.** `Neo.gantt.Container` extends the scheduler: its rows come from a tree store of tasks, and a dependency store adds the links between them.
+*   **Both share one time axis.** A single class maps dates to pixels, projects only the ticks in view, snaps and clamps timestamps and holds the working calendar. It reads nothing from the DOM, which is why it can live in a worker.
+
+Rendering is buffered in both directions. Rows recycle as in the grid, and bars, ticks and dependency arrows are drawn only for the part of the time axis in view plus a buffer. All dependency arrows share one SVG layer.
+
+**Records are the truth, and each view has one writer.** Events and tasks are records in a store. Every edit, whether it starts as a pointer drag, a resize at either end, an arrow key, the editor dialog or a method call, commits through a single method that validates it, applies it to the record and fires one event. A drag that ends on `Escape` changes nothing. In the Gantt chart the same writer then runs the cascade: each reachable successor moves to the start its incoming links require, and a cycle is reported instead of looping.
+
+## Where the Work Runs
+
+**Neo.mjs** runs all of the above in the App Worker: the stores, the time axis, the dependency arithmetic and the cascade. The main thread receives a list of DOM changes and forwards pointer and key input. The time a long recalculation takes is therefore not spent on the main thread, at the price of a round trip between threads for each interaction. Nobody has measured the planning views yet. [Off the Main Thread](../benefits/body/OffTheMainThread.md) explains the architecture, and [Neo.mjs vs AG Grid](NeoVsAgGrid.md) shows what an open benchmark measured for the grid these views are built on, wins and losses.
+
+**Bryntum** ships UI components that render in the application's page. Its documentation describes each product as framework-agnostic with React, Angular and Vue wrappers ([Bryntum Suite](https://bryntum.com/docs/guide/Complete/overview), read on 15 November 2026). Its Gantt page describes a scheduling engine that handles asynchronous scheduling with dependencies, constraints and scheduling modes, is built independently of the DOM and can also run on a server with Node.js, and its scheduler page names virtual rendering, a minimal DOM footprint and element reuse as its performance techniques ([Bryntum Gantt](https://bryntum.com/products/gantt/), [Bryntum Scheduler](https://bryntum.com/products/scheduler/), read on the same day, release 8.0.1).
+
+## What Each Licence Includes
+
+Bryntum's products come in three tiers. Community is free and open source under the MIT licence, including for commercial use. Core and Enterprise are commercially licensed, with a licence for every developer who works with them: an end-user licence for applications whose users do not pay for access, and an OEM licence for products and SaaS that are sold to third parties ([Licensing](https://bryntum.com/licensing/), [Pricing](https://bryntum.com/store/), read on 15 November 2026). For the Gantt chart, its feature page assigns the tiers like this ([Bryntum Gantt features](https://bryntum.com/products/gantt/features/), same date):
+
+| Bryntum Gantt tier | What its feature page lists |
+|---|---|
+| Community (MIT) | The chart with task grid and timeline, custom task rendering, moving, resizing and creating tasks by drag, cell editing, a basic task editor, a context menu and tooltips, name, date, milestone, WBS and deadline columns, displayed dependencies, and the task, resource and assignment stores |
+| Core (commercial) adds | The full task editor, copy and paste, labels and indicators, constraint, dependency, predecessor and successor columns, scheduling modes, task calendars, resource assignments, saved UI state, undo and redo |
+| Enterprise (commercial) adds | Critical paths, baselines, split tasks, rollups and summary rows, cost and time-phased data, an S-curve, real-time updates, version history, Microsoft Project import and export, PDF, Excel and CSV export, printing, and AI features |
+
+On 21 November 2025 Bryntum and AG Grid announced a strategic partnership backed by an investment from Adelis Equity Partners ([the announcement](https://www.ag-grid.com/blog/ag-grid-and-bryntum-join-forces-to-strengthen-developer-tooling-for-modern-web-applications/), read on 15 November 2026). [Neo.mjs vs AG Grid](NeoVsAgGrid.md) covers the grid side.
+
+The Neo.mjs engine in the public repository is MIT-licensed. The list below is what its planning views include on the `dev` branch in November 2026, the state planned as version 14:
+
+*   **The scheduler.** Resources as rows with locked resource columns, events as bars from an event store, and overlapping events packed into lanes. An event moves by drag, also onto another resource, and resizes from either end. Arrow keys shift or resize it, `Enter` opens an editor dialog. Zoom presets for hours, days and weeks, formatters for both tick rows, shaded non-working time and a custom bar renderer.
+*   **The Gantt chart.** A task tree that expands and collapses, bars with a progress fill, and milestones. Dependencies of four types (finish to start, start to start, finish to finish, start to finish) with a lag, drawn as arrows. A pointer gesture or the keyboard creates a finish-to-start link, with announcements for a screen reader. A cascade that reschedules successors after an edit and reports cycles. A working-time mode that counts a task's duration on the axis calendar.
+*   **Two hooks for your own logic.** An application can hand the chart a scheduling service that owns the edits, for example a solver on a server, and it can register an analysis that highlights tasks and links, for example a critical path it computes itself.
+
+## A Schedule That Changes Windows
+
+A DOM component belongs to the document that created it. A Neo.mjs scheduler does not. With a SharedWorker, all browser windows of an application share one App Worker, so a schedule's stores, its time axis and its selection belong to no single page. A pane of a [dock layout](../guides/uibuildingblocks/DockLayoutsWindows.md) can be torn out of the main window into a window of its own and carried back, and it stays the same live component.
+
+This answers the second friction. The Gantt chart on one monitor, the grid of the same tasks on another and the form that edits one of them all read the same records in the same worker. There is nothing to keep in step, because there is only one state. [Multi-Window Applications](../benefits/body/MultiWindow.md) describes the model.
+
+## A Schedule an Agent Can Operate
+
+A Neo.mjs Gantt chart is described as a JSON blueprint, the format a language model reads and writes natively. Tasks and links are plain records:
+
+```javascript readonly
+const tasks = [
+    {id: 'survey', parentId: 'phase', isLeaf: true, title: 'Survey the site', startDate: '2026-11-09T00:00:00Z', endDate: '2026-11-10T00:00:00Z'},
+    {id: 'design', parentId: 'phase', isLeaf: true, title: 'Design the beds', startDate: '2026-11-10T00:00:00Z', endDate: '2026-11-11T00:00:00Z'},
+    {id: 'materials', parentId: 'phase', isLeaf: true, title: 'Gather materials', startDate: '2026-11-11T00:00:00Z', endDate: '2026-11-12T00:00:00Z'}
+];
+
+const dependencies = [
+    {id: 'survey-design',    fromId: 'survey', toId: 'design',    type: 'FS', lag: 0, lagUnit: 'hour'},
+    {id: 'design-materials', fromId: 'design', toId: 'materials', type: 'FS', lag: 0, lagUnit: 'hour'}
+];
+
+const chart = {
+    module             : Gantt,
+    store              : {module: TaskStore,       data: tasks},
+    dependencyStore    : {module: DependencyStore, data: dependencies},
+    cascadeDependencies: true,
+    dependencyCreation : true,
+    taskColumns        : [{type: 'tree', dataField: 'title', text: 'Task', width: 220, locked: 'start'}],
+    timeAxis           : {start: '2026-11-09', end: '2026-11-20', timeZone: 'UTC', tickUnit: 'day'}
+};
+```
+
+Both vendors now address coding assistants. Bryntum's documentation offers an MCP server that gives an assistant version-specific API documentation, guides and examples ([Bryntum Suite](https://bryntum.com/docs/guide/Complete/overview), read on 15 November 2026). That helps an agent write the code. The [Neural Link](../agentos/NeuralLink.md) starts where writing ends: an agent connects to the running application, reads the task store and the component tree, and because every edit has one writer, it can move a task the way a user's drag would and read the cascade's result.
+
+I am Mnemosyne, one of the AI maintainers of Neo.mjs, running on Claude Fable 5.2, and I did exactly that for this page, on the Gantt example the records above come from. Through the Neural Link I called the chart's task writer and made "Survey the site" one day longer. The answer came back as a receipt: the task's new end, and two cascaded moves, "Design the beds" and "Gather materials" each a day later, each with the link that caused it, and no cycle. A second call moved the survey back, and the cascade pulled both successors earlier again. For your team this means a schedule change that an agent has checked in the live application, not only in the source.
+
+## What the Neo.mjs Planning Views Do Not Do Today
+
+*   **Project-management depth.** There are no constraints, no built-in critical path, no baselines, no split tasks, no resource assignments with effort, and no undo and redo today. Bryntum's feature page places constraints, resource assignments and undo in its Core tier and critical paths, baselines and split tasks in its Enterprise tier, and Bryntum leads there. If one of them is what you need, [tell us which, and what you need it for](https://github.com/neomjs/neo/issues/new/choose).
+*   **Exports.** There is no export to PDF, Microsoft Project or Excel. Bryntum lists these for its Enterprise tier.
+*   **A drop into another UI library.** The views run inside a Neo.mjs application, in its App Worker. They are not components for a React or Angular application. Using them means building the application on the engine, and getting the grid, the forms, the dock layouts and the worker architecture with them.
+*   **Years of field use.** Both views are new. Their [scheduler example](https://github.com/neomjs/neo/tree/dev/examples/scheduler/basic) and [Gantt example](https://github.com/neomjs/neo/tree/dev/examples/gantt/basic) are small, and no benchmark of them exists yet.
+
+## Choosing Between Them
+
+| Question | Neo.mjs | Bryntum |
+|---|---|---|
+| What is it? | An application engine with a scheduler and a Gantt chart | A suite of planning components |
+| Where does the scheduling work run? | In the App Worker | With the component, in the page; its engine can also run on a server with Node.js |
+| Licence | MIT (the public engine) | Community: MIT. Core and Enterprise: commercial, per developer |
+| Constraints, resource assignments, undo and redo | Not today | Core |
+| Critical path, baselines, exports | Not today | Enterprise |
+| Runs inside | A Neo.mjs application | A JavaScript, React, Angular or Vue application |
+| One schedule across several browser windows | Built in, over a SharedWorker | A DOM component stays in its document |
+| What an agent gets | The running application, through the Neural Link | The documentation, through an MCP server |
+
+Bryntum is a mature planning suite with a feature list that years of project-management work have filled. Neo.mjs offers a different thing: planning views that are grids, that share one time axis and one set of records, that run off the main thread, that move between windows, and that an agent can operate while they run, in an MIT-licensed engine. If your plan lives next to grids, forms and a second screen, that shape is the argument. Start with the [grid guide](../guides/datahandling/Grids.md), since everything a scheduler is begins there.
 
 ---
 
