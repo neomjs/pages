@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-16T08:59:17Z",
+  "cursor": "2026-11-16T17:03:20Z",
   "accounts": [
     {
       "id": 6301,
@@ -498,6 +498,14 @@
       "firstMerge": "2024-10-01T09:33:25Z"
     },
     {
+      "id": 111978266,
+      "logins": [
+        "Mittalnew"
+      ],
+      "count": 1,
+      "firstMerge": "2026-11-16T14:07:22Z"
+    },
+    {
       "id": 114104796,
       "logins": [
         "erSpell"
@@ -686,7 +694,7 @@
       "logins": [
         "mrdeyroy"
       ],
-      "count": 2,
+      "count": 4,
       "firstMerge": "2026-11-15T17:10:49Z"
     },
     {
@@ -1042,5 +1050,5 @@
       "firstMerge": "2026-09-24T12:44:22Z"
     }
   ],
-  "digest": "b70fb2b9b41b4fa5d148ee5b6f1c2c9df63b43f2fd8e422d9edee7557fef1f57"
+  "digest": "7dd8fa6f92341c6d710c59ea541fbe4c344cdad21ff4d87fdc24ea2796109ef6"
 }
