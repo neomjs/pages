@@ -1119,7 +1119,7 @@ flowchart TD
 
 **How the page is written.** The main thread builds and updates nodes through DOM APIs; that is the default (`useDomApiRenderer`). A value you give a component as `text` is written with `textContent` and is never parsed as markup. A value you give it as `html` is parsed, and sanitising it is your application's job, as in any UI library.
 
-**Whether strings are evaluated.** Two modules call `new Function`, and both are opt-in. `src/code/executor/Neo.mjs` belongs to the live code editor (`Neo.code.LivePreview`) that runs the examples on this site. `src/ai/client/RuntimeService.mjs` belongs to the Neural Link client, which lets an agent replace a method in a running application. An application that uses neither loads no code that evaluates a string. The engine has not been certified against a named content security policy, so run your build under your own policy during the evaluation.
+**Whether strings are evaluated.** Two modules call `new Function`, and both are opt-in. `src/code/executor/Neo.mjs` belongs to the live code editor (`Neo.code.LivePreview`) that runs the examples on this site. `src/ai/client/RuntimeService.mjs` belongs to the Neural Link client, which lets an agent replace a method in a running application. An application that uses neither loads no code that evaluates a string. That is measured, for one example: `examples/grid/container` boots under `default-src 'self'; script-src 'self'; worker-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'` with no violation recorded in the page or its workers, and `test/playwright/e2e/core/ContentSecurityPolicy.spec.mjs` is the measurement — its controls deliberately block page boot and string evaluation in a worker. One example under the default configuration is what it claims, not a certification of your application: run your build under your own policy during the evaluation.
 
 **The Neural Link.** It lets an agent inspect and change a running application, so treat it as you treat remote debugging. It is off by default (`useAiClient` is `false`), it never starts on GitHub Pages, and its default endpoint is a port on the local machine.
 
@@ -1177,7 +1177,6 @@ flowchart TD
 A page that answers every question with a yes has not been honest with you. These are open today, each with what to do about it:
 
 *   **A published accessibility audit.** The roles are in the source. Run your own tool on your own views.
-*   **A named content security policy that the engine is tested under.** Test under yours on day 3.
 *   **Firefox and Safari in the automated gate.** The suites run in Chrome. Open your application in the others.
 *   **A long-term-support line.** Pin a version and read each upgrade section.
 *   **A support contract.** This page describes the open-source engine and lists no service-level agreement. Help is public: the issue tracker, Discussions and [Discord](https://discord.gg/6p8paPq).
@@ -3824,6 +3823,9 @@ class MainView extends Container {
 MainView = Neo.setupClass(MainView);
 ```
 
+Listeners as view or controller methods, listeners added procedurally, and when a binding fits better than an event
+are covered in the reference page [Custom Events](../guides/userinteraction/events/CustomEvents.md).
+
 ---
 
 # [Component References](https://neomjs.com/raw/learn/gettingstarted/References.md)
@@ -4084,6 +4086,9 @@ There are several use-cases for creating your own classes:
 - To add events or methods to the new class
 - To test the component independently
 
+The reference for the `static config` block, reactive configs and the `beforeSet`/`afterSet` hooks a subclass can
+add is [Extending Neo Classes](../guides/fundamentals/ExtendingNeoClasses.md).
+
 ---
 
 # [Config](https://neomjs.com/raw/learn/gettingstarted/Config.md)
@@ -4244,6 +4249,9 @@ class MainView extends Container {
 MainView = Neo.setupClass(MainView);
 ```
 
+The reference for everything on this page, including how `set()` applies several configs at once and how the
+generated setters work inside, is [Config System Deep Dive](../guides/fundamentals/ConfigSystemDeepDive.md).
+
 ---
 
 # [Shared Bindable Data](https://neomjs.com/raw/learn/gettingstarted/ComponentModels.md)
@@ -4380,6 +4388,8 @@ because the third copy of `MyPanel` has its own view model with the `foo` proper
 
 The Neo.mjs state provider and binding approach is simple and powerful. It gives you easy control 
 over the scope of a value, which means you can share properties as globally or narrowly as needed.
+The reference page [Shared Bindable Data (State Providers)](../guides/datahandling/StateProviders.md) continues
+with formulas, nested providers, class based providers and stores.
 
 ---
 
@@ -9394,7 +9404,8 @@ The synchronous lifecycle methods are called in the following order:
 
 While you *can* define a standard JavaScript `constructor()` method on a Neo.mjs class, it is strongly discouraged and
 considered a bad practice. The engine provides the `construct()` lifecycle hook for a very specific and powerful
-reason: **pre-processing configs**.
+reason: **pre-processing configs**. The tour chapter
+[Why Enhance JS Classes?](../coreengine/WhyEnhance.md) shows the native `constructor` trap with a worked example.
 
 #### The `constructor()` Limitation
 
@@ -9441,6 +9452,8 @@ the Neo.mjs lifecycle and config system, a flexibility that the standard `constr
 
 After the synchronous creation methods are complete, the instance lifecycle moves into an optional asynchronous phase.
 This is where you should place any logic that cannot be executed synchronously, such as loading external files or fetching data.
+Why this phase exists at all, and what breaks without it, is the story of the core engine tour's chapter
+[Instance Lifecycle & `initAsync`](../coreengine/Lifecycle.md).
 
 ### `initAsync()`: The Asynchronous Entry Point
 
@@ -9449,6 +9462,11 @@ The core of this phase is the `async initAsync()` method. It is scheduled as a m
 *   **Execution**: This microtask calls and `await`s `initAsync()`. This is the designated place for all asynchronous
     initialization logic. When overriding `initAsync()`, it is crucial to call `await super.initAsync()` at the
     beginning of your implementation.
+*   **What the base method does**: `Neo.core.Base#initAsync()` registers the remote methods first. When the class
+    has a `remote` config, it awaits `initRemote()`, which is why an override opens with `await super.initAsync()`:
+    otherwise the registration is delayed until your own work is done. How the remote methods then travel between
+    the workers is described in
+    [Main Thread Addons → Asynchronous Initialization](./MainThreadAddons.md#asynchronous-initialization-initasync-and-the-isready-config).
 
 ```javascript readonly
 // In your class
@@ -11020,6 +11038,12 @@ At its heart, the push system is built on a few key principles:
     *   `beforeGetMyValue(value)`: Called before the getter returns the value.
     *   `beforeSetMyValue(value, oldValue)`: Called before the setter applies the new value.
     *   `afterSetMyValue(value, oldValue)`: Called after the setter has applied the new value.
+
+    Three rules follow from how the generated setter calls these hooks. On the first run, while the instance is
+    constructed and the default values are applied, `oldValue` is `undefined`; a hook that tests
+    `oldValue !== undefined` runs on later changes only. A `beforeSet` hook that returns `undefined` cancels the
+    update: the backing value is restored and no `afterSet` hook runs. Because `undefined` carries that meaning, a
+    config is reset with `null`, never with `undefined`.
 *   **Reactivity:** The `afterSet` hooks are the heart of the reactive system. They allow you to define logic that
     automatically runs whenever a specific config property changes, ensuring your UI and application state are always
     in sync.
@@ -11172,6 +11196,52 @@ Here's the sequence:
 operation. This guarantees that all `afterSet` handlers, regardless of their execution order, operate on the most
 current and consistent state of all config properties involved in that operation.
 
+The snapshot settles circular *reads*. Circular *writes*, where `afterSetA` assigns `b` and `afterSetB` assigns
+`a`, are stopped by the change check in the setter: the new value is handed to the backing `Neo.core.Config`, whose
+`set()` compares it with the current one through the config's `isEqual` function (`Neo.isEqual` unless a descriptor
+says otherwise) and reports a change only when they differ. The `afterSet` hook runs only on a reported change, so
+as soon as the two hooks produce the values already stored, the chain ends.
+
+### 4. Config Descriptors
+
+A config's default is usually a plain value. When the engine also needs to know *how* to treat the value, the
+default is written as a **descriptor**: an object carrying `[isDescriptor]: true` (the symbol is exported by
+`src/core/ConfigSymbols.mjs`). `Neo.setupClass` stores the descriptor's rules for the class, takes its `value` as
+the actual default, and the `Neo.core.Config` instance behind the property applies the rules at runtime.
+
+```javascript readonly
+import {isDescriptor} from '../core/ConfigSymbols.mjs';
+
+class MyList extends Component {
+    static config = {
+        items_: {
+            [isDescriptor]: true,
+            clone         : 'shallow',
+            cloneOnGet    : 'none',
+            isEqual       : () => false,
+            merge         : 'deepArrays',
+            value         : []
+        }
+    }
+}
+```
+
+*   **`value`**: The default value of the config. It is the only key that is required.
+*   **`clone`**: How a value is copied when it is assigned. `'deep'` (the default), `'shallow'` or `'none'`.
+*   **`cloneOnGet`**: How a value is copied when it is read: `'deep'`, `'shallow'` or `'none'`. Unset (`null`) by
+    default, and independent of `clone`. The generated getter always copies a `Date`. While `cloneOnGet` is unset it
+    also returns arrays as a copy (`value.slice()`) and plain objects as they are. `'deep'` deep-clones the value,
+    `'shallow'` copies arrays and plain objects one level deep, and `'none'` skips the default array copy.
+*   **`isEqual`**: The function the setter uses to decide whether a value has changed. Defaults to `Neo.isEqual`,
+    a deep comparison. `() => false` makes every assignment count as a change.
+*   **`merge`**: The strategy for merging the default with a subclass's or an instance's value. `'replace'` (the
+    default), `'deep'`, `'shallow'`, `'deepArrays'`, or a function `(defaultValue, instanceValue)`. A subclass's
+    `static config` is merged while the class is set up (`Neo.setupClass`); an instance's config object is merged
+    while the instance is constructed (`Base#mergeConfig`).
+
+A subclass can replace a descriptor it inherits with a descriptor of its own; see
+[Declarative Config Merging → Advanced: Overriding Config Descriptors](./DeclarativeConfigMerging.md#advanced-overriding-config-descriptors).
+
 ## Tier 2: The Declarative "Pull" System (v10+)
 
 With the introduction of functional components, Neo.mjs now includes a "pull" reactivity system. This system is
@@ -11192,6 +11262,11 @@ A `Neo.core.Config` instance is a lightweight wrapper around a single, reactive 
     itself as a dependency of that effect.
 *   **Notification:** When its `set()` method is called and the value changes, it notifies all its subscribers,
     triggering them to re-run.
+
+The registration happens inside `Config#get()`, whichever instance owns the config: an effect therefore tracks every
+config it reads, including one on another component or on a state provider. That is what lets a binding follow a
+data property it never declared a dependency on; see
+[State Providers → How Reactivity Works](../datahandling/StateProviders.md#how-reactivity-works-the-effects-based-system).
 
 ### 2. `Neo.core.Effect`: The Reactive Computation
 
@@ -12625,7 +12700,7 @@ This late-stage logical construction enables the foundational features of the en
 
 * **Declarative Config Merging:** The base class can now safely read static configurations, prototype values, and class fields from its subclasses, allowing it to perform deep, intelligent merging of complex configuration objects (like layouts or component items).
 * **The Config System:** It provides the precise entry point to initialize the `core.Config` system, setting up the reactive state of the component.
-* **Unified Lifecycle:** It establishes a predictable, multi-stage initialization process (`construct` -> `onConstructed` -> `init` -> `initAsync`) that handles both synchronous setup and asynchronous dependencies.
+* **Unified Lifecycle:** It establishes a predictable, multi-stage initialization process (`construct` -> `onConstructed` -> `init` -> `initAsync`) that handles both synchronous setup and asynchronous dependencies. Every stage, from `Neo.create()` to `destroy()`, is laid out in the reference page [Instance Lifecycle](../fundamentals/InstanceLifecycle.md).
 
 By abandoning the rigid native `constructor` in favor of the managed `construct()` lifecycle, the Neo core transforms standard JavaScript objects into intelligent instances ready to be configured. But an instance cannot be configured if the class itself doesn't know what its configs are supposed to do. For that, we must look at what happens before the object is even born.
 
@@ -12658,7 +12733,7 @@ export default Neo.setupClass(MyComponent);
 
 ## What Does `setupClass` Do?
 
-`Neo.setupClass` acts as a class factory. It performs several critical, heavy-lifting operations that transform a standard JS class into a powerful, declarative Neo component.
+`Neo.setupClass` acts as a class factory. It performs several critical, heavy-lifting operations that transform a standard JS class into a powerful, declarative Neo component. What a class author writes for it, the `static config` block and the lifecycle hooks, is the subject of [Extending Neo Classes](../fundamentals/ExtendingNeoClasses.md).
 
 ### 1. Prototype Chain Walking & Config Merging
 
@@ -12829,7 +12904,7 @@ class PageContainer extends Container {
 }
 ```
 
-When a user creates this container, they can simply pass `contentConfig: { style: { padding: '20px' } }`. During the `construct()` phase, `core.Base` sees the `[mergeFrom]` symbol and automatically deep-merges that custom config block exactly where the symbol is placed inside the `items` tree. This is incredibly powerful for creating highly customizable, deeply nested widgets.
+When a user creates this container, they can simply pass `contentConfig: { style: { padding: '20px' } }`. During the `construct()` phase, `core.Base` sees the `[mergeFrom]` symbol and automatically deep-merges that custom config block exactly where the symbol is placed inside the `items` tree. This is incredibly powerful for creating highly customizable, deeply nested widgets. The reference for `mergeFrom`, including structural injection and overriding a config descriptor in a subclass, is [Declarative Config Merging & Structural Injection](../fundamentals/DeclarativeConfigMerging.md).
 
 ### 7. The "Gatekeeper" Pattern (Mixed Environments)
 
@@ -12841,7 +12916,7 @@ By the end of the `setupClass` phase, the class is fully armed. It has a unified
 
 ---
 
-# [The Config System](https://neomjs.com/raw/learn/guides/coreengine/ConfigSystem.md)
+# [The Config System & Circular Dependencies](https://neomjs.com/raw/learn/guides/coreengine/ConfigSystem.md)
 Source: https://neomjs.com/learn/guides/coreengine/ConfigSystem
 
 # The Config System & Circular Dependencies
@@ -12977,7 +13052,7 @@ Without the `configSymbol` buffering these values, when `afterSetA` runs, `this.
 ### Preventing Infinite Write Loops
 While the `configSymbol` solves circular *reads* safely, what happens if `afterSetA` *writes* to `b`, and `afterSetB` *writes* to `a`? Could they bounce back and forth infinitely?
 
-This is where the low-level `Neo.core.Compare` utility acts as the ultimate safety net. Before an `afterSet` hook is fired, the generated setter passes the new value through the deep comparison engine. **An `afterSet` hook is ONLY executed if the value has *actually* changed.** If your mathematical calculations stabilize and produce the same result, the loop is broken immediately.
+This is where the low-level `Neo.core.Compare` utility acts as the ultimate safety net. Before an `afterSet` hook is fired, the generated setter passes the new value through the deep comparison engine. **An `afterSet` hook is ONLY executed if the value has *actually* changed.** If your mathematical calculations stabilize and produce the same result, the loop is broken immediately. The reference walks through one such `set()` call step by step in [Config System Deep Dive → Solving the "Circular Reference" Problem](../fundamentals/ConfigSystemDeepDive.md#3-solving-the-circular-reference-problem).
 
 The `configSymbol` elegantly solves local component state mutations. But this push-based model requires writing explicit `afterSet` hooks. As an application scales, manually wiring hooks to synchronize global state leads to unmaintainable "spaghetti code." The core engine needs a brain to track dependencies automatically.
 
@@ -13068,7 +13143,7 @@ Since v10, every push-based reactive config generated by `Neo.setupClass` (Tier 
 
 You can create an Effect that re-runs when a component's `text` changes, seamlessly bridging local component state with global dependency tracking. The `Neo.state.Provider` heavily leverages this concept: it converts every deeply nested property path (e.g., `user.address.city`) into a discrete `core.Config` instance internally, allowing the `createHierarchicalDataProxy` to intercept reads and pipe them directly into the active Effect.
 
-Furthermore, batch updates via `set()` (utilizing the `configSymbol`) are wrapped in `EffectManager.pause()` and `EffectManager.resume()`. This guarantees that if multiple tracked configs change during a batch operation, the pull-based dependency graph is not re-evaluated until the entire batch is complete and internally consistent.
+Furthermore, batch updates via `set()` (utilizing the `configSymbol`) are wrapped in `EffectManager.pause()` and `EffectManager.resume()`. This guarantees that if multiple tracked configs change during a batch operation, the pull-based dependency graph is not re-evaluated until the entire batch is complete and internally consistent. The reference describes the same hand-over from the setter's side in [Config System Deep Dive → The Bridge](../fundamentals/ConfigSystemDeepDive.md#the-bridge-how-push-and-pull-work-together).
 
 You can use explicit hooks for precise component rendering, and automated Effects for complex business logic and functional rendering loops, allowing for optimal performance and clean architecture.
 
@@ -13076,7 +13151,7 @@ We now have an instance that is compiled, locally reactive, and globally aware. 
 
 ---
 
-# [Instance Lifecycle](https://neomjs.com/raw/learn/guides/coreengine/Lifecycle.md)
+# [Instance Lifecycle & initAsync](https://neomjs.com/raw/learn/guides/coreengine/Lifecycle.md)
 Source: https://neomjs.com/learn/guides/coreengine/Lifecycle
 
 # Instance Lifecycle & `initAsync`
@@ -13093,10 +13168,13 @@ When you call `Neo.create(MyClass, config)`, the engine orchestrates a precise s
 
 1. **`constructor()` (Native):** The native parameterless constructor runs, initializing all basic class fields.
 2. **`construct(config)` (Synchronous):** The engine merges configs, initializes the reactive config system, and applies the initial state payload.
-3. **`onConstructed()` (Synchronous):** A hook for subclasses to perform logic immediately after the core construction is complete. The `isConstructed` flag is set to `true`.
-4. **`init()` (Synchronous):** A secondary hook for synchronous initialization, often used by components to build their initial VDOM tree.
-5. **`initAsync()` (Asynchronous):** The critical phase for async operations. The engine pauses here.
-6. **`afterSetIsReady(true)` (Synchronous):** Fired strictly *after* the promise returned by `initAsync` resolves.
+3. **`onConstructed()` (Synchronous):** A hook for subclasses to perform logic immediately after the core construction is complete.
+4. **`onAfterConstructed()` (Synchronous):** Runs once every `onConstructed()` in the class hierarchy has finished. The `isConstructed` flag is set to `true` here, and an observable class fires its `constructed` event.
+5. **`init()` (Synchronous):** A secondary hook for synchronous initialization, often used by components to build their initial VDOM tree.
+6. **`initAsync()` (Asynchronous):** The critical phase for async operations. The engine pauses here.
+7. **`afterSetIsReady(true)` (Synchronous):** Fired strictly *after* the promise returned by `initAsync` resolves.
+
+Each of these phases, with the mounting and destruction that follow them, is described in the reference page [Instance Lifecycle](../fundamentals/InstanceLifecycle.md).
 
 ## Why `initAsync` is Essential
 
@@ -23053,6 +23131,9 @@ State Providers act as a single source of truth for a section of your component 
 
 *Note: Other libraries or frameworks often call state providers "Stores" or "ViewModels".*
 
+If this is your first contact with state providers, the shorter introduction
+[Getting Started → Shared Bindable Data](../../gettingstarted/ComponentModels.md) walks through a single binding first.
+
 ## How Reactivity Works: The Effects-Based System
 
 Neo.mjs State Providers implement a powerful, automated reactivity system. You do not need to write manual event listeners or update hooks to keep your UI in sync with your state. This system is built around two core concepts:
@@ -24455,6 +24536,8 @@ Source: https://neomjs.com/learn/guides/userinteraction/events/CustomEvents
 # Custom Events
 
 As you read in the <a href="#/learn/gettingstarted/Events">Getting Started > Events</a> topic, components, stores, and many other objects fire events.
+This page is about those events, which Neo instances fire themselves. Events the browser fires on DOM nodes, such as
+`click` or `keydown`, are a separate mechanism and have their own page, [DOM Events](DomEvents.md).
 
 ```javascript live-preview
 import Container from '../container/Base.mjs';
@@ -24791,6 +24874,10 @@ then runs each function in the array, passing whatever data is specified in the 
 Source: https://neomjs.com/learn/guides/userinteraction/events/DomEvents
 
 # DOM Events
+
+This page covers the events the browser fires on DOM nodes and how a component subscribes to them from the app
+worker. Events that Neo instances fire themselves, such as a button's `click` or a store's `load`, are described in
+[Custom Events](CustomEvents.md).
 
 ## Delegated global DOM Events
 
@@ -30755,6 +30842,9 @@ myMammal.speak(); // Logs "Creature is grunting."
 
 export default Neo.setupClass(Mammal);
 ```
+
+How a Neo class turns these plain JavaScript class features into configs, type flags and lifecycle hooks is the
+subject of [Extending Neo Classes](../guides/fundamentals/ExtendingNeoClasses.md).
 
 ---
 

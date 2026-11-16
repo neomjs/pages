@@ -2,7 +2,8 @@
  * @module buildScripts.enhanceSeo
  * @summary Copies production Portal entry, sitemap (`sitemap.xml`, `sitemap-core.xml`, `sitemap-discussions.xml`,
  * `sitemap-archive.xml`), and LLM context (`llms.txt`, `llms-full.txt`, `llms-all.txt`) artifacts to the site root
- * and injects the GitHub Pages `<base>` tag into the root `index.html`.
+ * and injects the GitHub Pages `<base>` tag, hash-link fix, and pre-boot Service Worker cache-upgrade guard into
+ * the root `index.html`.
  */
 import { spawnSync } from 'child_process';
 import { existsSync } from 'fs';
@@ -53,10 +54,58 @@ for (const file of optionalFilesToCopy) {
 }
 console.log('Step 1: Completed');
 
-// 2. Inject <base> tag and navigation fix script into index.html
-console.log('Step 2: Injecting <base> tag and navigation fix script into index.html...');
+// 2. Inject <base> tag, pre-boot SW cache-upgrade guard, and navigation fix script into index.html
+console.log('Step 2: Injecting <base> tag, pre-boot SW upgrade guard, and navigation fix script into index.html...');
 const indexPath = resolve(destDir, 'index.html');
 let indexContent = await readFile(indexPath, 'utf-8');
+
+const defaultConfig = await readFile(resolve('node_modules/neo.mjs/src/DefaultConfig.mjs'), 'utf-8');
+const neoVersion = defaultConfig.match(/version\s*:\s*'([^']+)'/)?.[1];
+if (!neoVersion) {
+    console.error('  Error: Neo.config.version not found in node_modules/neo.mjs/src/DefaultConfig.mjs.');
+    process.exit(1);
+}
+
+const microLoaderTag = '<script src="../../src/MicroLoader.mjs" type="module"></script>';
+if (!indexContent.includes(microLoaderTag)) {
+    console.error('  Error: MicroLoader.mjs script tag not found in index.html.');
+    process.exit(1);
+}
+
+const swBootGuardScript = `<script type="module">
+const expectedCache = ${JSON.stringify(`neo-runtime-${neoVersion}`)};
+if ('serviceWorker' in navigator && 'caches' in window) {
+    try {
+        const keys = await caches.keys();
+        if (keys.some(k => k.startsWith('neo-runtime-') && k !== expectedCache)) {
+            const reg = await navigator.serviceWorker.getRegistration(new URL('../../', document.baseURI).href);
+            if (reg) {
+                await reg.update();
+                const sw = reg.installing || reg.waiting;
+                if (sw && sw.state !== 'activated' && sw.state !== 'redundant') {
+                    await new Promise(resolve => {
+                        const timer = setTimeout(resolve, 5000);
+                        sw.addEventListener('statechange', () => {
+                            if (sw.state === 'activated' || sw.state === 'redundant') {
+                                clearTimeout(timer);
+                                resolve();
+                            }
+                        });
+                    });
+                }
+            }
+            for (const k of await caches.keys()) {
+                if (k.startsWith('neo-runtime-') && k !== expectedCache) {
+                    await caches.delete(k);
+                }
+            }
+        }
+    } catch {}
+}
+await import('../../src/MicroLoader.mjs');
+</script>`;
+
+indexContent = indexContent.replace(microLoaderTag, swBootGuardScript);
 
 const baseTag = '<base href="./dist/production/apps/portal/">';
 const navFixScript = `
