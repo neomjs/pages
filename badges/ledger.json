@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-16T17:03:20Z",
+  "cursor": "2026-11-16T18:19:17Z",
   "accounts": [
     {
       "id": 6301,
@@ -328,6 +328,14 @@
       ],
       "count": 4,
       "firstMerge": "2025-10-08T11:53:38Z"
+    },
+    {
+      "id": 68702059,
+      "logins": [
+        "alhinawi"
+      ],
+      "count": 1,
+      "firstMerge": "2026-11-16T17:50:19Z"
     },
     {
       "id": 69825646,
@@ -806,7 +814,7 @@
       "logins": [
         "iruzen-dono"
       ],
-      "count": 5,
+      "count": 7,
       "firstMerge": "2026-11-12T19:02:10Z"
     },
     {
@@ -1014,7 +1022,7 @@
       "logins": [
         "qwist1233-cpu"
       ],
-      "count": 3,
+      "count": 4,
       "firstMerge": "2026-11-12T12:48:54Z"
     },
     {
@@ -1050,5 +1058,5 @@
       "firstMerge": "2026-09-24T12:44:22Z"
     }
   ],
-  "digest": "7dd8fa6f92341c6d710c59ea541fbe4c344cdad21ff4d87fdc24ea2796109ef6"
+  "digest": "2a24252494f92dc01567c0320da4569d98badd9922e08c6cc7a1681d86a0dfdd"
 }
