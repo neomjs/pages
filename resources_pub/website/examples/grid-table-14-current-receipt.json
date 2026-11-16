@@ -1,0 +1,109 @@
+{
+  "codeHead": "0da128d63276f1be68526645abc1edc78e007740",
+  "baseCatalog": "537cfaf768b913371c8ec2f1ea009dc81182212c",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "scope": "same current Portal code; reverse proxy serves exact base or candidate catalog bytes to workers; exact local Pages images; not deployed",
+  "receipts": [
+    {
+      "name": "before",
+      "cards": 4,
+      "catalogReads": 1,
+      "catalogSha256": "1f1abee1be838991213e0d5db7a34d3a37a25e129729e3d3d1f6197472ff713f",
+      "fulfilled": [
+        {
+          "image": "devmode/tableFiltering.png",
+          "sha256": "c6f38d65756aa13bf0e132c7b12fc9cffa4a6600c2385e88085e9753a208a7f3"
+        },
+        {
+          "image": "devmode/treeGridBigData.png",
+          "sha256": "26d3e4de52b4a4f1acbfef2fda640904c0723f92fe5be3b2a9234b5e2f7f71cd"
+        },
+        {
+          "image": "devmode/bigData.png",
+          "sha256": "d6d280fb3808482318d01f8dcf0d1a36d7a6a7d1a701f53e2e24d1ba26615200"
+        },
+        {
+          "image": "devmode/grid-issues-13-3.jpg",
+          "sha256": "74346b39b5f7b0c628cf0cb27060abb99223a6d06af43dc647bad7c84f0cfb4e"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "after",
+      "cards": 21,
+      "catalogReads": 1,
+      "catalogSha256": "3ea765d15291e10fce1ea8afd20e11851a193efb610725f775df2f225fba6b47",
+      "fulfilled": [
+        {
+          "image": "devmode/table-filtering-14.jpg",
+          "sha256": "e0a805362d8c08a74f8fd3bba3c40926a944526f6830b4934585262df255f1ed"
+        },
+        {
+          "image": "devmode/grid-issues-14.jpg",
+          "sha256": "89713cc7fabbd6691183db2530a0806e693f6fdbe53c7a9b050f70cf337a2718"
+        },
+        {
+          "image": "devmode/grid-tree-big-data-14.jpg",
+          "sha256": "280e5775ad6da4d73029dd2b170e2ae26b457a501c445f05e53063619e918dbc"
+        },
+        {
+          "image": "devmode/grid-big-data-14.jpg",
+          "sha256": "49fb6912125e34606f04a363ef467b180742e8e931f9f0cf959ebf9f6cf77b56"
+        },
+        {
+          "image": "devmode/grid-cell-editing-14.jpg",
+          "sha256": "1d5f6918c51dac48314c9dd1a33d7b7918ed8fd27bddde36b954cb183de94751"
+        },
+        {
+          "image": "devmode/grid-container-14.jpg",
+          "sha256": "837b31c3fcfc330dd282034f88f0b4acf5ddfef0b7f867e59e30ad366e11fb38"
+        },
+        {
+          "image": "devmode/grid-animated-row-sorting-14.jpg",
+          "sha256": "301f2b9461b44b3a709ba0c0c97706ca1bf4ac2cd80ba14ea87b6418ba2bd9a9"
+        },
+        {
+          "image": "devmode/grid-content-sized-rows-14.jpg",
+          "sha256": "d0d2b56776161eb06c53c45cea4f6ae3d833bdf9e7055ccf9c2124898629f7a0"
+        },
+        {
+          "image": "devmode/grid-nested-record-fields-14.jpg",
+          "sha256": "92b3182110a0e2d67d7b561055a1e4c3648c643f784e292d786be4eb9d221c50"
+        },
+        {
+          "image": "devmode/grid-covid-14.jpg",
+          "sha256": "51c10d7a03267e606780c6db10aa87125b34559fa68f847b08fc5e578c71db15"
+        },
+        {
+          "image": "devmode/grid-header-groups-14.jpg",
+          "sha256": "8dbdf6336f6c70cdbe435b4ee4e0146f7d6df6cc251a77c782c1c16c1a2da305"
+        },
+        {
+          "image": "devmode/grid-locked-columns-14.jpg",
+          "sha256": "94a37795db09562d0e7eb0c266536d9ad3b003195dc8953c624daf434b15799f"
+        },
+        {
+          "image": "devmode/grid-tree-14.jpg",
+          "sha256": "b5929f7f51ead0e09b18290ad0b4810f3964cee33df10b2306970f9a36c4cf5c"
+        },
+        {
+          "image": "devmode/grid-value-banding-14.jpg",
+          "sha256": "7a2289a943cf790d564b2735411859a075bc0c1705c1f9e236c6b10dec2fe756"
+        },
+        {
+          "image": "devmode/json-grid-container-14.jpg",
+          "sha256": "769b29603c5bf47d32f3e23a6b62fccd0dd683044b757d39f647fd728325e30f"
+        },
+        {
+          "image": "devmode/table-cell-editing-14.jpg",
+          "sha256": "eaf3035e295c4566161e56aa0b05d01e059cf373c5d5e91ef68d369f295cce18"
+        }
+      ],
+      "errors": []
+    }
+  ]
+}
