@@ -72,6 +72,8 @@ if (!indexContent.includes(microLoaderTag)) {
     process.exit(1);
 }
 
+// The loader's address is absolute against <base>: WebKit resolves an inline module's import() against the
+// document's own address instead, which loaded /src/MicroLoader.mjs and left the page blank (#101)
 const swBootGuardScript = `<script type="module">
 const expectedCache = ${JSON.stringify(`neo-runtime-${neoVersion}`)};
 if ('serviceWorker' in navigator && 'caches' in window) {
@@ -102,7 +104,7 @@ if ('serviceWorker' in navigator && 'caches' in window) {
         }
     } catch {}
 }
-await import('../../src/MicroLoader.mjs');
+await import(new URL('../../src/MicroLoader.mjs', document.baseURI).href);
 </script>`;
 
 indexContent = indexContent.replace(microLoaderTag, swBootGuardScript);
