@@ -29,7 +29,7 @@ if ('serviceWorker' in navigator && 'caches' in window) {
         }
     } catch {}
 }
-await import('../../src/MicroLoader.mjs');
+await import(new URL('../../src/MicroLoader.mjs', document.baseURI).href);
 </script>
 <script>
 document.addEventListener('click', function(event) {
