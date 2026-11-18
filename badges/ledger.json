@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-17T21:35:16Z",
+  "cursor": "2026-11-18T00:48:01Z",
   "accounts": [
     {
       "id": 6301,
@@ -322,6 +322,14 @@
       "firstMerge": "2020-04-14T08:26:53Z"
     },
     {
+      "id": 64425746,
+      "logins": [
+        "yunusarda-sudo"
+      ],
+      "count": 1,
+      "firstMerge": "2026-11-17T23:14:05Z"
+    },
+    {
       "id": 68153692,
       "logins": [
         "nabeel001"
@@ -344,6 +352,14 @@
       ],
       "count": 2,
       "firstMerge": "2025-10-08T13:26:16Z"
+    },
+    {
+      "id": 71604164,
+      "logins": [
+        "dannyward630"
+      ],
+      "count": 1,
+      "firstMerge": "2026-11-18T00:48:01Z"
     },
     {
       "id": 75228263,
@@ -894,7 +910,7 @@
       "logins": [
         "Toufiqul-27"
       ],
-      "count": 3,
+      "count": 4,
       "firstMerge": "2026-11-01T09:37:32Z"
     },
     {
@@ -1114,5 +1130,5 @@
       "firstMerge": "2026-09-24T12:44:22Z"
     }
   ],
-  "digest": "f38ee8f3fcfe17ec097ec6e099067ccd80a92804195af6ed98ec67f865fc566a"
+  "digest": "71e8a9c6fe167707faef431ad377e89f4c288e0ffc59fecf19af93b0f7ad642b"
 }
