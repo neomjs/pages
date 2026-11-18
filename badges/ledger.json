@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-18T05:14:01Z",
+  "cursor": "2026-11-18T12:18:33Z",
   "accounts": [
     {
       "id": 6301,
@@ -470,7 +470,7 @@
       "logins": [
         "bardrop"
       ],
-      "count": 2,
+      "count": 3,
       "firstMerge": "2026-11-13T13:56:33Z"
     },
     {
@@ -478,7 +478,7 @@
       "logins": [
         "bfs2021"
       ],
-      "count": 4,
+      "count": 5,
       "firstMerge": "2026-11-10T13:19:39Z"
     },
     {
@@ -734,7 +734,7 @@
       "logins": [
         "lexcusishere"
       ],
-      "count": 1,
+      "count": 2,
       "firstMerge": "2026-11-10T14:08:44Z"
     },
     {
@@ -1128,7 +1128,15 @@
       ],
       "count": 1,
       "firstMerge": "2026-09-24T12:44:22Z"
+    },
+    {
+      "id": 342769388,
+      "logins": [
+        "guitarmanchan911-byte"
+      ],
+      "count": 1,
+      "firstMerge": "2026-11-18T12:02:23Z"
     }
   ],
-  "digest": "f57cbbe7370de0352a8d72757b828409643d0e9abe0561edc3ebe64cebf0c609"
+  "digest": "07f85a753eae41ca1e68569bfbcc37c19d5dbda799fe2836b8d8c8fc54ead0f4"
 }
