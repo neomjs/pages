@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-19T21:22:43Z",
+  "cursor": "2026-11-19T23:22:16Z",
   "accounts": [
     {
       "id": 6301,
@@ -198,7 +198,7 @@
       "logins": [
         "wanjinhao1"
       ],
-      "count": 1,
+      "count": 2,
       "firstMerge": "2026-11-07T16:03:17Z"
     },
     {
@@ -1162,5 +1162,5 @@
       "firstMerge": "2026-11-18T12:02:23Z"
     }
   ],
-  "digest": "fb3fe7e12e48220a47504f3ad97619dae812975b3d977ceff245ebb228b11a58"
+  "digest": "82f11781055cee5164dd5db152e54c352da742d045b4f0b444718435c2c6a351"
 }
