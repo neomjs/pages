@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-19T23:22:16Z",
+  "cursor": "2026-11-20T02:00:11Z",
   "accounts": [
     {
       "id": 6301,
@@ -834,6 +834,14 @@
       "firstMerge": "2026-08-23T16:42:07Z"
     },
     {
+      "id": 173550318,
+      "logins": [
+        "MaxonT"
+      ],
+      "count": 2,
+      "firstMerge": "2026-11-20T00:03:10Z"
+    },
+    {
       "id": 173680571,
       "logins": [
         "kart-u"
@@ -1162,5 +1170,5 @@
       "firstMerge": "2026-11-18T12:02:23Z"
     }
   ],
-  "digest": "82f11781055cee5164dd5db152e54c352da742d045b4f0b444718435c2c6a351"
+  "digest": "84cc301c27426ab8346cbfb965f52eba7658d67f33dd449dfcba0cb05715701d"
 }
