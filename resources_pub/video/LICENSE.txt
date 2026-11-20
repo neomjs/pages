@@ -1,0 +1,10 @@
+File: big-buck-bunny-trailer.mp4
+Title: Big Buck Bunny — Official Trailer (640x360 H.264 MP4, 33 s)
+Author: Blender Foundation (Peach Open Movie Project)
+Copyright: (c) copyright 2008, Blender Foundation / www.bigbuckbunny.org
+License: Creative Commons Attribution 3.0 Unported (CC BY 3.0)
+License URL: https://creativecommons.org/licenses/by/3.0/
+Source URL: https://download.blender.org/peach/trailer/trailer_720x405.mov
+Licensing Terms URL: https://peach.blender.org/about/
+
+Changes made: Transcoded from 720x405 QuickTime MOV to 640x360 H.264/AAC MP4 with faststart metadata for web streaming. No endorsement by the licensor is implied.
