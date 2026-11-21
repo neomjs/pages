@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-21T01:59:47Z",
+  "cursor": "2026-11-21T04:02:15Z",
   "accounts": [
     {
       "id": 6301,
@@ -310,7 +310,7 @@
       "logins": [
         "nabeelbaghoor"
       ],
-      "count": 1,
+      "count": 2,
       "firstMerge": "2026-11-14T12:52:25Z"
     },
     {
@@ -1178,5 +1178,5 @@
       "firstMerge": "2026-11-18T12:02:23Z"
     }
   ],
-  "digest": "8ff324741da128ec930b15880e1a6aeaaa85fb43382df0f8f4bd54983744efd2"
+  "digest": "4d90640aeb975a20dfab06b896c3e61cf7aed03929a55938eac24d4d01388388"
 }
