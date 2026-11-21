@@ -1,9 +1,10 @@
 /**
  * @module buildScripts.enhanceSeo
  * @summary Copies production Portal entry, sitemap (`sitemap.xml`, `sitemap-core.xml`, `sitemap-discussions.xml`,
- * `sitemap-archive.xml`), and LLM context (`llms.txt`, `llms-full.txt`, `llms-all.txt`) artifacts to the site root
- * and injects the GitHub Pages `<base>` tag, hash-link fix, and pre-boot Service Worker cache-upgrade guard into
- * the root `index.html`.
+ * `sitemap-archive.xml`), and LLM context (`llms.txt`, `llms-full.txt`, `llms-all.txt`) artifacts to the site root,
+ * injects the root-anchored `<base href="/dist/production/apps/portal/">` tag, hash-link fix, and pre-boot Service
+ * Worker cache-upgrade guard into root `index.html`, and enables `routerMode: 'pathname'` in the production Portal
+ * `neo-config.json` (`#154`, `neomjs/middleware-v2#21`).
  */
 import { spawnSync } from 'child_process';
 import { existsSync } from 'fs';
@@ -109,7 +110,7 @@ await import(new URL('../../src/MicroLoader.mjs', document.baseURI).href);
 
 indexContent = indexContent.replace(microLoaderTag, swBootGuardScript);
 
-const baseTag = '<base href="./dist/production/apps/portal/">';
+const baseTag = '<base href="/dist/production/apps/portal/">';
 const navFixScript = `
 <script>
 document.addEventListener('click', function(event) {
@@ -140,11 +141,18 @@ if (indexContent.includes('</body>')) {
 }
 
 await writeFile(indexPath, indexContent);
+
+const portalConfigRelPath = 'node_modules/neo.mjs/dist/production/apps/portal/neo-config.json';
+const portalConfigPath    = resolve(destDir, portalConfigRelPath);
+const portalConfig        = JSON.parse(await readFile(portalConfigPath, 'utf-8'));
+portalConfig.routerMode   = 'pathname';
+await writeFile(portalConfigPath, JSON.stringify(portalConfig));
+console.log('  Production Portal neo-config.json updated with routerMode: "pathname".');
 console.log('Step 2: Completed');
 
-// 3. Stage the root files, which the deploy commits. --sparse stages them in a sparse clone too.
-console.log('Step 3: Staging the root files...');
-const gitAddProcess = spawnSync('git', ['add', '--sparse', ...copiedFiles]);
+// 3. Stage the root files and production Portal config, which the deploy commits. --sparse stages them in a sparse clone too.
+console.log('Step 3: Staging the root files and Portal config...');
+const gitAddProcess = spawnSync('git', ['add', '--sparse', ...copiedFiles, portalConfigRelPath]);
 if (gitAddProcess.status !== 0) {
     console.error(`'git add' failed with exit code ${gitAddProcess.status}`);
     if (gitAddProcess.stderr) {
