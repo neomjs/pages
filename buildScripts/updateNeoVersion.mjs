@@ -8,24 +8,27 @@ import {fetchAndMaterializeLearnSpokes}                               from './ma
 const npmCmd = os.platform().startsWith('win') ? 'npm.cmd' : 'npm';
 
 /**
- * @summary Fetches one revision of a repository at a tag or a full commit SHA, one commit deep, optionally narrowed
- * to sparse paths.
+ * @summary Fetches one revision of a repository at a tag or a full commit SHA, optionally narrowed to sparse paths and
+ * optionally retaining full commit history (`{shallow: false}`) when per-file `git log` dates are required.
  *
  * Anything but a full SHA is fetched as `refs/tags/<ref>`, so a branch never resolves, whatever its name.
  * @param {String}   url
- * @param {String}   ref    A tag name or a full 40-hex commit SHA
+ * @param {String}   ref               A tag name or a full 40-hex commit SHA
  * @param {String}   dir
  * @param {String[]} [sparse]
+ * @param {Object}   [options]
+ * @param {Boolean}  [options.shallow=true]
  * @returns {String|null} The checked-out commit, or null when `ref` names no tag or commit
  */
-function fetchRevision(url, ref, dir, sparse) {
-    const git     = (...args) => spawnSync('git', args, { stdio: 'inherit' }).status === 0;
-    const refspec = /^[0-9a-f]{40}$/.test(ref) ? ref : `refs/tags/${ref}`;
+function fetchRevision(url, ref, dir, sparse, { shallow = true } = {}) {
+    const git       = (...args) => spawnSync('git', args, { stdio: 'inherit' }).status === 0;
+    const refspec   = /^[0-9a-f]{40}$/.test(ref) ? ref : `refs/tags/${ref}`;
+    const fetchArgs = ['-C', dir, 'fetch', '-q', ...(shallow ? ['--depth', '1'] : []), '--filter=blob:none', 'origin', refspec];
 
     const fetched = git('init', '-q', dir) &&
         git('-C', dir, 'remote', 'add', 'origin', url) &&
         (!sparse || git('-C', dir, 'sparse-checkout', 'set', ...sparse)) &&
-        git('-C', dir, 'fetch', '-q', '--depth', '1', '--filter=blob:none', 'origin', refspec) &&
+        git(...fetchArgs) &&
         git('-C', dir, 'checkout', '-q', 'FETCH_HEAD');
 
     return fetched ? spawnSync('git', ['-C', dir, 'rev-parse', 'HEAD']).stdout.toString().trim() : null;
@@ -202,13 +205,14 @@ try {
                 listedNotes.add(basename(name));
             }
         }
-
-        // The npm tarball ships no lockfile, so a fresh `npm i` inside node_modules/neo.mjs
-        // re-resolves floating (dev)dependencies and can hit peer conflicts the release never
-        // saw (e.g. pinned postcss vs cssnano@^7 peer ranges). The tagged engine's lockfile is
-        // the resolution the release was actually built and tested with. Gitignored in pages.
     }
 
+    // The npm tarball ships no lockfile, so a fresh `npm i` inside node_modules/neo.mjs
+    // re-resolves floating (dev)dependencies and can hit peer conflicts the release never
+    // saw (e.g. pinned postcss vs cssnano@^7 peer ranges). The tagged engine's lockfile is
+    // the resolution the release was actually built and tested with. Tracked in pages at
+    // node_modules/neo.mjs/package-lock.json; version updates refresh it from the engine tag,
+    // while --spokes-only preserves the tracked copy unless missing.
     if (!isSpokesOnly || !existsSync(resolve('node_modules/neo.mjs/package-lock.json'))) {
         console.log('Copying package-lock.json...');
         await cp(resolve(engineClonePath, 'package-lock.json'), resolve('node_modules/neo.mjs/package-lock.json'));
@@ -216,11 +220,11 @@ try {
 
     console.log('Materializing pinned spoke learn manifests...');
     const spokeResult = await fetchAndMaterializeLearnSpokes({
-        baseTreePath : resolve(engineClonePath, 'learn/tree.json'),
+        pristineLearnDir: resolve(engineClonePath, 'learn'),
         contentPins,
         fetchRevision,
-        neoDir       : resolve('node_modules/neo.mjs'),
-        tempRoot     : spokesCloneRoot
+        neoDir          : resolve('node_modules/neo.mjs'),
+        tempRoot        : spokesCloneRoot
     });
     console.log(`Materialized ${spokeResult.spokeLeafCount} spoke guides (${spokeResult.totalLeafCount} total learn leaves).`);
 } finally {
@@ -291,9 +295,12 @@ if (!isSpokesOnly) {
         process.exit(1);
     }
 } else {
-    // Sync regenerated Portal SEO/LLM artifacts into dist/production/apps/portal so Step 10 copies the updated files.
-    const portalSrcDir  = resolve(neoPath, 'apps/portal');
-    const portalDistDir = resolve(neoPath, 'dist/production/apps/portal');
+    // Sync regenerated Portal SEO/LLM artifacts into dist/*/apps/portal so all built modes and Step 10 stay in sync.
+    const portalSrcDir   = resolve(neoPath, 'apps/portal');
+    const portalDistDirs = ['development', 'esm', 'production']
+        .map(env => resolve(neoPath, `dist/${env}/apps/portal`))
+        .filter(existsSync);
+
     for (const file of [
         'llms.txt',
         'llms-full.txt',
@@ -306,7 +313,9 @@ if (!isSpokesOnly) {
     ]) {
         const srcFile = resolve(portalSrcDir, file);
         if (existsSync(srcFile)) {
-            await cp(srcFile, resolve(portalDistDir, file));
+            for (const portalDistDir of portalDistDirs) {
+                await cp(srcFile, resolve(portalDistDir, file));
+            }
         }
     }
 }

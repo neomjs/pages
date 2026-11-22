@@ -5,9 +5,10 @@ import {dirname, posix, relative, resolve, sep} from 'node:path';
 
 /**
  * @module buildScripts.materializeLearnSpokes
- * @summary Materializes `docs/public-manifest.json`-admitted Markdown guides from pinned 40-hex spoke commits into
- * `node_modules/neo.mjs/learn/`, rewrites relative links into manifest-declared `sourceLinkRoots` to pinned GitHub
- * blob/tree URLs, and composes the unified Portal `learn/tree.json` with fail-closed collision checks.
+ * @summary Materializes `docs/public-manifest.json`-admitted Markdown guides from pinned 40-hex spoke commits into a
+ * freshly restored `node_modules/neo.mjs/learn/` tree, stamps each guide's own unshallow git commit timestamp into
+ * filesystem `mtime` and `seo.json`, rewrites relative links into manifest-declared `sourceLinkRoots` to pinned GitHub
+ * blob/tree URLs, and composes the unified Portal `learn/tree.json` with fail-closed anchor and collision checks.
  */
 
 const
@@ -35,6 +36,29 @@ function isNormalizedRelPath(value) {
  */
 function asDirPrefix(dir) {
     return dir.endsWith('/') ? dir : `${dir}/`
+}
+
+/**
+ * @summary Verifies `checkoutDir` is an unshallow git repository so per-file `git log -1 -- <file>` resolves each
+ * guide's true last-change commit rather than a shallow fetch boundary.
+ * @param {String} checkoutDir
+ * @param {String} spokeName
+ */
+export function assertUnshallowGitCheckout(checkoutDir, spokeName) {
+    if (!existsSync(resolve(checkoutDir, '.git'))) {
+        throw new Error(`[learn-spokes] Spoke "${spokeName}" checkout at ${checkoutDir} lacks .git history.`)
+    }
+
+    const res = spawnSync('git', ['-C', checkoutDir, 'rev-parse', '--is-shallow-repository'], {
+        encoding: 'utf-8',
+        stdio   : ['pipe', 'pipe', 'ignore']
+    });
+
+    if (res.status !== 0 || res.stdout.trim() !== 'false') {
+        throw new Error(
+            `[learn-spokes] Refusing shallow git checkout for spoke "${spokeName}" (${checkoutDir}); full commit history is required for accurate per-guide lastmod dates.`
+        )
+    }
 }
 
 /**
@@ -166,7 +190,8 @@ export function rewriteSpokeSourceLinks({
 }
 
 /**
- * @summary Reads the Unix commit timestamp (seconds) for `relFile` inside a git checkout, falling back to `HEAD`.
+ * @summary Reads the Unix commit timestamp (seconds) for `relFile` from an unshallow git checkout without falling back
+ * to `HEAD`, returning `null` if `relFile` has no committed history.
  * @param {String} checkoutDir
  * @param {String} relFile
  * @returns {Number|null}
@@ -176,16 +201,11 @@ export function readGitCommitEpoch(checkoutDir, relFile) {
         return null
     }
 
-    for (const args of [
-        ['-C', checkoutDir, 'log', '-1', '--format=%ct', '--', relFile],
-        ['-C', checkoutDir, 'log', '-1', '--format=%ct']
-    ]) {
-        const res = spawnSync('git', args, {encoding: 'utf-8'});
-        if (res.status === 0) {
-            const sec = Number.parseInt(res.stdout.trim(), 10);
-            if (Number.isFinite(sec) && sec > 0) {
-                return sec
-            }
+    const res = spawnSync('git', ['-C', checkoutDir, 'log', '-1', '--format=%ct', '--', relFile], {encoding: 'utf-8'});
+    if (res.status === 0) {
+        const sec = Number.parseInt(res.stdout.trim(), 10);
+        if (Number.isFinite(sec) && sec > 0) {
+            return sec
         }
     }
 
@@ -282,27 +302,42 @@ export function validateLearnSpokePins(learnSpokes) {
 }
 
 /**
- * @summary Materializes admitted Markdown guides from prepared spoke checkouts into `neoDir/learn/`, composes the
- * unified `learn/tree.json`, and stamps spoke commit `lastmod` dates into filesystem `mtime` and `seo.json`.
+ * @summary Restores `neoDir/learn/` from `pristineLearnDir`, materializes admitted Markdown guides from unshallow
+ * spoke checkouts into `neoDir/learn/`, composes the unified `learn/tree.json`, and stamps per-guide git commit
+ * `lastmod` dates into filesystem `mtime` and `seo.json` (pruning delisted spoke `/learn/*` entries).
  * @param {Object} options
- * @param {Object} options.baseTree Pristine Engine `learn/tree.json` object (`{data: [...]}`).
+ * @param {String} options.pristineLearnDir Pristine Engine `learn/` directory (`engineClonePath/learn`).
+ * @param {Object} [options.baseTree] Optional pre-parsed `learn/tree.json`; defaults to `pristineLearnDir/tree.json`.
  * @param {String} options.neoDir Target `node_modules/neo.mjs` directory.
- * @param {Array<{spoke: String, checkoutDir: String, commitEpoch?: Number}>} options.spokeCheckouts Prepared spoke directories.
+ * @param {Array<{spoke: String, checkoutDir: String, commit?: String}>} options.spokeCheckouts Unshallow spoke checkouts.
  * @param {String} [options.seoJsonPath] Optional `seo.json` path (`apps/portal/resources/data/seo.json` under `neoDir`).
- * @returns {Promise<{totalLeafCount: Number, spokeLeafCount: Number, routeLastmods: Object<String, String>}>}
+ * @returns {Promise<{totalLeafCount: Number, totalMarkdownLeafCount: Number, spokeLeafCount: Number, routeLastmods: Object<String, String>}>}
  */
 export async function materializeLearnSpokes({
-    baseTree,
+    pristineLearnDir,
+    baseTree = null,
     neoDir,
     spokeCheckouts,
     seoJsonPath = resolve(neoDir, 'apps/portal/resources/data/seo.json')
 }) {
-    if (!baseTree || !Array.isArray(baseTree.data)) {
+    if (!pristineLearnDir || !existsSync(resolve(pristineLearnDir, 'tree.json'))) {
+        throw new Error(`[learn-spokes] Missing pristine Engine learn/tree.json at ${pristineLearnDir}.`)
+    }
+
+    const
+        resolvedPristineLearn = resolve(pristineLearnDir),
+        learnDest             = resolve(neoDir, 'learn');
+
+    if (resolvedPristineLearn === learnDest) {
+        throw new Error('[learn-spokes] pristineLearnDir must be distinct from target neoDir/learn so re-runs restore a clean tree.')
+    }
+
+    const resolvedBaseTree = baseTree || JSON.parse(await readFile(resolve(resolvedPristineLearn, 'tree.json'), 'utf-8'));
+    if (!resolvedBaseTree || !Array.isArray(resolvedBaseTree.data)) {
         throw new Error('[learn-spokes] baseTree must contain a "data" array.')
     }
 
     const
-        learnDest           = resolve(neoDir, 'learn'),
         hubFoldersByLowerId = new Map(),
         claimedNodeIds      = new Map(),
         claimedRoutes       = new Map(),
@@ -310,7 +345,7 @@ export async function materializeLearnSpokes({
         copyPlan            = [],
         routeLastmods       = {};
 
-    for (const node of baseTree.data) {
+    for (const node of resolvedBaseTree.data) {
         if (!node || typeof node.id !== 'string') {
             throw new Error('[learn-spokes] Invalid node in base learn/tree.json.')
         }
@@ -327,8 +362,22 @@ export async function materializeLearnSpokes({
 
     for (const spokeSpec of spokeCheckouts) {
         const
-            {spoke, checkoutDir, commit = null, commitEpoch: fallbackEpoch = null} = spokeSpec,
+            {spoke, checkoutDir, commit = null} = spokeSpec,
             manifestPath = resolve(checkoutDir, 'docs/public-manifest.json');
+
+        assertUnshallowGitCheckout(checkoutDir, spoke);
+
+        const headSha = readGitHeadSha(checkoutDir);
+        if (commit !== null && (!SHA40_RE.test(String(commit)) || (headSha && commit !== headSha))) {
+            throw new Error(
+                `[learn-spokes] Spoke "${spoke}" commit must be an exact 40-hex SHA matching checkout HEAD (commit=${JSON.stringify(commit)}, head=${headSha}).`
+            )
+        }
+
+        const commitRef = commit || headSha;
+        if (!commitRef || !SHA40_RE.test(commitRef)) {
+            throw new Error(`[learn-spokes] Spoke "${spoke}" requires an exact 40-hex commit SHA.`)
+        }
 
         if (!existsSync(manifestPath)) {
             throw new Error(`[learn-spokes] Missing docs/public-manifest.json in spoke "${spoke}".`)
@@ -354,8 +403,7 @@ export async function materializeLearnSpokes({
 
         const
             excludedPrefixes = (manifest.excludedDirs || []).map(asDirPrefix),
-            sourceRoots      = (manifest.sourceLinkRoots || []).map(asDirPrefix),
-            commitRef        = (typeof commit === 'string' && SHA40_RE.test(commit)) ? commit : (readGitHeadSha(checkoutDir) || 'dev');
+            sourceRoots      = (manifest.sourceLinkRoots || []).map(asDirPrefix);
 
         const treePath = resolve(checkoutDir, manifest.treeFile || '');
         if (!existsSync(treePath)) {
@@ -473,11 +521,15 @@ export async function materializeLearnSpokes({
             }
             admittedAbsFiles.add(srcFile);
 
+            const epochSec = readGitCommitEpoch(checkoutDir, normalizedFile);
+            if (!epochSec) {
+                throw new Error(`[learn-spokes] Missing git commit history for "${normalizedFile}" in "${spoke}".`)
+            }
+
             const
-                destRel   = `${entry.route.slice('/learn/'.length)}.md`,
-                destFile  = resolve(learnDest, destRel),
-                epochSec  = readGitCommitEpoch(checkoutDir, normalizedFile) ?? fallbackEpoch ?? Math.floor(statSync(srcFile).mtimeMs / 1000),
-                isoDate   = new Date(epochSec * 1000).toISOString().slice(0, 10);
+                destRel  = `${entry.route.slice('/learn/'.length)}.md`,
+                destFile = resolve(learnDest, destRel),
+                isoDate  = new Date(epochSec * 1000).toISOString().slice(0, 10);
 
             if (!destFile.startsWith(learnDest + sep)) {
                 throw new Error(`[learn-spokes] Destination escaped learn/ root for "${entry.route}".`)
@@ -498,6 +550,81 @@ export async function materializeLearnSpokes({
             spokeLeafCount++
         }
     }
+
+    // Fail closed if any hub insertion anchor required by spliced spoke groups is absent from the Engine tree.
+    if (splicesByHubParent.has('Benefits') && !claimedNodeIds.has('benefits/body')) {
+        throw new Error('[learn-spokes] Missing required hub anchor "benefits/body" under "Benefits".')
+    }
+    if (splicesByHubParent.has('AgentInterfaces') && !claimedNodeIds.has('AgentInterfaces/Decisions')) {
+        throw new Error('[learn-spokes] Missing required hub anchor "AgentInterfaces/Decisions" under "AgentInterfaces".')
+    }
+
+    const
+        composedData       = [],
+        insertedHubParents = new Set(),
+        flushGroups        = hubParentId => {
+            if (insertedHubParents.has(hubParentId)) return;
+            insertedHubParents.add(hubParentId);
+            const groups = splicesByHubParent.get(hubParentId) || [];
+            for (const group of groups) {
+                composedData.push(...group.nodes)
+            }
+        };
+
+    // Collect the full descendant ID set of `guides` so `DevIndex App` inserts cleanly at the end of `guides`.
+    const guidesSubtreeIds = new Set();
+    if (hubFoldersByLowerId.has('guides')) {
+        const guidesId = hubFoldersByLowerId.get('guides').id;
+        guidesSubtreeIds.add(guidesId);
+        let grew = true;
+        while (grew) {
+            grew = false;
+            for (const node of resolvedBaseTree.data) {
+                if (!guidesSubtreeIds.has(node.id) && node.parentId && guidesSubtreeIds.has(node.parentId)) {
+                    guidesSubtreeIds.add(node.id);
+                    grew = true
+                }
+            }
+        }
+    }
+
+    for (let i = 0; i < resolvedBaseTree.data.length; i++) {
+        const node = resolvedBaseTree.data[i];
+
+        // Under `Benefits`, place Brain's `"The Brain - Agent OS"` group immediately before `"benefits/body"`.
+        if (node.id === 'benefits/body' && splicesByHubParent.has('Benefits')) {
+            flushGroups('Benefits')
+        }
+
+        // Under `AgentInterfaces`, place the 3 Brain groups + `"Agent Institution"` immediately before Retained Decisions.
+        if (node.id === 'AgentInterfaces/Decisions' && splicesByHubParent.has('AgentInterfaces')) {
+            flushGroups('AgentInterfaces')
+        }
+
+        composedData.push({...node});
+
+        // If `Guides` is ending on the next item (or at EOF), append `"DevIndex App"` at the end of `guides`.
+        if (guidesSubtreeIds.has(node.id)) {
+            const
+                guidesId = hubFoldersByLowerId.get('guides').id,
+                nextNode = resolvedBaseTree.data[i + 1];
+
+            if (!nextNode || !guidesSubtreeIds.has(nextNode.id)) {
+                flushGroups(guidesId)
+            }
+        }
+    }
+
+    for (const hubParentId of splicesByHubParent.keys()) {
+        if (!insertedHubParents.has(hubParentId)) {
+            throw new Error(`[learn-spokes] Failed to splice spoke groups into hub parent "${hubParentId}".`)
+        }
+    }
+
+    // Restore `neoDir/learn/` from the pristine Engine directory before writing admitted spoke guides so re-runs
+    // remove any guide a spoke delisted or moved while keeping Engine assets (e.g. `learn/blog/*`) intact.
+    await rm(learnDest, {recursive: true, force: true});
+    await cp(resolvedPristineLearn, learnDest, {recursive: true, preserveTimestamps: true});
 
     for (const item of copyPlan) {
         await mkdir(dirname(item.destFile), {recursive: true});
@@ -521,81 +648,6 @@ export async function materializeLearnSpokes({
         routeLastmods[item.route] = item.isoDate
     }
 
-    const
-        composedData       = [],
-        insertedHubParents = new Set(),
-        flushGroups        = hubParentId => {
-            if (insertedHubParents.has(hubParentId)) return;
-            insertedHubParents.add(hubParentId);
-            const groups = splicesByHubParent.get(hubParentId) || [];
-            for (const group of groups) {
-                composedData.push(...group.nodes)
-            }
-        };
-
-    // Collect the full descendant ID set of `guides` so `DevIndex App` inserts cleanly at the end of `guides`.
-    const guidesSubtreeIds = new Set();
-    if (hubFoldersByLowerId.has('guides')) {
-        const guidesId = hubFoldersByLowerId.get('guides').id;
-        guidesSubtreeIds.add(guidesId);
-        let grew = true;
-        while (grew) {
-            grew = false;
-            for (const node of baseTree.data) {
-                if (!guidesSubtreeIds.has(node.id) && node.parentId && guidesSubtreeIds.has(node.parentId)) {
-                    guidesSubtreeIds.add(node.id);
-                    grew = true
-                }
-            }
-        }
-    }
-
-    for (let i = 0; i < baseTree.data.length; i++) {
-        const node = baseTree.data[i];
-
-        // Under `Benefits`, place Brain's `"The Brain - Agent OS"` group immediately before `"benefits/body"`.
-        if (node.id === 'benefits/body' && splicesByHubParent.has('Benefits')) {
-            flushGroups('Benefits')
-        }
-
-        // Under `AgentInterfaces`, place the 3 Brain groups + `"Agent Institution"` immediately before Retained Decisions.
-        if (node.id === 'AgentInterfaces/Decisions' && splicesByHubParent.has('AgentInterfaces')) {
-            flushGroups('AgentInterfaces')
-        }
-
-        composedData.push({...node});
-
-        // If `Guides` is ending on the next item (or at EOF), append `"DevIndex App"` at the end of `guides`.
-        if (guidesSubtreeIds.has(node.id)) {
-            const
-                guidesId = hubFoldersByLowerId.get('guides').id,
-                nextNode = baseTree.data[i + 1];
-
-            if (!nextNode || !guidesSubtreeIds.has(nextNode.id)) {
-                flushGroups(guidesId)
-            }
-        }
-
-        // Fallbacks if `benefits/body` or `AgentInterfaces/Decisions` were not encountered before leaving their parent.
-        if (node.parentId === 'Benefits' || node.id === 'Benefits') {
-            const nextNode = baseTree.data[i + 1];
-            if (!nextNode || (nextNode.parentId !== 'Benefits' && !String(nextNode.parentId || '').startsWith('benefits/'))) {
-                flushGroups('Benefits')
-            }
-        }
-        if (node.parentId === 'AgentInterfaces' || node.id === 'AgentInterfaces') {
-            const nextNode = baseTree.data[i + 1];
-            if (!nextNode || (nextNode.parentId !== 'AgentInterfaces' && !String(nextNode.parentId || '').startsWith('AgentInterfaces/'))) {
-                flushGroups('AgentInterfaces')
-            }
-        }
-    }
-
-    for (const hubParentId of splicesByHubParent.keys()) {
-        flushGroups(hubParentId)
-    }
-
-    await mkdir(learnDest, {recursive: true});
     await writeFile(resolve(learnDest, 'tree.json'), JSON.stringify({data: composedData}, null, 4) + '\n');
 
     if (seoJsonPath) {
@@ -605,6 +657,11 @@ export async function materializeLearnSpokes({
                 existingSeo = JSON.parse(await readFile(seoJsonPath, 'utf-8')) || {}
             } catch {
                 existingSeo = {}
+            }
+        }
+        for (const existingRoute of Object.keys(existingSeo)) {
+            if (existingRoute.startsWith('/learn/') && !claimedRoutes.has(existingRoute)) {
+                delete existingSeo[existingRoute]
             }
         }
         for (const [route, isoDate] of Object.entries(routeLastmods)) {
@@ -617,28 +674,32 @@ export async function materializeLearnSpokes({
         await writeFile(seoJsonPath, JSON.stringify(existingSeo, null, 4) + '\n')
     }
 
-    const totalLeafCount = composedData.filter(node => node.isLeaf !== false && !node.route).length;
+    const
+        totalMarkdownLeafCount = composedData.filter(node => node.isLeaf !== false && !node.route).length,
+        totalLeafCount         = composedData.filter(node => node.isLeaf !== false).length;
 
     return {
         totalLeafCount,
+        totalMarkdownLeafCount,
         spokeLeafCount,
         routeLastmods
     }
 }
 
 /**
- * @summary Shallow-fetches each spoke in `contentPins.learnSpokes` at its exact 40-hex commit SHA (`docs` + `learn`
- * sparse paths) and materializes its admitted guides into `neoDir`. Always cleans up temporary clones.
+ * @summary Fetches each spoke in `contentPins.learnSpokes` at its exact 40-hex commit SHA with full blobless commit
+ * history (`docs` + `learn` sparse paths) and materializes its admitted guides onto a fresh copy of `pristineLearnDir`.
+ * Always cleans up temporary clones.
  * @param {Object} options
- * @param {String} options.baseTreePath Path to pristine hub `learn/tree.json` (`engineClonePath/learn/tree.json`).
+ * @param {String} options.pristineLearnDir Path to pristine hub `learn/` directory (`engineClonePath/learn`).
  * @param {Object} options.contentPins Parsed `buildScripts/contentPins.json`.
- * @param {Function} options.fetchRevision `fetchRevision(url, ref, dir, sparse)` helper from `updateNeoVersion.mjs`.
+ * @param {Function} options.fetchRevision `fetchRevision(url, ref, dir, sparse, options)` helper from `updateNeoVersion.mjs`.
  * @param {String} options.neoDir Target `node_modules/neo.mjs` directory.
  * @param {String} options.tempRoot Temporary directory for spoke sparse checkouts.
- * @returns {Promise<{totalLeafCount: Number, spokeLeafCount: Number, routeLastmods: Object<String, String>}>}
+ * @returns {Promise<{totalLeafCount: Number, totalMarkdownLeafCount: Number, spokeLeafCount: Number, routeLastmods: Object<String, String>}>}
  */
 export async function fetchAndMaterializeLearnSpokes({
-    baseTreePath,
+    pristineLearnDir,
     contentPins,
     fetchRevision,
     neoDir,
@@ -646,11 +707,10 @@ export async function fetchAndMaterializeLearnSpokes({
 }) {
     validateLearnSpokePins(contentPins?.learnSpokes);
 
-    if (!existsSync(baseTreePath)) {
-        throw new Error(`[learn-spokes] Missing base Engine learn/tree.json at ${baseTreePath}.`)
+    if (!pristineLearnDir || !existsSync(resolve(pristineLearnDir, 'tree.json'))) {
+        throw new Error(`[learn-spokes] Missing base Engine learn/tree.json under ${pristineLearnDir}.`)
     }
 
-    const baseTree = JSON.parse(await readFile(baseTreePath, 'utf-8'));
     await rm(tempRoot, {recursive: true, force: true});
 
     try {
@@ -659,7 +719,7 @@ export async function fetchAndMaterializeLearnSpokes({
         for (const [index, pin] of contentPins.learnSpokes.entries()) {
             const
                 checkoutDir = resolve(tempRoot, `spoke-${index}`),
-                fetchedSha  = fetchRevision(pin.repository, pin.commit, checkoutDir, ['docs', 'learn']);
+                fetchedSha  = fetchRevision(pin.repository, pin.commit, checkoutDir, ['docs', 'learn'], {shallow: false});
 
             if (fetchedSha !== pin.commit) {
                 throw new Error(
@@ -671,14 +731,14 @@ export async function fetchAndMaterializeLearnSpokes({
             console.log(`Spoke learn content (${pin.spoke}): ${fetchedSha} (${commitDate})`);
 
             spokeCheckouts.push({
-                spoke      : pin.spoke,
-                commit     : fetchedSha,
+                spoke : pin.spoke,
+                commit: fetchedSha,
                 checkoutDir
             })
         }
 
         return await materializeLearnSpokes({
-            baseTree,
+            pristineLearnDir,
             neoDir,
             spokeCheckouts
         })
