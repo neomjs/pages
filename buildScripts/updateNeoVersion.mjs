@@ -3,6 +3,7 @@ import {existsSync}                                          from 'fs';
 import {cp, mkdir, readdir, readFile, rm, symlink, unlink, writeFile} from 'fs/promises';
 import os                                                             from 'os';
 import {basename, resolve}                                            from 'path';
+import {fetchAndMaterializeLearnSpokes}                               from './materializeLearnSpokes.mjs';
 
 const npmCmd = os.platform().startsWith('win') ? 'npm.cmd' : 'npm';
 
@@ -108,6 +109,7 @@ console.log('Step 4.1: Fetching the portal content at pinned revisions...');
 const contentDest      = resolve('node_modules/neo.mjs/resources/content');
 const engineClonePath  = resolve('temp_neo_clone');
 const corpusClonePath  = resolve('temp_corpus_clone');
+const spokesCloneRoot  = resolve('temp_learn_spokes');
 const contentPins      = JSON.parse(await readFile(resolve('buildScripts/contentPins.json'), 'utf-8'));
 const installedVersion = JSON.parse(await readFile(resolve('node_modules/neo.mjs/package.json'), 'utf-8')).version;
 const engineRef        = process.argv.find(arg => arg.startsWith('--engine-ref='))?.split('=')[1] || installedVersion;
@@ -115,6 +117,7 @@ const engineRef        = process.argv.find(arg => arg.startsWith('--engine-ref='
 const removeClones = async () => {
     await rm(engineClonePath, { recursive: true, force: true });
     await rm(corpusClonePath, { recursive: true, force: true });
+    await rm(spokesCloneRoot, { recursive: true, force: true });
 };
 
 // Every failure here ends the build: a refusal throws like any other error, and the finally removes both clones
@@ -126,10 +129,12 @@ await removeClones();
 
 try {
     // The engine authors its notes in .github/RELEASE_NOTES from 13.2 on; earlier tags carry resources/content/release-notes.
-    // Either may still hold released notes; the corpus copy of those wins below.
+    // Either may still hold released notes; the corpus copy of those wins below. learn/tree.json is also fetched so
+    // Step 4.1 always composes spoke guides onto the pristine tagged Engine tree across --force re-runs.
     const releaseNotePaths = ['.github/RELEASE_NOTES', 'resources/content/release-notes'];
+    const engineSparsePaths = [...releaseNotePaths, 'learn/tree.json'];
     const engineUrl        = 'https://github.com/neomjs/neo.git';
-    const engineCommit     = fetchRevision(engineUrl, engineRef, engineClonePath, releaseNotePaths) ||
+    const engineCommit     = fetchRevision(engineUrl, engineRef, engineClonePath, engineSparsePaths) ||
         failContent(`Failed to fetch ${engineUrl} at ${engineRef}: the engine ref must be a release tag or a full commit SHA.`);
     console.log(`Engine content: ${engineRef} at ${engineCommit}`);
 
@@ -200,6 +205,16 @@ try {
     // the resolution the release was actually built and tested with. Gitignored in pages.
     console.log('Copying package-lock.json...');
     await cp(resolve(engineClonePath, 'package-lock.json'), resolve('node_modules/neo.mjs/package-lock.json'));
+
+    console.log('Materializing pinned spoke learn manifests...');
+    const spokeResult = await fetchAndMaterializeLearnSpokes({
+        baseTreePath : resolve(engineClonePath, 'learn/tree.json'),
+        contentPins,
+        fetchRevision,
+        neoDir       : resolve('node_modules/neo.mjs'),
+        tempRoot     : spokesCloneRoot
+    });
+    console.log(`Materialized ${spokeResult.spokeLeafCount} spoke guides (${spokeResult.totalLeafCount} total learn leaves).`);
 } finally {
     await removeClones();
 }
