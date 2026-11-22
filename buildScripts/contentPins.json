@@ -1,7 +1,24 @@
 {
-    "about": "The content revision a site build serves. Step 4.1 of buildScripts/updateNeoVersion.mjs reads the portal's conversations (issues, pulls, discussions, archive) from github-content-sync at this full commit SHA. Bump it deliberately: the pages commit that changes it records what the next deploy serves.",
+    "about": "The content revisions a site build serves. Step 4.1 of buildScripts/updateNeoVersion.mjs fetches github-content-sync (corpus) and every learnSpokes repository at its exact 40-hex commit SHA — never a branch head — materializing only docs/public-manifest.json-admitted guides before Step 7 rebuilds indexes, sitemaps, and llms*.txt. Publish cadence: spoke guide edits reach neomjs.com by bumping the spoke's 40-hex commit pin here and running npm run sync-learn-spokes once a tagged neo.mjs release is installed — or npm run sync-learn-spokes -- --engine-ref=<40-hex-sha> while node_modules/neo.mjs is on an untagged +sha snapshot (or npm run update-neo-version-force / the next Engine release cut).",
     "corpus": {
         "repository": "https://github.com/neomjs/github-content-sync.git",
         "commit"    : "c40472f2791ab20917f41f51a17e54a093875174"
-    }
+    },
+    "learnSpokes": [
+        {
+            "spoke"     : "neomjs/neo-agent-brain",
+            "repository": "https://github.com/neomjs/neo-agent-brain.git",
+            "commit"    : "ee5eff64e9007e1e27d20418a112dafb65846e38"
+        },
+        {
+            "spoke"     : "neomjs/neo-agent-institution",
+            "repository": "https://github.com/neomjs/neo-agent-institution.git",
+            "commit"    : "ff63776a9f0a9df3f0b5f218545df5755fb4f570"
+        },
+        {
+            "spoke"     : "neomjs/devindex",
+            "repository": "https://github.com/neomjs/devindex.git",
+            "commit"    : "fd98ff5ca7cf7f66d09cd7bb06ea513b82a8b592"
+        }
+    ]
 }

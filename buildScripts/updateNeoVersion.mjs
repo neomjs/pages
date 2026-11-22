@@ -3,101 +3,108 @@ import {existsSync}                                          from 'fs';
 import {cp, mkdir, readdir, readFile, rm, symlink, unlink, writeFile} from 'fs/promises';
 import os                                                             from 'os';
 import {basename, resolve}                                            from 'path';
+import {fetchAndMaterializeLearnSpokes}                               from './materializeLearnSpokes.mjs';
 
 const npmCmd = os.platform().startsWith('win') ? 'npm.cmd' : 'npm';
 
 /**
- * @summary Fetches one revision of a repository at a tag or a full commit SHA, one commit deep, optionally narrowed
- * to sparse paths.
+ * @summary Fetches one revision of a repository at a tag or a full commit SHA, optionally narrowed to sparse paths and
+ * optionally retaining full commit history (`{shallow: false}`) when per-file `git log` dates are required.
  *
  * Anything but a full SHA is fetched as `refs/tags/<ref>`, so a branch never resolves, whatever its name.
  * @param {String}   url
- * @param {String}   ref    A tag name or a full 40-hex commit SHA
+ * @param {String}   ref               A tag name or a full 40-hex commit SHA
  * @param {String}   dir
  * @param {String[]} [sparse]
+ * @param {Object}   [options]
+ * @param {Boolean}  [options.shallow=true]
  * @returns {String|null} The checked-out commit, or null when `ref` names no tag or commit
  */
-function fetchRevision(url, ref, dir, sparse) {
-    const git     = (...args) => spawnSync('git', args, { stdio: 'inherit' }).status === 0;
-    const refspec = /^[0-9a-f]{40}$/.test(ref) ? ref : `refs/tags/${ref}`;
+function fetchRevision(url, ref, dir, sparse, { shallow = true } = {}) {
+    const git       = (...args) => spawnSync('git', args, { stdio: 'inherit' }).status === 0;
+    const refspec   = /^[0-9a-f]{40}$/.test(ref) ? ref : `refs/tags/${ref}`;
+    const fetchArgs = ['-C', dir, 'fetch', '-q', ...(shallow ? ['--depth', '1'] : []), '--filter=blob:none', 'origin', refspec];
 
     const fetched = git('init', '-q', dir) &&
         git('-C', dir, 'remote', 'add', 'origin', url) &&
         (!sparse || git('-C', dir, 'sparse-checkout', 'set', ...sparse)) &&
-        git('-C', dir, 'fetch', '-q', '--depth', '1', '--filter=blob:none', 'origin', refspec) &&
+        git(...fetchArgs) &&
         git('-C', dir, 'checkout', '-q', 'FETCH_HEAD');
 
     return fetched ? spawnSync('git', ['-C', dir, 'rev-parse', 'HEAD']).stdout.toString().trim() : null;
 }
 
-console.log('Starting neo.mjs version update process...');
+const isSpokesOnly = process.argv.includes('--spokes-only');
 
-// 1. Get latest neo.mjs version
-console.log('Step 1: Getting latest neo.mjs version...');
-const outdatedProcess = spawnSync(npmCmd, ['outdated', '--json']);
+console.log(isSpokesOnly ? 'Starting spoke learn synchronization...' : 'Starting neo.mjs version update process...');
 
-// npm outdated exits with 1 if there are outdated packages, which is not an error for us.
-if (outdatedProcess.status !== 0 && outdatedProcess.status !== 1) {
-    console.error('Failed to check for outdated packages.');
-    if (outdatedProcess.stderr) {
-        console.error(outdatedProcess.stderr.toString());
+if (!isSpokesOnly) {
+    // 1. Get latest neo.mjs version
+    console.log('Step 1: Getting latest neo.mjs version...');
+    const outdatedProcess = spawnSync(npmCmd, ['outdated', '--json']);
+
+    // npm outdated exits with 1 if there are outdated packages, which is not an error for us.
+    if (outdatedProcess.status !== 0 && outdatedProcess.status !== 1) {
+        console.error('Failed to check for outdated packages.');
+        if (outdatedProcess.stderr) {
+            console.error(outdatedProcess.stderr.toString());
+        }
+        process.exit(1);
     }
-    process.exit(1);
+
+    const outdatedJson = outdatedProcess.stdout.toString();
+    let outdated;
+
+    try {
+        outdated = JSON.parse(outdatedJson);
+    } catch (e) {
+        console.error('Failed to parse JSON from "npm outdated".');
+        console.error('Received:', outdatedJson);
+        process.exit(1);
+    }
+
+    const isForce    = process.argv.includes('--force');
+    const newVersion = outdated['neo.mjs']?.latest;
+
+    if (!newVersion && !isForce) {
+        console.log('neo.mjs is up to date. Nothing to do.');
+        process.exit(0);
+    }
+
+    if (!newVersion && isForce) {
+        console.log('neo.mjs is up to date, but --force is used. Proceeding...');
+        const packageJsonPath = resolve('package.json');
+        const packageJson     = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
+        const currentVersion  = packageJson.dependencies['neo.mjs'];
+        console.log(`Using current version: ${currentVersion}`);
+    } else {
+        console.log(`Found new neo.mjs version: ${newVersion}`);
+
+        // 2. package.json: adjust the neo.mjs package version
+        console.log(`Step 2: Updating neo.mjs version in package.json to ${newVersion}...`);
+        const packageJsonPath = resolve('package.json');
+        let packageJson = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
+        packageJson.dependencies['neo.mjs'] = newVersion;
+        await writeFile(packageJsonPath, JSON.stringify(packageJson, null, 4) + '\n');
+        console.log('Step 2: Completed');
+    }
+
+    // 3. Delete the 3 symlinks
+    console.log('Step 3: Deleting old symlinks...');
+    try { await unlink('node_modules/@fortawesome'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
+    try { await unlink('node_modules/highlightjs-line-numbers.js'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
+    try { await unlink('node_modules/mermaid'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
+    console.log('Step 3: Completed');
+
+    // 4. npm install
+    console.log('Step 4: Running npm install...');
+    const installProcess = spawnSync(npmCmd, ['install'], { stdio: 'inherit' });
+    if (installProcess.status !== 0) {
+        console.error(`'npm install' failed with exit code ${installProcess.status}`);
+        process.exit(1);
+    }
+    console.log('Step 4: Completed');
 }
-
-const outdatedJson = outdatedProcess.stdout.toString();
-let outdated;
-
-try {
-    outdated = JSON.parse(outdatedJson);
-} catch (e) {
-    console.error('Failed to parse JSON from "npm outdated".');
-    console.error('Received:', outdatedJson);
-    process.exit(1);
-}
-
-const isForce   = process.argv.includes('--force');
-const newVersion = outdated['neo.mjs']?.latest;
-
-if (!newVersion && !isForce) {
-    console.log('neo.mjs is up to date. Nothing to do.');
-    process.exit(0);
-}
-
-if (!newVersion && isForce) {
-    console.log('neo.mjs is up to date, but --force is used. Proceeding...');
-    const packageJsonPath = resolve('package.json');
-    const packageJson     = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
-    const currentVersion  = packageJson.dependencies['neo.mjs'];
-    console.log(`Using current version: ${currentVersion}`);
-} else {
-    console.log(`Found new neo.mjs version: ${newVersion}`);
-
-    // 2. package.json: adjust the neo.mjs package version
-    console.log(`Step 2: Updating neo.mjs version in package.json to ${newVersion}...`);
-    const packageJsonPath = resolve('package.json');
-    let packageJson = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
-    packageJson.dependencies['neo.mjs'] = newVersion;
-    await writeFile(packageJsonPath, JSON.stringify(packageJson, null, 4) + '\n');
-    console.log('Step 2: Completed');
-}
-
-
-// 3. Delete the 3 symlinks
-console.log('Step 3: Deleting old symlinks...');
-try { await unlink('node_modules/@fortawesome'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
-try { await unlink('node_modules/highlightjs-line-numbers.js'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
-try { await unlink('node_modules/mermaid'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
-console.log('Step 3: Completed');
-
-// 4. npm install
-console.log('Step 4: Running npm install...');
-const installProcess = spawnSync(npmCmd, ['install'], { stdio: 'inherit' });
-if (installProcess.status !== 0) {
-    console.error(`'npm install' failed with exit code ${installProcess.status}`);
-    process.exit(1);
-}
-console.log('Step 4: Completed');
 
 // 4.1 Fetch the portal's content at pinned revisions
 // The lockfile and the notes the engine has not released yet come from the engine at the release this site installs:
@@ -108,6 +115,7 @@ console.log('Step 4.1: Fetching the portal content at pinned revisions...');
 const contentDest      = resolve('node_modules/neo.mjs/resources/content');
 const engineClonePath  = resolve('temp_neo_clone');
 const corpusClonePath  = resolve('temp_corpus_clone');
+const spokesCloneRoot  = resolve('temp_learn_spokes');
 const contentPins      = JSON.parse(await readFile(resolve('buildScripts/contentPins.json'), 'utf-8'));
 const installedVersion = JSON.parse(await readFile(resolve('node_modules/neo.mjs/package.json'), 'utf-8')).version;
 const engineRef        = process.argv.find(arg => arg.startsWith('--engine-ref='))?.split('=')[1] || installedVersion;
@@ -115,6 +123,7 @@ const engineRef        = process.argv.find(arg => arg.startsWith('--engine-ref='
 const removeClones = async () => {
     await rm(engineClonePath, { recursive: true, force: true });
     await rm(corpusClonePath, { recursive: true, force: true });
+    await rm(spokesCloneRoot, { recursive: true, force: true });
 };
 
 // Every failure here ends the build: a refusal throws like any other error, and the finally removes both clones
@@ -126,117 +135,136 @@ await removeClones();
 
 try {
     // The engine authors its notes in .github/RELEASE_NOTES from 13.2 on; earlier tags carry resources/content/release-notes.
-    // Either may still hold released notes; the corpus copy of those wins below.
-    const releaseNotePaths = ['.github/RELEASE_NOTES', 'resources/content/release-notes'];
-    const engineUrl        = 'https://github.com/neomjs/neo.git';
-    const engineCommit     = fetchRevision(engineUrl, engineRef, engineClonePath, releaseNotePaths) ||
+    // Either may still hold released notes; the corpus copy of those wins below. The learn directory is also fetched in cone
+    // mode so Step 4.1 always composes spoke guides onto the pristine Engine tree across --force and --spokes-only re-runs.
+    const releaseNotePaths  = ['.github/RELEASE_NOTES', 'resources/content/release-notes'];
+    const engineSparsePaths = isSpokesOnly ? ['learn'] : [...releaseNotePaths, 'learn'];
+    const engineUrl         = 'https://github.com/neomjs/neo.git';
+    const engineCommit      = fetchRevision(engineUrl, engineRef, engineClonePath, engineSparsePaths) ||
         failContent(`Failed to fetch ${engineUrl} at ${engineRef}: the engine ref must be a release tag or a full commit SHA.`);
     console.log(`Engine content: ${engineRef} at ${engineCommit}`);
 
-    const { repository: corpusRepository, commit: corpusPin } = contentPins.corpus;
-    const corpusCommit = fetchRevision(corpusRepository, corpusPin, corpusClonePath, ['neo']) ||
-        failContent(`Failed to fetch ${corpusRepository} at ${corpusPin}.`);
+    if (!isSpokesOnly) {
+        const { repository: corpusRepository, commit: corpusPin } = contentPins.corpus;
+        const corpusCommit = fetchRevision(corpusRepository, corpusPin, corpusClonePath, ['neo']) ||
+            failContent(`Failed to fetch ${corpusRepository} at ${corpusPin}.`);
 
-    if (corpusCommit !== corpusPin) {
-        failContent(`contentPins.json must name a full commit SHA: ${corpusPin} resolved to ${corpusCommit}.`);
-    }
-
-    // The pin only moves by a deliberate commit, so the log shows how old it is and whether the corpus has moved on.
-    // A head that cannot be read stays unknown: the build serves the pin and names no pin to move to.
-    const corpusDate = spawnSync('git', ['-C', corpusClonePath, 'log', '-1', '--format=%cs']).stdout.toString().trim();
-    const headLookup = spawnSync('git', ['ls-remote', corpusRepository, 'HEAD']);
-    const corpusHead = headLookup.status === 0 ? headLookup.stdout.toString().split('\t')[0].trim() : '';
-
-    console.log(`Corpus content: ${corpusCommit} (${corpusDate})`);
-
-    if (!/^[0-9a-f]{40}$/.test(corpusHead)) {
-        console.log('Corpus head: could not be read, so the pin\'s freshness is unchecked. This build serves the pin.');
-    } else if (corpusHead !== corpusCommit) {
-        console.log(`Corpus head: ${corpusHead}. To serve newer conversations, move buildScripts/contentPins.json there first.`);
-    }
-
-    // Step 7 checks the built ticket index against this, so a stale copy cannot pass for the pinned one
-    const corpusIndex  = JSON.parse(await readFile(resolve(corpusClonePath, '_index.json'), 'utf-8'));
-    manifestMaxIssueId = corpusIndex.reduce((max, entry) => entry.repoSlug === 'neo' && entry.type === 'issues' ? Math.max(max, entry.id) : max, 0);
-
-    // Legacy layouts (issue-archive, pr-archive) are deleted, never copied — npm install
-    // only wipes node_modules/neo.mjs on a version change, so --force re-runs need the rm.
-    const releaseNotes    = releaseNotePaths.map(dir => resolve(engineClonePath, dir));
-    const contentFamilies = ['release-notes', 'issues', 'pulls', 'discussions', 'archive'].map(dir => [dir, resolve(corpusClonePath, 'neo', dir)]);
-
-    await mkdir(contentDest, { recursive: true });
-
-    for (const dir of ['issue-archive', 'pr-archive', ...contentFamilies.map(([dir]) => dir)]) {
-        await rm(resolve(contentDest, dir), { recursive: true, force: true });
-    }
-
-    for (const [dir, source] of contentFamilies) {
-        if (!existsSync(source)) {
-            failContent(`Content family '${dir}' is missing: ${source}`);
+        if (corpusCommit !== corpusPin) {
+            failContent(`contentPins.json must name a full commit SHA: ${corpusPin} resolved to ${corpusCommit}.`);
         }
 
-        console.log(`Copying ${dir}...`);
-        await cp(source, resolve(contentDest, dir), { recursive: true });
-    }
+        // The pin only moves by a deliberate commit, so the log shows how old it is and whether the corpus has moved on.
+        // A head that cannot be read stays unknown: the build serves the pin and names no pin to move to.
+        const corpusDate = spawnSync('git', ['-C', corpusClonePath, 'log', '-1', '--format=%cs']).stdout.toString().trim();
+        const headLookup = spawnSync('git', ['ls-remote', corpusRepository, 'HEAD']);
+        const corpusHead = headLookup.status === 0 ? headLookup.stdout.toString().split('\t')[0].trim() : '';
 
-    // The corpus archives each released note from its GitHub Release; the engine tag adds the notes it has not
-    // released yet. A version both hold keeps the corpus copy, so the release index lists none twice.
-    const isNote      = name => /^v.+\.md$/.test(name);
-    const listedNotes = new Set((await readdir(resolve(contentDest, 'release-notes'), { recursive: true })).map(name => basename(name)).filter(isNote));
-    const engineNotes = releaseNotes.find(existsSync) ??
-        failContent(`The engine's release notes are missing at ${engineRef}: neither ${releaseNotePaths.join(' nor ')} exists.`);
+        console.log(`Corpus content: ${corpusCommit} (${corpusDate})`);
 
-    for (const name of await readdir(engineNotes, { recursive: true })) {
-        if (isNote(basename(name)) && !listedNotes.has(basename(name))) {
-            console.log(`Adding the engine's unreleased note ${basename(name)}...`);
-            await cp(resolve(engineNotes, name), resolve(contentDest, 'release-notes', basename(name)));
-            listedNotes.add(basename(name));
+        if (!/^[0-9a-f]{40}$/.test(corpusHead)) {
+            console.log('Corpus head: could not be read, so the pin\'s freshness is unchecked. This build serves the pin.');
+        } else if (corpusHead !== corpusCommit) {
+            console.log(`Corpus head: ${corpusHead}. To serve newer conversations, move buildScripts/contentPins.json there first.`);
+        }
+
+        // Step 7 checks the built ticket index against this, so a stale copy cannot pass for the pinned one
+        const corpusIndex  = JSON.parse(await readFile(resolve(corpusClonePath, '_index.json'), 'utf-8'));
+        manifestMaxIssueId = corpusIndex.reduce((max, entry) => entry.repoSlug === 'neo' && entry.type === 'issues' ? Math.max(max, entry.id) : max, 0);
+
+        // Legacy layouts (issue-archive, pr-archive) are deleted, never copied — npm install
+        // only wipes node_modules/neo.mjs on a version change, so --force re-runs need the rm.
+        const releaseNotes    = releaseNotePaths.map(dir => resolve(engineClonePath, dir));
+        const contentFamilies = ['release-notes', 'issues', 'pulls', 'discussions', 'archive'].map(dir => [dir, resolve(corpusClonePath, 'neo', dir)]);
+
+        await mkdir(contentDest, { recursive: true });
+
+        for (const dir of ['issue-archive', 'pr-archive', ...contentFamilies.map(([dir]) => dir)]) {
+            await rm(resolve(contentDest, dir), { recursive: true, force: true });
+        }
+
+        for (const [dir, source] of contentFamilies) {
+            if (!existsSync(source)) {
+                failContent(`Content family '${dir}' is missing: ${source}`);
+            }
+
+            console.log(`Copying ${dir}...`);
+            await cp(source, resolve(contentDest, dir), { recursive: true });
+        }
+
+        // The corpus archives each released note from its GitHub Release; the engine tag adds the notes it has not
+        // released yet. A version both hold keeps the corpus copy, so the release index lists none twice.
+        const isNote      = name => /^v.+\.md$/.test(name);
+        const listedNotes = new Set((await readdir(resolve(contentDest, 'release-notes'), { recursive: true })).map(name => basename(name)).filter(isNote));
+        const engineNotes = releaseNotes.find(existsSync) ??
+            failContent(`The engine's release notes are missing at ${engineRef}: neither ${releaseNotePaths.join(' nor ')} exists.`);
+
+        for (const name of await readdir(engineNotes, { recursive: true })) {
+            if (isNote(basename(name)) && !listedNotes.has(basename(name))) {
+                console.log(`Adding the engine's unreleased note ${basename(name)}...`);
+                await cp(resolve(engineNotes, name), resolve(contentDest, 'release-notes', basename(name)));
+                listedNotes.add(basename(name));
+            }
         }
     }
 
     // The npm tarball ships no lockfile, so a fresh `npm i` inside node_modules/neo.mjs
     // re-resolves floating (dev)dependencies and can hit peer conflicts the release never
     // saw (e.g. pinned postcss vs cssnano@^7 peer ranges). The tagged engine's lockfile is
-    // the resolution the release was actually built and tested with. Gitignored in pages.
-    console.log('Copying package-lock.json...');
-    await cp(resolve(engineClonePath, 'package-lock.json'), resolve('node_modules/neo.mjs/package-lock.json'));
+    // the resolution the release was actually built and tested with. Tracked in pages at
+    // node_modules/neo.mjs/package-lock.json; version updates refresh it from the engine tag,
+    // while --spokes-only preserves the tracked copy unless missing.
+    if (!isSpokesOnly || !existsSync(resolve('node_modules/neo.mjs/package-lock.json'))) {
+        console.log('Copying package-lock.json...');
+        await cp(resolve(engineClonePath, 'package-lock.json'), resolve('node_modules/neo.mjs/package-lock.json'));
+    }
+
+    console.log('Materializing pinned spoke learn manifests...');
+    const spokeResult = await fetchAndMaterializeLearnSpokes({
+        pristineLearnDir: resolve(engineClonePath, 'learn'),
+        contentPins,
+        fetchRevision,
+        neoDir          : resolve('node_modules/neo.mjs'),
+        tempRoot        : spokesCloneRoot
+    });
+    console.log(`Materialized ${spokeResult.spokeLeafCount} spoke guides (${spokeResult.totalLeafCount} total learn leaves).`);
 } finally {
     await removeClones();
 }
 console.log('Step 4.1: Completed');
 
-// 5. Modify neo.mjs/src/DefaultConfig.mjs and the portal's neo-config.json
-console.log('Step 5: Configuring DefaultConfig.mjs and the portal for GitHub Pages...');
-const defaultConfigPath = resolve('node_modules/neo.mjs/src/DefaultConfig.mjs');
-let defaultConfig = await readFile(defaultConfigPath, 'utf-8');
-defaultConfig = defaultConfig.replace(/isGitHubPages\s*:\s*false/, 'isGitHubPages: true');
-await writeFile(defaultConfigPath, defaultConfig);
+if (!isSpokesOnly) {
+    // 5. Modify neo.mjs/src/DefaultConfig.mjs and the portal's neo-config.json
+    console.log('Step 5: Configuring DefaultConfig.mjs and the portal for GitHub Pages...');
+    const defaultConfigPath = resolve('node_modules/neo.mjs/src/DefaultConfig.mjs');
+    let defaultConfig = await readFile(defaultConfigPath, 'utf-8');
+    defaultConfig = defaultConfig.replace(/isGitHubPages\s*:\s*false/, 'isGitHubPages: true');
+    await writeFile(defaultConfigPath, defaultConfig);
 
-// The portal fetches release notes from `releaseNotesBasePath`, which defaults to the engine's own
-// .github/RELEASE_NOTES. This site serves them from the copy step 4.1 made.
-const portalConfigPath = resolve('node_modules/neo.mjs/apps/portal/neo-config.json');
-const portalConfig     = JSON.parse(await readFile(portalConfigPath, 'utf-8'));
-portalConfig.releaseNotesBasePath = 'resources/content/release-notes/';
-await writeFile(portalConfigPath, JSON.stringify(portalConfig, null, 4) + '\n');
-console.log('Step 5: Completed');
+    // The portal fetches release notes from `releaseNotesBasePath`, which defaults to the engine's own
+    // .github/RELEASE_NOTES. This site serves them from the copy step 4.1 made.
+    const portalConfigPath = resolve('node_modules/neo.mjs/apps/portal/neo-config.json');
+    const portalConfig     = JSON.parse(await readFile(portalConfigPath, 'utf-8'));
+    portalConfig.releaseNotesBasePath = 'resources/content/release-notes/';
+    await writeFile(portalConfigPath, JSON.stringify(portalConfig, null, 4) + '\n');
+    console.log('Step 5: Completed');
+}
 
-
-
-// 7. Build neo.mjs
-console.log('Step 7: Building neo.mjs...');
+// 7. Build neo.mjs (or refresh Portal SEO outputs in --spokes-only mode)
+console.log(isSpokesOnly ? 'Step 7: Refreshing Portal SEO and LLM outputs...' : 'Step 7: Building neo.mjs...');
 const neoPath = resolve('node_modules/neo.mjs');
 
-console.log(`Running 'npm i' inside ${neoPath}...`);
-const neoInstallProcess = spawnSync(npmCmd, ['i'], { cwd: neoPath, stdio: 'inherit' });
-if (neoInstallProcess.status !== 0) {
-    console.error(`'npm i' inside neo.mjs failed with exit code ${neoInstallProcess.status}`);
-    process.exit(1);
+if (!isSpokesOnly || !existsSync(resolve(neoPath, 'node_modules/fs-extra'))) {
+    console.log(`Running 'npm i' inside ${neoPath}...`);
+    const neoInstallProcess = spawnSync(npmCmd, ['i'], { cwd: neoPath, stdio: 'inherit' });
+    if (neoInstallProcess.status !== 0) {
+        console.error(`'npm i' inside neo.mjs failed with exit code ${neoInstallProcess.status}`);
+        process.exit(1);
+    }
 }
 
 // Regenerate the portal's content indexes and SEO files from the content step 4.1 copied.
 // The npm package ships neither sitemap.xml nor llms.txt, and build-all only copies what
 // exists, so without this the site serves a stale index and step 10 finds no llms.txt.
-// The engine takes both content roots as inputs (neomjs/neo#19166); an engine before that ignores the flags.
 console.log(`Regenerating content indexes and SEO files inside ${neoPath}...`);
 const rebuildProcess = spawnSync(process.execPath, [
     'buildScripts/docs/rebuildContentIndexesAndSeo.mjs',
@@ -248,32 +276,60 @@ if (rebuildProcess.status !== 0) {
     process.exit(1);
 }
 
-// A generator that read anything but the pinned content builds green too. The ticket index's highest id tells them
-// apart: it must reach the pinned manifest's.
-const ticketIdMap     = JSON.parse(await readFile(resolve(neoPath, 'apps/portal/resources/data/tickets/idMap.json'), 'utf-8'));
-const builtMaxIssueId = Object.keys(ticketIdMap).reduce((max, id) => Math.max(max, Number(id)), 0);
+if (!isSpokesOnly) {
+    // A generator that read anything but the pinned content builds green too. The ticket index's highest id tells them
+    // apart: it must reach the pinned manifest's.
+    const ticketIdMap     = JSON.parse(await readFile(resolve(neoPath, 'apps/portal/resources/data/tickets/idMap.json'), 'utf-8'));
+    const builtMaxIssueId = Object.keys(ticketIdMap).reduce((max, id) => Math.max(max, Number(id)), 0);
 
-if (builtMaxIssueId < manifestMaxIssueId) {
-    console.error(`The built ticket index stops at ${builtMaxIssueId}, below the pinned corpus manifest's ${manifestMaxIssueId}.`);
-    process.exit(1);
-}
-console.log(`Ticket index reaches ${builtMaxIssueId} (pinned manifest: ${manifestMaxIssueId}).`);
+    if (builtMaxIssueId < manifestMaxIssueId) {
+        console.error(`The built ticket index stops at ${builtMaxIssueId}, below the pinned corpus manifest's ${manifestMaxIssueId}.`);
+        process.exit(1);
+    }
+    console.log(`Ticket index reaches ${builtMaxIssueId} (pinned manifest: ${manifestMaxIssueId}).`);
 
-console.log(`Running 'npm run build-all' inside ${neoPath}...`);
-const neoBuildProcess = spawnSync(npmCmd, ['run', 'build-all'], { cwd: neoPath, stdio: 'inherit' });
-if (neoBuildProcess.status !== 0) {
-    console.error(`'npm run build-all' inside neo.mjs failed with exit code ${neoBuildProcess.status}`);
-    process.exit(1);
+    console.log(`Running 'npm run build-all' inside ${neoPath}...`);
+    const neoBuildProcess = spawnSync(npmCmd, ['run', 'build-all'], { cwd: neoPath, stdio: 'inherit' });
+    if (neoBuildProcess.status !== 0) {
+        console.error(`'npm run build-all' inside neo.mjs failed with exit code ${neoBuildProcess.status}`);
+        process.exit(1);
+    }
+} else {
+    // Sync regenerated Portal SEO/LLM artifacts into dist/*/apps/portal so all built modes and Step 10 stay in sync.
+    const portalSrcDir   = resolve(neoPath, 'apps/portal');
+    const portalDistDirs = ['development', 'esm', 'production']
+        .map(env => resolve(neoPath, `dist/${env}/apps/portal`))
+        .filter(existsSync);
+
+    for (const file of [
+        'llms.txt',
+        'llms-full.txt',
+        'llms-all.txt',
+        'robots.txt',
+        'sitemap.xml',
+        'sitemap-core.xml',
+        'sitemap-discussions.xml',
+        'sitemap-archive.xml'
+    ]) {
+        const srcFile = resolve(portalSrcDir, file);
+        if (existsSync(srcFile)) {
+            for (const portalDistDir of portalDistDirs) {
+                await cp(srcFile, resolve(portalDistDir, file));
+            }
+        }
+    }
 }
 console.log('Step 7: Completed');
 
-// 8. Create symlinks, only to tracked targets: a link to an untracked one dangles in the deployed artifact and fails its upload
-console.log('Step 8: Creating new symlinks...');
-const nmPath = resolve('node_modules');
-await symlink('./neo.mjs/node_modules/@fortawesome', resolve(nmPath, '@fortawesome'), 'dir');
-await symlink('./neo.mjs/node_modules/highlightjs-line-numbers.js', resolve(nmPath, 'highlightjs-line-numbers.js'), 'file');
-await symlink('./neo.mjs/node_modules/mermaid', resolve(nmPath, 'mermaid'), 'dir');
-console.log('Step 8: Completed');
+if (!isSpokesOnly) {
+    // 8. Create symlinks, only to tracked targets: a link to an untracked one dangles in the deployed artifact and fails its upload
+    console.log('Step 8: Creating new symlinks...');
+    const nmPath = resolve('node_modules');
+    await symlink('./neo.mjs/node_modules/@fortawesome', resolve(nmPath, '@fortawesome'), 'dir');
+    await symlink('./neo.mjs/node_modules/highlightjs-line-numbers.js', resolve(nmPath, 'highlightjs-line-numbers.js'), 'file');
+    await symlink('./neo.mjs/node_modules/mermaid', resolve(nmPath, 'mermaid'), 'dir');
+    console.log('Step 8: Completed');
+}
 
 // 9. git add on the neo.mjs node_module
 console.log('Step 9: Staging neo.mjs module...');
