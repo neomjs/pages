@@ -209,8 +209,10 @@ try {
         // the resolution the release was actually built and tested with. Gitignored in pages.
     }
 
-    console.log('Copying package-lock.json...');
-    await cp(resolve(engineClonePath, 'package-lock.json'), resolve('node_modules/neo.mjs/package-lock.json'));
+    if (!isSpokesOnly || !existsSync(resolve('node_modules/neo.mjs/package-lock.json'))) {
+        console.log('Copying package-lock.json...');
+        await cp(resolve(engineClonePath, 'package-lock.json'), resolve('node_modules/neo.mjs/package-lock.json'));
+    }
 
     console.log('Materializing pinned spoke learn manifests...');
     const spokeResult = await fetchAndMaterializeLearnSpokes({
