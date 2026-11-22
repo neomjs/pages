@@ -9,6 +9,7 @@
     },
     "scripts": {
         "enhance-seo": "node buildScripts/enhanceSeo.mjs",
+        "sync-learn-spokes": "node buildScripts/updateNeoVersion.mjs --spokes-only",
         "test": "node --test buildScripts/*.test.mjs",
         "update-neo-version": "node buildScripts/updateNeoVersion.mjs",
         "update-neo-version-force": "node buildScripts/updateNeoVersion.mjs --force"

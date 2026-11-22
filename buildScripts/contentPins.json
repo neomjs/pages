@@ -1,5 +1,5 @@
 {
-    "about": "The content revisions a site build serves. Step 4.1 of buildScripts/updateNeoVersion.mjs fetches github-content-sync (corpus) and every learnSpokes repository at its exact 40-hex commit SHA — never a branch head — materializing only docs/public-manifest.json-admitted guides before Step 7 rebuilds indexes, sitemaps, and llms*.txt. Publish cadence: spoke guide edits reach neomjs.com by bumping the spoke's 40-hex commit pin here and running npm run update-neo-version-force (or on the next Engine release cut).",
+    "about": "The content revisions a site build serves. Step 4.1 of buildScripts/updateNeoVersion.mjs fetches github-content-sync (corpus) and every learnSpokes repository at its exact 40-hex commit SHA — never a branch head — materializing only docs/public-manifest.json-admitted guides before Step 7 rebuilds indexes, sitemaps, and llms*.txt. Publish cadence: spoke guide edits reach neomjs.com by bumping the spoke's 40-hex commit pin here and running npm run sync-learn-spokes (or npm run update-neo-version-force / the next Engine release cut).",
     "corpus": {
         "repository": "https://github.com/neomjs/github-content-sync.git",
         "commit"    : "c40472f2791ab20917f41f51a17e54a093875174"
@@ -8,12 +8,12 @@
         {
             "spoke"     : "neomjs/neo-agent-brain",
             "repository": "https://github.com/neomjs/neo-agent-brain.git",
-            "commit"    : "9e4696b0f85cd45c8facb4e07fd54e5b0ad9afd0"
+            "commit"    : "ee5eff64e9007e1e27d20418a112dafb65846e38"
         },
         {
             "spoke"     : "neomjs/neo-agent-institution",
             "repository": "https://github.com/neomjs/neo-agent-institution.git",
-            "commit"    : "16d781350d59300b1b88461c7023878cc7cf1cc8"
+            "commit"    : "ff63776a9f0a9df3f0b5f218545df5755fb4f570"
         },
         {
             "spoke"     : "neomjs/devindex",
