@@ -272,3 +272,57 @@ test('materializeLearnSpokes fails closed on hub/spoke route collisions, missing
     );
     assert.equal(existsSync(tempRoot), false);
 });
+
+test('materializeLearnSpokes enforces excludedDirs and rewrites sourceLinkRoots links outside code to pinned GitHub URLs', async t => {
+    const {root, neoDir, baseTree, spokeCheckouts} = await createSyntheticWorkspace();
+    t.after(() => rm(root, {recursive: true, force: true}));
+
+    const
+        brainDir  = spokeCheckouts[0].checkoutDir,
+        pinnedSha = '9e4696b0f85cd45c8facb4e07fd54e5b0ad9afd0';
+
+    spokeCheckouts[0].commit = pinnedSha;
+    await mkdir(join(brainDir, 'ai/mcp/server'), {recursive: true});
+    await writeFile(join(brainDir, 'ai/services.mjs'), 'export default {};\n');
+
+    await writeFile(
+        join(brainDir, 'learn/agentos/MemoryCore.md'),
+        [
+            '# Memory Core',
+            'See [Services](../../ai/services.mjs#L12) and [MCP Servers](../../ai/mcp/server), plus sibling [MCP Intro](./tooling/Introduction.md).',
+            'Inline `[raw](../../ai/services.mjs)` and fenced code stay untouched:',
+            '```md',
+            '[Code Link](../../ai/services.mjs)',
+            '```'
+        ].join('\n') + '\n'
+    );
+
+    const manifestPath = join(brainDir, 'docs/public-manifest.json');
+    const manifest     = JSON.parse(await readFile(manifestPath, 'utf-8'));
+    manifest.excludedDirs    = ['learn/agentos/decisions', 'learn/agentos/measurements'];
+    manifest.sourceLinkRoots = ['ai/'];
+    await writeFile(manifestPath, JSON.stringify(manifest, null, 4));
+
+    await materializeLearnSpokes({baseTree, neoDir, spokeCheckouts});
+
+    const materialized = await readFile(join(neoDir, 'learn/agentos/MemoryCore.md'), 'utf-8');
+    assert.match(materialized, new RegExp(`https://github\\.com/neomjs/neo-agent-brain/blob/${pinnedSha}/ai/services\\.mjs#L12`));
+    assert.match(materialized, new RegExp(`https://github\\.com/neomjs/neo-agent-brain/tree/${pinnedSha}/ai/mcp/server`));
+    assert.match(materialized, /\[MCP Intro\]\(\.\/tooling\/Introduction\.md\)/);
+    assert.match(materialized, /`\[raw\]\(\.\.\/\.\.\/ai\/services\.mjs\)`/);
+    assert.match(materialized, /\[Code Link\]\(\.\.\/\.\.\/ai\/services\.mjs\)/);
+
+    // Reject an admitted entry inside excludedDirs
+    await mkdir(join(brainDir, 'learn/agentos/decisions'), {recursive: true});
+    await writeFile(join(brainDir, 'learn/agentos/decisions/0001-test.md'), '# ADR\n');
+    const badTree = JSON.parse(await readFile(join(brainDir, 'learn/tree.json'), 'utf-8'));
+    badTree.data.push({name: 'ADR 1', parentId: 'AgentOS', id: 'agentos/decisions/0001-test'});
+    await writeFile(join(brainDir, 'learn/tree.json'), JSON.stringify(badTree, null, 4));
+    manifest.entries.push({file: 'learn/agentos/decisions/0001-test.md', route: '/learn/agentos/decisions/0001-test'});
+    await writeFile(manifestPath, JSON.stringify(manifest, null, 4));
+
+    await assert.rejects(
+        () => materializeLearnSpokes({baseTree, neoDir, spokeCheckouts}),
+        /Excluded internal record/
+    );
+});

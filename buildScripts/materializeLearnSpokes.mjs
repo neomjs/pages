@@ -1,17 +1,169 @@
 import {spawnSync}                              from 'node:child_process';
 import {existsSync, statSync, utimesSync}       from 'node:fs';
 import {cp, mkdir, readFile, rm, writeFile}     from 'node:fs/promises';
-import {dirname, posix, resolve, sep}           from 'node:path';
+import {dirname, posix, relative, resolve, sep} from 'node:path';
 
 /**
  * @module buildScripts.materializeLearnSpokes
  * @summary Materializes `docs/public-manifest.json`-admitted Markdown guides from pinned 40-hex spoke commits into
- * `node_modules/neo.mjs/learn/` and composes the unified Portal `learn/tree.json` with fail-closed collision checks.
+ * `node_modules/neo.mjs/learn/`, rewrites relative links into manifest-declared `sourceLinkRoots` to pinned GitHub
+ * blob/tree URLs, and composes the unified Portal `learn/tree.json` with fail-closed collision checks.
  */
 
 const
     EXPECTED_SCHEMA = 'public-manifest.v1',
-    SHA40_RE        = /^[0-9a-f]{40}$/;
+    SHA40_RE        = /^[0-9a-f]{40}$/,
+    FENCE_RE        = /^ {0,3}(`{3,}|~{3,})/,
+    INLINE_CODE_RE  = /(`[^`\n]+`)/g,
+    LINK_TARGET_RE  = /\]\(([^()[\]\s]+)\)/g,
+    EXTERNAL_RE     = /^(?:https?:|mailto:)/i;
+
+/**
+ * @summary Checks that `value` is a normalized repository-relative path without leading `/` or `..` segments.
+ * @param {*} value
+ * @returns {Boolean}
+ */
+function isNormalizedRelPath(value) {
+    return typeof value === 'string' && value !== '' && value !== '.' && !value.startsWith('/') &&
+        value !== '..' && !value.startsWith('../') && posix.normalize(value) === value
+}
+
+/**
+ * @summary Appends a single trailing slash to `dir` so prefix checks match path segments (`ai/` vs `aix/`).
+ * @param {String} dir
+ * @returns {String}
+ */
+function asDirPrefix(dir) {
+    return dir.endsWith('/') ? dir : `${dir}/`
+}
+
+/**
+ * @summary Reads the current 40-hex `HEAD` commit SHA from `checkoutDir` when `.git` is present.
+ * @param {String} checkoutDir
+ * @returns {String|null}
+ */
+function readGitHeadSha(checkoutDir) {
+    if (!existsSync(resolve(checkoutDir, '.git'))) {
+        return null
+    }
+    const res = spawnSync('git', ['-C', checkoutDir, 'rev-parse', 'HEAD'], {encoding: 'utf-8'});
+    if (res.status === 0) {
+        const sha = res.stdout.trim();
+        if (SHA40_RE.test(sha)) {
+            return sha
+        }
+    }
+    return null
+}
+
+/**
+ * @summary Determines whether a spoke-relative target path resolves to a GitHub `tree` (directory) or `blob` (file),
+ * querying the commit tree in sparse checkouts where source directories outside `learn/` are not checked out on disk.
+ * @param {String} checkoutDir
+ * @param {String} resolvedAbsPath
+ * @param {String} spokeRelPath
+ * @param {String} rawTarget
+ * @returns {'tree'|'blob'}
+ */
+function resolveGitHubObjectKind(checkoutDir, resolvedAbsPath, spokeRelPath, rawTarget) {
+    if (rawTarget.endsWith('/')) {
+        return 'tree'
+    }
+    if (existsSync(resolvedAbsPath)) {
+        return statSync(resolvedAbsPath).isDirectory() ? 'tree' : 'blob'
+    }
+    if (existsSync(resolve(checkoutDir, '.git'))) {
+        const res = spawnSync('git', ['-C', checkoutDir, 'cat-file', '-t', `HEAD:${spokeRelPath}`], {encoding: 'utf-8'});
+        if (res.status === 0 && res.stdout.trim() === 'tree') {
+            return 'tree'
+        }
+    }
+    return 'blob'
+}
+
+/**
+ * @summary Rewrites relative Markdown links outside fenced/inline code that resolve into `sourceRoots` (outside
+ * `learn/`, e.g. `ai/`) into pinned `https://github.com/<spoke>/<blob|tree>/<commit>/<path>` URLs, leaving admitted
+ * intra-`learn/` guide links untouched for Portal/SSR route resolution.
+ * @param {Object} options
+ * @param {String} options.markdown
+ * @param {String} options.srcFile
+ * @param {String} options.checkoutDir
+ * @param {String} options.spoke
+ * @param {String} options.commitRef
+ * @param {String[]} options.sourceRoots Normalized directory prefixes with trailing `/`.
+ * @param {Set<String>} options.admittedAbsFiles
+ * @returns {String}
+ */
+export function rewriteSpokeSourceLinks({
+    markdown,
+    srcFile,
+    checkoutDir,
+    spoke,
+    commitRef,
+    sourceRoots,
+    admittedAbsFiles
+}) {
+    if (!sourceRoots.length) {
+        return markdown
+    }
+
+    let fence = null;
+
+    return String(markdown).split('\n').map(rawLine => {
+        const
+            hasCr = rawLine.endsWith('\r'),
+            line  = hasCr ? rawLine.slice(0, -1) : rawLine,
+            match = FENCE_RE.exec(line);
+
+        if (fence) {
+            if (match && match[1][0] === fence[0] && match[1].length >= fence.length) {
+                fence = null
+            }
+            return rawLine
+        }
+
+        if (match) {
+            fence = match[1];
+            return rawLine
+        }
+
+        const rewritten = line.split(INLINE_CODE_RE).map((segment, index) => {
+            if (index % 2 === 1) {
+                return segment
+            }
+
+            return segment.replace(LINK_TARGET_RE, (fullMatch, rawTarget) => {
+                const
+                    cleanTarget = rawTarget.split(/[?#]/)[0],
+                    suffix      = rawTarget.slice(cleanTarget.length);
+
+                if (!cleanTarget || EXTERNAL_RE.test(rawTarget) || rawTarget.startsWith('#') || rawTarget.startsWith('/')) {
+                    return fullMatch
+                }
+
+                const resolved = resolve(dirname(srcFile), cleanTarget);
+                if (admittedAbsFiles.has(resolved) || admittedAbsFiles.has(`${resolved}.md`)) {
+                    return fullMatch
+                }
+
+                const spokeRelPath = relative(checkoutDir, resolved).split(sep).join('/');
+                if (!spokeRelPath || spokeRelPath === '..' || spokeRelPath.startsWith('../')) {
+                    return fullMatch
+                }
+
+                if (sourceRoots.some(dir => `${spokeRelPath}/`.startsWith(dir))) {
+                    const kind = resolveGitHubObjectKind(checkoutDir, resolved, spokeRelPath, cleanTarget);
+                    return `](https://github.com/${spoke}/${kind}/${commitRef}/${spokeRelPath}${suffix})`
+                }
+
+                return fullMatch
+            })
+        }).join('');
+
+        return hasCr ? `${rewritten}\r` : rewritten
+    }).join('\n')
+}
 
 /**
  * @summary Reads the Unix commit timestamp (seconds) for `relFile` inside a git checkout, falling back to `HEAD`.
@@ -175,7 +327,7 @@ export async function materializeLearnSpokes({
 
     for (const spokeSpec of spokeCheckouts) {
         const
-            {spoke, checkoutDir, commitEpoch: fallbackEpoch = null} = spokeSpec,
+            {spoke, checkoutDir, commit = null, commitEpoch: fallbackEpoch = null} = spokeSpec,
             manifestPath = resolve(checkoutDir, 'docs/public-manifest.json');
 
         if (!existsSync(manifestPath)) {
@@ -192,6 +344,18 @@ export async function materializeLearnSpokes({
         if (!Array.isArray(manifest?.entries) || manifest.entries.length === 0) {
             throw new Error(`[learn-spokes] Spoke "${spoke}" manifest must contain a non-empty entries array.`)
         }
+
+        for (const [field, insideLearn] of [['excludedDirs', true], ['sourceLinkRoots', false]]) {
+            const dirs = manifest?.[field];
+            if (dirs !== undefined && !(Array.isArray(dirs) && dirs.every(dir => isNormalizedRelPath(dir) && asDirPrefix(dir).startsWith('learn/') === insideLearn))) {
+                throw new Error(`[learn-spokes] Spoke "${spoke}" ${field} must be an array of normalized directories ${insideLearn ? 'inside' : 'outside'} learn/.`)
+            }
+        }
+
+        const
+            excludedPrefixes = (manifest.excludedDirs || []).map(asDirPrefix),
+            sourceRoots      = (manifest.sourceLinkRoots || []).map(asDirPrefix),
+            commitRef        = (typeof commit === 'string' && SHA40_RE.test(commit)) ? commit : (readGitHeadSha(checkoutDir) || 'dev');
 
         const treePath = resolve(checkoutDir, manifest.treeFile || '');
         if (!existsSync(treePath)) {
@@ -276,10 +440,15 @@ export async function materializeLearnSpokes({
             )
         }
 
+        const admittedAbsFiles = new Set();
+
         for (const entry of manifest.entries) {
             const normalizedFile = posix.normalize(String(entry?.file || ''));
             if (normalizedFile !== entry?.file || !normalizedFile.startsWith('learn/') || !normalizedFile.endsWith('.md') || normalizedFile.includes('..')) {
                 throw new Error(`[learn-spokes] Invalid entry file "${entry?.file}" in "${spoke}".`)
+            }
+            if (excludedPrefixes.some(dir => normalizedFile.startsWith(dir))) {
+                throw new Error(`[learn-spokes] Excluded internal record "${normalizedFile}" cannot be materialized in "${spoke}".`)
             }
             if (typeof entry?.route !== 'string' || !entry.route.startsWith('/learn/') || entry.route.endsWith('/') || entry.route.endsWith('.md') || entry.route.includes('..')) {
                 throw new Error(`[learn-spokes] Invalid entry route "${entry?.route}" in "${spoke}".`)
@@ -302,6 +471,7 @@ export async function materializeLearnSpokes({
             if (!srcFile.startsWith(spokeLearnRoot + sep) || !existsSync(srcFile) || !statSync(srcFile).isFile()) {
                 throw new Error(`[learn-spokes] Missing admitted Markdown file "${normalizedFile}" in "${spoke}".`)
             }
+            admittedAbsFiles.add(srcFile);
 
             const
                 destRel   = `${entry.route.slice('/learn/'.length)}.md`,
@@ -313,14 +483,40 @@ export async function materializeLearnSpokes({
                 throw new Error(`[learn-spokes] Destination escaped learn/ root for "${entry.route}".`)
             }
 
-            copyPlan.push({srcFile, destFile, epochSec, route: entry.route, isoDate});
+            copyPlan.push({
+                srcFile,
+                destFile,
+                epochSec,
+                route: entry.route,
+                isoDate,
+                checkoutDir,
+                spoke,
+                commitRef,
+                sourceRoots,
+                admittedAbsFiles
+            });
             spokeLeafCount++
         }
     }
 
     for (const item of copyPlan) {
         await mkdir(dirname(item.destFile), {recursive: true});
-        await cp(item.srcFile, item.destFile);
+        if (item.sourceRoots.length > 0) {
+            const
+                rawMarkdown = await readFile(item.srcFile, 'utf-8'),
+                rewritten   = rewriteSpokeSourceLinks({
+                    markdown        : rawMarkdown,
+                    srcFile         : item.srcFile,
+                    checkoutDir     : item.checkoutDir,
+                    spoke           : item.spoke,
+                    commitRef       : item.commitRef,
+                    sourceRoots     : item.sourceRoots,
+                    admittedAbsFiles: item.admittedAbsFiles
+                });
+            await writeFile(item.destFile, rewritten, 'utf-8')
+        } else {
+            await cp(item.srcFile, item.destFile)
+        }
         utimesSync(item.destFile, item.epochSec, item.epochSec);
         routeLastmods[item.route] = item.isoDate
     }
@@ -476,6 +672,7 @@ export async function fetchAndMaterializeLearnSpokes({
 
             spokeCheckouts.push({
                 spoke      : pin.spoke,
+                commit     : fetchedSha,
                 checkoutDir
             })
         }
