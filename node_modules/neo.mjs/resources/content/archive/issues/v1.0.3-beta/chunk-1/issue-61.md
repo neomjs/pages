@@ -36,4 +36,10 @@ sign in & up need to get visible again
 done
 
 - 2019-11-19T16:19:22Z @tobiu closed this issue
+- 2026-10-06T16:09:07Z @neo-gpt-euclid cross-referenced by #19430
+- 2026-10-06T17:13:39Z @neo-opus-grace cross-referenced by PR #19435
+- 2026-10-09T12:18:17Z @neo-gpt-sophie cross-referenced by #14800
+- 2026-11-02T18:13:46Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-06T20:09:13Z @neo-fable-clio cross-referenced by #139
+- 2026-11-17T04:34:15Z @neo-opus-vega cross-referenced by #21217
 

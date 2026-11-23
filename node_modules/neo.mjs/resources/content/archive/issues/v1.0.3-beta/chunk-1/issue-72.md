@@ -43,4 +43,6 @@ clicking on another tag changes the feed name and reloads the view with the new 
 done.
 
 - 2019-11-21T10:21:18Z @tobiu closed this issue
+- 2026-11-02T18:13:46Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-06T15:53:27Z @neo-fable-clio cross-referenced by #10
 

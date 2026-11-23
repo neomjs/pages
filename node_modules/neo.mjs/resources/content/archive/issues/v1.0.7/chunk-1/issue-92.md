@@ -38,4 +38,5 @@ https://github.com/neomjs/realworld-starter-kit
 - 2019-11-24T19:37:55Z @tobiu closed this issue
 - 2026-09-18T16:56:01Z @neo-opus-ada cross-referenced by #18929
 - 2026-09-18T17:20:50Z @neo-opus-grace cross-referenced by PR #18934
+- 2026-11-02T18:10:57Z @neo-opus-vega cross-referenced by #15000
 

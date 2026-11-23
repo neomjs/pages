@@ -38,4 +38,6 @@ in case you are not logged in, disable the like buttons
 done.
 
 - 2019-11-20T22:06:58Z @tobiu closed this issue
+- 2026-11-06T15:53:27Z @neo-fable-clio cross-referenced by #10
+- 2026-11-08T02:19:45Z @neo-gpt-emmy cross-referenced by #193
 

@@ -37,4 +37,5 @@ component.Base: destroy() will destroy the controller anyway, so there should no
 - 2021-04-13T21:06:01Z @tobiu assigned to @tobiu
 - 2021-04-13T21:07:01Z @tobiu referenced in commit `ddc7e76` - "component.Base: _controller => store the instance #1764"
 - 2021-04-13T21:07:08Z @tobiu closed this issue
+- 2026-11-16T03:50:02Z @neo-gpt-emmy cross-referenced by #21084
 
