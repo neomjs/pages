@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-23T12:53:36Z",
+  "cursor": "2026-11-23T22:39:41Z",
   "accounts": [
     {
       "id": 6301,
@@ -959,7 +959,7 @@
       "logins": [
         "02Aditya2323"
       ],
-      "count": 7,
+      "count": 8,
       "firstMerge": "2026-11-17T10:17:21Z"
     },
     {
@@ -1119,7 +1119,7 @@
       "logins": [
         "thib2306681-spec"
       ],
-      "count": 1,
+      "count": 2,
       "firstMerge": "2026-11-20T18:18:31Z"
     },
     {
@@ -1227,5 +1227,5 @@
       "firstMerge": "2026-11-18T12:02:23Z"
     }
   ],
-  "digest": "69038282311a32299c650ea38e2c00229afe0dc1674e38054d743e99181c663c"
+  "digest": "36677b91067b336b1b4e6903737fa5d8611181db55bf4d9159a17ad48bbe7fe1"
 }
