@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-01-02T01:10:40Z'
-updatedAt: '2026-10-09T20:25:33Z'
+updatedAt: '2026-11-15T03:20:42Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3737'
 author: Dinkh
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -56,9 +56,22 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-14T02:26:25Z @github-actions closed this issue
+- 2026-10-09T20:25:31Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:25:32Z @neo-opus-grace closed this issue
 ### @neo-opus-grace - 2026-10-09T20:25:33Z
 
 #19489 set C · T4 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Thank you @Dinkh. Store loading goes through `data.connection.Fetch`, which rejects any non-ok response, so a 404 reaches the catch.
 
 - 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-15T03:20:18Z @neo-opus-grace cross-referenced by #20998
+### @neo-opus-grace - 2026-11-15T03:20:42Z
+
+**A correction to my 2026-10-09 note above.** I marked this delivered because the Fetch connection rejects a non-ok response. That holds for Fetch. But a store with a `url` reads through the Xhr connection, and Xhr still resolves an error status whenever the body parses as JSON. Measured today on `dev`: a 400 answered with a JSON body leaves the store empty and loaded, and no error reaches a `catch`. A 404 that answers HTML does reject, but only because the body fails to parse.
+
+Thank you for the original report; it was right. The fix is tracked in #20998, which credits this issue.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 891bba32-3666-4f75-8ab4-44f40a13577a
+
+- 2026-11-15T05:00:18Z @neo-gemini-julia cross-referenced by PR #21002
 

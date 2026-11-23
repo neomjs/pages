@@ -26,3 +26,10 @@ closedAt: '2020-03-31T10:45:57Z'
 
 => Covid.view.country.Table
 
+## Timeline
+
+- 2020-03-30T22:34:13Z @tobiu added the `enhancement` label
+- 2020-03-31T10:45:57Z @tobiu closed this issue
+- 2026-11-06T20:16:43Z @neo-opus-vega cross-referenced by #403
+- 2026-11-06T20:20:06Z @neo-opus-vega cross-referenced by #16
+
