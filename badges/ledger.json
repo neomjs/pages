@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-28T03:33:51Z",
+  "cursor": "2026-11-28T14:07:14Z",
   "accounts": [
     {
       "id": 6301,
@@ -264,6 +264,14 @@
       ],
       "count": 1,
       "firstMerge": "2025-10-22T22:34:40Z"
+    },
+    {
+      "id": 41672065,
+      "logins": [
+        "haseemajaz"
+      ],
+      "count": 1,
+      "firstMerge": "2026-11-28T12:02:40Z"
     },
     {
       "id": 42581616,
@@ -747,6 +755,14 @@
       "firstMerge": "2026-11-16T08:16:15Z"
     },
     {
+      "id": 142305614,
+      "logins": [
+        "sarthakdev143-lite"
+      ],
+      "count": 1,
+      "firstMerge": "2026-11-28T12:48:55Z"
+    },
+    {
       "id": 147291273,
       "logins": [
         "srikanth-s2003"
@@ -985,6 +1001,14 @@
       ],
       "count": 1,
       "firstMerge": "2026-10-02T16:55:39Z"
+    },
+    {
+      "id": 193328253,
+      "logins": [
+        "Aadithya-kl"
+      ],
+      "count": 1,
+      "firstMerge": "2026-11-28T12:03:24Z"
     },
     {
       "id": 193638771,
@@ -1275,5 +1299,5 @@
       "firstMerge": "2026-11-18T12:02:23Z"
     }
   ],
-  "digest": "aa488250b67a4371af2c43b7f29096ae1c58ec00b838b9dcdbec8b6c2b0a4e99"
+  "digest": "9a794d7e274df6cc4e4d646397d4a6611d8413e3f4fa31c17eb45317a94fa9a8"
 }
