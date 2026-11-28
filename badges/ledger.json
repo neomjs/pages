@@ -1,5 +1,5 @@
 {
-  "cursor": "2026-11-27T22:22:22Z",
+  "cursor": "2026-11-28T02:11:45Z",
   "accounts": [
     {
       "id": 6301,
@@ -1135,7 +1135,7 @@
       "logins": [
         "benjibunbun"
       ],
-      "count": 1,
+      "count": 2,
       "firstMerge": "2026-11-27T18:02:41Z"
     },
     {
@@ -1275,5 +1275,5 @@
       "firstMerge": "2026-11-18T12:02:23Z"
     }
   ],
-  "digest": "49f3336acfe5892e06e561dbe3fbd8f7e5a572a11be445f90ca79abfa7e504e9"
+  "digest": "52705c24497837f82cc8d0c6aee86c6092da74ad77265a925b60cf09e4be7378"
 }
